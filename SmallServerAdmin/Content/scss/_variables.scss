@@ -1,0 +1,7 @@
+﻿// bootstrap columns list
+$i: 1;
+$col-list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}, .col-xl-#{$i}";
+
+@for $i from (1 + 1) through $grid-columns {
+	$col-list: "#{$col-list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
+}

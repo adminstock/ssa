@@ -1,0 +1,207 @@
+﻿html.frame-page, html.frame-page body {
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	height:100%;
+	min-height:100%;
+}
+
+footer {
+	height: 72px;
+}
+
+.navbar-header {
+	padding-left: 15px;
+}
+
+.navmenu {
+	width: 100%;
+}
+
+.table-nonfluid {
+	width: auto !important;
+}
+
+/*.CodeMirror {
+	border: 1px solid #333333;
+}*/
+
+a:not([href]) {
+	cursor: pointer;
+}
+
+.silver {
+	color: silver;
+}
+
+.gray {
+	color: gray;
+}
+
+.modal-body {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+.modal-full {
+
+	.CodeMirror  {
+		height: 100%;
+		min-height: 100%;
+		max-height: 100%;
+	}
+
+	.modal-dialog {
+		width: 90%;
+		height: 90%;
+		min-height: 90%;
+	}
+
+	.modal-content {
+		height: 100%;
+		min-height: 100%;
+	}
+
+	.modal-body {
+		height: 100%;
+		//min-height: calc(100vh - 220px);
+		//max-height: calc(100vh - 220px);
+		overflow-y: auto;
+	}
+
+}
+
+.code-mirror-auto-height {
+	.CodeMirror {
+		height: auto;
+	}
+}
+
+.status-stopped {
+	color: silver;
+}
+
+table.cell-align-middle
+{
+	tr
+	{
+		> td {
+			vertical-align: middle;
+		}
+	}
+}
+
+.process-status-running {
+	background-color: #bef8ba;
+}
+
+.process-status-stopped {
+	color: #c0c0c0;
+}
+
+.process-status-top {
+	background-color: #d0d0ff;
+}
+
+.process-status-s {
+	//background-color: #ffd0d0;
+}
+
+.indicators {
+	height: 42px;
+
+	.highcharts-container {
+		width:100% !important;
+		height: 42px !important;
+		overflow: visible !important;
+	}
+}
+
+.chart-tooltip {
+	background-color: white;
+	padding: 2px;
+	border: 1px solid #535353
+}
+
+.ui-resizable {
+	max-width: 1200px;
+	max-height: 90vh;
+
+	.modal-body {
+		padding: 0;
+		/*min-height: calc(100vh - 87px);
+		max-height: calc(100vh - 87px);
+		height: calc(100vh - 87px);*/
+		min-width: 100%;
+		width: 100%;
+		overflow: hidden;
+	}
+	
+	.CodeMirror {
+		width: 100%;
+		//height: 100%;
+	}
+	/*
+	.CodeMirror-scroll {
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }*/
+}
+
+.symlink {
+	opacity: 0.85;
+	position: relative;
+}
+
+.symlink-file {
+	&:after {
+		content: '';
+		display: block;
+		background-image: url(/Content/images/link.png);
+		background-repeat: no-repeat;
+		background-position: left bottom;
+		width: 20px;
+		height: 18px;
+		position: absolute;
+		left: 1px;
+		bottom: 4px;
+	}
+}
+
+.symlink-folder {
+	&:after {
+		content: '';
+		display: block;
+		background-image: url(/Content/images/link.png);
+		background-repeat: no-repeat;
+		background-position: left bottom;
+		width: 20px;
+		height: 18px;
+		position: absolute;
+		left: 1px;
+		bottom: 4px;
+	}
+}
+
+ul.no-padding {
+	padding-left: 15px;
+}
+
+treecontrol ul {
+	overflow: visible;
+
+	.dropdown-menu{
+		li {
+			padding: 0;
+		}
+	}
+}
+
+@media (min-width: $screen-tablet) {
+
+  .navbar-collapse {
+    padding: 0;
+  }
+
+}

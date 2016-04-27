@@ -1,0 +1,23 @@
+{
+  "name":        "aleksey.nemiro/apacheconf.php",
+  "description": "This is a set of classes for working with configuration files of the Apache2 web server.",
+  "keywords":
+  [
+    "PHP", "Apache2", "conf", "config", "parser" 
+  ],
+  "homepage":    "https://github.com/alekseynemiro/ApacheConf.PHP",
+  "license":     "Apache License 2.0",
+  "version":     "1.0",
+  "authors": 
+  [
+    {
+      "name":     "Aleksey Nemiro",
+      "homepage": "http://aleksey.nemiro.ru/",
+      "role":     "Developer"
+    }
+  ],
+  "require": 
+  {
+    "php": ">=5.5,>=7.0"
+  }
+}

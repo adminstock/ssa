@@ -1,0 +1,15 @@
+﻿/*
+@import this file directly into your existing Scss files to use these mixins
+*/
+@mixin sprite-apache24() {
+/* You may have to set 'display: block' */
+	width: 24px;
+	height: 24px;
+	background: url('/Content/images/webservers.png') -1px -1px;
+}
+@mixin sprite-nginx24() {
+/* You may have to set 'display: block' */
+	width: 24px;
+	height: 24px;
+	background: url('/Content/images/webservers.png') -1px -26px;
+}

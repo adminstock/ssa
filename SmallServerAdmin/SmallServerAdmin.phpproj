@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>SmallServerAdmin</Name>
+    <ProjectGuid>c3a25cf1-3919-4098-aacd-d12b0b628c7c</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>HTAN.WebPanelLight</RootNamespace>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <AssemblyName>HTAN.WebPanelLight</AssemblyName>
+    <ProjectHome />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Controls\Accordion.html.php" />
+    <Compile Include="Controls\Accordion.php">
+      <SubType>Code</SubType>
+      <DependentUpon>Controls\Accordion.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AccordionItem.php">
+      <SubType>Code</SubType>
+      <DependentUpon>Controls\Accordion.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ClientSideConfig.php" />
+    <Compile Include="Controls\Header.php" />
+    <Compile Include="dbadmin\menu.php" />
+    <Compile Include="dbadmin\mysql.php" />
+    <Compile Include="dbadmin\pgsql.php" />
+    <Compile Include="files\api.php" />
+    <Compile Include="files\dialogs\confirmToExecuteFile.php" />
+    <Compile Include="files\dialogs\confirmToOverwriteFile.php" />
+    <Compile Include="files\dialogs\properties.php" />
+    <Compile Include="files\dialogs\createFolder.php" />
+    <Compile Include="files\dialogs\executionResult.php" />
+    <Compile Include="files\dialogs\editItem.php" />
+    <Compile Include="files\dialogs\confirmToDeleteItem.php" />
+    <Compile Include="files\dialogs\saveAs.php" />
+    <Compile Include="files\index.html.php" />
+    <Compile Include="files\index.php">
+      <SubType>Code</SubType>
+      <DependentUpon>files\index.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="files\menu.php" />
+    <Compile Include="files\models\FileSystemItemInfo.php" />
+    <Compile Include="index.php">
+      <SubType>Code</SubType>
+      <DependentUpon>index.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\_LayoutFrame.php" />
+    <Compile Include="Libs\Nemiro\Apache\Conf.php" />
+    <Compile Include="Libs\Nemiro\Apache\Directive.php" />
+    <Compile Include="Libs\Nemiro\Apache\DirectiveCollection.php" />
+    <Compile Include="Libs\Nemiro\Apache\DirectiveGroup.php" />
+    <Compile Include="Libs\Nemiro\Nginx\Conf.php" />
+    <Compile Include="Libs\Nemiro\Nginx\Directive.php" />
+    <Compile Include="Libs\Nemiro\Nginx\DirectiveCollection.php" />
+    <Compile Include="Libs\Nemiro\Nginx\DirectiveGroup.php" />
+    <Compile Include="Libs\Nemiro\Nginx\DirectiveType.php" />
+    <Compile Include="Libs\Nemiro\Nginx\UnitTests\ConfTest.php" />
+    <Compile Include="monitoring\api.php" />
+    <Compile Include="monitoring\dialogs\confirmToKillProcess.php" />
+    <Compile Include="monitoring\index.html.php" />
+    <Compile Include="monitoring\index.php">
+      <SubType>Code</SubType>
+      <DependentUpon>monitoring\index.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="monitoring\menu.php" />
+    <Compile Include="monitoring\models\HDDInfo.php" />
+    <Compile Include="monitoring\models\Process.php" />
+    <Compile Include="monitoring\models\MemoryInfo.php" />
+    <Compile Include="monitoring\models\ServerInfo.php" />
+    <Compile Include="monitoring\widget.php" />
+    <Compile Include="services\api.php" />
+    <Compile Include="services\dialogs\confirmToStopService.php" />
+    <Compile Include="services\index.html.php" />
+    <Compile Include="services\index.php">
+      <SubType>Code</SubType>
+      <DependentUpon>services\index.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="services\menu.php" />
+    <Compile Include="services\models\Service.php" />
+    <Compile Include="services\widget.php" />
+    <Compile Include="sites\api.php" />
+    <Compile Include="sites\dialogs\confirmToDeleteFolder.php" />
+    <Compile Include="sites\dialogs\confirmToDeleteSite.php" />
+    <Compile Include="sites\dialogs\createFolder.php" />
+    <Compile Include="sites\dialogs\reloading.php" />
+    <Compile Include="sites\dialogs\selectFolder.php" />
+    <Compile Include="sites\dialogs\createConfig.php" />
+    <Compile Include="sites\dialogs\confirmToDeleteConf.php" />
+    <Compile Include="sites\edit.html.php" />
+    <Compile Include="sites\edit.php">
+      <SubType>Code</SubType>
+      <DependentUpon>sites\edit.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="sites\help\apache.php" />
+    <Compile Include="sites\help\htan.php" />
+    <Compile Include="sites\help\nginx.php" />
+    <Compile Include="sites\index.php">
+      <SubType>Code</SubType>
+      <DependentUpon>sites\index.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="sites\masters\apache.php" />
+    <Compile Include="sites\masters\htan.php" />
+    <Compile Include="sites\masters\nginx.php" />
+    <Compile Include="sites\menu.php" />
+    <Compile Include="files\models\FileSystemItem.php" />
+    <Compile Include="sites\models\SiteConf.php" />
+    <Compile Include="sites\models\WebServer.php" />
+    <Compile Include="sites\models\Site.php" />
+    <Compile Include="sites\index.html.php" />
+    <Compile Include="sites\widget.php" />
+    <Compile Include="ssh\api.php" />
+    <Compile Include="svn\api.php" />
+    <Compile Include="svn\confirmToRemoveGroup.php" />
+    <Compile Include="svn\confirmToRemoveRepository.php" />
+    <Compile Include="svn\models\SvnRepositoryPermission.php" />
+    <Compile Include="svn\repository.php" />
+    <Compile Include="svn\repositories.html.php" />
+    <Compile Include="svn\groups.html.php" />
+    <Compile Include="svn\groups.php">
+      <SubType>Code</SubType>
+      <DependentUpon>svn\groups.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="svn\group.php" />
+    <Compile Include="svn\models\SvnRepository.php" />
+    <Compile Include="svn\models\SvnGroup.php" />
+    <Compile Include="svn\models\SvnGroupToEdit.php" />
+    <Compile Include="svn\repositories.php">
+      <SubType>Code</SubType>
+      <DependentUpon>svn\repositories.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="users\api.php" />
+    <Compile Include="api.php" />
+    <Compile Include="config.php" />
+    <Compile Include="Controls\Footer.php" />
+    <Compile Include="Controls\Menu.php" />
+    <Compile Include="Controls\Message.html.php">
+      <SubType>Code</SubType>
+      <DependentUpon>Controls\Message.php</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Message.php" />
+    <Compile Include="Controls\Panel.php" />
+    <Compile Include="Controls\TabControl.html.php">
+      <SubType>Code</SubType>
+      <DependentUpon>Controls\TabControl.php</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TabControl.php" />
+    <Compile Include="Controls\TabItem.php">
+      <SubType>Code</SubType>
+      <DependentUpon>Controls\TabControl.php</DependentUpon>
+    </Compile>
+    <Compile Include="global.php" />
+    <Compile Include="users\models\AccountUpdate.php" />
+    <Compile Include="users\models\CreateUser.php" />
+    <Compile Include="ssh\models\SshResult.php" />
+    <Compile Include="users\models\PagedList.php" />
+    <Compile Include="svn\models\SvnUserToEdit.php" />
+    <Compile Include="svn\models\SvnUser.php" />
+    <Compile Include="users\models\UsersList.php" />
+    <Compile Include="ssa.config.php" />
+    <Compile Include="ssh\index.html.php" />
+    <Compile Include="ssh\index.php">
+      <SubType>Code</SubType>
+      <DependentUpon>ssh\index.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="ssh\menu.php" />
+    <Compile Include="svn\confirmToRemoveUser.php" />
+    <Compile Include="svn\menu.php" />
+    <Compile Include="svn\user.php" />
+    <Compile Include="svn\users.html.php" />
+    <Compile Include="svn\users.php">
+      <SubType>Code</SubType>
+      <DependentUpon>svn\users.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="users\edit.html.php" />
+    <Compile Include="users\edit.php">
+      <SubType>Code</SubType>
+      <DependentUpon>users\edit.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="users\index.html.php" />
+    <Compile Include="users\index.php">
+      <SubType>Code</SubType>
+      <DependentUpon>users\index.html.php</DependentUpon>
+    </Compile>
+    <Compile Include="index.html.php" />
+    <Compile Include="Layouts\_Layout.php" />
+    <Compile Include="Libs\Nemiro\App.php" />
+    <Compile Include="Libs\Nemiro\Collections\Collection.php" />
+    <Compile Include="Libs\Nemiro\Collections\Import.php" />
+    <Compile Include="Libs\Nemiro\Collections\NameValueCollection.php" />
+    <Compile Include="Libs\Nemiro\Collections\StringValue.php" />
+    <Compile Include="Libs\Nemiro\config.sample.php" />
+    <Compile Include="Libs\Nemiro\Console.php" />
+    <Compile Include="Libs\Nemiro\global.sample.php" />
+    <Compile Include="Libs\Nemiro\Server.php" />
+    <Compile Include="Libs\Nemiro\Text.php" />
+    <Compile Include="Libs\Nemiro\UI\Control.php" />
+    <Compile Include="Libs\Nemiro\UI\Html.php" />
+    <Compile Include="Libs\Nemiro\UI\Import.php" />
+    <Compile Include="Libs\Nemiro\UI\Page.php" />
+    <Compile Include="users\models\Group.php" />
+    <Compile Include="users\models\User.php" />
+    <Compile Include="users\menu.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".version" />
+    <Content Include="compilerconfig.json" />
+    <Content Include="compilerconfig.json.defaults">
+      <SubType>Content</SubType>
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\images\apache16.png" />
+    <Content Include="Content\images\apache24.png" />
+    <Content Include="Content\images\arrow45.png" />
+    <Content Include="Content\images\en.png" />
+    <Content Include="Content\images\file.png" />
+    <Content Include="Content\images\folder-closed.png" />
+    <Content Include="Content\images\folder.png" />
+    <Content Include="Content\images\link.png" />
+    <Content Include="Content\images\nginx16.png" />
+    <Content Include="Content\images\nginx24.png" />
+    <Content Include="Content\images\node-closed-2.png" />
+    <Content Include="Content\images\node-closed-light.png" />
+    <Content Include="Content\images\node-closed.png" />
+    <Content Include="Content\images\node-opened-2.png" />
+    <Content Include="Content\images\node-opened-light.png" />
+    <Content Include="Content\images\node-opened.png" />
+    <Content Include="Content\images\ru.png" />
+    <Content Include="Content\images\tag-editor-delete.png" />
+    <Content Include="Content\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Content\images\webservers.png">
+    </Content>
+    <Content Include="Content\images\webservers16.png" />
+    <Content Include="Content\scss\compiled.css">
+      <SubType>Content</SubType>
+      <DependentUpon>Content\scss\compiled.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\scss\compiled.min.css">
+      <SubType>Content</SubType>
+      <DependentUpon>Content\scss\compiled.css</DependentUpon>
+    </Content>
+    <Content Include="Content\scss\compilerconfig.json" />
+    <Content Include="Content\scss\libs\tree-control\_tree-control-attribute.scss" />
+    <Content Include="Content\scss\libs\tree-control\_tree-control.scss" />
+    <Content Include="Content\scss\sprites\_webservers16.png.scss" />
+    <Content Include="Content\scss\libs\_bootstrap-switch.scss" />
+    <Content Include="Content\scss\libs\_jquery-ui.scss" />
+    <Content Include="Content\scss\libs\_jquery-ui.theme.scss" />
+    <Content Include="Content\scss\libs\_jquery.tag-editor.scss" />
+    <Content Include="Content\scss\sprites\_webservers.png.scss">
+    </Content>
+    <Content Include="Content\scss\compiled.scss" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\scss\libs\codemirror\_erlang-dark.scss" />
+    <Content Include="Content\scss\libs\codemirror\_codemirror.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_animated.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_bordered-pulled.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_core.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_fixed-width.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_font-awesome.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_icons.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_larger.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_list.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_mixins.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_path.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_rotated-flipped.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_stacked.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_variables.scss" />
+    <Content Include="Content\scss\libs\jasny-bootstrap\_jasny-bootstrap.scss" />
+    <Content Include="Content\scss\libs\jasny-bootstrap\_alerts-fixed.scss" />
+    <Content Include="Content\scss\libs\jasny-bootstrap\_button-labels.scss" />
+    <Content Include="Content\scss\libs\jasny-bootstrap\_fileinput.scss" />
+    <Content Include="Content\scss\libs\jasny-bootstrap\_grid-container-smooth.scss" />
+    <Content Include="Content\scss\libs\jasny-bootstrap\_nav-tab-alignment.scss" />
+    <Content Include="Content\scss\libs\jasny-bootstrap\_navmenu.scss" />
+    <Content Include="Content\scss\libs\jasny-bootstrap\_offcanvas.scss" />
+    <Content Include="Content\scss\libs\jasny-bootstrap\_rowlink.scss" />
+    <Content Include="Content\scss\libs\jasny-bootstrap\_variables.scss" />
+    <Content Include="Content\scss\libs\font-awesome\_font-awesome-animation.scss" />
+    <Content Include="Content\scss\_animation.scss" />
+    <Content Include="Content\scss\_common.scss" />
+    <Content Include="Content\scss\_icons.scss" />
+    <Content Include="Content\scss\_sidebar.scss" />
+    <Content Include="Content\scss\_validators.scss" />
+    <Content Include="Content\scss\_variables.scss" />
+    <Content Include="dbadmin\CHANGELOG.md" />
+    <Content Include="dbadmin\mysql.json">
+      <SubType>Content</SubType>
+      <DependentUpon>dbadmin\mysql.php</DependentUpon>
+    </Content>
+    <Content Include="dbadmin\pgsql.json">
+      <SubType>Content</SubType>
+      <DependentUpon>dbadmin\pgsql.php</DependentUpon>
+    </Content>
+    <Content Include="files\CHANGELOG.md" />
+    <Content Include="files\treeViewTemplate.html" />
+    <Content Include="global.json">
+      <SubType>Content</SubType>
+      <DependentUpon>global.php</DependentUpon>
+    </Content>
+    <Content Include="global.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>global.php</DependentUpon>
+    </Content>
+    <Content Include="Libs\Nemiro\Apache\composer.json" />
+    <Content Include="Libs\Nemiro\Apache\LICENSE" />
+    <Content Include="Libs\Nemiro\Apache\README.ru.md" />
+    <Content Include="Libs\Nemiro\Apache\README.md" />
+    <Content Include="Libs\Nemiro\LICENSE" />
+    <Content Include="Libs\Nemiro\Nginx\composer.json" />
+    <Content Include="Libs\Nemiro\Nginx\LICENSE" />
+    <Content Include="Libs\Nemiro\Nginx\README.md" />
+    <Content Include="Libs\Nemiro\Nginx\README.ru.md" />
+    <Content Include="Libs\Nemiro\Nginx\UnitTests\test.conf" />
+    <Content Include="Libs\Nemiro\README.md" />
+    <Content Include="Libs\Nemiro\CHANGELOG.md" />
+    <Content Include="monitoring\CHANGELOG.md" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_alerts.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_center-block.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_forms.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_grid.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_hide-text.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_image.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_labels.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_nav-vertical-align.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_opacity.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_panels.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_progress-bar.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_reset-filter.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_resize.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_responsive-visibility.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_size.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_tab-focus.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_table-row.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_text-overflow.scss" />
+    <Content Include="Content\scss\libs\bootstrap\mixins\_vendor-prefixes.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_alerts.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_badges.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_breadcrumbs.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_button-groups.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_buttons.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_carousel.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_close.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_code.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_component-animations.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_dropdowns.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_forms.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_glyphicons.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_grid.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_input-groups.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_jumbotron.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_labels.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_list-group.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_media.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_mixins.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_modals.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_navbar.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_navs.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_normalize.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_pager.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_pagination.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_panels.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_popovers.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_print.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_progress-bars.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_responsive-embed.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_responsive-utilities.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_scaffolding.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_tables.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_theme.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_thumbnails.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_tooltip.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_type.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_utilities.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_variables.scss" />
+    <Content Include="Content\scss\libs\bootstrap\_wells.scss" />
+    <Content Include="Content\scss\libs\_bootstrap-compass.scss" />
+    <Content Include="Content\scss\libs\_bootstrap-mincer.scss" />
+    <Content Include="Content\scss\libs\_bootstrap-sprockets.scss" />
+    <Content Include="Content\scss\libs\_bootstrap.scss" />
+    <Content Include="services\CHANGELOG.md" />
+    <Content Include="sites\CHANGELOG.md" />
+    <Content Include="svn\CHANGELOG.md" />
+    <Content Include="ssh\CHANGELOG.md" />
+    <Content Include="users\CHANGELOG.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\" />
+    <Folder Include="Content\scss\" />
+    <Folder Include="Content\scss\libs\font-awesome\" />
+    <Folder Include="Content\scss\libs\jasny-bootstrap\" />
+    <Folder Include="Content\scss\libs\codemirror\" />
+    <Folder Include="Content\scss\libs\tree-control\" />
+    <Folder Include="Content\scss\sprites\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Content\fonts\" />
+    <Folder Include="Content\images\" />
+    <Folder Include="files\models\" />
+    <Folder Include="files\dialogs\" />
+    <Folder Include="Libs\" />
+    <Folder Include="Libs\Nemiro\" />
+    <Folder Include="Libs\Nemiro\Apache\" />
+    <Folder Include="Libs\Nemiro\Collections\" />
+    <Folder Include="Libs\Nemiro\Nginx\" />
+    <Folder Include="Libs\Nemiro\Nginx\UnitTests\" />
+    <Folder Include="Libs\Nemiro\UI\" />
+    <Folder Include="Layouts\" />
+    <Folder Include="Content\scss\libs\" />
+    <Folder Include="Content\scss\libs\bootstrap\" />
+    <Folder Include="Content\scss\libs\bootstrap\mixins\" />
+    <Folder Include="monitoring\" />
+    <Folder Include="monitoring\models\" />
+    <Folder Include="monitoring\dialogs\" />
+    <Folder Include="files\" />
+    <Folder Include="dbadmin\" />
+    <Folder Include="services\" />
+    <Folder Include="services\models\" />
+    <Folder Include="services\dialogs\" />
+    <Folder Include="sites\" />
+    <Folder Include="sites\models\" />
+    <Folder Include="sites\dialogs\" />
+    <Folder Include="sites\masters\" />
+    <Folder Include="sites\help\" />
+    <Folder Include="ssh\" />
+    <Folder Include="ssh\models\" />
+    <Folder Include="svn\" />
+    <Folder Include="svn\models\" />
+    <Folder Include="users\" />
+    <Folder Include="users\models\" />
+  </ItemGroup>
+</Project>

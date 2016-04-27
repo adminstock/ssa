@@ -1,0 +1,23 @@
+{
+  "name":        "aleksey.nemiro/nginxconf.php",
+  "description": "Classes for working with configuration files of the Nginx.",
+  "keywords":
+  [
+    "PHP", "Nginx", "conf", "config", "parser" 
+  ],
+  "homepage":    "https://github.com/alekseynemiro/NginxConf.PHP",
+  "license":     "Apache License 2.0",
+  "version":     "1.0",
+  "authors": 
+  [
+    {
+      "name":     "Aleksey Nemiro",
+      "homepage": "http://aleksey.nemiro.ru/",
+      "role":     "Developer"
+    }
+  ],
+  "require": 
+  {
+    "php": ">=5.5,>=7.0"
+  }
+}

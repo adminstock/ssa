@@ -1,0 +1,18 @@
+[
+  {
+		"includeInProject":  false,
+		"outputFileName": "nemiro.js",
+		"inputFiles": [
+			"EventHandlers.js",
+			"RegisteredController.js",
+			"AppContext.js",
+			"AngularContext.js",
+			"UI/Dialog.js",
+			"TryAction.js",
+			"Utility.js",
+			"Collections/Collection.js",
+			"Collections/KeyValueItem.js",
+			"Collections/NameValueCollection.js"
+		]
+  }
+]

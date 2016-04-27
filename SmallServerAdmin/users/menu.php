@@ -1,0 +1,1 @@
+<li><a href="/users"><span class="fa fa-user"></span> Users</a></li>

@@ -1,0 +1,1 @@
+<li><a href="/files"><span class="fa fa-folder"></span> Files</a></li>

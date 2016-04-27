@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "SmallServerAdmin", "SmallServerAdmin\SmallServerAdmin.phpproj", "{C3A25CF1-3919-4098-AACD-D12B0B628C7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DFA4C8AF-B55C-4241-A65C-D0191C09A2A9}"
+	ProjectSection(SolutionItems) = preProject
+		WebEssentials-Settings.json = WebEssentials-Settings.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEndScripts", "FrontEndScripts\FrontEndScripts.csproj", "{6EFE26F9-D04F-4716-B915-F7A2CF938335}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C50064D6-5B47-47CF-A9B8-EDA2EF9A2E3A}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Info", "Info", "{CD607A27-2643-4B5F-80BB-EE04C11F8B15}"
+	ProjectSection(SolutionItems) = preProject
+		CHANGELOG.md = CHANGELOG.md
+		CODEOFCONDUCT.md = CODEOFCONDUCT.md
+		CONTRIBUTING.md = CONTRIBUTING.md
+		LICENSE = LICENSE
+		README.md = README.md
+		README.ru.md = README.ru.md
+		THIRDPARTYNOTICE.md = THIRDPARTYNOTICE.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3A25CF1-3919-4098-AACD-D12B0B628C7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A25CF1-3919-4098-AACD-D12B0B628C7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A25CF1-3919-4098-AACD-D12B0B628C7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A25CF1-3919-4098-AACD-D12B0B628C7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EFE26F9-D04F-4716-B915-F7A2CF938335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EFE26F9-D04F-4716-B915-F7A2CF938335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EFE26F9-D04F-4716-B915-F7A2CF938335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EFE26F9-D04F-4716-B915-F7A2CF938335}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

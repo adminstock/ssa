@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vswebessentials.com/schemas/v1/bundle.xsd">
+  <settings>
+    <!--Determines if the bundle file should be automatically optimized after creation/update.-->
+    <minify>true</minify>
+    <!--Determine whether to generate/re-generate this bundle on building the solution.-->
+    <runOnBuild>false</runOnBuild>
+    <!--Specifies a custom subfolder to save files to. By default, compiled output will be placed in the same folder and nested under the original file.-->
+		<outputDirectory></outputDirectory>
+  </settings>
+  <!--The order of the <file> elements determines the order of the files in the bundle.-->
+  <files>
+		<!--Helper classes by Aleksey Nemiro-->
+		<file>EventHandlers.js</file>
+		<file>RegisteredController.js</file>
+		<file>AppContext.js</file>
+		<file>AngularContext.js</file>
+		<file>UI/Dialog.js</file>
+		<file>TryAction.js</file>
+		<file>Utility.js</file>
+		<file>Collections/Collection.js</file>
+		<file>Collections/KeyValueItem.js</file>
+		<file>Collections/NameValueCollection.js</file>
+	</files>
+</bundle>

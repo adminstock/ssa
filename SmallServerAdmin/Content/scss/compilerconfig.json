@@ -1,0 +1,8 @@
+﻿[
+  {
+		"outputFile": "../compiled.css",
+		"minify": { "enabled": true },
+		"includeInProject": false,
+    "inputFile": "compiled.scss"
+  }
+]

@@ -1,0 +1,1 @@
+<li><a href="/sites"><span class="fa fa-globe"></span> Sites</a></li>

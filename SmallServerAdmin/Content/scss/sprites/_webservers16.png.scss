@@ -1,0 +1,15 @@
+﻿/*
+@import this file directly into your existing Scss files to use these mixins
+*/
+@mixin sprite-apache16() {
+/* You may have to set 'display: block' */
+	width: 16px;
+	height: 16px;
+	background: url('/Content/images/webservers16.png') -1px -1px;
+}
+@mixin sprite-nginx16() {
+/* You may have to set 'display: block' */
+	width: 16px;
+	height: 16px;
+	background: url('/Content/images/webservers16.png') -1px -18px;
+}

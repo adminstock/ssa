@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vswebessentials.com/schemas/v1/bundle.xsd">
+  <settings>
+    <!--Determines if the bundle file should be automatically optimized after creation/update.-->
+    <minify>true</minify>
+    <!--Determine whether to generate/re-generate this bundle on building the solution.-->
+    <runOnBuild>false</runOnBuild>
+    <!--Specifies a custom subfolder to save files to. By default, compiled output will be placed in the same folder and nested under the original file.-->
+		<outputDirectory>../SmallServerAdmin/Content</outputDirectory>
+  </settings>
+  <!--The order of the <file> elements determines the order of the files in the bundle.-->
+  <files>
+		<!--Libraries-->
+    <file>/libs/jquery-1.11.2.js</file>
+		<file>/libs/jquery-ui.min.js</file>
+		<file>/libs/jquery.json.min.js</file>
+		<file>/libs/jquery.caret.min.js</file>
+		<file>/libs/jquery.tag-editor.js</file>
+    <file>/libs/bootstrap.js</file>
+		<file>/libs/bootstrap-switch.js</file>
+		<file>/libs/jasny-bootstrap.js</file>
+    <file>/libs/angular/angular.js</file>
+		<file>/libs/angular/angular-sanitize.js</file>
+    <file>/libs/angular/angular-animate.js</file>
+		<file>/libs/angular-bootstrap-switch.js</file>
+		<file>/libs/ui-bootstrap-tpls-1.1.2.js</file>
+		<file>/libs/codemirror/codemirror.js</file>
+		<file>/libs/codemirror/addon/edit/matchbrackets.js</file>
+		<file>/libs/codemirror/addon/display/autorefresh.js</file>
+		<file>/libs/codemirror/mode/shell/shell.js</file>
+		<file>/libs/codemirror/mode/clike/clike.js</file>
+		<file>/libs/codemirror/mode/xml/xml.js</file>
+		<file>/libs/codemirror/mode/css/css.js</file>
+		<file>/libs/codemirror/mode/javascript/javascript.js</file>
+		<file>/libs/codemirror/mode/htmlmixed/htmlmixed.js</file>
+		<file>/libs/codemirror/mode/http/http.js</file>
+		<file>/libs/codemirror/mode/markdown/markdown.js</file>
+		<file>/libs/codemirror/mode/nginx/nginx.js</file>
+		<file>/libs/codemirror/mode/perl/perl.js</file>
+		<file>/libs/codemirror/mode/php/php.js</file>
+		<file>/libs/codemirror/mode/properties/properties.js</file>
+		<file>/libs/codemirror/mode/python/python.js</file>
+		<file>/libs/codemirror/mode/sql/sql.js</file>
+		<file>/libs/codemirror/mode/yaml/yaml.js</file>
+		<file>/libs/codemirror/ui-codemirror.js</file>
+		<file>/libs/angular-tree-control.js</file>
+		<file>/libs/highcharts/highstock-all.js</file>
+		<file>/libs/highcharts-ng.js</file>
+
+		<!--Helper classes by Aleksey Nemiro-->
+		<file>/libs/Nemiro/nemiro.js</file>
+		
+		<!--Filters-->
+		<file>/Filters/OrderGroups.js</file>
+		<file>/Filters/CurrencyFormat.js</file>
+		<file>/Filters/CountAsString.js</file>
+		<file>/Filters/Numeric.js</file>
+
+		<!--Controllers-->
+		<file>/Controllers/MasterController.js</file>
+		<file>/Controllers/UserListController.js</file>
+		<file>/Controllers/UserEditorController.js</file>
+		<file>/Controllers/SvnUsersController.js</file>
+		<file>/Controllers/SvnGroupsController.js</file>
+		<file>/Controllers/SvnRepositoriesController.js</file>
+		<file>/Controllers/SshController.js</file>
+		<file>/Controllers/SiteListController.js</file>
+		<file>/Controllers/SiteEditorController.js</file>
+		<file>/Controllers/ServiceListController.js</file>
+		<file>/Controllers/MonitoringController.js</file>
+		<file>/Controllers/FileListController.js</file>
+
+		<!--Models-->
+		<file>/Models/Config.js</file>
+		<file>/Models/User.js</file>
+		<file>/Models/Group.js</file>
+		<file>/Models/AccountUpdate.js</file>
+		<file>/Models/PagedList.js</file>
+		<file>/Models/UsersList.js</file>
+		<file>/Models/SvnUser.js</file>
+		<file>/Models/SshResult.js</file>
+		<file>/Models/SvnUserToEdit.js</file>
+		<file>/Models/SvnUserToSave.js</file>
+		<file>/Models/SvnGroup.js</file>
+		<file>/Models/SvnGroupToEdit.js</file>
+		<file>/Models/SvnGroupToSave.js</file>
+		<file>/Models/SvnRepository.js</file>
+		<file>/Models/SvnRepositoryPermission.js</file>
+		<file>/Models/Site.js</file>
+		<file>/Models/SiteConf.js</file>
+		<file>/Models/SiteNew.js</file>
+		<file>/Models/SiteNewNginx.js</file>
+		<file>/Models/SiteNewApache.js</file>
+		<file>/Models/SiteNewHTAN.js</file>
+		<file>/Models/SiteHTANItem.js</file>
+		<file>/Models/FileSystemItem.js</file>
+		<file>/Models/Service.js</file>
+		<file>/Models/Process.js</file>
+		<file>/Models/HDDInfo.js</file>
+		<file>/Models/MemoryInfo.js</file>
+		<file>/Models/ServerInfo.js</file>
+		<file>/Models/FileSystemItemInfo.js</file>
+		<file>/Models/ReloadingInfo.js</file>
+
+		<!--Application-->
+		<file>/ApiRequest.js</file>
+		<file>/_app.js</file>
+	</files>
+</bundle>
