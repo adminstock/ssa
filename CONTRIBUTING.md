@@ -33,7 +33,7 @@ The project welcomes new contributors.
 
 To get started, fork the **SmallServerAdmin** on **GitHub** and check out your copy locally.
 
-Make your changes, in accordance with our [rules and recommendations](#Coding-Rules).
+Make your changes, in accordance with our [rules and recommendations](#Coding Rules).
 
 Make sure that your changes are working properly.
 
