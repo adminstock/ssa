@@ -23,11 +23,11 @@ $config['client'] = [
 // uncomment to enable logging
 // $config['ssa_log_path'] = '../.logs/ssa.log';
 
-// ssh
+// ssh (!!!BE SURE TO CONFIGURE IT!!!)
 $config['ssh_host'] = '192.168.56.139';
 $config['ssh_port'] = '22';
-$config['ssh_user'] = 'ssa2';
-$config['ssh_password'] = 'qwertyk';
+$config['ssh_user'] = 'ssh username';
+$config['ssh_password'] = 'ssh password here';
 $config['ssh_required_password'] = TRUE;
 
 // files
