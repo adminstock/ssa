@@ -184,12 +184,6 @@
     <Content Include="libs\highcharts\themes\grid.js" />
     <Content Include="libs\highcharts\themes\sand-signika.js" />
     <Content Include="libs\highcharts\themes\skies.js" />
-    <Content Include="libs\Nemiro\nemiro.js">
-      <DependentUpon>nemiro.js.bundle</DependentUpon>
-    </Content>
-    <Content Include="libs\Nemiro\nemiro.min.js">
-      <DependentUpon>nemiro.js</DependentUpon>
-    </Content>
     <Content Include="libs\ui-bootstrap-tpls-1.1.2.js" />
     <Content Include="web.config" />
   </ItemGroup>
@@ -209,9 +203,6 @@
     <Content Include="libs\angular\version.json" />
     <Content Include="compiled.js.bundle" />
     <Content Include="libs\Nemiro\nemiro.js.bundle" />
-    <Content Include="libs\Nemiro\nemiro.min.js.map">
-      <DependentUpon>nemiro.min.js</DependentUpon>
-    </Content>
     <Content Include="libs\Nemiro\LICENSE" />
     <Content Include="bundleconfig.json" />
     <Content Include="libs\Nemiro\nemiro.json" />
@@ -225,6 +216,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Controllers\FileListController.ts" />
     <TypeScriptCompile Include="Controllers\MonitoringController.ts" />
+    <TypeScriptCompile Include="Controllers\PanelUpdateController.ts" />
     <TypeScriptCompile Include="Controllers\ServiceListController.ts" />
     <TypeScriptCompile Include="Controllers\SshController.ts" />
     <TypeScriptCompile Include="Controllers\SvnGroupsController.ts" />

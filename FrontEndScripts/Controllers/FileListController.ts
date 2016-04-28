@@ -20,6 +20,8 @@ module SmallServerAdmin.Controllers {
 	 */
 	export class FileListController implements Nemiro.IController {
 
+		//#region Properties
+
 		public Scope: any;
 		public Context: Nemiro.AngularContext;
 
@@ -239,6 +241,9 @@ module SmallServerAdmin.Controllers {
 		private CreateFolderDialog: Nemiro.UI.Dialog;
 
 		private Editor: CodeMirror.Editor;
+
+		//#endregion
+		//#region Constructor
 
 		constructor(context: Nemiro.AngularContext) {
 			var $this = this;
@@ -491,6 +496,9 @@ module SmallServerAdmin.Controllers {
 			}
 		}
 
+		//#endregion
+		//#region Methods
+
 		private GetList($this: FileListController, goTo?: string): void {
 			//if (goTo !== undefined && goTo != null && goTo != '' && goTo[0] != '/') {
 			//	goTo = '/' + goTo;
@@ -581,7 +589,7 @@ module SmallServerAdmin.Controllers {
 			apiRequest.CompleteCallback = () => {
 				if ($this.CurrentItem !== undefined && $this.CurrentItem != null) {
 					$this.CurrentItem.Loading = false;
-				} 
+				}
 
 				$this.Loading = false;
 			};
@@ -918,6 +926,8 @@ module SmallServerAdmin.Controllers {
 		private DirectoryName(path: string): string {
 			return Nemiro.Utility.DirectoryName(path);
 		}
+
+		//#endregion
 
 	}
 

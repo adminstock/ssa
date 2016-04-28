@@ -85,6 +85,11 @@
     <Compile Include="services\menu.php" />
     <Compile Include="services\models\Service.php" />
     <Compile Include="services\widget.php" />
+    <Compile Include="settings\api.php" />
+    <Compile Include="settings\update.php">
+      <SubType>Code</SubType>
+      <DependentUpon>settings\update.html.php</DependentUpon>
+    </Compile>
     <Compile Include="sites\api.php" />
     <Compile Include="sites\dialogs\confirmToDeleteFolder.php" />
     <Compile Include="sites\dialogs\confirmToDeleteSite.php" />
@@ -135,6 +140,8 @@
       <SubType>Code</SubType>
       <DependentUpon>svn\repositories.html.php</DependentUpon>
     </Compile>
+    <Compile Include="settings\update.html.php" />
+    <Compile Include="settings\menu.php" />
     <Compile Include="users\api.php" />
     <Compile Include="api.php" />
     <Compile Include="config.php" />
@@ -406,6 +413,7 @@
     <Content Include="Content\scss\libs\_bootstrap-sprockets.scss" />
     <Content Include="Content\scss\libs\_bootstrap.scss" />
     <Content Include="services\CHANGELOG.md" />
+    <Content Include="settings\CHANGELOG.md" />
     <Content Include="sites\CHANGELOG.md" />
     <Content Include="svn\CHANGELOG.md" />
     <Content Include="ssh\CHANGELOG.md" />
@@ -440,6 +448,7 @@
     <Folder Include="monitoring\dialogs\" />
     <Folder Include="files\" />
     <Folder Include="dbadmin\" />
+    <Folder Include="settings\" />
     <Folder Include="services\" />
     <Folder Include="services\models\" />
     <Folder Include="services\dialogs\" />

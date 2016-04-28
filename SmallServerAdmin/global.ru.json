@@ -152,5 +152,9 @@
 	{ "Key": "Help", "Value": "Справка" },
 	{ "Key": "Hide", "Value": "Скрыть" },
 	{ "Key": "Save and Reload", "Value": "Сохранить и перезапустить" },
-	{ "Key": "Reloading", "Value": "Перезапуск" }
+	{ "Key": "Reloading", "Value": "Перезапуск" },
+	{ "Key": "Menu_Settings", "Value": "Настройки" },
+	{ "Key": "Menu_Modules", "Value": "Модули" },
+	{ "Key": "Menu_Update", "Value": "Обновление" },
+	{ "Key": "Update to", "Value": "Обновить до" }
 ]

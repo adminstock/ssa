@@ -3,7 +3,7 @@
 $config = [];
 
 // active modules (separated by commas)
-$config['modules'] = 'users,svn,dbadmin,sites,files,monitoring,services,ssh';
+$config['modules'] = 'users,svn,dbadmin,sites,files,monitoring,services,ssh,settings';
 
 // the list of widgets to display on the main page
 $config['widgets']['monitoring'] = ['Enabled' => TRUE];
@@ -23,11 +23,11 @@ $config['client'] = [
 // uncomment to enable logging
 // $config['ssa_log_path'] = '../.logs/ssa.log';
 
-// ssh (!!!BE SURE TO CONFIGURE IT!!!)
+// ssh
 $config['ssh_host'] = '192.168.56.139';
 $config['ssh_port'] = '22';
-$config['ssh_user'] = 'ssh username';
-$config['ssh_password'] = 'ssh password here';
+$config['ssh_user'] = 'ssa2';
+$config['ssh_password'] = 'qwertyk';
 $config['ssh_required_password'] = TRUE;
 
 // files

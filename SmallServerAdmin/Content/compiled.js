@@ -71900,7 +71900,6 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
   }
 }());
 
-///#source 1 1 EventHandlers.js
 /*
 * Copyright © Aleksey Nemiro, 2015. All rights reserved.
 *
@@ -71974,7 +71973,6 @@ var Nemiro;
     Nemiro.EventHandlers = EventHandlers;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=EventHandlers.js.map
-///#source 1 1 RegisteredController.js
 /*
 * Copyright © Aleksey Nemiro, 2015. All rights reserved.
 *
@@ -72005,7 +72003,6 @@ var Nemiro;
     Nemiro.RegisteredController = RegisteredController;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=RegisteredController.js.map
-///#source 1 1 AppContext.js
 /*
 * Copyright © Aleksey Nemiro, 2015-2016. All rights reserved.
 *
@@ -72169,7 +72166,6 @@ var Nemiro;
     Nemiro.AppContext = AppContext;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=AppContext.js.map
-///#source 1 1 AngularContext.js
 /*
 * Copyright © Aleksey Nemiro, 2015. All rights reserved.
 *
@@ -72223,7 +72219,6 @@ var Nemiro;
     Nemiro.AngularContext = AngularContext;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=AngularContext.js.map
-///#source 1 1 UI/Dialog.js
 /*
 * Copyright © Aleksey Nemiro, 2015. All rights reserved.
 *
@@ -72575,7 +72570,6 @@ var Nemiro;
     })(UI = Nemiro.UI || (Nemiro.UI = {}));
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=Dialog.js.map
-///#source 1 1 TryAction.js
 /*
 * Copyright © Aleksey Nemiro, 2015. All rights reserved.
 *
@@ -72646,7 +72640,6 @@ var Nemiro;
     Nemiro.TryAction = TryAction;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=TryAction.js.map
-///#source 1 1 Utility.js
 /*
 * Copyright © Aleksey Nemiro, 2015. All rights reserved.
 *
@@ -72952,7 +72945,6 @@ var Nemiro;
     Nemiro.Utility = Utility;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=Utility.js.map
-///#source 1 1 Collections/Collection.js
 /*
 * Copyright © Aleksey Nemiro, 2015. All rights reserved.
 *
@@ -72998,7 +72990,6 @@ var Nemiro;
     })(Collections = Nemiro.Collections || (Nemiro.Collections = {}));
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=Collection.js.map
-///#source 1 1 Collections/KeyValueItem.js
 /*
 * Copyright © Aleksey Nemiro, 2016. All rights reserved.
 *
@@ -73032,7 +73023,6 @@ var Nemiro;
     })(Collections = Nemiro.Collections || (Nemiro.Collections = {}));
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=KeyValueItem.js.map
-///#source 1 1 Collections/NameValueCollection.js
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -73085,7 +73075,6 @@ var Nemiro;
     })(Collections = Nemiro.Collections || (Nemiro.Collections = {}));
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=NameValueCollection.js.map
-
 /*
 * Copyright © Aleksey Nemiro, 2016. All rights reserved.
 *
@@ -77088,6 +77077,8 @@ var SmallServerAdmin;
          * Represents the file manager controller.
          */
         var FileListController = (function () {
+            //#endregion
+            //#region Constructor
             function FileListController(context) {
                 var $this = this;
                 $this.Context = context;
@@ -77577,6 +77568,8 @@ var SmallServerAdmin;
                 enumerable: true,
                 configurable: true
             });
+            //#endregion
+            //#region Methods
             FileListController.prototype.GetList = function ($this, goTo) {
                 //if (goTo !== undefined && goTo != null && goTo != '' && goTo[0] != '/') {
                 //	goTo = '/' + goTo;
@@ -77927,6 +77920,151 @@ var SmallServerAdmin;
     })(Controllers = SmallServerAdmin.Controllers || (SmallServerAdmin.Controllers = {}));
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=FileListController.js.map
+/*
+* Copyright © Aleksey Nemiro, 2016. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+var SmallServerAdmin;
+(function (SmallServerAdmin) {
+    var Controllers;
+    (function (Controllers) {
+        /**
+         * Represents the SmallServerAdmin update controller.
+         */
+        var PanelUpdateController = (function () {
+            //#endregion
+            //#region Constructor
+            function PanelUpdateController(context) {
+                var $this = this;
+                $this.Context = context;
+                $this.Scope = $this.Context.Scope;
+                $this.Scope.UpdateToNewVersion = function () {
+                    $this.UpdateToNewVersion($this);
+                };
+                $this.CheckUpdates($this);
+            }
+            Object.defineProperty(PanelUpdateController.prototype, "Checking", {
+                /** Checking updates indicator. */
+                get: function () {
+                    return this.Scope.Checking;
+                },
+                set: function (value) {
+                    this.Scope.Checking = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PanelUpdateController.prototype, "NeedUpdate", {
+                /** Indicates the need to update. */
+                get: function () {
+                    return this.Scope.NeedUpdate;
+                },
+                set: function (value) {
+                    this.Scope.NeedUpdate = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PanelUpdateController.prototype, "NewVersion", {
+                /** New version number. */
+                get: function () {
+                    return this.Scope.NewVersion;
+                },
+                set: function (value) {
+                    this.Scope.NewVersion = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PanelUpdateController.prototype, "Changes", {
+                /** List of changes in the NewVersion. */
+                get: function () {
+                    return this.Scope.Changes;
+                },
+                set: function (value) {
+                    this.Scope.Changes = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PanelUpdateController.prototype, "Updating", {
+                /** Updating indicator. */
+                get: function () {
+                    return this.Scope.Updating;
+                },
+                set: function (value) {
+                    this.Scope.Updating = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PanelUpdateController.prototype, "Updated", {
+                get: function () {
+                    return this.Scope.Updated;
+                },
+                set: function (value) {
+                    this.Scope.Updated = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            //#endregion
+            //#region Methods
+            PanelUpdateController.prototype.CheckUpdates = function ($this) {
+                if ($this.Checking) {
+                    return;
+                }
+                $this.Checking = true;
+                // create request
+                var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Settings.CheckUpdates');
+                // handler successful response to a request to api
+                apiRequest.SuccessCallback = function (response) {
+                    $this.NeedUpdate = response.data.NeedUpdate;
+                    $this.NewVersion = response.data.NewVersion;
+                    $this.Changes = response.data.Changes;
+                };
+                // handler request complete
+                apiRequest.CompleteCallback = function () {
+                    $this.Checking = false;
+                };
+                // execute
+                apiRequest.Execute();
+            };
+            PanelUpdateController.prototype.UpdateToNewVersion = function ($this) {
+                if ($this.Updating) {
+                    return;
+                }
+                $this.Updating = true;
+                // create request
+                var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Settings.Update');
+                // handler successful response to a request to api
+                apiRequest.SuccessCallback = function (response) {
+                    $this.Updated = true;
+                };
+                // handler request complete
+                apiRequest.CompleteCallback = function () {
+                    $this.Updating = false;
+                };
+                // execute
+                apiRequest.Execute();
+            };
+            return PanelUpdateController;
+        }());
+        Controllers.PanelUpdateController = PanelUpdateController;
+    })(Controllers = SmallServerAdmin.Controllers || (SmallServerAdmin.Controllers = {}));
+})(SmallServerAdmin || (SmallServerAdmin = {}));
+//# sourceMappingURL=PanelUpdateController.js.map
 /*
 * Copyright © Aleksey Nemiro, 2016. All rights reserved.
 *

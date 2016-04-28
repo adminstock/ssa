@@ -69,6 +69,7 @@
 		<file>/Controllers/ServiceListController.js</file>
 		<file>/Controllers/MonitoringController.js</file>
 		<file>/Controllers/FileListController.js</file>
+		<file>/Controllers/PanelUpdateController.js</file>
 
 		<!--Models-->
 		<file>/Models/Config.js</file>

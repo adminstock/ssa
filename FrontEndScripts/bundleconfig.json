@@ -71,6 +71,7 @@
 			"Controllers/ServiceListController.js",
 			"Controllers/MonitoringController.js",
 			"Controllers/FileListController.js",
+			"Controllers/PanelUpdateController.js",
 
 			// Models
 			"Models/Config.js",

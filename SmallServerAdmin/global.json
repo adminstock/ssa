@@ -152,5 +152,9 @@
 	{ "Key": "Help", "Value": "Help" },
 	{ "Key": "Hide", "Value": "Hide" },
 	{ "Key": "Save and Reload", "Value": "Save and Reload" },
-	{ "Key": "Reloading", "Value": "Reloading" }
+	{ "Key": "Reloading", "Value": "Reloading" },
+	{ "Key": "Menu_Settings", "Value": "Settings" },
+	{ "Key": "Menu_Modules", "Value": "Modules" },
+	{ "Key": "Menu_Update", "Value": "Update" },
+	{ "Key": "Update to", "Value": "Update to" }
 ]
