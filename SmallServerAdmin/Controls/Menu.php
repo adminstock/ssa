@@ -49,5 +49,22 @@
           <a href="https://github.com/adminstock">@adminstock</a>
       </li>
     </ul>
+
+    <hr />
+
+    <?php
+      if (stripos($this->Parent->Culture, 'ru') !== FALSE)
+      {
+    ?>
+      <a class="twitter-timeline" href="https://twitter.com/AdmStockRussia" data-widget-id="725319651723513856" data-tweet-limit="1" data-chrome="nofooter noscrollbar noborders transparent">Новости AdminStock (Russia)</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <?php 
+      } else {
+    ?>
+      <a class="twitter-timeline" href="https://twitter.com/AdmStockNet" data-widget-id="725326952903614464" data-tweet-limit="1" data-chrome="nofooter noscrollbar noborders transparent">News of AdminStock</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <?php 
+      }
+    ?>
   </nav>
 </div>
