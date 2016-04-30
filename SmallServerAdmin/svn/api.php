@@ -512,10 +512,25 @@ namespace Api
         $this->SetAuthz($authz);
 
         // set password
-        $shell_result = $this->SshClient->Execute('sudo htpasswd -mb '.$config['svn_passwd'].' "'.$data['Current']['Login'].'" "'.$data['Current']['Password'].'" >> /dev/null 2>&1 && echo "OK" || echo "Failed to set password."');
+        $shell_result = $this->SshClient->Execute
+        (
+          'sudo bash -c "if [[ ! -f '.$config['svn_passwd'].' ]]; then '.
+          'htpasswd -mbc '.$config['svn_passwd'].' \''.$data['Current']['Login'].'\' \''.$data['Current']['Password'].'\' >> /dev/null 2>&1 && echo \'OK\' || echo \'Failed to set password.\'; '.
+          'else '.
+          'htpasswd -mb '.$config['svn_passwd'].' \''.$data['Current']['Login'].'\' \''.$data['Current']['Password'].'\' >> /dev/null 2>&1 && echo \'OK\' || echo \'Failed to set password.\'; '.
+          'fi;"'
+        );
+
         if ($shell_result->Result != 'OK')
         {
-          throw new \ErrorException($shell_result->Result);
+          if ($shell_result->Result == '')
+          {
+            throw new \ErrorException($shell_result->Error);
+          }
+          else
+          {
+            throw new \ErrorException($shell_result->Result);
+          }
         }
 
       }
@@ -561,10 +576,25 @@ namespace Api
         // new password need
         if ((bool)$data['SetPassword'] === TRUE)
         {
-          $shell_result = $this->SshClient->Execute('sudo htpasswd -mb '.$config['svn_passwd'].' "'.$data['Current']['Login'].'" "'.$data['Current']['Password'].'" >> /dev/null 2>&1 && echo "OK" || echo "Failed to set password."');
+          $shell_result = $this->SshClient->Execute
+          (
+            'sudo bash -c "if [[ ! -f '.$config['svn_passwd'].' ]]; then '.
+            'htpasswd -mbc '.$config['svn_passwd'].' \''.$data['Current']['Login'].'\' \''.$data['Current']['Password'].'\' >> /dev/null 2>&1 && echo \'OK\' || echo \'Failed to set password.\'; '.
+            'else '.
+            'htpasswd -mb '.$config['svn_passwd'].' \''.$data['Current']['Login'].'\' \''.$data['Current']['Password'].'\' >> /dev/null 2>&1 && echo \'OK\' || echo \'Failed to set password.\'; '.
+            'fi;"'
+          );
+
           if ($shell_result->Result != 'OK')
           {
-            throw new \ErrorException($shell_result->Result);
+            if ($shell_result->Result == '')
+            {
+              throw new \ErrorException($shell_result->Error);
+            }
+            else
+            {
+              throw new \ErrorException($shell_result->Result);
+            }
           }
         }
 

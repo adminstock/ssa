@@ -44,7 +44,15 @@ module SmallServerAdmin.Controllers {
 			this.Scope.ProgressTitle = value;
     }
 
+		/** Progress dialog. */
 		private Progress: Nemiro.UI.Dialog;
+
+		public get PanelServers(): PanelServersController {
+			return this.Scope.PanelServers;
+    }
+		public set PanelServers(value: PanelServersController) {
+			this.Scope.PanelServers = value;
+    }
 
 		constructor(context: Nemiro.AngularContext) {
 			var $this = this;
@@ -57,6 +65,10 @@ module SmallServerAdmin.Controllers {
 			}
 
 			$this.Scope.Config = JSON.parse($('#config').val());
+
+			if (Nemiro.Utility.ReadCookies('currentServer') != null) {
+				$this.Scope.Config.CurrentServer = Nemiro.Utility.ReadCookies('currentServer');
+			}
 
 			console.log('Config', $this.Config);
 
@@ -74,6 +86,22 @@ module SmallServerAdmin.Controllers {
 
 			$this.Scope.CloseProgress = () => {
 				$this.Progress.Close();
+			};
+
+			// search servers controller
+			SmallServerAdmin.App.Current.ControllerRegistered.Add((sender: any, e: Nemiro.RegisteredController<Nemiro.IController>) => {
+				if (e.Name == 'PanelServersController') {
+					$this.PanelServers = <PanelServersController>e.Controller;
+				}
+			});
+
+			$this.Scope.SelectServer = () => {
+				if ($this.PanelServers === undefined || $this.PanelServers == null) {
+					Nemiro.UI.Dialog.Alert('Servers controller not found.', 'Error;');
+					return;
+				}
+
+				$this.PanelServers.SelectServer($this.PanelServers);
 			};
 		}
 

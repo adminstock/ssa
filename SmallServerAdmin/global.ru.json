@@ -156,5 +156,15 @@
 	{ "Key": "Menu_Settings", "Value": "Настройки" },
 	{ "Key": "Menu_Modules", "Value": "Модули" },
 	{ "Key": "Menu_Update", "Value": "Обновление" },
-	{ "Key": "Update to", "Value": "Обновить до" }
+	{ "Key": "Update to", "Value": "Обновить до" },
+	{ "Key": "Logout", "Value": "Выход" },
+	{ "Key": "Servers", "Value": "Серверы" },
+	{ "Key": "Server", "Value": "Сервер" },
+	{ "Key": "Current", "Value": "Текущий" },
+	{ "Key": "Connect", "Value": "Подключиться" },
+	{ "Key": "All servers", "Value": "Все серверы" },
+	{ "Key": "Dashboard", "Value": "Панель управления" },
+	{ "Key": "Server dashboard", "Value": "Панель управления" },
+	{ "Key": "Menu_Servers", "Value": "Серверы" },
+	{ "Key": "Disabled", "Value": "Отключен" }
 ]

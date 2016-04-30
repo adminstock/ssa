@@ -2,19 +2,20 @@
 <?#Register Src="~/Controls/Menu.php" TagPrefix="php" TagName="Menu"?>
 <?#Register Src="~/Controls/Footer.php" TagPrefix="php" TagName="Footer"?>
 <?#Register Src="~/Controls/ClientSideConfig.php" TagPrefix="php" TagName="ClientSideConfig"?>
+<?#Register Src="~/Controls/StaticIncludes.php" TagPrefix="php" TagName="StaticIncludes"?>
+<?#Register Src="~/Controls/ServersList.php" TagPrefix="php" TagName="ServersList"?>
 <!DOCTYPE html>
 
 <html xmlns:php="http://aleksey.nemiro.ru/php-webforms">
   <head>
     <title>SmallServerAdmin</title>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="/Content/compiled.min.css" />
     <php:Head/>
   </head>
-  <body ng-app="SmallServerAdmin">
+  <body ng-app="SmallServerAdmin" ng-controller="MasterController">
     <php:Header ID="Header1" />
 
-    <div id="container" class="container" ng-controller="MasterController">
+    <div id="container" class="container">
       
       <div class="row">
         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
@@ -41,11 +42,23 @@
         </div>
       </div>
 
+			<div id="servers" class="modal" role="dialog" data-not-restore="true" ng-controller="PanelServersController">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3><span class="fa fa-server"></span> ${Servers}</h3>
+						</div>
+						<div class="modal-body">
+						  <php:ServersList ID="ServersList1" />
+						</div>
+					</div>
+				</div>
+			</div>
+
       <php:ClientSideConfig ID="ClientSideConfig1" />
     </div>
 
     <php:Footer ID="Footer1" />
-
-    <script src="/Content/compiled.js" type="text/javascript"></script>
+    <php:StaticIncludes ID="StaticIncludes1" />
   </body>
 </html>

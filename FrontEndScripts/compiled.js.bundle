@@ -70,6 +70,7 @@
 		<file>/Controllers/MonitoringController.js</file>
 		<file>/Controllers/FileListController.js</file>
 		<file>/Controllers/PanelUpdateController.js</file>
+		<file>/Controllers/PanelServersController.js</file>
 
 		<!--Models-->
 		<file>/Models/Config.js</file>
@@ -102,6 +103,7 @@
 		<file>/Models/ServerInfo.js</file>
 		<file>/Models/FileSystemItemInfo.js</file>
 		<file>/Models/ReloadingInfo.js</file>
+		<file>/Models/ServerToAdmin.js</file>
 
 		<!--Application-->
 		<file>/ApiRequest.js</file>

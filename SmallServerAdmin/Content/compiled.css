@@ -11393,10 +11393,19 @@ table.cell-align-middle tr > td {
 ul.no-padding {
   padding-left: 15px; }
 
+.lang .dropdown-menu {
+  min-width: 0; }
+  .lang .dropdown-menu li {
+    min-width: 0; }
+
 treecontrol ul {
   overflow: visible; }
   treecontrol ul .dropdown-menu li {
     padding: 0; }
+
+@media (max-width: 480px) {
+  .lang {
+    display: none; } }
 
 @media (min-width: 768px) {
   .navbar-collapse {

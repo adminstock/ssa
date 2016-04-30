@@ -1,5 +1,5 @@
 <?php
-// config
+// panel config for default server
 $config = [];
 
 // active modules (separated by commas)
@@ -10,20 +10,12 @@ $config['widgets']['monitoring'] = ['Enabled' => TRUE];
 $config['widgets']['services'] = ['Enabled' => TRUE, 'Format' => '<div>%s</div>', 'NgInit' => 'SearchString = \'nginx,apache,htan\'; Load()' ];
 $config['widgets']['sites'] = ['Enabled' => TRUE, 'Format' => '<div>%s</div>'];
 
-// client-side config
-$config['client'] = [
-  'WebServer' => 'nginx+apache',
-  'ApacheHost' => '127.0.0.1',
-  'ApachePort' => 8080,
-  'LogFolderName' => '.logs',
-  'PhpFastCgiPort' => 9001,
-  'AspNetFastCgiPort' => 9100
-];
+$config['server_name'] = 'Main Server';
 
 // uncomment to enable logging
 // $config['ssa_log_path'] = '../.logs/ssa.log';
 
-// ssh (!!!BE SURE TO CONFIGURE IT!!!)
+// ssh
 $config['ssh_host'] = '192.168.56.139';
 $config['ssh_port'] = '22';
 $config['ssh_user'] = 'ssh username';
@@ -65,4 +57,16 @@ $config["web_sitename_invalid_message"] = 'Site name must begin with the letters
 $config['dbadmin_list'] = [
   ['file_name' => 'mysql.php', 'title' => 'MySql'],
   ['file_name' => 'pgsql.php', 'title' => 'PostgreSql']
+];
+
+// client-side config
+$config['client'] = [
+  'WebServer' => 'nginx+apache',
+  'ApacheHost' => '127.0.0.1',
+  'ApachePort' => 8080,
+  'LogFolderName' => '.logs',
+  'PhpFastCgiPort' => 9001,
+  'AspNetFastCgiPort' => 9100,
+  'ServerAddress' => $config['ssh_host'],
+  'ServerName' => $config['server_name']
 ];

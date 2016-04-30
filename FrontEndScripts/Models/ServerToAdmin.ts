@@ -16,39 +16,16 @@
 module SmallServerAdmin.Models {
 
 	/**
-	 * Represents config of the SSA.
+	 * Represents server info.
 	 */
-	export class Config {
-		
-		/**
-		 * Web server mode: nginx+apache | nginx | apache
-		 */
-		public WebServer: string;
+	export class ServerToAdmin {
 
-		/**
-		 * Apache host. For example: 127.0.0.1.
-		 */
-		public ApacheHost: string;
-
-		/**
-		 * Apache port. For example: 8080, 80.
-		 */
-		public ApachePort: number;
-
-		/**
-		 * Folder name for building LogPath.
-		 */
-		public LogFolderName: string;
-
-		public PhpFastCgiPort: number;
-
-		public AspNetFastCgiPort: number;
-
-		/** Current server name or IP. */
-		public ServerAddress: string;
-
-		/** Current server human name. */
-		public ServerName: string;
+		public Name: string;
+		public Address: string;
+		public Description: string;
+		public Config: string;
+		public IsDefault: boolean;
+		public Disabled: boolean;
 
 	}
 

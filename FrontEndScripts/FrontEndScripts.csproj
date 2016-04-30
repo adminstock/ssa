@@ -215,6 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Controllers\FileListController.ts" />
+    <TypeScriptCompile Include="Controllers\PanelServersController.ts" />
     <TypeScriptCompile Include="Controllers\MonitoringController.ts" />
     <TypeScriptCompile Include="Controllers\PanelUpdateController.ts" />
     <TypeScriptCompile Include="Controllers\ServiceListController.ts" />
@@ -236,6 +237,7 @@
     <TypeScriptCompile Include="Models\CreateUser.ts" />
     <TypeScriptCompile Include="Models\FileSystemItemInfo.ts" />
     <TypeScriptCompile Include="Models\FileSystemItem.ts" />
+    <TypeScriptCompile Include="Models\ServerToAdmin.ts" />
     <TypeScriptCompile Include="Models\ServerInfo.ts" />
     <TypeScriptCompile Include="Models\MemoryInfo.ts" />
     <TypeScriptCompile Include="Models\HDDInfo.ts" />

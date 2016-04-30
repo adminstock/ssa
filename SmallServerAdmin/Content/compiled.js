@@ -73319,6 +73319,9 @@ var SmallServerAdmin;
                     Nemiro.UI.Dialog.Alert('Config not found.<br />Please check <code>$config[\'client\']</code> of the <strong>/ssa.config.php</strong>.', 'Error');
                 }
                 $this.Scope.Config = JSON.parse($('#config').val());
+                if (Nemiro.Utility.ReadCookies('currentServer') != null) {
+                    $this.Scope.Config.CurrentServer = Nemiro.Utility.ReadCookies('currentServer');
+                }
                 console.log('Config', $this.Config);
                 // progress dialog
                 $this.Progress = Nemiro.UI.Dialog.CreateFromElement($('#progress'));
@@ -73332,6 +73335,19 @@ var SmallServerAdmin;
                 };
                 $this.Scope.CloseProgress = function () {
                     $this.Progress.Close();
+                };
+                // search servers controller
+                SmallServerAdmin.App.Current.ControllerRegistered.Add(function (sender, e) {
+                    if (e.Name == 'PanelServersController') {
+                        $this.PanelServers = e.Controller;
+                    }
+                });
+                $this.Scope.SelectServer = function () {
+                    if ($this.PanelServers === undefined || $this.PanelServers == null) {
+                        Nemiro.UI.Dialog.Alert('Servers controller not found.', 'Error;');
+                        return;
+                    }
+                    $this.PanelServers.SelectServer($this.PanelServers);
                 };
             }
             Object.defineProperty(MasterController.prototype, "Config", {
@@ -73360,6 +73376,16 @@ var SmallServerAdmin;
                 },
                 set: function (value) {
                     this.Scope.ProgressTitle = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(MasterController.prototype, "PanelServers", {
+                get: function () {
+                    return this.Scope.PanelServers;
+                },
+                set: function (value) {
+                    this.Scope.PanelServers = value;
                 },
                 enumerable: true,
                 configurable: true
@@ -78082,6 +78108,108 @@ var SmallServerAdmin;
 */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
+    var Controllers;
+    (function (Controllers) {
+        /**
+         * Represents the servers controller.
+         */
+        var PanelServersController = (function () {
+            function PanelServersController(context) {
+                var $this = this;
+                $this.Context = context;
+                $this.Scope = $this.Context.Scope;
+                // select server dialog
+                $this.ServerListDialog = Nemiro.UI.Dialog.CreateFromElement($('#servers'));
+                $this.Scope.SelectServer = function () {
+                    $this.SelectServer($this);
+                };
+                $this.Scope.GetServers = function () {
+                    $this.GetServers($this);
+                };
+                $this.Scope.ConnectToServer = function (server) {
+                    if (server.IsDefault) {
+                        // is default server, clear cookies
+                        Nemiro.Utility.EraseCookies('currentServer');
+                    }
+                    else {
+                        // save server to cookies
+                        Nemiro.Utility.CreateCookies('currentServer', server.Config, 3650);
+                    }
+                    // reload page
+                    $this.Context.Window.location.reload();
+                };
+            }
+            Object.defineProperty(PanelServersController.prototype, "Servers", {
+                /** List of all servers. */
+                get: function () {
+                    return this.Scope.Servers;
+                },
+                set: function (value) {
+                    this.Scope.Servers = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PanelServersController.prototype, "LoadingServers", {
+                get: function () {
+                    return this.Scope.LoadingServers;
+                },
+                set: function (value) {
+                    this.Scope.LoadingServers = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            PanelServersController.prototype.SelectServer = function ($this) {
+                //console.log('SelectServer', $this.Servers);
+                if ($this.Servers === undefined || $this.Servers == null) {
+                    $this.GetServers($this);
+                }
+                $this.ServerListDialog.Show();
+            };
+            PanelServersController.prototype.GetServers = function ($this) {
+                if ($this.LoadingServers) {
+                    return;
+                }
+                $this.LoadingServers = true;
+                // create request
+                var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Settings.GetServers');
+                // handler successful response to a request to api
+                apiRequest.SuccessCallback = function (response) {
+                    $this.Context.Timeout(function () {
+                        $this.Servers = response.data;
+                    });
+                };
+                // handler request complete
+                apiRequest.CompleteCallback = function () {
+                    $this.LoadingServers = false;
+                };
+                // execute
+                apiRequest.Execute();
+            };
+            return PanelServersController;
+        }());
+        Controllers.PanelServersController = PanelServersController;
+    })(Controllers = SmallServerAdmin.Controllers || (SmallServerAdmin.Controllers = {}));
+})(SmallServerAdmin || (SmallServerAdmin = {}));
+//# sourceMappingURL=PanelServersController.js.map
+/*
+* Copyright © Aleksey Nemiro, 2016. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+var SmallServerAdmin;
+(function (SmallServerAdmin) {
     var Models;
     (function (Models) {
         /**
@@ -79040,6 +79168,37 @@ var SmallServerAdmin;
     })(Models = SmallServerAdmin.Models || (SmallServerAdmin.Models = {}));
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=ReloadingInfo.js.map
+/*
+* Copyright © Aleksey Nemiro, 2016. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+var SmallServerAdmin;
+(function (SmallServerAdmin) {
+    var Models;
+    (function (Models) {
+        /**
+         * Represents server info.
+         */
+        var ServerToAdmin = (function () {
+            function ServerToAdmin() {
+            }
+            return ServerToAdmin;
+        }());
+        Models.ServerToAdmin = ServerToAdmin;
+    })(Models = SmallServerAdmin.Models || (SmallServerAdmin.Models = {}));
+})(SmallServerAdmin || (SmallServerAdmin = {}));
+//# sourceMappingURL=ServerToAdmin.js.map
 /*
 * Copyright © Aleksey Nemiro, 2016. All rights reserved.
 *

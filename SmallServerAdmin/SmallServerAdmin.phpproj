@@ -28,6 +28,8 @@
     </Compile>
     <Compile Include="Controls\ClientSideConfig.php" />
     <Compile Include="Controls\Header.php" />
+    <Compile Include="Controls\ServersList.php" />
+    <Compile Include="Controls\StaticIncludes.php" />
     <Compile Include="dbadmin\menu.php" />
     <Compile Include="dbadmin\mysql.php" />
     <Compile Include="dbadmin\pgsql.php" />
@@ -62,6 +64,7 @@
     <Compile Include="Libs\Nemiro\Nginx\DirectiveGroup.php" />
     <Compile Include="Libs\Nemiro\Nginx\DirectiveType.php" />
     <Compile Include="Libs\Nemiro\Nginx\UnitTests\ConfTest.php" />
+    <Compile Include="logout.php" />
     <Compile Include="monitoring\api.php" />
     <Compile Include="monitoring\dialogs\confirmToKillProcess.php" />
     <Compile Include="monitoring\index.html.php" />
@@ -75,6 +78,8 @@
     <Compile Include="monitoring\models\MemoryInfo.php" />
     <Compile Include="monitoring\models\ServerInfo.php" />
     <Compile Include="monitoring\widget.php" />
+    <Compile Include="servers\192.168.56.140.php" />
+    <Compile Include="servers\ReadMe.md" />
     <Compile Include="services\api.php" />
     <Compile Include="services\dialogs\confirmToStopService.php" />
     <Compile Include="services\index.html.php" />
@@ -86,6 +91,11 @@
     <Compile Include="services\models\Service.php" />
     <Compile Include="services\widget.php" />
     <Compile Include="settings\api.php" />
+    <Compile Include="settings\servers.html.php" />
+    <Compile Include="settings\servers.php">
+      <SubType>Code</SubType>
+      <DependentUpon>settings\servers.html.php</DependentUpon>
+    </Compile>
     <Compile Include="settings\update.php">
       <SubType>Code</SubType>
       <DependentUpon>settings\update.html.php</DependentUpon>
@@ -414,6 +424,7 @@
     <Content Include="Content\scss\libs\_bootstrap.scss" />
     <Content Include="services\CHANGELOG.md" />
     <Content Include="settings\CHANGELOG.md" />
+    <Content Include="settings\update.sh" />
     <Content Include="sites\CHANGELOG.md" />
     <Content Include="svn\CHANGELOG.md" />
     <Content Include="ssh\CHANGELOG.md" />
@@ -448,6 +459,7 @@
     <Folder Include="monitoring\dialogs\" />
     <Folder Include="files\" />
     <Folder Include="dbadmin\" />
+    <Folder Include="servers\" />
     <Folder Include="settings\" />
     <Folder Include="services\" />
     <Folder Include="services\models\" />

@@ -1,0 +1,2 @@
+<link rel="stylesheet" href="/Content/compiled.min.css?v=<?=filemtime(\Nemiro\Server::MapPath('~/Content/compiled.min.css'))?>" />
+<script src="/Content/compiled.js?v=<?=filemtime(\Nemiro\Server::MapPath('~/Content/compiled.js'))?>" type="text/javascript"></script>

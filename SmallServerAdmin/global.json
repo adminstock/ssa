@@ -156,5 +156,15 @@
 	{ "Key": "Menu_Settings", "Value": "Settings" },
 	{ "Key": "Menu_Modules", "Value": "Modules" },
 	{ "Key": "Menu_Update", "Value": "Update" },
-	{ "Key": "Update to", "Value": "Update to" }
+	{ "Key": "Update to", "Value": "Update to" },
+	{ "Key": "Logout", "Value": "Logout" },
+	{ "Key": "Servers", "Value": "Servers" },
+	{ "Key": "Server", "Value": "Server" },
+	{ "Key": "Current", "Value": "Current" },
+	{ "Key": "Connect", "Value": "Connect" },
+	{ "Key": "All servers", "Value": "All servers" },
+	{ "Key": "Dashboard", "Value": "Dashboard" },
+	{ "Key": "Server dashboard", "Value": "Server dashboard" },
+	{ "Key": "Menu_Servers", "Value": "Servers" },
+	{ "Key": "Disabled", "Value": "Disabled" }
 ]

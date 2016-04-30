@@ -1,3 +1,4 @@
+<?#Page Title="${Server dashboard}" ?>
 <html xmlns:php="http://aleksey.nemiro.ru/php-webforms">
   <body>
 

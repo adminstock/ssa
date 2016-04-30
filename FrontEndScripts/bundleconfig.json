@@ -72,6 +72,7 @@
 			"Controllers/MonitoringController.js",
 			"Controllers/FileListController.js",
 			"Controllers/PanelUpdateController.js",
+			"Controllers/PanelServersController.js",
 
 			// Models
 			"Models/Config.js",
@@ -104,6 +105,7 @@
 			"Models/ServerInfo.js",
 			"Models/FileSystemItemInfo.js",
 			"Models/ReloadingInfo.js",
+			"Models/ServerToAdmin.js",
 
 			// Application
 			"ApiRequest.js",

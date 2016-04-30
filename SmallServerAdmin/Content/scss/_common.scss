@@ -188,6 +188,16 @@ ul.no-padding {
 	padding-left: 15px;
 }
 
+.lang {
+	.dropdown-menu {
+		min-width: 0;
+
+		li {
+			min-width: 0;
+		}
+	}
+}
+
 treecontrol ul {
 	overflow: visible;
 
@@ -197,6 +207,14 @@ treecontrol ul {
 		}
 	}
 }
+
+/*@media (max-width: $screen-phone) {
+
+	.lang {
+		display: none;
+	}
+
+}*/
 
 @media (min-width: $screen-tablet) {
 
