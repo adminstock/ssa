@@ -65,7 +65,8 @@ module SmallServerAdmin {
 					'ui.codemirror',
 					'frapontillo.bootstrap-switch',
 					'treeControl',
-					'highcharts-ng'
+					'highcharts-ng',
+					'pageslide-directive'
 				]
 			);
 		}

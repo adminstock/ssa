@@ -34,6 +34,10 @@
     <Compile Include="dbadmin\mysql.php" />
     <Compile Include="dbadmin\pgsql.php" />
     <Compile Include="files\api.php" />
+    <Compile Include="files\dialogs\confirmToCopyItems.php" />
+    <Compile Include="files\dialogs\confirmToDeleteItems.php" />
+    <Compile Include="files\dialogs\confirmToMoveItems.php" />
+    <Compile Include="files\dialogs\moveDialog.php" />
     <Compile Include="files\dialogs\confirmToExecuteFile.php" />
     <Compile Include="files\dialogs\confirmToOverwriteFile.php" />
     <Compile Include="files\dialogs\properties.php" />

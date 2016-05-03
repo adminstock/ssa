@@ -166,5 +166,22 @@
 	{ "Key": "Dashboard", "Value": "Панель управления" },
 	{ "Key": "Server dashboard", "Value": "Панель управления" },
 	{ "Key": "Menu_Servers", "Value": "Серверы" },
-	{ "Key": "Disabled", "Value": "Отключен" }
+	{ "Key": "Disabled", "Value": "Отключен" },
+	{ "Key": "Cut", "Value": "Вырезать" },
+	{ "Key": "Copy", "Value": "Копировать" },
+	{ "Key": "Paste", "Value": "Вставить" },
+	{ "Key": "Move", "Value": "Переместить" },
+	{ "Key": "Unselect", "Value": "Отменить выбор" },
+	{ "Key": "Unselect all", "Value": "Отменить выбор для всех" },
+	{ "Key": "Selected items", "Value": "Выбрано элементов" },
+	{ "Key": "Clear selection", "Value": "Очистить выбор" },
+	{ "Key": "Target path", "Value": "Целевой путь" },
+	{ "Key": "overwrite existing", "Value": "перезаписать существующие" },
+	{ "Key": "skip existing", "Value": "пропустить существующие" },
+	{ "Key": "make a backup copy of the target files", "Value": "сделать резервную копию целевых файлов" },
+	{ "Key": "copy", "Value": "копировать" },
+	{ "Key": "create symbolic links", "Value": "создать символьные ссылки" },
+	{ "Key": "create hard links", "Value": "создать жесткие ссылки" },
+	{ "Key": "update for newer", "Value": "обновеить, если новее" },
+	{ "Key": "Move selection", "Value": "Переместить выбранные" }
 ]

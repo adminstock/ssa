@@ -25,6 +25,21 @@ module SmallServerAdmin.Controllers {
 		public Scope: any;
 		public Context: Nemiro.AngularContext;
 
+		private SourceTitle: string;
+
+		/** Gets or sets window title (document.title). */
+		public get Title(): string {
+			return this.Context.Window.document.title;
+    }
+		public set Title(value: string) {
+			if (value !== undefined && value != null && value != '') {
+				this.Context.Window.document.title = value + ' - ' + this.SourceTitle;
+			}
+			else {
+				this.Context.Window.document.title = this.SourceTitle;
+			}
+		}
+
 		/** The list of files and folders. */
 		public get Items(): Array<Models.FileSystemItem> {
 			return this.Scope.Items;
@@ -182,6 +197,8 @@ module SmallServerAdmin.Controllers {
 			this.Scope.FileInfoChanged = value;
 		}
 
+		//#region new folder
+
 		public get NewFolderName(): string {
 			return this.Scope.NewFolderName;
     }
@@ -217,19 +234,112 @@ module SmallServerAdmin.Controllers {
 			this.Scope.CreationFolder = value;
 		}
 
-		private SourceTitle: string;
+		//#endregion
+		//#region multiple selected items
 
-		public get Title(): string {
-			return this.Context.Window.document.title;
+		private SelectedItemsAction: string;
+
+		public get SelectedItems(): Array<string> {
+			return this.Scope.SelectedItems;
     }
-		public set Title(value: string) {
-			if (value !== undefined && value != null && value != '') {
-				this.Context.Window.document.title = value + ' - ' + this.SourceTitle;
-			}
-			else {
-				this.Context.Window.document.title = this.SourceTitle;
-			}
+		public set SelectedItems(value: Array<string>) {
+			this.Scope.SelectedItems = value;
 		}
+
+		/**
+		  * Complete status: Success | Fail
+		  */
+		public get SelectedItemsCompleted(): Array<string> {
+			return this.Scope.SelectedItemsCompleted;
+    }
+		public set SelectedItemsCompleted(value: Array<string>) {
+			this.Scope.SelectedItemsCompleted = value;
+		}
+
+		public get MoveTargetPath(): string {
+			return this.Scope.MoveTargetPath;
+    }
+		public set MoveTargetPath(value: string) {
+			this.Scope.MoveTargetPath = value;
+		}
+
+		/**
+		  * Force | NoClobber
+		  */
+		public get MoveItemsMode(): string {
+			return this.Scope.MoveItemsMode;
+    }
+		public set MoveItemsMode(value: string) {
+			this.Scope.MoveItemsMode = value;
+		}
+
+		public get MoveItemsBackup(): boolean {
+			return this.Scope.MoveItemsBackup;
+    }
+		public set MoveItemsBackup(value: boolean) {
+			this.Scope.MoveItemsBackup = value;
+		}
+
+		/** Unique session id for backup suffix. */
+		private MoveBackupSessionId: string;
+
+		/**
+		  * Force | NoClobber | Update
+		  */
+		public get CopyItemsMode(): string {
+			return this.Scope.CopyItemsMode;
+    }
+		public set CopyItemsMode(value: string) {
+			this.Scope.CopyItemsMode = value;
+		}
+
+		/**
+		  * Copy | Symbolic | Hard
+		  */
+		public get CopyItemsLinksMode(): string {
+			return this.Scope.CopyItemsLinksMode;
+    }
+		public set CopyItemsLinksMode(value: string) {
+			this.Scope.CopyItemsLinksMode = value;
+		}
+
+		public get CopyItemsRecursive(): boolean {
+			return this.Scope.CopyItemsRecursive;
+    }
+		public set CopyItemsRecursive(value: boolean) {
+			this.Scope.CopyItemsRecursive = value;
+		}
+
+		public get CopyItemsBackup(): boolean {
+			return this.Scope.CopyItemsBackup;
+    }
+		public set CopyItemsBackup(value: boolean) {
+			this.Scope.CopyItemsBackup = value;
+		}
+
+		public get ConfirmItemsToRemove(): string {
+			return this.Scope.ConfirmItemsToRemove;
+    }
+		public set ConfirmItemsToRemove(value: string) {
+			this.Scope.ConfirmItemsToRemove = value;
+		}
+
+		public get Moving(): boolean {
+			return this.Scope.Moving;
+    }
+		public set Moving(value: boolean) {
+			this.Scope.Moving = value;
+		}
+
+		public get Moved(): boolean {
+			return this.Scope.Moved;
+    }
+		public set Moved(value: boolean) {
+			this.Scope.Moved = value;
+		}
+
+		//#endregion
+		//#region dialogs
 
 		private ConfirmToDeleteItem: Nemiro.UI.Dialog;
 		private FileViewer: Nemiro.UI.Dialog;
@@ -239,8 +349,21 @@ module SmallServerAdmin.Controllers {
 		private ExecutionResultDialog: Nemiro.UI.Dialog;
 		private PropertiesDialog: Nemiro.UI.Dialog;
 		private CreateFolderDialog: Nemiro.UI.Dialog;
+		private MoveDialog: Nemiro.UI.Dialog;
+		private ConfirmToMoveItems: Nemiro.UI.Dialog;
+		private ConfirmToCopyItems: Nemiro.UI.Dialog;
+		private ConfirmToDeleteItems: Nemiro.UI.Dialog;
 
 		private Editor: CodeMirror.Editor;
+
+		//#endregion
+		//#region keyboard
+
+		private KeyShiftPressed: boolean = false;
+		private KeyCtrlPressed: boolean = false;
+		private KeyAltPressed: boolean = false;
+
+		//#endregion
 
 		//#endregion
 		//#region Constructor
@@ -273,6 +396,28 @@ module SmallServerAdmin.Controllers {
 			$this.PropertiesDialog = Nemiro.UI.Dialog.CreateFromElement($('#propertiesDialog'));
 
 			$this.CreateFolderDialog = Nemiro.UI.Dialog.CreateFromElement($('#createFolderDialog'));
+
+			//#region global key handlers
+
+      $(document).on('keydown', function (e) {
+				$this.KeyAltPressed = e.altKey;
+				$this.KeyShiftPressed = e.shiftKey;
+				$this.KeyCtrlPressed = e.ctrlKey;
+			});
+
+      $(document).on('keyup', function (e) {
+				if ($this.KeyAltPressed && !e.altKey) {
+					$this.KeyAltPressed = false;
+				}
+				if ($this.KeyShiftPressed && !e.shiftKey) {
+					$this.KeyShiftPressed = false;
+				}
+				if ($this.KeyCtrlPressed && !e.ctrlKey) {
+					$this.KeyCtrlPressed = false;
+				}
+			});
+
+			//#endregion
 
 			(<any>$('#editItem')).draggable({
 				handle: ".modal-header"
@@ -327,6 +472,7 @@ module SmallServerAdmin.Controllers {
 				//console.log('ShowSelectedItem', selected, node);
 				$this.SelectedItem = node;
 				$this.SelectedItem.Parent = $parentNode;
+				$this.MoveTargetPath = node.Path;
 			}
 
 			$this.Scope.ShowConfirmToDelete = (item: Models.FileSystemItem) => {
@@ -486,8 +632,102 @@ module SmallServerAdmin.Controllers {
 				nodeChildren: 'Children',
 				allowDeselect: false,
 				templateUrl: 'treeViewTemplate.html',
-				Open: $this.Scope.Open
+				Open: $this.Scope.Open,
+				MouseUp: (e: MouseEvent, node: Models.FileSystemItem) => {
+					if (e.which == 3) {
+						// this is right click, show menu
+						(<any>node).ContextMenuVisible = true;
+					}
+
+					// ctrl is pushed
+					if ($this.KeyCtrlPressed) {
+						// select / unselect
+						$this.Scope.Select(node.Path);
+					}
+				}
 			};
+
+			//#region move, copy and delete
+
+			$this.MoveDialog = Nemiro.UI.Dialog.CreateFromElement($('#moveDialog'));
+			$this.MoveDialog.HiddenCallback = () => {
+				if ($this.Moved) {
+					// items is moved, reset form
+					$this.SelectedItems = [];
+					$this.SelectedItemsCompleted = [];
+					$this.Moved = false;
+					if ($this.SelectedItemsAction == 'Delete') {
+						$this.GetList($this); // Nemiro.Utility.DirectoryName($this.MoveTargetPath)
+					} else {
+						$this.GetList($this, $this.MoveTargetPath);
+					}
+				}
+			}
+
+			$this.ConfirmToMoveItems = Nemiro.UI.Dialog.CreateFromElement($('#confirmToMoveItems'));
+			$this.ConfirmToCopyItems = Nemiro.UI.Dialog.CreateFromElement($('#confirmToCopyItems'));
+			$this.ConfirmToDeleteItems = Nemiro.UI.Dialog.CreateFromElement($('#confirmToDeleteItems'));
+
+			$this.MoveItemsMode = 'Force';
+			$this.CopyItemsMode = 'Force';
+			$this.CopyItemsLinksMode = 'None';
+			$this.CopyItemsRecursive = true;
+
+			$this.SelectedItems = new Array<string>();
+			$this.SelectedItemsCompleted = new Array<string>();
+
+			$this.Scope.ClearSelection = () => {
+				$this.SelectedItems = [];
+				$this.SelectedItemsCompleted = [];
+			};
+
+			$this.Scope.ShowMoveDialog = () => {
+				$this.MoveDialog.Show();
+			};
+
+			$this.Scope.MoveItems = () => {
+				$this.MoveItems($this);
+			};
+
+			$this.Scope.CopyItems = () => {
+				$this.CopyItems($this);
+			};
+
+			$this.Scope.DeleteItems = () => {
+				$this.DeleteItems($this);
+			};
+
+			$this.Scope.ConfirmToMoveItems = () => {
+				$this.MoveDialog.Close();
+				$this.ConfirmToMoveItems.Show();
+			};
+
+			$this.Scope.ConfirmToDeleteItems = () => {
+				$this.MoveDialog.Close();
+				$this.ConfirmItemsToRemove = '';
+				$this.ConfirmToDeleteItems.Show();
+			};
+
+			$this.Scope.ConfirmToCopyItems = () => {
+				$this.MoveDialog.Close();
+				$this.ConfirmToCopyItems.Show();
+			};
+
+			$this.Scope.CloseConfirmItems = () => {
+				$this.MoveDialog.Show();
+			};
+
+			$this.Scope.Select = (path: string) => {
+				if ($this.SelectedItems.indexOf(path) == -1) {
+					$this.SelectedItemsCompleted.push('');
+					$this.SelectedItems.push(path);
+				} else {
+					$this.SelectedItemsCompleted.splice($this.SelectedItems.indexOf(path), 1);
+					$this.SelectedItems.splice($this.SelectedItems.indexOf(path), 1);
+				}
+			};
+
+			//#endregion
 
 			if ($this.Context.Location.search()['path'] !== undefined && $this.Context.Location.search()['path'] != null && $this.Context.Location.search()['path'] != '') {
 				$this.GetList($this, $this.Context.Location.search()['path']);
@@ -602,7 +842,7 @@ module SmallServerAdmin.Controllers {
 			$this.SelectedItemToDelete.Loading = true;
 
 			// create request
-			var apiRequest = new ApiRequest<any>($this.Context, 'Files.Delete', { path: $this.SelectedItemToDelete.Path });
+			var apiRequest = new ApiRequest<any>($this.Context, 'Files.Delete', { Path: $this.SelectedItemToDelete.Path });
 
 			// handler successful response to a request to api
 			apiRequest.SuccessCallback = (response) => {
@@ -926,7 +1166,100 @@ module SmallServerAdmin.Controllers {
 		private DirectoryName(path: string): string {
 			return Nemiro.Utility.DirectoryName(path);
 		}
+		
+		private MoveItems($this: FileListController): void {
+			$this.Moving = true;
+			
+			$this.MoveDialog.DisplayCloseButton = true;
+			$this.MoveDialog.DisableOverlayClose = true;
+			$this.MoveDialog.Show();
 
+			$this.ConfirmToMoveItems.Close();
+
+			$this.SelectedItemsAction = 'Move';
+			
+			$this.MoveNextItem($this, 'Move', 0);
+		}
+		
+		private CopyItems($this: FileListController): void {
+			$this.Moving = true;
+			
+			$this.MoveDialog.DisplayCloseButton = true;
+			$this.MoveDialog.DisableOverlayClose = true;
+			$this.MoveDialog.Show();
+
+			$this.ConfirmToCopyItems.Close();
+
+			$this.SelectedItemsAction = 'Copy';
+
+			$this.MoveNextItem($this, 'Copy', 0);
+		}
+		
+		private DeleteItems($this: FileListController): void {
+			$this.Moving = true;
+			
+			$this.MoveDialog.DisplayCloseButton = true;
+			$this.MoveDialog.DisableOverlayClose = true;
+			$this.MoveDialog.Show();
+
+			$this.ConfirmToDeleteItems.Close();
+
+			$this.SelectedItemsAction = 'Delete';
+
+			$this.MoveNextItem($this, 'Delete', 0);
+		}
+
+		private MoveNextItem($this: FileListController, action: string, index: number): void {
+			var data = null;
+
+			if (action == 'Move') {
+				data = {
+					Path: $this.SelectedItems[index],
+					TargetPath: $this.MoveTargetPath,
+					Mode: $this.MoveItemsMode,
+					Backup: $this.MoveItemsBackup,
+					Suffix: $this.MoveBackupSessionId // TODO
+				};
+			}
+			else if (action == 'Copy') {
+				data = {
+					Path: $this.SelectedItems[index],
+					TargetPath: $this.MoveTargetPath,
+					Mode: $this.CopyItemsMode,
+					Links: $this.CopyItemsLinksMode,
+					Backup: $this.CopyItemsBackup,
+					Recursive: $this.CopyItemsRecursive
+					// Suffix: $this.CopyBackupSessionId // TODO
+				};
+			}
+			else if (action == 'Delete') {
+				data = { Path: $this.SelectedItems[index] };
+			}
+
+			var apiRequest = new ApiRequest<any>($this.Context, 'Files.' + action, data);
+
+			apiRequest.SuccessCallback = (response) => {
+				$this.SelectedItemsCompleted[index] = 'Success';
+			};
+
+			apiRequest.ErrorCallback = (response) => {
+				$this.SelectedItemsCompleted[index] = 'Fail';
+				apiRequest.ApiError(response);
+			};
+
+			apiRequest.CompleteCallback = () => {
+				index++;
+				if (index < $this.SelectedItems.length) {
+					$this.MoveNextItem($this, action, index);
+				} else {
+					$this.Moved = true;
+					$this.Moving = false;
+				}
+			}
+
+			apiRequest.Execute();
+		}
+		
 		//#endregion
 
 	}

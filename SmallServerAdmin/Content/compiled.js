@@ -71900,6 +71900,293 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
   }
 }());
 
+angular.module('pageslide-directive', [])
+
+.directive('pageslide', ['$document', '$timeout',
+    function ($document, $timeout) {
+        var defaults = {};
+
+        return {
+            restrict: 'EAC',
+            transclude: false,
+            scope: {
+                psOpen: '=?',
+                psAutoClose: '=?',
+                psSide: '@',
+                psSpeed: '@',
+                psClass: '@',
+                psSize: '@',
+                psZindex: '@',
+                psSqueeze: '@',
+                psCloak: '@',
+                psPush: '@',
+                psContainer: '@',
+                psKeyListener: '@',
+                psBodyClass: '@'
+            },
+            link: function ($scope, el, attrs) {
+
+                /* Inspect */
+
+                //console.log($scope);
+                //console.log(el);
+                //console.log(attrs);
+
+                var param = {};
+
+                param.side = $scope.psSide || 'right';
+                param.speed = $scope.psSpeed || '0.5';
+                param.size = $scope.psSize || '300px';
+                param.zindex = $scope.psZindex || 1000;
+                param.className = $scope.psClass || 'ng-pageslide';
+                param.squeeze = Boolean($scope.psSqueeze) || false;
+                param.push = Boolean($scope.psPush) || false;
+                param.container = $scope.psContainer || false;
+                param.keyListener = Boolean($scope.psKeyListener) || false;
+                param.bodyClass = $scope.psBodyClass || false;
+
+                el.addClass(param.className);
+
+                /* DOM manipulation */
+
+                var content = null;
+                var slider = null;
+                var body = param.container ? document.getElementById(param.container) : document.body;
+
+                // TODO verify that we are meaning to use the param.className and not the param.bodyClass
+
+                function setBodyClass(value){
+                    if (param.bodyClass) {
+                        var bodyClass = param.className + '-body';
+                        var bodyClassRe = new RegExp(' ' + bodyClass + '-closed| ' + bodyClass + '-open');
+                        body.className = body.className.replace(bodyClassRe, '');
+                        body.className += ' ' + bodyClass + '-' + value;
+                    }
+                }
+
+                setBodyClass('closed');
+
+                slider = el[0];
+
+                // Check for div tag
+                if (slider.tagName.toLowerCase() !== 'div' &&
+                    slider.tagName.toLowerCase() !== 'pageslide')
+                    throw new Error('Pageslide can only be applied to <div> or <pageslide> elements');
+
+                // Check for content
+                if (slider.children.length === 0)
+                    throw new Error('You have to content inside the <pageslide>');
+
+                content = angular.element(slider.children);
+
+                /* Append */
+                body.appendChild(slider);
+
+                /* Style setup */
+                slider.style.zIndex = param.zindex;
+                slider.style.position = param.container !== false ? 'absolute' : 'fixed';
+                slider.style.width = 0;
+                slider.style.height = 0;
+                slider.style.transitionDuration = param.speed + 's';
+                slider.style.webkitTransitionDuration = param.speed + 's';
+                slider.style.transitionProperty = 'width, height';
+
+                if (param.squeeze) {
+                    body.style.position = 'absolute';
+                    body.style.transitionDuration = param.speed + 's';
+                    body.style.webkitTransitionDuration = param.speed + 's';
+                    body.style.transitionProperty = 'top, bottom, left, right';
+                }
+
+                switch (param.side) {
+                    case 'right':
+                        slider.style.height = attrs.psCustomHeight || '100%';
+                        slider.style.top = attrs.psCustomTop || '0px';
+                        slider.style.bottom = attrs.psCustomBottom || '0px';
+                        slider.style.right = attrs.psCustomRight || '0px';
+                        break;
+                    case 'left':
+                        slider.style.height = attrs.psCustomHeight || '100%';
+                        slider.style.top = attrs.psCustomTop || '0px';
+                        slider.style.bottom = attrs.psCustomBottom || '0px';
+                        slider.style.left = attrs.psCustomLeft || '0px';
+                        break;
+                    case 'top':
+                        slider.style.width = attrs.psCustomWidth || '100%';
+                        slider.style.left = attrs.psCustomLeft || '0px';
+                        slider.style.top = attrs.psCustomTop || '0px';
+                        slider.style.right = attrs.psCustomRight || '0px';
+                        break;
+                    case 'bottom':
+                        slider.style.width = attrs.psCustomWidth || '100%';
+                        slider.style.bottom = attrs.psCustomBottom || '0px';
+                        slider.style.left = attrs.psCustomLeft || '0px';
+                        slider.style.right = attrs.psCustomRight || '0px';
+                        break;
+                }
+
+
+                /* Closed */
+                function psClose(slider, param) {
+                    if (slider && slider.style.width !== 0) {
+                        content.css('display', 'none');
+                        switch (param.side) {
+                            case 'right':
+                                slider.style.width = '0px';
+                                if (param.squeeze) body.style.right = '0px';
+                                if (param.push) {
+                                    body.style.right = '0px';
+                                    body.style.left = '0px';
+                                }
+                                break;
+                            case 'left':
+                                slider.style.width = '0px';
+                                if (param.squeeze) body.style.left = '0px';
+                                if (param.push) {
+                                    body.style.left = '0px';
+                                    body.style.right = '0px';
+                                }
+                                break;
+                            case 'top':
+                                slider.style.height = '0px';
+                                if (param.squeeze) body.style.top = '0px';
+                                if (param.push) {
+                                    body.style.top = '0px';
+                                    body.style.bottom = '0px';
+                                }
+                                break;
+                            case 'bottom':
+                                slider.style.height = '0px';
+                                if (param.squeeze) body.style.bottom = '0px';
+                                if (param.push) {
+                                    body.style.bottom = '0px';
+                                    body.style.top = '0px';
+                                }
+                                break;
+                        }
+                    }
+                    $scope.psOpen = false;
+
+                    if (param.keyListener) {
+                        $document.off('keydown', keyListener);
+                    }
+
+                    setBodyClass('closed');
+                }
+
+                /* Open */
+                function psOpen(slider, param) {
+                    if (slider.style.width !== 0) {
+                        switch (param.side) {
+                            case 'right':
+                                slider.style.width = param.size;
+                                if (param.squeeze) body.style.right = param.size;
+                                if (param.push) {
+                                    body.style.right = param.size;
+                                    body.style.left = '-' + param.size;
+                                }
+                                break;
+                            case 'left':
+                                slider.style.width = param.size;
+                                if (param.squeeze) body.style.left = param.size;
+                                if (param.push) {
+                                    body.style.left = param.size;
+                                    body.style.right = '-' + param.size;
+                                }
+                                break;
+                            case 'top':
+                                slider.style.height = param.size;
+                                if (param.squeeze) body.style.top = param.size;
+                                if (param.push) {
+                                    body.style.top = param.size;
+                                    body.style.bottom = '-' + param.size;
+                                }
+                                break;
+                            case 'bottom':
+                                slider.style.height = param.size;
+                                if (param.squeeze) body.style.bottom = param.size;
+                                if (param.push) {
+                                    body.style.bottom = param.size;
+                                    body.style.top = '-' + param.size;
+                                }
+                                break;
+                        }
+
+                        $timeout(function() {
+                            content.css('display', 'block');
+                        }, (param.speed * 1000));
+
+                        $scope.psOpen = true;
+
+                        if (param.keyListener) {
+                            $document.on('keydown', keyListener);
+                        }
+
+                        setBodyClass('open');
+                    }
+                }
+
+                function isFunction(functionToCheck) {
+                    var getType = {};
+                    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+                }
+
+                /*
+                * Close the sidebar if the 'esc' key is pressed
+                * */
+
+                function keyListener(e) {
+                    var ESC_KEY = 27;
+                    var key = e.keyCode || e.which;
+
+                    if (key === ESC_KEY) {
+                        psClose(slider, param);
+                    }
+                }
+
+                /*
+                * Watchers
+                * */
+
+                $scope.$watch('psOpen', function(value) {
+                    if (!!value) {
+                        psOpen(slider, param);
+                    } else {
+                        psClose(slider, param);
+                    }
+                });
+
+                $scope.$watch('psSize', function(newValue, oldValue) {
+                    if (oldValue !== newValue) {
+                        param.size = newValue;
+                        psOpen(slider, param);
+                    }
+                });
+
+                /*
+                * Events
+                * */
+
+                $scope.$on('$destroy', function () {
+                    if (slider.parentNode === body) {
+                        body.removeChild(slider);
+                    }
+                });
+
+                if ($scope.psAutoClose) {
+                    $scope.$on('$locationChangeStart', function() {
+                        psClose(slider, param);
+                    });
+                    $scope.$on('$stateChangeStart', function() {
+                        psClose(slider, param);
+                    });
+
+                }
+            }
+        };
+    }
+]);
+
 /*
 * Copyright © Aleksey Nemiro, 2015. All rights reserved.
 *
@@ -75710,7 +75997,14 @@ var SmallServerAdmin;
                         $this.Context.Timeout($this.WaitingServerResponse($this, reloadingItem), 1000);
                     }
                     else {
-                        Nemiro.UI.Dialog.Alert('Cannot reload service "' + reloadingItem.Name + '".', 'Error ' + response.status);
+                        var exceptionMessage = SmallServerAdmin.ApiRequest.GetExceptionMessage(response.data);
+                        if (exceptionMessage != null) {
+                            exceptionMessage = '<pre>' + exceptionMessage + '</pre>';
+                        }
+                        else {
+                            exceptionMessage = '';
+                        }
+                        Nemiro.UI.Dialog.Alert('Cannot reload service "' + reloadingItem.Name + '".' + exceptionMessage, 'Error ' + response.status);
                         reloadingItem.Status = 'Error';
                     }
                 };
@@ -77104,8 +77398,14 @@ var SmallServerAdmin;
          */
         var FileListController = (function () {
             //#endregion
+            //#endregion
             //#region Constructor
             function FileListController(context) {
+                //#endregion
+                //#region keyboard
+                this.KeyShiftPressed = false;
+                this.KeyCtrlPressed = false;
+                this.KeyAltPressed = false;
                 var $this = this;
                 $this.Context = context;
                 $this.Scope = $this.Context.Scope;
@@ -77124,6 +77424,24 @@ var SmallServerAdmin;
                 $this.ExecutionResultDialog = Nemiro.UI.Dialog.CreateFromElement($('#executionResult'));
                 $this.PropertiesDialog = Nemiro.UI.Dialog.CreateFromElement($('#propertiesDialog'));
                 $this.CreateFolderDialog = Nemiro.UI.Dialog.CreateFromElement($('#createFolderDialog'));
+                //#region global key handlers
+                $(document).on('keydown', function (e) {
+                    $this.KeyAltPressed = e.altKey;
+                    $this.KeyShiftPressed = e.shiftKey;
+                    $this.KeyCtrlPressed = e.ctrlKey;
+                });
+                $(document).on('keyup', function (e) {
+                    if ($this.KeyAltPressed && !e.altKey) {
+                        $this.KeyAltPressed = false;
+                    }
+                    if ($this.KeyShiftPressed && !e.shiftKey) {
+                        $this.KeyShiftPressed = false;
+                    }
+                    if ($this.KeyCtrlPressed && !e.ctrlKey) {
+                        $this.KeyCtrlPressed = false;
+                    }
+                });
+                //#endregion
                 $('#editItem').draggable({
                     handle: ".modal-header"
                 });
@@ -77169,6 +77487,7 @@ var SmallServerAdmin;
                     //console.log('ShowSelectedItem', selected, node);
                     $this.SelectedItem = node;
                     $this.SelectedItem.Parent = $parentNode;
+                    $this.MoveTargetPath = node.Path;
                 };
                 $this.Scope.ShowConfirmToDelete = function (item) {
                     $this.SelectedItemToDelete = item;
@@ -77297,8 +77616,87 @@ var SmallServerAdmin;
                     nodeChildren: 'Children',
                     allowDeselect: false,
                     templateUrl: 'treeViewTemplate.html',
-                    Open: $this.Scope.Open
+                    Open: $this.Scope.Open,
+                    MouseUp: function (e, node) {
+                        if (e.which == 3) {
+                            // this is right click, show menu
+                            node.ContextMenuVisible = true;
+                        }
+                        // ctrl is pushed
+                        if ($this.KeyCtrlPressed) {
+                            // select / unselect
+                            $this.Scope.Select(node.Path);
+                        }
+                    }
                 };
+                //#region move, copy and delete
+                $this.MoveDialog = Nemiro.UI.Dialog.CreateFromElement($('#moveDialog'));
+                $this.MoveDialog.HiddenCallback = function () {
+                    if ($this.Moved) {
+                        // items is moved, reset form
+                        $this.SelectedItems = [];
+                        $this.SelectedItemsCompleted = [];
+                        $this.Moved = false;
+                        if ($this.SelectedItemsAction == 'Delete') {
+                            $this.GetList($this); // Nemiro.Utility.DirectoryName($this.MoveTargetPath)
+                        }
+                        else {
+                            $this.GetList($this, $this.MoveTargetPath);
+                        }
+                    }
+                };
+                $this.ConfirmToMoveItems = Nemiro.UI.Dialog.CreateFromElement($('#confirmToMoveItems'));
+                $this.ConfirmToCopyItems = Nemiro.UI.Dialog.CreateFromElement($('#confirmToCopyItems'));
+                $this.ConfirmToDeleteItems = Nemiro.UI.Dialog.CreateFromElement($('#confirmToDeleteItems'));
+                $this.MoveItemsMode = 'Force';
+                $this.CopyItemsMode = 'Force';
+                $this.CopyItemsLinksMode = 'None';
+                $this.CopyItemsRecursive = true;
+                $this.SelectedItems = new Array();
+                $this.SelectedItemsCompleted = new Array();
+                $this.Scope.ClearSelection = function () {
+                    $this.SelectedItems = [];
+                    $this.SelectedItemsCompleted = [];
+                };
+                $this.Scope.ShowMoveDialog = function () {
+                    $this.MoveDialog.Show();
+                };
+                $this.Scope.MoveItems = function () {
+                    $this.MoveItems($this);
+                };
+                $this.Scope.CopyItems = function () {
+                    $this.CopyItems($this);
+                };
+                $this.Scope.DeleteItems = function () {
+                    $this.DeleteItems($this);
+                };
+                $this.Scope.ConfirmToMoveItems = function () {
+                    $this.MoveDialog.Close();
+                    $this.ConfirmToMoveItems.Show();
+                };
+                $this.Scope.ConfirmToDeleteItems = function () {
+                    $this.MoveDialog.Close();
+                    $this.ConfirmItemsToRemove = '';
+                    $this.ConfirmToDeleteItems.Show();
+                };
+                $this.Scope.ConfirmToCopyItems = function () {
+                    $this.MoveDialog.Close();
+                    $this.ConfirmToCopyItems.Show();
+                };
+                $this.Scope.CloseConfirmItems = function () {
+                    $this.MoveDialog.Show();
+                };
+                $this.Scope.Select = function (path) {
+                    if ($this.SelectedItems.indexOf(path) == -1) {
+                        $this.SelectedItemsCompleted.push('');
+                        $this.SelectedItems.push(path);
+                    }
+                    else {
+                        $this.SelectedItemsCompleted.splice($this.SelectedItems.indexOf(path), 1);
+                        $this.SelectedItems.splice($this.SelectedItems.indexOf(path), 1);
+                    }
+                };
+                //#endregion
                 if ($this.Context.Location.search()['path'] !== undefined && $this.Context.Location.search()['path'] != null && $this.Context.Location.search()['path'] != '') {
                     $this.GetList($this, $this.Context.Location.search()['path']);
                 }
@@ -77306,6 +77704,22 @@ var SmallServerAdmin;
                     $this.GetList($this);
                 }
             }
+            Object.defineProperty(FileListController.prototype, "Title", {
+                /** Gets or sets window title (document.title). */
+                get: function () {
+                    return this.Context.Window.document.title;
+                },
+                set: function (value) {
+                    if (value !== undefined && value != null && value != '') {
+                        this.Context.Window.document.title = value + ' - ' + this.SourceTitle;
+                    }
+                    else {
+                        this.Context.Window.document.title = this.SourceTitle;
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
             Object.defineProperty(FileListController.prototype, "Items", {
                 /** The list of files and folders. */
                 get: function () {
@@ -77530,6 +77944,7 @@ var SmallServerAdmin;
                 configurable: true
             });
             Object.defineProperty(FileListController.prototype, "NewFolderName", {
+                //#region new folder
                 get: function () {
                     return this.Scope.NewFolderName;
                 },
@@ -77579,17 +77994,134 @@ var SmallServerAdmin;
                 enumerable: true,
                 configurable: true
             });
-            Object.defineProperty(FileListController.prototype, "Title", {
+            Object.defineProperty(FileListController.prototype, "SelectedItems", {
                 get: function () {
-                    return this.Context.Window.document.title;
+                    return this.Scope.SelectedItems;
                 },
                 set: function (value) {
-                    if (value !== undefined && value != null && value != '') {
-                        this.Context.Window.document.title = value + ' - ' + this.SourceTitle;
-                    }
-                    else {
-                        this.Context.Window.document.title = this.SourceTitle;
-                    }
+                    this.Scope.SelectedItems = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(FileListController.prototype, "SelectedItemsCompleted", {
+                /**
+                  * Complete status: Success | Fail
+                  */
+                get: function () {
+                    return this.Scope.SelectedItemsCompleted;
+                },
+                set: function (value) {
+                    this.Scope.SelectedItemsCompleted = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(FileListController.prototype, "MoveTargetPath", {
+                get: function () {
+                    return this.Scope.MoveTargetPath;
+                },
+                set: function (value) {
+                    this.Scope.MoveTargetPath = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(FileListController.prototype, "MoveItemsMode", {
+                /**
+                  * Force | NoClobber
+                  */
+                get: function () {
+                    return this.Scope.MoveItemsMode;
+                },
+                set: function (value) {
+                    this.Scope.MoveItemsMode = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(FileListController.prototype, "MoveItemsBackup", {
+                get: function () {
+                    return this.Scope.MoveItemsBackup;
+                },
+                set: function (value) {
+                    this.Scope.MoveItemsBackup = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(FileListController.prototype, "CopyItemsMode", {
+                /**
+                  * Force | NoClobber | Update
+                  */
+                get: function () {
+                    return this.Scope.CopyItemsMode;
+                },
+                set: function (value) {
+                    this.Scope.CopyItemsMode = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(FileListController.prototype, "CopyItemsLinksMode", {
+                /**
+                  * Copy | Symbolic | Hard
+                  */
+                get: function () {
+                    return this.Scope.CopyItemsLinksMode;
+                },
+                set: function (value) {
+                    this.Scope.CopyItemsLinksMode = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(FileListController.prototype, "CopyItemsRecursive", {
+                get: function () {
+                    return this.Scope.CopyItemsRecursive;
+                },
+                set: function (value) {
+                    this.Scope.CopyItemsRecursive = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(FileListController.prototype, "CopyItemsBackup", {
+                get: function () {
+                    return this.Scope.CopyItemsBackup;
+                },
+                set: function (value) {
+                    this.Scope.CopyItemsBackup = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(FileListController.prototype, "ConfirmItemsToRemove", {
+                get: function () {
+                    return this.Scope.ConfirmItemsToRemove;
+                },
+                set: function (value) {
+                    this.Scope.ConfirmItemsToRemove = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(FileListController.prototype, "Moving", {
+                get: function () {
+                    return this.Scope.Moving;
+                },
+                set: function (value) {
+                    this.Scope.Moving = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(FileListController.prototype, "Moved", {
+                get: function () {
+                    return this.Scope.Moved;
+                },
+                set: function (value) {
+                    this.Scope.Moved = value;
                 },
                 enumerable: true,
                 configurable: true
@@ -77680,7 +78212,7 @@ var SmallServerAdmin;
             FileListController.prototype.Delete = function ($this) {
                 $this.SelectedItemToDelete.Loading = true;
                 // create request
-                var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Files.Delete', { path: $this.SelectedItemToDelete.Path });
+                var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Files.Delete', { Path: $this.SelectedItemToDelete.Path });
                 // handler successful response to a request to api
                 apiRequest.SuccessCallback = function (response) {
                     $this.ConfirmToDeleteItem.Close();
@@ -77939,6 +78471,77 @@ var SmallServerAdmin;
             };
             FileListController.prototype.DirectoryName = function (path) {
                 return Nemiro.Utility.DirectoryName(path);
+            };
+            FileListController.prototype.MoveItems = function ($this) {
+                $this.Moving = true;
+                $this.MoveDialog.DisplayCloseButton = true;
+                $this.MoveDialog.DisableOverlayClose = true;
+                $this.MoveDialog.Show();
+                $this.ConfirmToMoveItems.Close();
+                $this.SelectedItemsAction = 'Move';
+                $this.MoveNextItem($this, 'Move', 0);
+            };
+            FileListController.prototype.CopyItems = function ($this) {
+                $this.Moving = true;
+                $this.MoveDialog.DisplayCloseButton = true;
+                $this.MoveDialog.DisableOverlayClose = true;
+                $this.MoveDialog.Show();
+                $this.ConfirmToCopyItems.Close();
+                $this.SelectedItemsAction = 'Copy';
+                $this.MoveNextItem($this, 'Copy', 0);
+            };
+            FileListController.prototype.DeleteItems = function ($this) {
+                $this.Moving = true;
+                $this.MoveDialog.DisplayCloseButton = true;
+                $this.MoveDialog.DisableOverlayClose = true;
+                $this.MoveDialog.Show();
+                $this.ConfirmToDeleteItems.Close();
+                $this.SelectedItemsAction = 'Delete';
+                $this.MoveNextItem($this, 'Delete', 0);
+            };
+            FileListController.prototype.MoveNextItem = function ($this, action, index) {
+                var data = null;
+                if (action == 'Move') {
+                    data = {
+                        Path: $this.SelectedItems[index],
+                        TargetPath: $this.MoveTargetPath,
+                        Mode: $this.MoveItemsMode,
+                        Backup: $this.MoveItemsBackup,
+                        Suffix: $this.MoveBackupSessionId // TODO
+                    };
+                }
+                else if (action == 'Copy') {
+                    data = {
+                        Path: $this.SelectedItems[index],
+                        TargetPath: $this.MoveTargetPath,
+                        Mode: $this.CopyItemsMode,
+                        Links: $this.CopyItemsLinksMode,
+                        Backup: $this.CopyItemsBackup,
+                        Recursive: $this.CopyItemsRecursive
+                    };
+                }
+                else if (action == 'Delete') {
+                    data = { Path: $this.SelectedItems[index] };
+                }
+                var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Files.' + action, data);
+                apiRequest.SuccessCallback = function (response) {
+                    $this.SelectedItemsCompleted[index] = 'Success';
+                };
+                apiRequest.ErrorCallback = function (response) {
+                    $this.SelectedItemsCompleted[index] = 'Fail';
+                    apiRequest.ApiError(response);
+                };
+                apiRequest.CompleteCallback = function () {
+                    index++;
+                    if (index < $this.SelectedItems.length) {
+                        $this.MoveNextItem($this, action, index);
+                    }
+                    else {
+                        $this.Moved = true;
+                        $this.Moving = false;
+                    }
+                };
+                apiRequest.Execute();
             };
             return FileListController;
         }());
@@ -79305,21 +79908,7 @@ var SmallServerAdmin;
         ApiRequest.prototype.ApiError = function (response) {
             console.log('ApiError', response);
             if (response.data !== undefined && response.data != null && typeof response.data == 'object') {
-                var data = response.data;
-                if (data.ExceptionMessage !== undefined && data.ExceptionMessage != null && data.ExceptionMessage != '') {
-                    Nemiro.UI.Dialog.Alert(Nemiro.Utility.Replace(data.ExceptionMessage, '\n', '<br />'), 'Error');
-                }
-                else if (data.Message !== undefined && data.Message != null && data.Message != '') {
-                    Nemiro.UI.Dialog.Alert(Nemiro.Utility.Replace(data.Message, '\n', '<br />'), 'Error');
-                }
-                else if (data.Error !== undefined) {
-                    if (data.Error.Message !== undefined && data.Error.Message != null && data.Error.Message != '') {
-                        Nemiro.UI.Dialog.Alert(Nemiro.Utility.Replace(data.Error.Message, '\n', '<br />'), 'Error');
-                    }
-                    else {
-                        Nemiro.UI.Dialog.Alert(Nemiro.Utility.Replace(data.Error, '\n', '<br />'), 'Error');
-                    }
-                }
+                Nemiro.UI.Dialog.Alert(Nemiro.Utility.Replace(ApiRequest.GetExceptionMessage(response.data), '\n', '<br />'), 'Error');
             }
             else {
                 var details = '';
@@ -79329,6 +79918,25 @@ var SmallServerAdmin;
                 }
                 Nemiro.UI.Dialog.Alert('<p>An unknown error occurred. Try again.</p><pre>' + Nemiro.Utility.Replace(details, '\n', '<br />') + '</pre>', 'Error');
             }
+        };
+        ApiRequest.GetExceptionMessage = function (data) {
+            if (data !== undefined && data != null && typeof data == 'object') {
+                if (data.ExceptionMessage !== undefined && data.ExceptionMessage != null && data.ExceptionMessage != '') {
+                    return data.ExceptionMessage;
+                }
+                else if (data.Message !== undefined && data.Message != null && data.Message != '') {
+                    return data.Message;
+                }
+                else if (data.Error !== undefined) {
+                    if (data.Error.Message !== undefined && data.Error.Message != null && data.Error.Message != '') {
+                        return data.Error.Message;
+                    }
+                    else {
+                        return data.Error;
+                    }
+                }
+            }
+            return null;
         };
         /**
          * Sends echo request.
@@ -79428,7 +80036,8 @@ var SmallServerAdmin;
                 'ui.codemirror',
                 'frapontillo.bootstrap-switch',
                 'treeControl',
-                'highcharts-ng'
+                'highcharts-ng',
+                'pageslide-directive'
             ]);
         };
         /** Indicates local storage is available or not. */

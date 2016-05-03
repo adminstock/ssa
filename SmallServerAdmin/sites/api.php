@@ -464,7 +464,6 @@ namespace Api
       }
 
       $name = $data['Name'];
-      $reload = !isset($data['Reload']) ? (bool)$data['Reload'] : TRUE;
 
       // delete
       $shell_result = $this->SshClient->Execute
@@ -904,7 +903,7 @@ namespace Api
       (
         'sudo bash -c "dpkg-query -s \'etckeeper\' 2> /dev/null | grep -q \'ok installed\' && '.
          '(( $(sudo git -C /etc status --porcelain | wc -l) > 0 )) && '.
-         '(cd /etc; etckeeper commit \'Auto commit '.$config['ssa_name'].' v'.$config['ssa_version'].'\')'.
+         '(cd /etc; etckeeper commit \'Auto commit SSA v'.file_get_contents(\Nemiro\Server::MapPath('~/.version')).'\')'.
         '"'
       );
       

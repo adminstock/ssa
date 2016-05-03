@@ -18,14 +18,14 @@
 </pre>
 
 <ul>
-  <li><a href="http://httpd.apache.org/docs/current/mod/core.html#virtualhost" target="_blank">&lt;VirtualHost&gt;</a></li>
-  <li><a href="http://httpd.apache.org/docs/current/mod/core.html#directory" target="_blank">&lt;Directory&gt;</a></li>
-  <li><a href="http://httpd.apache.org/docs/current/mod/core.html#location" target="_blank">&lt;Location&gt;</a></li>
-  <li><a href="http://httpd.apache.org/docs/current/mod/core.html#files" target="_blank">&lt;Files&gt;</a></li>
-  <li><a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html" target="_blank">mod_rewrite</a></li>
-  <li><a href="http://httpd.apache.org/docs/current/mod/mod_auth_basic.html" target="_blank">mod_auth_basic</a></li>
-  <li><a href="http://httpd.apache.org/docs/current/mod/" target="_blank">All modules</a></li>
-  <li><a href="http://httpd.apache.org/docs/current/" target="_blank">Documentation</a></li>
+  <li><a href="http://httpd.apache.org/docs/current/mod/core.html#virtualhost" target="_blank" rel="nofollow noreferrer noopener">&lt;VirtualHost&gt;</a></li>
+  <li><a href="http://httpd.apache.org/docs/current/mod/core.html#directory" target="_blank" rel="nofollow noreferrer noopener">&lt;Directory&gt;</a></li>
+  <li><a href="http://httpd.apache.org/docs/current/mod/core.html#location" target="_blank" rel="nofollow noreferrer noopener">&lt;Location&gt;</a></li>
+  <li><a href="http://httpd.apache.org/docs/current/mod/core.html#files" target="_blank" rel="nofollow noreferrer noopener">&lt;Files&gt;</a></li>
+  <li><a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html" target="_blank" rel="nofollow noreferrer noopener">mod_rewrite</a></li>
+  <li><a href="http://httpd.apache.org/docs/current/mod/mod_auth_basic.html" target="_blank" rel="nofollow noreferrer noopener">mod_auth_basic</a></li>
+  <li><a href="http://httpd.apache.org/docs/current/mod/" target="_blank" rel="nofollow noreferrer noopener">All modules</a></li>
+  <li><a href="http://httpd.apache.org/docs/current/" target="_blank" rel="nofollow noreferrer noopener">Documentation</a></li>
 </ul>
 
 <h3>Mono</h3>

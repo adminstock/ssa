@@ -63,7 +63,7 @@ location / {
   fastcgi_param CONTENT_LENGTH  \$content_length;
 }
 </pre>
-<p><a href="http://nginx.org/${lang}/docs/http/ngx_http_fastcgi_module.html" target="_blank">More info</a>.</p>
+<p><a href="http://nginx.org/${lang}/docs/http/ngx_http_fastcgi_module.html" target="_blank" rel="nofollow noreferrer noopener">More info</a>.</p>
 
 <h3>Rewriting</h3>
 <p>Syntax: <code>rewrite regex replacement [flag];</code></p>
@@ -119,7 +119,7 @@ server {
     - returns a permanent redirect with the 301 code.
   </li>
 </ul>
-<p><a href="http://nginx.org/${lang}/docs/http/ngx_http_rewrite_module.html" target="_blank">More info</a>.</p>
+<p><a href="http://nginx.org/${lang}/docs/http/ngx_http_rewrite_module.html" target="_blank" rel="nofollow noreferrer noopener">More info</a>.</p>
 
 <h3>Caching</h3>
 <p>
@@ -136,6 +136,6 @@ location ~* .(js|css|png|jpg|jpeg|gif|ico)\$ {
 <p>
   <strong>expires</strong> - enables or disables adding or modifying the <code>Expires</code> and <code>Cache-Control</code> 
   response header fields provided that the response code equals 200, 201, 204, 206, 301, 302, 303, 304, or 307.<br />
-  A parameter can be a positive or negative <a href="http://nginx.org/${lang}/docs/syntax.html" target="_blank" class="new-window">time</a>.
+  A parameter can be a positive or negative <a href="http://nginx.org/${lang}/docs/syntax.html" target="_blank" class="new-window" rel="nofollow noreferrer noopener">time</a>.
 </p>
-<p><a href="http://nginx.org/${lang}/docs/http/ngx_http_headers_module.html" target="_blank">More info</a>.</p>
+<p><a href="http://nginx.org/${lang}/docs/http/ngx_http_headers_module.html" target="_blank" rel="nofollow noreferrer noopener">More info</a>.</p>

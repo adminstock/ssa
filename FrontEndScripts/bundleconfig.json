@@ -39,6 +39,7 @@
 			"libs/angular-tree-control.js",
 			"libs/highcharts/highstock-all.js",
 			"libs/highcharts-ng.js",
+			"libs/angular-pageslide-directive.js",
 
 			// Helper classes by Aleksey Nemiro
 			"libs/Nemiro/EventHandlers.js",

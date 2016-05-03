@@ -226,12 +226,12 @@ namespace Api
     
     public function Delete($data)
     {
-      if (!isset($data['path']) || $data['path'] == '')
+      if (!isset($data['Path']) || $data['Path'] == '')
       {
         throw new \ErrorException('Path is required.');
       }
 
-      $path = $this->NormalizePath($data['path']);
+      $path = $this->NormalizePath($data['Path']);
 
       $shell_result = $this->SshClient->Execute('sudo bash -c "rm --force --dir --recursive \''.$path.'\'"');
 
@@ -602,6 +602,121 @@ namespace Api
       }
 
       return ['Content' => $shell_result->Result];
+    }
+
+    public function Move($data)
+    {
+      if (!isset($data['Path']) || $data['Path'] == '')
+      {
+        throw new \ErrorException('Path is required.');
+      }
+
+      if (!isset($data['TargetPath']) || $data['TargetPath'] == '')
+      {
+        throw new \ErrorException('Target path is required.');
+      }
+
+      $path = $data['Path'];
+      $targetPath = $data['TargetPath'];
+      $mode = '--force';
+
+      if (isset($data['Mode']) && strtolower($data['Mode']) == 'noclobber')
+      {
+        $mode = '--no-clobber';
+      }
+
+      $backup = '';
+
+      if ((bool)$data['Backup'] === TRUE)
+      {
+        $backup = ' --backup';
+        if (isset($data['Suffix']) && $data['Suffix'] != '')
+        {
+          $backup .= ' --suffix='.$data['Suffix'];
+        }
+        else 
+        {
+          $backup .= ' --suffix=.'.date("Y-m-d");
+        }
+      }
+
+      $shell_result = $this->SshClient->Execute('sudo mv '.$mode.$backup.' "'.$path.'" "'.$targetPath.'"');
+
+      if ($shell_result->Error != '')
+      {
+        throw new \ErrorException($shell_result->Error);
+      }
+
+      return ['Success' => TRUE];
+    }
+
+    public function Copy($data)
+    {
+      if (!isset($data['Path']) || $data['Path'] == '')
+      {
+        throw new \ErrorException('Path is required.');
+      }
+
+      if (!isset($data['TargetPath']) || $data['TargetPath'] == '')
+      {
+        throw new \ErrorException('Target path is required.');
+      }
+
+      $path = $data['Path'];
+      $targetPath = $data['TargetPath'];
+
+      $recursive = '';
+
+      if ((bool)$data['Recursive'] === TRUE)
+      {
+        $recursive = ' --recursive';
+      }
+
+      $mode = ' --force';
+
+      if (isset($data['Mode']) && strtolower($data['Mode']) == 'noclobber')
+      {
+        $mode = ' --no-clobber';
+      }
+      else if (isset($data['Mode']) && strtolower($data['Mode']) == 'update')
+      {
+        $mode = ' --update';
+      }
+
+      $backup = '';
+
+      if ((bool)$data['Backup'] === TRUE)
+      {
+        $backup = ' --backup';
+        if (isset($data['Suffix']) && $data['Suffix'] != '')
+        {
+          $backup .= ' --suffix='.$data['Suffix'];
+        }
+        else 
+        {
+          $backup .= ' --suffix=.'.date("Y-m-d");
+        }
+      }
+
+      $links = '';
+
+      if (isset($data['Links']) && strtolower($data['Links']) == 'hard')
+      {
+        $links = ' --link';
+      }
+      else if (isset($data['Links']) && strtolower($data['Links']) == 'symbolic')
+      {
+        $links = ' --symbolic-link';
+      }
+
+      $shell_result = $this->SshClient->Execute('sudo cp '.$recursive.$mode.$links.$backup.' "'.$path.'" "'.$targetPath.'"');
+
+      if ($shell_result->Error != '')
+      {
+        throw new \ErrorException($shell_result->Error);
+      }
+
+      return ['Success' => TRUE];
     }
 
     #region ..Private methods..

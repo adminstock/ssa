@@ -8,7 +8,7 @@
 			<i class="tree-branch-head" ng-class="iBranchClass() + (node.IsSymlink ? ' symlink symlink-folder' : '')" ng-click="selectNodeHead(node)"></i>
 			<i class="tree-leaf-head {{options.iLeafClass}}" ng-class="(node.IsSymlink ? 'symlink symlink-file' : '')"></i>
 
-			<div class="tree-label {{options.labelClass}}" ng-class="[selectedClass(), unselectableClass()]" ng-click="selectNodeLabel(node)" ng-dblclick="node.Type == 'Folder' ? selectNodeHead(node) : options.Open(node)" tree-transclude></div>
+			<div class="tree-label {{options.labelClass}}" ng-class="[selectedClass(), unselectableClass()]" ng-mouseup="selectNodeLabel(node); options.MouseUp($event, node)" ng-dblclick="node.Type == 'Folder' ? selectNodeHead(node) : options.Open(node)" tree-transclude  oncontextmenu="return false"></div>
 
 			<treeitem ng-show="nodeExpanded()"></treeitem>
 

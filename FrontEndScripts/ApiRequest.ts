@@ -127,25 +127,11 @@ module SmallServerAdmin {
 		 * Универсальный обработчик ошибок API.
 		 * Выводит сообщение об ошибке в диалоговом окне.
 		 */
-		private ApiError(response: ng.IHttpPromiseCallbackArg<any>): void {
+		public ApiError(response: ng.IHttpPromiseCallbackArg<any>): void {
 			console.log('ApiError', response);
 
 			if ((<any>response).data !== undefined && (<any>response).data != null && typeof (<any>response).data == 'object') {
-				var data = (<any>response).data;
-				if (data.ExceptionMessage !== undefined && data.ExceptionMessage != null && data.ExceptionMessage != '') {
-					Nemiro.UI.Dialog.Alert(Nemiro.Utility.Replace(data.ExceptionMessage, '\n', '<br />'), 'Error');
-				}
-				else if (data.Message !== undefined && data.Message != null && data.Message != '') {
-					Nemiro.UI.Dialog.Alert(Nemiro.Utility.Replace(data.Message, '\n', '<br />'), 'Error');
-				}
-				else if (data.Error !== undefined) {
-					if (data.Error.Message !== undefined && data.Error.Message != null && data.Error.Message != '') {
-						Nemiro.UI.Dialog.Alert(Nemiro.Utility.Replace(data.Error.Message, '\n', '<br />'), 'Error');
-					}
-					else {
-						Nemiro.UI.Dialog.Alert(Nemiro.Utility.Replace(data.Error, '\n', '<br />'), 'Error');
-					}
-				}
+				Nemiro.UI.Dialog.Alert(Nemiro.Utility.Replace(ApiRequest.GetExceptionMessage((<any>response).data), '\n', '<br />'), 'Error');
 			} else {
 				var details = '';
 				if ((<any>response).config !== undefined && (<any>response).config != null) {
@@ -154,6 +140,27 @@ module SmallServerAdmin {
 				}
 				Nemiro.UI.Dialog.Alert('<p>An unknown error occurred. Try again.</p><pre>' + Nemiro.Utility.Replace(details, '\n', '<br />') + '</pre>', 'Error');
 			}
+		}
+
+		public static GetExceptionMessage(data: any): string {
+			if (data !== undefined && data != null && typeof data == 'object') {
+				if (data.ExceptionMessage !== undefined && data.ExceptionMessage != null && data.ExceptionMessage != '') {
+					return data.ExceptionMessage;
+				}
+				else if (data.Message !== undefined && data.Message != null && data.Message != '') {
+					return data.Message;
+				}
+				else if (data.Error !== undefined) {
+					if (data.Error.Message !== undefined && data.Error.Message != null && data.Error.Message != '') {
+						return data.Error.Message;
+					}
+					else {
+						return data.Error;
+					}
+				}
+			}
+
+			return null;
 		}
 
 		/**

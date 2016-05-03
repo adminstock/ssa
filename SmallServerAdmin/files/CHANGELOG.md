@@ -2,7 +2,10 @@
 
 All notable changes to this module will be documented in this file.
 
-## [1.0.6] - unreleased
+## [1.0.6] - 2016-05-03
+### Added
+- Move, copy and mass deletion files and folders.
+
 ### Changed
 - Disabled `files_auto_reload`.
 

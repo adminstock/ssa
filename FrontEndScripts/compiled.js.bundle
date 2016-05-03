@@ -46,6 +46,7 @@
 		<file>/libs/angular-tree-control.js</file>
 		<file>/libs/highcharts/highstock-all.js</file>
 		<file>/libs/highcharts-ng.js</file>
+		<file>/libs/angular-pageslide-directive.js</file>
 
 		<!--Helper classes by Aleksey Nemiro-->
 		<file>/libs/Nemiro/nemiro.js</file>

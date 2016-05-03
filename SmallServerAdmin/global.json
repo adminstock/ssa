@@ -166,5 +166,22 @@
 	{ "Key": "Dashboard", "Value": "Dashboard" },
 	{ "Key": "Server dashboard", "Value": "Server dashboard" },
 	{ "Key": "Menu_Servers", "Value": "Servers" },
-	{ "Key": "Disabled", "Value": "Disabled" }
+	{ "Key": "Disabled", "Value": "Disabled" },
+	{ "Key": "Cut", "Value": "Cut" },
+	{ "Key": "Copy", "Value": "Copy" },
+	{ "Key": "Paste", "Value": "Paste" },
+	{ "Key": "Move", "Value": "Move" },
+	{ "Key": "Unselect", "Value": "Unselect" },
+	{ "Key": "Unselect all", "Value": "Unselect all" },
+	{ "Key": "Selected items", "Value": "Selected items" },
+	{ "Key": "Clear selection", "Value": "Clear selection" },
+	{ "Key": "Target path", "Value": "Target path" },
+	{ "Key": "overwrite existing", "Value": "overwrite existing" },
+	{ "Key": "skip existing", "Value": "skip existing" },
+	{ "Key": "make a backup copy of the target files", "Value": "make a backup copy of the target files" },
+	{ "Key": "copy", "Value": "copy" },
+	{ "Key": "create symbolic links", "Value": "create symbolic links" },
+	{ "Key": "create hard links", "Value": "create hard links" },
+	{ "Key": "update for newer", "Value": "update for newer" },
+	{ "Key": "Move selection", "Value": "Move selection" }
 ]

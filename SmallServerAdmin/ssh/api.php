@@ -89,7 +89,7 @@ namespace Api
           $result->Result = trim($result->Result);
         }
 
-        if ($result->Result != '' || !$this->IsError($result->Error)) 
+        if (($result->Result != '' && !$this->IsError($result->Result)) || !$this->IsError($result->Error)) 
         {
           // result not empty, remove error message
           $result->Error = '';
@@ -226,7 +226,7 @@ namespace Api
         return FALSE;
       }
 
-      if (stripos($value, '[sudo] password for') !== FALSE && preg_match('/invalid|error|failed/', $value) === 0)
+      if (stripos($value, '[sudo] password for') !== FALSE && preg_match('/invalid|error|failed|невозможно|ошибка|не удалось/', $value) === 0)
       {
         return FALSE;
       }

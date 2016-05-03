@@ -708,7 +708,15 @@ module SmallServerAdmin.Controllers {
 				if (response.status == 502 || response.status == 504) {
 					$this.Context.Timeout($this.WaitingServerResponse($this, reloadingItem), 1000);
 				} else {
-					Nemiro.UI.Dialog.Alert('Cannot reload service "' + reloadingItem.Name + '".', 'Error ' + response.status);
+					var exceptionMessage = ApiRequest.GetExceptionMessage((<any>response).data);
+
+					if (exceptionMessage != null) {
+						exceptionMessage = '<pre>' + exceptionMessage + '</pre>';
+					} else {
+						exceptionMessage = '';
+					}
+
+					Nemiro.UI.Dialog.Alert('Cannot reload service "' + reloadingItem.Name + '".' + exceptionMessage, 'Error ' + response.status);
 					reloadingItem.Status = 'Error';
 				}
 			}

@@ -25,6 +25,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="libs\angular-bootstrap-switch.js" />
+    <Content Include="libs\angular-pageslide-directive.js" />
     <Content Include="libs\angular-tree-control.js" />
     <Content Include="libs\angular\angular-animate.js" />
     <Content Include="libs\angular\angular-animate.min.js" />

@@ -32,7 +32,7 @@ namespace Api
     function __construct()
     {
       global $config;
-      if ($_SERVER['REQUEST_METHOD'] != 'POST' || !strrpos($_SERVER['HTTP_CONTENT_TYPE'], '/json'))
+      if ($_SERVER['REQUEST_METHOD'] != 'POST' || (!strrpos($_SERVER['HTTP_CONTENT_TYPE'], '/json') && !strrpos($_SERVER['CONTENT_TYPE'], '/json')))
       {
         $this->Error('Supports only the requests by POST. The type of content should be only JSON (application/json).');
         return;

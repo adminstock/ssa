@@ -29,7 +29,7 @@
       if (isset($_SERVER['PHP_AUTH_USER']))
       {
       ?>
-        <li><a href="/logout.php"><span class="glyphicon glyphicon-off"></span> ${Logout}</a></li>
+        <li><a href="/logout.php"><span class="glyphicon glyphicon-log-out"></span> ${Logout}</a></li>
       <?php
       }
       ?>
