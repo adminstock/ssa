@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="CreateDefault()">×</button>
         <h3>${Create}</h3>
       </div>
       <div class="modal-body">
@@ -30,7 +30,7 @@
                   <div class="btn-group">
                     <label class="btn btn-default" ng-model="CreateNew.PhpMode" uib-btn-radio="'Off'">${Off}</label>
                     <label class="btn btn-default" ng-model="CreateNew.PhpMode" uib-btn-radio="'FPM'">PHP-FPM</label>
-                    <label class="btn btn-default" ng-model="CreateNew.PhpMode" uib-btn-radio="'MOD'">Mod-PHP</label>
+                    <label class="btn btn-default" ng-model="CreateNew.PhpMode" uib-btn-radio="'MOD'" ng-show="Config.WebServer.indexOf('apache') != -1">Mod-PHP</label>
                   </div>
                 </div>
               </div>
@@ -42,7 +42,7 @@
                   <div class="btn-group">
                     <label class="btn btn-default" ng-model="CreateNew.AspNetMode" uib-btn-radio="'Off'">${Off}</label>
                     <label class="btn btn-default" ng-model="CreateNew.AspNetMode" uib-btn-radio="'FASTCGI'">FastCGI</label>
-                    <label class="btn btn-default" ng-model="CreateNew.AspNetMode" uib-btn-radio="'MOD'">Mod-Mono</label>
+                    <label class="btn btn-default" ng-model="CreateNew.AspNetMode" uib-btn-radio="'MOD'" ng-show="Config.WebServer.indexOf('apache') != -1">Mod-Mono</label>
                   </div>
                 </div>
               </div>

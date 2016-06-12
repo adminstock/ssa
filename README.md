@@ -1,6 +1,6 @@
 ﻿# SmallServerAdmin (SSA)
 
-This control panel for small **Debian** servers.
+This control panel for small **Debian** and **Ubuntu** servers.
 
 The interaction with a server is performed via **SSH**.
 
@@ -43,11 +43,11 @@ See also [Third-Party License](THIRDPARTYNOTICE.md).
 
 Server requirements to manage (administrable server):
 
-* Debian 7 or 8;
+* Debian 7 or Debian 8, or Ubuntu Server 16;
 * OpenSSH >= 6.7;
 * sudo >= 1.8.10;
 * sysstat >= 11.0.1;
-* Nginx >= 1.9 + Apache >= 2.4 (for web server);
+* Nginx >= 1.6 and/or Apache >= 2.4 (for web server);
 * [htan-runner](https://github.com/adminstock/htan-runner) for ASP.NET FastCGI;
 * See also README files for individual modules.
 
@@ -57,7 +57,7 @@ Server requirements for the control panel:
 
 * Linux, Windows, Mac OS/OS X;
 * Apache and/or Nginx, or IIS, or another web server with PHP support;
-* PHP 5 >= 5.5 with php_ssh2.dll;
+* PHP5 >= 5.5 or PHP7 with ssh2 extension;
 
 _**NOTE:** Earlier versions have not been tested._
 
@@ -70,55 +70,91 @@ _**NOTE:** For Windows required PHP v5.5._
 If **SmallServerAdmin** will be located on the managed (administrable) server, 
 it is recommended to use **[HTAN](https://github.com/adminstock/htan)** to automatic install **SmallServerAdmin**:
 
-```bash
-# root required
+#### Debian
+
+```Bash
+# root access is required
 su -l root
 
 # update packages
 apt-get update && apt-get upgrade
 
 # prerequisites
-apt-get install -y less libpcre3 subversion
+apt-get install -y less libpcre3 git
 
-# export htan to /usr/lib/htan
-svn export https://github.com/adminstock/htan.git/trunk/ /usr/lib/htan
+# clone htan to /usr/lib/htan
+git clone https://github.com/adminstock/htan.git /usr/lib/htan
 
-# install SmallServerAdmin
-chmod u=rx,g=rx /usr/lib/htan/installers/ssa
-/usr/lib/htan/installers/ssa
+# create symbolic links to htan
+[[ -f /sbin/htan ]] || ln -s /usr/lib/htan/run /sbin/htan
+[[ -f /usr/sbin/htan ]] || ln -s /usr/lib/htan/run /usr/sbin/htan
+
+# set permissions
+chmod u=rwx /usr/lib/htan/run
+
+# run
+htan --yes --install=ssa
 ```
 
-Enjoy!
+#### Ubuntu Server
+
+```Bash
+# update packages
+sudo apt-get update && sudo apt-get upgrade
+
+# prerequisites
+sudo apt-get install -y less libpcre3 git
+
+# clone htan to /usr/lib/htan
+sudo git clone https://github.com/adminstock/htan.git /usr/lib/htan
+
+# create symbolic links to htan
+[[ -f /sbin/htan ]] || sudo ln -s /usr/lib/htan/run /sbin/htan
+[[ -f /usr/sbin/htan ]] || sudo ln -s /usr/lib/htan/run /usr/sbin/htan
+
+# set permissions
+sudo chmod u=rwx /usr/lib/htan/run
+
+# run
+sudo htan --yes --install=ssa
+```
 
 #### Manually installation
 
 To manually install and configure the server, use the following instructions below.
 
+All commands to the server are performed through **sudo**.
+On the server, you must install and configure **sudo**.
+
+For **Debian** only, istall **sudo**:
+
+```Bash
+su -l root
+apt-get -y sudo
+```
+
 The interaction with the server will be carried out via **SSH**.
 Usually on a server must already be installed **OpenSSH** package, 
 but if it is not, you need to install **OpenSSH**.
 
-All commands to the server are performed through **sudo**.
-On the server, you must install and configure **sudo**.
-
 To obtain information about the system used **sysstat**, which is also necessary to install.
 
-```Shell
-su -l root -c 'apt-get -y install openssh-server sudo sysstat'
+```Bash
+sudo apt-get -y install openssh-server sysstat
 ```
 
 And also recommended **etckeeper** to install:
 
-```Shell
-su -l root -c 'apt-get -y install etckeeper'
-su -l root -c '[[ ! -d "/etc/.git" ]] && cd /etc && etckeeper init'
+```Bash
+sudo apt-get -y install etckeeper
+[[ ! -d "/etc/.git" ]] && cd /etc && sudo etckeeper init
 ```
 
 The best practice is to create a single user on whose behalf will be server management.
 
 For example, add **ssa** user:
 
-```Shell
+```Bash
 sudo adduser ssa --shell /bin/bash --no-create-home --gecos 'SmallServerAdmin'
 ```
 
@@ -128,13 +164,13 @@ _**ATTENTION:** Remember user password. It is required for the Panel Configurati
 
 Add the user to the **sudo** group:
 
-```Shell
+```Bash
 sudo usermod -a -G sudo ssa
 ```
 
 And restart **sudo**:
 
-```Shell
+```Bash
 sudo service sudo restart
 ```
 
@@ -143,13 +179,13 @@ add the created user in the list of allowed.
 
 Open `/etc/ssh/sshd_config`:
 
-```Shell
+```Bash
 sudo nano /etc/ssh/sshd_config
 ```
 
 Add user name to the `AllowUsers` and save changes:
 
-```Shell
+```Bash
 AllowUsers ssa
 ```
 
@@ -197,7 +233,7 @@ For this set the `FALSE` to the `ssh_required_password`.
 
 And also allow the execution of commands without entering a password:
 
-```Shell
+```Bash
 sudo bash -c 'echo "ssa ALL=(ALL) NOPASSWD:ALL" | (EDITOR="tee -a" visudo)'
 ```
 

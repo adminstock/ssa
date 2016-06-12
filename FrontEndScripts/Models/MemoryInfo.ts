@@ -15,26 +15,26 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
+  /**
    * Represents a RAM info.
-	 */
-	export class MemoryInfo {
+   */
+  export class MemoryInfo {
 
-		/**
-		 * Total Bytes.
-		 */
+    /**
+     * Total Bytes.
+     */
     public Total: number;
 
-		/**
-		 * Available Bytes.
-		 */
+    /**
+     * Available Bytes.
+     */
     public Available: number;
 
-		/**
-		 * Free Bytes.
-		 */
+    /**
+     * Free Bytes.
+     */
     public Free: number;
 
-	}
+  }
 
 }

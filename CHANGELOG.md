@@ -2,6 +2,20 @@
 
 All notable changes to SmallServerAdmin will be documented in this file.
 
+## [1.0.47-alpha] - 2016-06-12
+### Added
+- **ssh2** checking;
+- Connection test;
+- Client-side localization and resources for Russian;
+- Resources for German (only server-side);
+- `HtanEnabled` to `$config['client']`.
+
+### Changed
+- Widget of news: Twitter replaced to Facebook and VKontakte.
+
+### Fixed
+- Search sites (*/sites/api.php*).
+
 ## [1.0.39-alpha] - 2016-05-03
 ### Added
 - @adminstock news widget;

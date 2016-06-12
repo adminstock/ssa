@@ -1,11 +1,11 @@
-<?#Page Title="Monitoring" ?>
+<?#Page Title="${Monitoring}" ?>
 <html xmlns:php="http://aleksey.nemiro.ru/php-webforms">
   <body>
 
     <php:Content ID="MainContent">
       <div ng-controller="MonitoringController">
 
-        <h2 class="pull-left">Monitoring</h2>
+        <h2 class="pull-left">${Monitoring}</h2>
         <h2 class="pull-right">
           <button type="button" class="btn btn-default" ng-click="Refresh()" ng-disabled="RefreshDisabled">
             <span class="glyphicon glyphicon-refresh"></span>
@@ -72,19 +72,19 @@
           <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
             <h6 class="text-center">RAM</h6>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <span class="label label-primary text-nowrap" style="width:100%; display: inline-block;">Total: {{MemoryTotal}} ${Mb} ({{MemoryTotal / 1024 | CurrencyFormat : { decimalDigits: 2 } }} ${Gb})</span>
+              <span class="label label-primary text-nowrap" style="width:100%; display: inline-block;">${Total}: {{MemoryTotal}} ${Mb} ({{MemoryTotal / 1024 | CurrencyFormat : { decimalDigits: 2 } }} ${Gb})</span>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <span class="label text-nowrap" style="width:100%; display: inline-block;" ng-class="MemoryFreePercent <= 35 && MemoryFreePercent > 25 ? 'label-warning' : (MemoryFreePercent <= 25 ? 'label-danger' : 'label-success')">Free: {{MemoryFree}} ${Mb} ({{MemoryFree / 1024 | CurrencyFormat : { decimalDigits: 2 } }} ${Gb})</span>
+              <span class="label text-nowrap" style="width:100%; display: inline-block;" ng-class="MemoryFreePercent <= 35 && MemoryFreePercent > 25 ? 'label-warning' : (MemoryFreePercent <= 25 ? 'label-danger' : 'label-success')">${Free}: {{MemoryFree}} ${Mb} ({{MemoryFree / 1024 | CurrencyFormat : { decimalDigits: 2 } }} ${Gb})</span>
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
             <h6 class="text-center">HDD</h6>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <span class="label label-primary text-nowrap" style="width:100%; display: inline-block;">Total: {{HDDTotal}} ${Gb}</span>
+              <span class="label label-primary text-nowrap" style="width:100%; display: inline-block;">${Total}: {{HDDTotal}} ${Gb}</span>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <span class="label label-success text-nowrap" style="width:100%; display: inline-block;">Free: {{HDDFree}} ${Gb}</span>
+              <span class="label label-success text-nowrap" style="width:100%; display: inline-block;">${Free}: {{HDDFree}} ${Gb}</span>
             </div>
           </div>
         </div>
@@ -109,15 +109,15 @@
         <div class="panel panel-default">
           <div class="panel-body form-inline">
             <div class="form-group">
-              <input type="text" name="search" placeholder="Process name or ID" class="form-control" ng-model="SearchStringInput" />
+              <input type="text" name="search" placeholder="${Process name or ID}" class="form-control" ng-model="SearchStringInput" />
             </div>
             <button class="btn btn-default" ng-disabled="Loading" ng-click="Search()">
               <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-              Search
+              ${Search}
             </button>
             <button class="btn btn-default" ng-disabled="Loading" ng-click="ResetSearch()">
               <span class="glyphicon glyphicon-erase" aria-hidden="true"></span>
-              Reset
+              ${Reset}
             </button>
             <span ng-show="Loading" ng-cloak>
               &nbsp;
@@ -221,7 +221,7 @@
         </div>
 
         <div class="well well-lg text-center" ng-show="!Loading && (Processes == null || Processes.length == 0)" ng-cloak>
-          <p>Procesess not found...</p>
+          <p>${Procesess not found...}</p>
         </div>
 
         <?php

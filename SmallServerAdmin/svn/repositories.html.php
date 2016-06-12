@@ -1,15 +1,15 @@
-<?#Page Title="Svn Repositories" ?>
+<?#Page Title="${Svn Repositories}" ?>
 <html xmlns:php="http://aleksey.nemiro.ru/php-webforms">
   <body>
 
     <php:Content ID="MainContent">
       <div ng-controller="SvnRepositoriesController">
 
-        <h2 class="pull-left">Svn Repositories</h2>
+        <h2 class="pull-left">${Svn Repositories}</h2>
         <h2 class="pull-right">
           <a ng-click="Edit()" class="btn btn-success">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            Create repository
+            ${Create repository}
           </a>
         </h2>
 
@@ -18,15 +18,15 @@
         <div class="panel panel-default">
           <div class="panel-body form-inline">
             <div class="form-group">
-              <input type="text" name="search" placeholder="Path or part of path" class="form-control" ng-disabled="Loading" ng-model="Search" />
+              <input type="text" name="search" placeholder="${Path or part of path}" class="form-control" ng-disabled="Loading" ng-model="Search" />
             </div>
             <button class="btn btn-default" ng-disabled="Loading" ng-click="SearchRepositories()">
               <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-              Search
+              ${Search}
             </button>
             <button class="btn btn-default" ng-disabled="Loading" ng-click="ResetSearch()">
               <span class="glyphicon glyphicon-erase" aria-hidden="true"></span>
-              Reset
+              ${Reset}
             </button>
           </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="panel panel-default ng-hide" ng-show="Loading" ng-cloak>
           <div class="panel-body">
             <span class="glyphicon glyphicon-refresh fa-spin"></span>
-            Loading list of repositories. Please wait...
+            ${Loading list of repositories. Please wait...}
           </div>
         </div>
 
@@ -66,11 +66,11 @@
         </div>
 
         <div class="well well-lg" ng-show="!Loading && (Repositories == null || Repositories.length == 0)" ng-cloak>
-          <p>Repositories not found...</p>
+          <p>${Repositories not found...}</p>
           <p>
             <a ng-click="Edit()">
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-              Create a new repository
+              ${Create a new repository}
             </a>
           </p>
         </div>

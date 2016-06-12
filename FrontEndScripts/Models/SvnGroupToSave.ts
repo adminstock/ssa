@@ -15,26 +15,26 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents model to save svn group.
-	 */
-	export class SvnGroupToSave {
+  /**
+   * Represents model to save svn group.
+   */
+  export class SvnGroupToSave {
 
-		/**
-		 * Current group data.
-		 */
-		public Current: SvnGroup;
+    /**
+     * Current group data.
+     */
+    public Current: SvnGroup;
     
-		/**
-		 * Source group data.
-		 */
-		public Source: SvnGroup;
+    /**
+     * Source group data.
+     */
+    public Source: SvnGroup;
 
-		/**
-		 * Is new group.
-		 */
-		public IsNew: boolean;
+    /**
+     * Is new group.
+     */
+    public IsNew: boolean;
 
-	}
+  }
 
 }

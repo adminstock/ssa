@@ -15,36 +15,36 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents model to save svn user.
-	 */
-	export class SvnUserToSave {
+  /**
+   * Represents model to save svn user.
+   */
+  export class SvnUserToSave {
 
-		/**
-		 * Current user data.
-		 */
-		public Current: SvnUser;
+    /**
+     * Current user data.
+     */
+    public Current: SvnUser;
     
-		/**
-		 * Source user data.
-		 */
-		public Source: SvnUser;
+    /**
+     * Source user data.
+     */
+    public Source: SvnUser;
 
-		/**
-		 * Is new user.
-		 */
-		public IsNew: boolean;
-		
-		/**
-		 * New login need.
-		 */
-		public SetLogin: boolean;
+    /**
+     * Is new user.
+     */
+    public IsNew: boolean;
+    
+    /**
+     * New login need.
+     */
+    public SetLogin: boolean;
 
-		/**
-		 * New password need.
-		 */
-		public SetPassword: boolean;
+    /**
+     * New password need.
+     */
+    public SetPassword: boolean;
 
-	}
+  }
 
 }

@@ -10,19 +10,19 @@
     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
       <h6 class="text-center">RAM</h6>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <span class="label label-primary text-nowrap" style="width:100%; display: inline-block;">Total: {{MemoryTotal}} ${Mb} ({{MemoryTotal / 1024 | CurrencyFormat : { decimalDigits: 2 } }} ${Gb})</span>
+        <span class="label label-primary text-nowrap" style="width:100%; display: inline-block;">${Total}: {{MemoryTotal}} ${Mb} ({{MemoryTotal / 1024 | CurrencyFormat : { decimalDigits: 2 } }} ${Gb})</span>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <span class="label text-nowrap" style="width:100%; display: inline-block;" ng-class="MemoryFreePercent <= 35 && MemoryFreePercent > 25 ? 'label-warning' : (MemoryFreePercent <= 25 ? 'label-danger' : 'label-success')">Free: {{MemoryFree}} ${Mb} ({{MemoryFree / 1024 | CurrencyFormat : { decimalDigits: 2 } }} ${Gb})</span>
+        <span class="label text-nowrap" style="width:100%; display: inline-block;" ng-class="MemoryFreePercent <= 35 && MemoryFreePercent > 25 ? 'label-warning' : (MemoryFreePercent <= 25 ? 'label-danger' : 'label-success')">${Free}: {{MemoryFree}} ${Mb} ({{MemoryFree / 1024 | CurrencyFormat : { decimalDigits: 2 } }} ${Gb})</span>
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
       <h6 class="text-center">HDD</h6>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <span class="label label-primary text-nowrap" style="width:100%; display: inline-block;">Total: {{HDDTotal}} ${Gb}</span>
+        <span class="label label-primary text-nowrap" style="width:100%; display: inline-block;">${Total}: {{HDDTotal}} ${Gb}</span>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <span class="label label-success text-nowrap" style="width:100%; display: inline-block;">Free: {{HDDFree}} ${Gb}</span>
+        <span class="label label-success text-nowrap" style="width:100%; display: inline-block;">${Free}: {{HDDFree}} ${Gb}</span>
       </div>
     </div>
   </div>

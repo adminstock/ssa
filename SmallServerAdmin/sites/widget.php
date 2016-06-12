@@ -3,7 +3,7 @@
   <div class="panel panel-default ng-hide" ng-show="Loading" ng-cloak>
     <div class="panel-body">
       <span class="glyphicon glyphicon-refresh fa-spin"></span>
-      Loading list of sites. Please wait...
+      ${SITES_LOADING_LIST}
     </div>
   </div>
 
@@ -97,7 +97,7 @@
   </div>
 
   <div class="well well-lg" ng-show="!Loading && (Sites == null || Sites.length == 0)" ng-cloak>
-    <p>Sites not found...</p>
+    <p>${SITES_NOT_FOUND}</p>
   </div>
 
 </div>

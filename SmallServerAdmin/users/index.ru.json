@@ -1,0 +1,5 @@
+[
+	{ "Key":  "Login, Full name or phone", "Value": "Логин, полное имя или номер телефона" },
+	{ "Key":  "For confirmation, enter username, which should be removed:", "Value": "Для подтверждения, введите имя пользователя, которого следует удалить:" },
+	{ "Key":  "remove home folder", "Value": "удалить домашний каталог" }
+]

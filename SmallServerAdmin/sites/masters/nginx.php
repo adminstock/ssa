@@ -2,7 +2,7 @@
   <div class="form-group">
     <label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">${Domain}:</label>
     <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
-      <input type="text" class="form-control" ng-model="CreateNewNginx.Domain" maxlength="100" autocomplete="off" placeholder="For example: example.org" />
+      <input type="text" class="form-control" ng-model="CreateNewNginx.Domain" maxlength="100" autocomplete="off" placeholder="${For example}: example.org" />
     </div>
   </div>
   <div class="form-group">
@@ -45,7 +45,7 @@
     <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
       <div class="btn-group">
         <label class="btn btn-default" ng-model="CreateNewNginx.PhpMode" uib-btn-radio="'Off'">${Off}</label>
-        <label class="btn btn-default" ng-model="CreateNewNginx.PhpMode" uib-btn-radio="'MOD'">Mod-PHP</label>
+        <label class="btn btn-default" ng-model="CreateNewNginx.PhpMode" uib-btn-radio="'MOD'" ng-show="Config.WebServer.indexOf('apache') != -1">Mod-PHP</label>
         <label class="btn btn-default" ng-model="CreateNewNginx.PhpMode" uib-btn-radio="'FPM'">PHP-FPM</label>
       </div>
     </div>
@@ -77,7 +77,7 @@
     <div class="col-xs-6 col-sm-9 col-md-10 col-lg-10">
       <div class="btn-group">
         <label class="btn btn-default" ng-model="CreateNewNginx.AspNetMode" uib-btn-radio="'Off'">${Off}</label>
-        <label class="btn btn-default" ng-model="CreateNewNginx.AspNetMode" uib-btn-radio="'MOD'">Mod-Mono</label>
+        <label class="btn btn-default" ng-model="CreateNewNginx.AspNetMode" uib-btn-radio="'MOD'" ng-show="Config.WebServer.indexOf('apache') != -1">Mod-Mono</label>
         <label class="btn btn-default" ng-model="CreateNewNginx.AspNetMode" uib-btn-radio="'FASTCGI'">FastCGI</label>
       </div>
     </div>

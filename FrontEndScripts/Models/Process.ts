@@ -15,10 +15,10 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents a process.
-	 */
-	export class Process {
+  /**
+   * Represents a process.
+   */
+  export class Process {
 
     /**
      * The process ID.
@@ -74,11 +74,11 @@ module SmallServerAdmin.Models {
      */
     public Status: string;
 
-		/**
-		 * Loading/updating indicator.
-		 */
-		public Loading: boolean;
- 	
-	}
+    /**
+     * Loading/updating indicator.
+     */
+    public Loading: boolean;
+   
+  }
 
 }

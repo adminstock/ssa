@@ -15,26 +15,26 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents a service.
-	 */
-	export class Service {
+  /**
+   * Represents a service.
+   */
+  export class Service {
 
-		/**
-		 * The service name.
-		 */
-		public Name: string;
+    /**
+     * The service name.
+     */
+    public Name: string;
 
-		/**
-		 * The service status: Started | Stopped | <Empty>.
-		 */
-		public Status: string;
+    /**
+     * The service status: Started | Stopped | <Empty>.
+     */
+    public Status: string;
 
-		/**
-		 * Loading/updating indicator.
-		 */
-		public Loading: boolean;
- 	
-	}
+    /**
+     * Loading/updating indicator.
+     */
+    public Loading: boolean;
+   
+  }
 
 }

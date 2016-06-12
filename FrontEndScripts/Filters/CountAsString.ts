@@ -15,49 +15,49 @@
  */
 module SmallServerAdmin.Filters {
 
-	/**
-	 * Count as string.
-	 */
-	export class CountAsString implements Nemiro.IFilter {
+  /**
+   * Count as string.
+   */
+  export class CountAsString implements Nemiro.IFilter {
 
-		Name: string = 'CountAsString';
+    Name: string = 'CountAsString';
 
-		Filter: ng.IFilterService;
+    Filter: ng.IFilterService;
 
-		constructor(filter: ng.IFilterService) {
-			this.Filter = filter;
-		}
+    constructor(filter: ng.IFilterService) {
+      this.Filter = filter;
+    }
 
-		public Execution(value: number, args: any): any {
-			if (isNaN(parseFloat(<any>value)) || !isFinite(value)) {
-				return value;
-			}
+    public Execution(value: number, args: any): any {
+      if (isNaN(parseFloat(<any>value)) || !isFinite(value)) {
+        return value;
+      }
 
-			args = args || {};
-			var word1 = args.word1;
-			var word234 = args.word234;
-			var wordmore = args.wordmore;
+      args = args || {};
+      var word1 = args.word1;
+      var word234 = args.word234;
+      var wordmore = args.wordmore;
 
-			var decintpart = value;
-			var intpart = decintpart;
-			var endpart = (intpart % 100);
+      var decintpart = value;
+      var intpart = decintpart;
+      var endpart = (intpart % 100);
 
-			if (endpart > 19) endpart = endpart % 10;
+      if (endpart > 19) endpart = endpart % 10;
 
-			switch (endpart) {
-				case 1:
-					return word1;
+      switch (endpart) {
+        case 1:
+          return word1;
 
-				case 2:
-				case 3:
-				case 4:
-					return word234;
+        case 2:
+        case 3:
+        case 4:
+          return word234;
 
-				default:
-					return wordmore;
-			}
-		}
+        default:
+          return wordmore;
+      }
+    }
 
-	}
+  }
 
 }

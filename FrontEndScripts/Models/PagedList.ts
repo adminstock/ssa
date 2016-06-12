@@ -15,31 +15,31 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents list of data.
-	 */
-	export class PagedList<T> {
+  /**
+   * Represents list of data.
+   */
+  export class PagedList<T> {
 
-		/**
-		 * Number of current page.
-		 */
-		public CurrentPage: number;
+    /**
+     * Number of current page.
+     */
+    public CurrentPage: number;
     
-		/**
+    /**
      * Total data count.
      */
-		public TotalRecords: number;
+    public TotalRecords: number;
     
-		/**
+    /**
      * The number of data on a single page.
      */
-		public DataPerPage: number;
+    public DataPerPage: number;
 
-		/**
+    /**
      * The list of data.
      */
-		public Items: Array<T>;
+    public Items: Array<T>;
 
-	}
+  }
 
 }

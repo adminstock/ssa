@@ -6,7 +6,7 @@
         <h3>${Confirm}</h3>
       </div>
       <div class="modal-body">
-        Are you sure you want to delete the configuration for <strong>{{SelectecConfToDelete.Level}}</strong>?
+        ${Are you sure you want to delete the configuration for} <strong>{{SelectecConfToDelete.Level}}</strong>?
       </div>
       <div class="modal-footer">
         <button class="btn btn-danger" ng-click="DeleteConf()">${Delete}</button>

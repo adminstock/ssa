@@ -31,8 +31,11 @@
     <Compile Include="Controls\ServersList.php" />
     <Compile Include="Controls\StaticIncludes.php" />
     <Compile Include="dbadmin\menu.php" />
-    <Compile Include="dbadmin\mysql.php" />
-    <Compile Include="dbadmin\pgsql.php" />
+    <Compile Include="error.html.php" />
+    <Compile Include="error.php">
+      <SubType>Code</SubType>
+      <DependentUpon>error.html.php</DependentUpon>
+    </Compile>
     <Compile Include="files\api.php" />
     <Compile Include="files\dialogs\confirmToCopyItems.php" />
     <Compile Include="files\dialogs\confirmToDeleteItems.php" />
@@ -82,6 +85,7 @@
     <Compile Include="monitoring\models\MemoryInfo.php" />
     <Compile Include="monitoring\models\ServerInfo.php" />
     <Compile Include="monitoring\widget.php" />
+    <Compile Include="phpinfo.php" />
     <Compile Include="servers\192.168.56.140.php" />
     <Compile Include="servers\ReadMe.md" />
     <Compile Include="services\api.php" />
@@ -245,10 +249,12 @@
     <Content Include="Content\images\apache16.png" />
     <Content Include="Content\images\apache24.png" />
     <Content Include="Content\images\arrow45.png" />
+    <Content Include="Content\images\de.png" />
     <Content Include="Content\images\en.png" />
     <Content Include="Content\images\file.png" />
     <Content Include="Content\images\folder-closed.png" />
     <Content Include="Content\images\folder.png" />
+    <Content Include="Content\images\globe.png" />
     <Content Include="Content\images\link.png" />
     <Content Include="Content\images\nginx16.png" />
     <Content Include="Content\images\nginx24.png" />
@@ -321,16 +327,20 @@
     <Content Include="Content\scss\_validators.scss" />
     <Content Include="Content\scss\_variables.scss" />
     <Content Include="dbadmin\CHANGELOG.md" />
-    <Content Include="dbadmin\mysql.json">
-      <SubType>Content</SubType>
-      <DependentUpon>dbadmin\mysql.php</DependentUpon>
-    </Content>
-    <Content Include="dbadmin\pgsql.json">
-      <SubType>Content</SubType>
-      <DependentUpon>dbadmin\pgsql.php</DependentUpon>
-    </Content>
     <Content Include="files\CHANGELOG.md" />
+    <Content Include="files\index.json">
+      <SubType>Content</SubType>
+      <DependentUpon>files\index.html.php</DependentUpon>
+    </Content>
+    <Content Include="files\index.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>files\index.html.php</DependentUpon>
+    </Content>
     <Content Include="files\treeViewTemplate.html" />
+    <Content Include="global.de.json">
+      <SubType>Content</SubType>
+      <DependentUpon>global.php</DependentUpon>
+    </Content>
     <Content Include="global.json">
       <SubType>Content</SubType>
       <DependentUpon>global.php</DependentUpon>
@@ -426,16 +436,105 @@
     <Content Include="Content\scss\libs\_bootstrap-mincer.scss" />
     <Content Include="Content\scss\libs\_bootstrap-sprockets.scss" />
     <Content Include="Content\scss\libs\_bootstrap.scss" />
+    <Content Include="monitoring\index.json">
+      <SubType>Content</SubType>
+      <DependentUpon>monitoring\index.html.php</DependentUpon>
+    </Content>
+    <Content Include="monitoring\index.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>monitoring\index.html.php</DependentUpon>
+    </Content>
     <Content Include="services\CHANGELOG.md" />
+    <Content Include="services\index.json">
+      <SubType>Content</SubType>
+      <DependentUpon>services\index.html.php</DependentUpon>
+    </Content>
+    <Content Include="services\index.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>services\index.html.php</DependentUpon>
+    </Content>
     <Content Include="settings\CHANGELOG.md" />
+    <Content Include="settings\servers.json">
+      <SubType>Content</SubType>
+      <DependentUpon>settings\servers.html.php</DependentUpon>
+    </Content>
+    <Content Include="settings\servers.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>settings\servers.html.php</DependentUpon>
+    </Content>
+    <Content Include="settings\update.json">
+      <SubType>Content</SubType>
+      <DependentUpon>settings\update.html.php</DependentUpon>
+    </Content>
+    <Content Include="settings\update.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>settings\update.html.php</DependentUpon>
+    </Content>
     <Content Include="settings\update.sh" />
     <Content Include="sites\CHANGELOG.md" />
+    <Content Include="sites\edit.json">
+      <SubType>Content</SubType>
+      <DependentUpon>sites\edit.html.php</DependentUpon>
+    </Content>
+    <Content Include="sites\edit.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>sites\edit.html.php</DependentUpon>
+    </Content>
+    <Content Include="sites\index.json">
+      <SubType>Content</SubType>
+      <DependentUpon>sites\index.html.php</DependentUpon>
+    </Content>
+    <Content Include="sites\index.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>sites\index.html.php</DependentUpon>
+    </Content>
     <Content Include="svn\CHANGELOG.md" />
     <Content Include="ssh\CHANGELOG.md" />
+    <Content Include="svn\groups.json">
+      <SubType>Content</SubType>
+      <DependentUpon>svn\groups.html.php</DependentUpon>
+    </Content>
+    <Content Include="svn\groups.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>svn\groups.html.php</DependentUpon>
+    </Content>
+    <Content Include="svn\repositories.json">
+      <SubType>Content</SubType>
+      <DependentUpon>svn\repositories.html.php</DependentUpon>
+    </Content>
+    <Content Include="svn\repositories.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>svn\repositories.html.php</DependentUpon>
+    </Content>
+    <Content Include="svn\users.json">
+      <SubType>Content</SubType>
+      <DependentUpon>svn\users.html.php</DependentUpon>
+    </Content>
+    <Content Include="svn\users.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>svn\users.html.php</DependentUpon>
+    </Content>
     <Content Include="users\CHANGELOG.md" />
+    <Content Include="users\edit.json">
+      <SubType>Content</SubType>
+      <DependentUpon>users\edit.html.php</DependentUpon>
+    </Content>
+    <Content Include="users\edit.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>users\edit.html.php</DependentUpon>
+    </Content>
+    <Content Include="users\index.json">
+      <SubType>Content</SubType>
+      <DependentUpon>users\index.html.php</DependentUpon>
+    </Content>
+    <Content Include="users\index.ru.json">
+      <SubType>Content</SubType>
+      <DependentUpon>users\index.html.php</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
+    <Folder Include="Content\local\" />
     <Folder Include="Content\scss\" />
     <Folder Include="Content\scss\libs\font-awesome\" />
     <Folder Include="Content\scss\libs\jasny-bootstrap\" />

@@ -6,7 +6,7 @@
         <h3>${Confirm}</h3>
       </div>
       <div class="modal-body">
-        Are you sure you want to delete the folder <strong>{{SelectedFolderToDelete.Path}}</strong>?
+        ${Are you sure you want to delete the} <strong>{{SelectedFolderToDelete.Path}}</strong>?
       </div>
       <div class="modal-footer">
         <button class="btn btn-danger" ng-click="DeleteFolder()">${Delete}</button>

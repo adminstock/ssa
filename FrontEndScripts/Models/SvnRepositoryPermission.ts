@@ -15,26 +15,26 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents access rules for a svn repository.
-	 */
-	export class SvnRepositoryPermission {
+  /**
+   * Represents access rules for a svn repository.
+   */
+  export class SvnRepositoryPermission {
 
-		/**
-		 * The group or username.
-		 */
-		public ObjectName: string;
+    /**
+     * The group or username.
+     */
+    public ObjectName: string;
 
-		/**
-		 * Permission to read.
-		 */
-		public Read: boolean;
+    /**
+     * Permission to read.
+     */
+    public Read: boolean;
 
-		/**
-		 * Permission to write.
-		 */
+    /**
+     * Permission to write.
+     */
     public Write: boolean;
 
-	}
+  }
 
 }

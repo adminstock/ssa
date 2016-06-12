@@ -15,96 +15,100 @@
  */
 module SmallServerAdmin.Controllers {
 
-	/**
-	 * Represents the main controller.
-	 */
-	export class MasterController implements Nemiro.IController {
+  /**
+   * Represents the main controller.
+   */
+  export class MasterController implements Nemiro.IController {
 
-		public Scope: any;
-		public Context: Nemiro.AngularContext;
+    public Scope: any;
+    public Context: Nemiro.AngularContext;
 
-		/** SSA config. */
-		public get Config(): Models.Config {
-			return this.Scope.Config;
+    /** SSA config. */
+    public get Config(): Models.Config {
+      return this.Scope.Config;
     }
 
-		/** Text of progress message. */
-		public get ProgressMessage(): string {
-			return this.Scope.ProgressMessage;
+    /** Text of progress message. */
+    public get ProgressMessage(): string {
+      return this.Scope.ProgressMessage;
     }
-		public set ProgressMessage(value: string) {
-			this.Scope.ProgressMessage = value;
+    public set ProgressMessage(value: string) {
+      this.Scope.ProgressMessage = value;
     }
-		
-		/** Title of progress window. */
-		public get ProgressTitle(): string {
-			return this.Scope.ProgressTitle;
+    
+    /** Title of progress window. */
+    public get ProgressTitle(): string {
+      return this.Scope.ProgressTitle;
     }
-		public set ProgressTitle(value: string) {
-			this.Scope.ProgressTitle = value;
-    }
-
-		/** Progress dialog. */
-		private Progress: Nemiro.UI.Dialog;
-
-		public get PanelServers(): PanelServersController {
-			return this.Scope.PanelServers;
-    }
-		public set PanelServers(value: PanelServersController) {
-			this.Scope.PanelServers = value;
+    public set ProgressTitle(value: string) {
+      this.Scope.ProgressTitle = value;
     }
 
-		constructor(context: Nemiro.AngularContext) {
-			var $this = this;
-			
-			$this.Context = context;
-			$this.Scope = $this.Context.Scope;
-			
-			if ($('#config').length <= 0 || $('#config').val() == '' || $('#config').val() == '[]') {
-				Nemiro.UI.Dialog.Alert('Config not found.<br />Please check <code>$config[\'client\']</code> of the <strong>/ssa.config.php</strong>.', 'Error');
-			}
+    /** Progress dialog. */
+    private Progress: Nemiro.UI.Dialog;
 
-			$this.Scope.Config = JSON.parse($('#config').val());
+    public get PanelServers(): PanelServersController {
+      return this.Scope.PanelServers;
+    }
+    public set PanelServers(value: PanelServersController) {
+      this.Scope.PanelServers = value;
+    }
 
-			if (Nemiro.Utility.ReadCookies('currentServer') != null) {
-				$this.Scope.Config.CurrentServer = Nemiro.Utility.ReadCookies('currentServer');
-			}
+    constructor(context: Nemiro.AngularContext) {
+      var $this = this;
+      
+      $this.Context = context;
+      $this.Scope = $this.Context.Scope;
+      
+      if ($('#config').length <= 0 || $('#config').val() == '' || $('#config').val() == '[]') {
+        Nemiro.UI.Dialog.Alert(App.Resources.ConfigNotFound, App.Resources.Error);
+      }
 
-			console.log('Config', $this.Config);
+      $this.Scope.Config = JSON.parse($('#config').val());
 
-			// progress dialog
-			$this.Progress = Nemiro.UI.Dialog.CreateFromElement($('#progress'));
-			$this.Progress.DisableOverlayClose = true;
-			$this.Progress.DisplayCloseButton = false;
-			$this.Progress.DontRestore = true;
+      if (Nemiro.Utility.ReadCookies('currentServer') != null) {
+        $this.Scope.Config.CurrentServer = Nemiro.Utility.ReadCookies('currentServer');
+      }
 
-			$this.Scope.ShowProgress = (message?: string, title?: string) => {
-				$this.ProgressTitle = title;
-				$this.ProgressMessage = message;
-				$this.Progress.Show();
-			};
+      console.log('Config', $this.Config);
 
-			$this.Scope.CloseProgress = () => {
-				$this.Progress.Close();
-			};
+      /*if ($this.Config.Lang !== undefined && $this.Config.Lang != null && $this.Config.Lang != '') {
+        App.Lang = $this.Config.Lang;
+      }*/
 
-			// search servers controller
-			SmallServerAdmin.App.Current.ControllerRegistered.Add((sender: any, e: Nemiro.RegisteredController<Nemiro.IController>) => {
-				if (e.Name == 'PanelServersController') {
-					$this.PanelServers = <PanelServersController>e.Controller;
-				}
-			});
+      // progress dialog
+      $this.Progress = Nemiro.UI.Dialog.CreateFromElement($('#progress'));
+      $this.Progress.DisableOverlayClose = true;
+      $this.Progress.DisplayCloseButton = false;
+      $this.Progress.DontRestore = true;
 
-			$this.Scope.SelectServer = () => {
-				if ($this.PanelServers === undefined || $this.PanelServers == null) {
-					Nemiro.UI.Dialog.Alert('Servers controller not found.', 'Error;');
-					return;
-				}
+      $this.Scope.ShowProgress = (message?: string, title?: string) => {
+        $this.ProgressTitle = title;
+        $this.ProgressMessage = message;
+        $this.Progress.Show();
+      };
 
-				$this.PanelServers.SelectServer($this.PanelServers);
-			};
-		}
+      $this.Scope.CloseProgress = () => {
+        $this.Progress.Close();
+      };
 
-	}
+      // search servers controller
+      SmallServerAdmin.App.Current.ControllerRegistered.Add((sender: any, e: Nemiro.RegisteredController<Nemiro.IController>) => {
+        if (e.Name == 'PanelServersController') {
+          $this.PanelServers = <PanelServersController>e.Controller;
+        }
+      });
+
+      $this.Scope.SelectServer = () => {
+        if ($this.PanelServers === undefined || $this.PanelServers == null) {
+          Nemiro.UI.Dialog.Alert(App.Resources.ServersControllerNotFound, App.Resources.Error);
+          return;
+        }
+
+        $this.PanelServers.SelectServer($this.PanelServers);
+      };
+    }
+
+  }
 
 } 

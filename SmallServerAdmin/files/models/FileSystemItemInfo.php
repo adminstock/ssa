@@ -24,33 +24,33 @@ namespace Models
   class FileSystemItemInfo
   {
     
-		/**
-		 * The object name.
+    /**
+     * The object name.
      * 
      * @var \string
-		 */
-		public $Name;
+     */
+    public $Name;
 
-		/**
-		 * The full path.
+    /**
+     * The full path.
      * 
      * @var \string
-		 */
-		public $Path;
+     */
+    public $Path;
 
-		/**
+    /**
      * The target path for links ($Type = 'Link').
      * 
      * @var \string
      */
-		public $TargetPath;
+    public $TargetPath;
 
-		/**
+    /**
      * The type of object: Folder | File | Link.
      * 
      * @var \string
-		 */
-		public $Type;
+     */
+    public $Type;
 
     /**
      * The size of the file or folder (bytes).

@@ -232,9 +232,12 @@
     <TypeScriptCompile Include="Filters\CountAsString.ts" />
     <TypeScriptCompile Include="Filters\CurrencyFormat.ts" />
     <TypeScriptCompile Include="Filters\OrderGroups.ts" />
+    <TypeScriptCompile Include="Interfaces\ILocalization.ts" />
     <TypeScriptCompile Include="Interfaces\ISelectPath.ts" />
     <TypeScriptCompile Include="libs\Nemiro\IFilter.ts" />
     <TypeScriptCompile Include="libs\Nemiro\Utility.ts" />
+    <TypeScriptCompile Include="Localization\Default.ts" />
+    <TypeScriptCompile Include="Localization\ru.ts" />
     <TypeScriptCompile Include="Models\CreateUser.ts" />
     <TypeScriptCompile Include="Models\FileSystemItemInfo.ts" />
     <TypeScriptCompile Include="Models\FileSystemItem.ts" />
@@ -321,6 +324,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties bundleconfig_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

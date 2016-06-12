@@ -1,4 +1,4 @@
-<?#Page Title="Update SmallServerAdmin" ?>
+<?#Page Title="${Update SmallServerAdmin}" ?>
 <html xmlns:php="http://aleksey.nemiro.ru/php-webforms">
   <body>
 
@@ -12,19 +12,19 @@
 
             <div class="ng-hide" ng-show="Checking" ng-cloak>
               <span class="glyphicon glyphicon-refresh fa-spin"></span>
-              Checking for updates. Please wait...
+              ${Checking for updates. Please wait...}
             </div>
 
             <div class="ng-hide" ng-hide="NeedUpdate === undefined || NeedUpdate" ng-cloak>
-              This is the latest version!
+              ${This is the latest version!}
             </div>
 
             <div class="ng-hide" ng-show="Updated" ng-cloak>
-              SmallServerAdmin has been updated to version v{{NewVersion}}!
+              ${SSA_UPDATED}
             </div>
 
             <div class="ng-hide alert alert-warning" ng-show="NeedUpdate !== undefined && NeedUpdate && !Updated" ng-cloak>
-              <h4>Available a new version:</h4>
+              <h4>${Available a new version:}</h4>
               <h4>v{{NewVersion}}</h4>
               <pre ng-show="Changes">{{Changes}}</pre>
 
@@ -36,7 +36,7 @@
 
             <div class="alert alert-danger" ng-show="Updating">
               <span class="glyphicon glyphicon-exclamation-sign"></span>
-              Do not turn off the computer and do not close this page!
+              ${Do not turn off the computer and do not close this page!}
             </div>
           </div>
         </div>

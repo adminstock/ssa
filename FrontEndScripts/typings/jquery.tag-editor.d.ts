@@ -1,15 +1,15 @@
 ﻿interface JQueryStatic {
 
-	tagEditor(settings?: any); 
+  tagEditor(settings?: any); 
 
 }
 
 
 interface JQuery {
 
-	/**
-	 * Initializes tagEditor.
-	 */
-	tagEditor(settings?: any): JQuery;
+  /**
+   * Initializes tagEditor.
+   */
+  tagEditor(settings?: any): JQuery;
 
 } 

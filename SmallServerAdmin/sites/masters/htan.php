@@ -1,11 +1,11 @@
 <div ng-show="SelectedConfToAdd == 'HTAN'">
   <div class="alert alert-danger" ng-show="AvailableLevels.indexOf('Nginx') != -1">
-    Recommended to first create a configuration for <a ng-click="SelectConfToAdd('Nginx')">Nginx</a>.
+    ${Recommended to first create a configuration for} <a ng-click="SelectConfToAdd('Nginx')">Nginx</a>.
   </div>
   <div class="form-group">
     <label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">${Domain}:</label>
     <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
-      <input type="text" class="form-control" ng-model="CreateNewHTAN.Domain" maxlength="100" autocomplete="off" placeholder="For example: example.org" />
+      <input type="text" class="form-control" ng-model="CreateNewHTAN.Domain" maxlength="100" autocomplete="off" placeholder="${For example}: example.org" />
     </div>
   </div>
   <div class="form-group">
@@ -42,8 +42,8 @@
         <hr ng-show="$index != CreateNewHTAN.FastCGI.length - 1" />
       </div>
       <div ng-show="CreateNewHTAN.FastCGI.length == 0">
-        fastcgi_pass not found. <a ng-click="ReinitCurrentConf()">Re-init this by Nginx config</a>.<br />
-        <small>(current HTAN config will be overwritten)</small>
+        ${fastcgi_pass not found}. <a ng-click="ReinitCurrentConf()">${Re-init this by Nginx config}</a>.<br />
+        <small>(${current HTAN config will be overwritten})</small>
       </div>
     </div>
   </div>

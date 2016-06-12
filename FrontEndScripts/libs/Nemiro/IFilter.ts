@@ -15,17 +15,17 @@
  */
 module Nemiro {
 
-	/** Interface for Angular filter. */
-	export interface IFilter {
+  /** Interface for Angular filter. */
+  export interface IFilter {
 
-		Name: string;
+    Name: string;
 
-		Filter: ng.IFilterService;
+    Filter: ng.IFilterService;
 
-		//constructor(filter: ng.IFilterService);
+    //constructor(filter: ng.IFilterService);
 
-		Execution(input: any, args: any): any;
+    Execution(input: any, args: any): any;
 
-	}
+  }
 
 }

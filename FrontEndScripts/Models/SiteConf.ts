@@ -15,32 +15,32 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents config file of site.
-	 */
-	export class SiteConf {
+  /**
+   * Represents config file of site.
+   */
+  export class SiteConf {
 
-		/**
-		 * The WebServer name: Apache | Nginx | HTAN.
-		 */
-		public Level: string;
+    /**
+     * The WebServer name: Apache | Nginx | HTAN.
+     */
+    public Level: string;
 
-		/**
-		 * The source data of the config file.
-		 */
-		public Source: string;
-		
-		/**
-		 * Status of the config.
-		 */
-		public Enabled: boolean;
+    /**
+     * The source data of the config file.
+     */
+    public Source: string;
+    
+    /**
+     * Status of the config.
+     */
+    public Enabled: boolean;
 
-		constructor(level: string, source?: string) {
-			this.Level = level;
-			this.Source = source || '';
-			this.Enabled = true;
-		}
+    constructor(level: string, source?: string) {
+      this.Level = level;
+      this.Source = source || '';
+      this.Enabled = true;
+    }
 
-	}
+  }
 
 }

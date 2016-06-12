@@ -1,0 +1,8 @@
+[
+	{ "Key": "Recommended to first create a configuration for", "Value": "Recommended to first create a configuration for" },
+	{ "Key": "fastcgi_pass not found", "Value": "fastcgi_pass not found" },
+	{ "Key": "Re-init this by Nginx config", "Value": "Re-init this by Nginx config" },
+	{ "Key": "current HTAN config will be overwritten", "Value": "current HTAN config will be overwritten" },
+	{ "Key": "Are you sure you want to delete the configuration for", "Value": "Are you sure you want to delete the configuration for" },
+	{ "Key": "Site Editor", "Value": "Site Editor" }
+]

@@ -15,37 +15,37 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents account update model.
-	 */
-	export class AccountUpdate {
+  /**
+   * Represents account update model.
+   */
+  export class AccountUpdate {
 
-		/**
-		 * User login.
-		 */
-		public Login: string;
+    /**
+     * User login.
+     */
+    public Login: string;
 
-		public SetLogin: boolean;
+    public SetLogin: boolean;
 
-		/**
-		 * New login.
-		 */
-		public NewLogin: string;
+    /**
+     * New login.
+     */
+    public NewLogin: string;
 
-		public SetPassword: boolean;
+    public SetPassword: boolean;
 
-		/**
-		 * New password.
-		 */
-		public NewPassword: string;
-		
-		public SetShell: boolean;
+    /**
+     * New password.
+     */
+    public NewPassword: string;
+    
+    public SetShell: boolean;
 
-		/**
-		 * New shell.
-		 */
-		public NewShell: string;
+    /**
+     * New shell.
+     */
+    public NewShell: string;
 
-	}
+  }
 
 }

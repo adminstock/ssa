@@ -15,25 +15,25 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
+  /**
    * Represents HDD info.
-	 */
-	export class HDDInfo {
+   */
+  export class HDDInfo {
 
     public FileSystem: string;
 
     public Partition: string;
 
-		/**
-		 * Total Bytes.
-		 */
+    /**
+     * Total Bytes.
+     */
     public Total: number;
 
-		/**
-		 * Available Bytes.
-		 */
+    /**
+     * Available Bytes.
+     */
     public Available: number;
-    	
-	}
+      
+  }
 
 }

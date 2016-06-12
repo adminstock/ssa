@@ -1,1 +1,1 @@
-<li><a href="/files"><span class="fa fa-folder"></span> Files</a></li>
+<li><a href="/files"><span class="fa fa-folder"></span> ${Menu_Files}</a></li>

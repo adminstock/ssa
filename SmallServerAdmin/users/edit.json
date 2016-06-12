@@ -1,0 +1,9 @@
+[
+	{ "Key": "User Editor", "Value": "User Editor" },
+	{ "Key": "GECOS Fields", "Value": "GECOS Fields" },
+	{ "Key": "Phone work", "Value": "Phone work" },
+	{ "Key": "Phone home", "Value": "Phone home" },
+	{ "Key": "Other", "Value": "Other" },
+	{ "Key": "System user", "Value": "System user" },
+	{ "Key": "No create home", "Value": "No create home" }
+]

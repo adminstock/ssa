@@ -15,10 +15,10 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents result of SSH command.
-	 */
-	export class SshResult {
+  /**
+   * Represents result of SSH command.
+   */
+  export class SshResult {
 
     /**
      * SSH result.
@@ -29,7 +29,7 @@ module SmallServerAdmin.Models {
      * SSH error message.
      */
     public Error: string;
-    	
-	}
+      
+  }
 
 }

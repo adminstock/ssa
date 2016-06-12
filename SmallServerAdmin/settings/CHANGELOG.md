@@ -2,6 +2,10 @@
 
 All notable changes to this module will be documented in this file.
 
+## [1.0.2] - 2016-06-07
+### Added
+- `CheckConnection` (*api.php*).
+
 ## [1.0.1] - 2016-04-30
 ### Added
 - Server Manager.

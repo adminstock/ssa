@@ -15,22 +15,22 @@
  */
 module Nemiro {
 
-	/**
-	 * Represents a registered controlller.
-	 */
-	export class RegisteredController<T> {
+  /**
+   * Represents a registered controlller.
+   */
+  export class RegisteredController<T> {
 
-		/** The controller name. */
-		public Name: string;
+    /** The controller name. */
+    public Name: string;
 
-		/** The controller instance. */
-		public Controller: T;
+    /** The controller instance. */
+    public Controller: T;
 
-		constructor(name: string, controller: T) {
-			this.Name = name;
-			this.Controller = controller;
-		}
+    constructor(name: string, controller: T) {
+      this.Name = name;
+      this.Controller = controller;
+    }
 
-	}
+  }
 
 }

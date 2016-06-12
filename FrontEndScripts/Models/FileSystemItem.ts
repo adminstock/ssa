@@ -15,44 +15,44 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents a file or folder.
-	 */
-	export class FileSystemItem {
+  /**
+   * Represents a file or folder.
+   */
+  export class FileSystemItem {
 
-		/**
-		 * The object name.
-		 */
-		public Name: string;
+    /**
+     * The object name.
+     */
+    public Name: string;
 
-		/**
-		 * The full path.
-		 */
-		public Path: string;
- 	
-		/**
-		 * The type of object: Folder | File.
-		 */
-		public Type: string;
+    /**
+     * The full path.
+     */
+    public Path: string;
+   
+    /**
+     * The type of object: Folder | File.
+     */
+    public Type: string;
 
-		/**
-		 * The list of child items (subfolders).
-		 */
-		public Children: Array<FileSystemItem>;
+    /**
+     * The list of child items (subfolders).
+     */
+    public Children: Array<FileSystemItem>;
 
-		public Loading: boolean;
+    public Loading: boolean;
 
-		public RenameMode: boolean;
+    public RenameMode: boolean;
 
-		/**
-		 * The new object name for RenameMode.
-		 */
-		public NewName: string;
+    /**
+     * The new object name for RenameMode.
+     */
+    public NewName: string;
 
-		/**
-		 * The link to parent instance.
-		 */
-		public Parent: FileSystemItem;
+    /**
+     * The link to parent instance.
+     */
+    public Parent: FileSystemItem;
 
     /**
      * The size of the file or folder (bytes).
@@ -71,6 +71,6 @@ module SmallServerAdmin.Models {
 
     public IsNew: boolean;
 
-	}
+  }
 
 }

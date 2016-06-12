@@ -15,237 +15,237 @@
  */
 module SmallServerAdmin.Controllers {
 
-	/**
-	 * Represents the controller for the user groups management of the Subversion server.
-	 */
-	export class SvnGroupsController implements Nemiro.IController {
+  /**
+   * Represents the controller for the user groups management of the Subversion server.
+   */
+  export class SvnGroupsController implements Nemiro.IController {
 
-		public Scope: any;
-		public Context: Nemiro.AngularContext;
+    public Scope: any;
+    public Context: Nemiro.AngularContext;
 
-		/** The list of groups. */
-		public get Groups(): Array<Models.SvnGroup> {
-			return this.Scope.Groups;
+    /** The list of groups. */
+    public get Groups(): Array<Models.SvnGroup> {
+      return this.Scope.Groups;
     }
-		public set Groups(value: Array<Models.SvnGroup>) {
-			this.Scope.Groups = value;
-    }
-
-		/** Current group. */
-		public get CurrentGroup(): Models.SvnGroup {
-			return this.Scope.CurrentGroup;
-    }
-		public set CurrentGroup(value: Models.SvnGroup) {
-			this.Scope.CurrentGroup = value;
+    public set Groups(value: Array<Models.SvnGroup>) {
+      this.Scope.Groups = value;
     }
 
-		/** The source data of the current group. */
-		public get SourceGroup(): Models.SvnGroup {
-			return this.Scope.SourceGroup;
+    /** Current group. */
+    public get CurrentGroup(): Models.SvnGroup {
+      return this.Scope.CurrentGroup;
     }
-		public set SourceGroup(value: Models.SvnGroup) {
-			this.Scope.SourceGroup = value;
-    }
-
-		/**
-		 * The list of all subversion users.
-		 */
-		public get Users(): Array<string> {
-			return this.Scope.Users;
-    }
-		public set Users(value: Array<string>) {
-			this.Scope.Users = value;
+    public set CurrentGroup(value: Models.SvnGroup) {
+      this.Scope.CurrentGroup = value;
     }
 
-		/** Loading indicator. */
-		public get Loading(): boolean {
-			return this.Scope.Loading;
+    /** The source data of the current group. */
+    public get SourceGroup(): Models.SvnGroup {
+      return this.Scope.SourceGroup;
     }
-		public set Loading(value: boolean) {
-			this.Scope.Loading = value;
-    }
-
-		public get IsNew(): boolean {
-			return this.Scope.IsNew;
-    }
-		public set IsNew(value: boolean) {
-			this.Scope.IsNew = value;
+    public set SourceGroup(value: Models.SvnGroup) {
+      this.Scope.SourceGroup = value;
     }
 
-		public get SelectedGroupToRemove(): string {
-			return this.Scope.SelectedGroupToRemove;
+    /**
+     * The list of all subversion users.
+     */
+    public get Users(): Array<string> {
+      return this.Scope.Users;
     }
-		public set SelectedGroupToRemove(value: string) {
-			this.Scope.SelectedGroupToRemove = value;
+    public set Users(value: Array<string>) {
+      this.Scope.Users = value;
     }
 
-		private Editor: Nemiro.UI.Dialog;
-		private ConfirmRemove: Nemiro.UI.Dialog;
+    /** Loading indicator. */
+    public get Loading(): boolean {
+      return this.Scope.Loading;
+    }
+    public set Loading(value: boolean) {
+      this.Scope.Loading = value;
+    }
 
-		constructor(context: Nemiro.AngularContext) {
-			var $this = this;
-			
-			$this.Context = context;
-			$this.Scope = $this.Context.Scope;
-			$this.Editor = Nemiro.UI.Dialog.CreateFromElement($('#svnGroup'));
-			$this.ConfirmRemove = Nemiro.UI.Dialog.CreateFromElement($('#confirmSvnGroupRemove'));
+    public get IsNew(): boolean {
+      return this.Scope.IsNew;
+    }
+    public set IsNew(value: boolean) {
+      this.Scope.IsNew = value;
+    }
 
-			$this.Scope.LoadGroups = () => { $this.LoadGroups($this); }
+    public get SelectedGroupToRemove(): string {
+      return this.Scope.SelectedGroupToRemove;
+    }
+    public set SelectedGroupToRemove(value: string) {
+      this.Scope.SelectedGroupToRemove = value;
+    }
 
-			$this.Scope.EditGroup = (g?: Models.SvnGroup) => { $this.EditGroup($this, g); }
-			$this.Scope.SaveGroup = () => { $this.SaveGroup($this); }
-			$this.Scope.DeleteGroup = () => { $this.DeleteGroup($this); }
-			$this.Scope.UserClick = (user: string) => { $this.UserClick($this, user); }
-			$this.Scope.ShowDialogToDeleteGroup = (group: string) => {
-				$this.SelectedGroupToRemove = group;
-				$this.ConfirmRemove.Show();
-			};
+    private Editor: Nemiro.UI.Dialog;
+    private ConfirmRemove: Nemiro.UI.Dialog;
 
-			$this.LoadGroups($this);
-		}
+    constructor(context: Nemiro.AngularContext) {
+      var $this = this;
+      
+      $this.Context = context;
+      $this.Scope = $this.Context.Scope;
+      $this.Editor = Nemiro.UI.Dialog.CreateFromElement($('#svnGroup'));
+      $this.ConfirmRemove = Nemiro.UI.Dialog.CreateFromElement($('#confirmSvnGroupRemove'));
 
-		private LoadGroups($this: SvnGroupsController): void {
-			$this = $this || this;
-			$this.Loading = true;
+      $this.Scope.LoadGroups = () => { $this.LoadGroups($this); }
 
-			// create request
-			var apiRequest = new ApiRequest<Array<Models.SvnGroup>>($this.Context, 'Svn.GetGroups');
+      $this.Scope.EditGroup = (g?: Models.SvnGroup) => { $this.EditGroup($this, g); }
+      $this.Scope.SaveGroup = () => { $this.SaveGroup($this); }
+      $this.Scope.DeleteGroup = () => { $this.DeleteGroup($this); }
+      $this.Scope.UserClick = (user: string) => { $this.UserClick($this, user); }
+      $this.Scope.ShowDialogToDeleteGroup = (group: string) => {
+        $this.SelectedGroupToRemove = group;
+        $this.ConfirmRemove.Show();
+      };
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
-				$this.Groups = response.data;
-			};
+      $this.LoadGroups($this);
+    }
 
-			apiRequest.CompleteCallback = () => {
-				$this.Loading = false;
-				$this.Scope.$parent.CloseProgress();
-			};
+    private LoadGroups($this: SvnGroupsController): void {
+      $this = $this || this;
+      $this.Loading = true;
 
-			// execute
-			apiRequest.Execute();
-		}
+      // create request
+      var apiRequest = new ApiRequest<Array<Models.SvnGroup>>($this.Context, 'Svn.GetGroups');
 
-		private EditGroup($this: SvnGroupsController, group?: Models.SvnGroup): void {
-			$this.Loading = true;
-			var apiRequest = null;
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        $this.Groups = response.data;
+      };
 
-			if (group === undefined || group == null) {
+      apiRequest.CompleteCallback = () => {
+        $this.Loading = false;
+        $this.Scope.$parent.CloseProgress();
+      };
 
-				$this.IsNew = true;
-				$this.SourceGroup = new Models.SvnGroup();
-				$this.SourceGroup.Name = "New Group";
-				$this.CurrentGroup = new Models.SvnGroup();
+      // execute
+      apiRequest.Execute();
+    }
 
-				$this.Scope.$parent.ShowProgress('Preparing form. Please wait...', 'Preparing...');
+    private EditGroup($this: SvnGroupsController, group?: Models.SvnGroup): void {
+      $this.Loading = true;
+      var apiRequest = null;
 
-				apiRequest = new ApiRequest<Array<string>>($this.Context, 'Svn.GetLogins');
+      if (group === undefined || group == null) {
 
-				apiRequest.SuccessCallback = (response) => {
-					$this.Users = response.data;
-					$this.Editor.Show();
-				};
+        $this.IsNew = true;
+        $this.SourceGroup = new Models.SvnGroup();
+        $this.SourceGroup.Name = App.Resources.NewGroup;
+        $this.CurrentGroup = new Models.SvnGroup();
 
-				apiRequest.CompleteCallback = () => {
-					$this.Loading = false;
-					$this.Scope.$parent.CloseProgress();
-				};
+        $this.Scope.$parent.ShowProgress(App.Resources.PreparingFormWait, App.Resources.Preparing);
 
-				apiRequest.Execute();
+        apiRequest = new ApiRequest<Array<string>>($this.Context, 'Svn.GetLogins');
 
-			} else {
+        apiRequest.SuccessCallback = (response) => {
+          $this.Users = response.data;
+          $this.Editor.Show();
+        };
 
-				$this.Scope.$parent.ShowProgress('Obtaining the group data from the server. Please wait...', 'Loading...');
+        apiRequest.CompleteCallback = () => {
+          $this.Loading = false;
+          $this.Scope.$parent.CloseProgress();
+        };
 
-				$this.IsNew = false;
+        apiRequest.Execute();
 
-				// load data from server
-				apiRequest = new ApiRequest<Models.SvnGroupToEdit>($this.Context, 'Svn.GetGroup', { name: group.Name });
+      } else {
 
-				// handler successful response to a request to api
-				apiRequest.SuccessCallback = (response) => {
-					$this.CurrentGroup = response.data.Group;
-					$this.Users = response.data.Users;
-					$this.SourceGroup = $.parseJSON($.toJSON(response.data.Group));
-					$this.Editor.Show();
-				};
+        $this.Scope.$parent.ShowProgress(App.Resources.ObtainingTheGroupWait, App.Resources.Loading);
 
-				apiRequest.CompleteCallback = () => {
-					$this.Loading = false;
-					$this.Scope.$parent.CloseProgress();
-				};
+        $this.IsNew = false;
 
-				// execute request
-				apiRequest.Execute();
+        // load data from server
+        apiRequest = new ApiRequest<Models.SvnGroupToEdit>($this.Context, 'Svn.GetGroup', { name: group.Name });
 
-			}
-		}
+        // handler successful response to a request to api
+        apiRequest.SuccessCallback = (response) => {
+          $this.CurrentGroup = response.data.Group;
+          $this.Users = response.data.Users;
+          $this.SourceGroup = $.parseJSON($.toJSON(response.data.Group));
+          $this.Editor.Show();
+        };
 
-		private UserClick($this: SvnGroupsController, user: string): void {
-			if ($this.CurrentGroup.Members == undefined || $this.CurrentGroup.Members == null) {
-				$this.CurrentGroup.Members = new Array<string>();
-			}
+        apiRequest.CompleteCallback = () => {
+          $this.Loading = false;
+          $this.Scope.$parent.CloseProgress();
+        };
 
-			if ($this.CurrentGroup.Members.indexOf(user) == -1) {
-				$this.CurrentGroup.Members.push(user);
-			} else {
-				$this.CurrentGroup.Members.splice($this.CurrentGroup.Members.indexOf(user), 1);
-			}
-		}
+        // execute request
+        apiRequest.Execute();
 
-		private SaveGroup($this: SvnGroupsController): void {
-			if (Nemiro.Utility.NextInvalidField($('#svnGroupEditor', $this.Editor.$modal))) {
-				return;
-			}
+      }
+    }
 
-			var g = new Models.SvnGroupToSave();
-			g.Source = $this.SourceGroup;
-			g.Current = $this.CurrentGroup;
-			g.IsNew = $this.IsNew;
+    private UserClick($this: SvnGroupsController, user: string): void {
+      if ($this.CurrentGroup.Members == undefined || $this.CurrentGroup.Members == null) {
+        $this.CurrentGroup.Members = new Array<string>();
+      }
 
-			// create request
-			var apiRequest = new ApiRequest<boolean>($this.Context, 'Svn.SaveGroup', g);
+      if ($this.CurrentGroup.Members.indexOf(user) == -1) {
+        $this.CurrentGroup.Members.push(user);
+      } else {
+        $this.CurrentGroup.Members.splice($this.CurrentGroup.Members.indexOf(user), 1);
+      }
+    }
 
-			$this.Scope.$parent.ShowProgress('Saving the group. Please wait...', 'Saving...');
+    private SaveGroup($this: SvnGroupsController): void {
+      if (Nemiro.Utility.NextInvalidField($('#svnGroupEditor', $this.Editor.$modal))) {
+        return;
+      }
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
-				$this.Scope.$parent.ShowProgress('Saved successfully!<br />Loading list of groups. Please wait...', 'Loading...');
-				$this.Editor.Close();
-				$this.LoadGroups($this);
-			};
+      var g = new Models.SvnGroupToSave();
+      g.Source = $this.SourceGroup;
+      g.Current = $this.CurrentGroup;
+      g.IsNew = $this.IsNew;
 
-			// execute
-			apiRequest.Execute();
-		}
+      // create request
+      var apiRequest = new ApiRequest<boolean>($this.Context, 'Svn.SaveGroup', g);
 
-		private DeleteGroup($this: SvnGroupsController): void {
-			$this = $this || this;
+      $this.Scope.$parent.ShowProgress(App.Resources.SavingTheGroupWait, App.Resources.Saving);
 
-			if ($this.SelectedGroupToRemove == undefined || $this.SelectedGroupToRemove == null || $this.SelectedGroupToRemove == '') {
-				Nemiro.UI.Dialog.Alert('Incorrect group name!', 'Error');
-				return;
-			}
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        $this.Scope.$parent.ShowProgress(App.Resources.SavedSuccessfullyLoadingListOfGroups, App.Resources.Loading);
+        $this.Editor.Close();
+        $this.LoadGroups($this);
+      };
 
-			$this.Scope.$parent.ShowProgress('Is removed the group <strong>' + $this.SelectedGroupToRemove + '</strong>. Please wait...', 'Deleting...');
-			$this.ConfirmRemove.Close();
+      // execute
+      apiRequest.Execute();
+    }
 
-			// create request
-			var apiRequest = new ApiRequest<boolean>($this.Context, 'Svn.DeleteGroup', { name: $this.SelectedGroupToRemove });
+    private DeleteGroup($this: SvnGroupsController): void {
+      $this = $this || this;
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
-				this.Scope.$parent.ShowProgress('Loading list of groups...', 'Loading...');
-				$this.SelectedGroupToRemove = '';
-				$this.LoadGroups($this);
-			};
+      if ($this.SelectedGroupToRemove == undefined || $this.SelectedGroupToRemove == null || $this.SelectedGroupToRemove == '') {
+        Nemiro.UI.Dialog.Alert(App.Resources.IncorrectGroupName, App.Resources.Error);
+        return;
+      }
 
-			apiRequest.CompleteCallback = () => {
-				$this.Scope.$parent.CloseProgress();
-			};
+      $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(App.Resources.IsRemovedTheGroupWait, [$this.SelectedGroupToRemove]), App.Resources.Deleting);
+      $this.ConfirmRemove.Close();
 
-			// execute
-			apiRequest.Execute();
-		}
-	}
+      // create request
+      var apiRequest = new ApiRequest<boolean>($this.Context, 'Svn.DeleteGroup', { name: $this.SelectedGroupToRemove });
+
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        this.Scope.$parent.ShowProgress(App.Resources.LoadingListOfGroups, App.Resources.Loading);
+        $this.SelectedGroupToRemove = '';
+        $this.LoadGroups($this);
+      };
+
+      apiRequest.CompleteCallback = () => {
+        $this.Scope.$parent.CloseProgress();
+      };
+
+      // execute
+      apiRequest.Execute();
+    }
+  }
 
 } 

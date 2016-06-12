@@ -1,4 +1,4 @@
-<?#Page Title="Sites / Editor" ?>
+<?#Page Title="${Site Editor}" ?>
 <html xmlns:php="http://aleksey.nemiro.ru/php-webforms">
   <body>
 
@@ -7,17 +7,17 @@
 
         <div id="loading" class="alert alert-info ng-hide" ng-show="Loading" ng-cloak>
           <span class="glyphicon glyphicon-refresh fa-spin"></span>
-          Loading data. Please wait...
+          ${Loading data. Please wait...}
         </div>
 
         <div id="saving" class="alert alert-info ng-hide" ng-show="Saving" ng-cloak>
           <span class="glyphicon glyphicon-refresh fa-spin"></span>
-          Saving data. Please wait...
+          ${Saving data. Please wait...}
         </div>
 
         <div id="success" class="alert alert-success ng-hide" ng-show="!Saving && !Loading && Success" ng-cloak>
           <span class="glyphicon glyphicon-ok"></span>
-          Data saved successfully!
+          ${Data saved successfully!}
         </div>
 
         <div class="panel panel-default ng-hide" ng-show="!Loading" ng-cloak>

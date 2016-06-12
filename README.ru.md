@@ -1,6 +1,6 @@
 ﻿# SmallServerAdmin (SSA)
 
-Веб-панель управления для небольших серверов **Debian**.
+Веб-панель управления для небольших серверов **Debian** и **Ubuntu**.
 
 Панель написана на **PHP**, взаимодействие с сервером осуществляется по **SSH**.
 
@@ -43,11 +43,11 @@
 
 Требования к управляемому серверу:
 
-* Debian 7 или 8;
+* Debian 7 или Debian 8, или Ubuntu Server 16;
 * OpenSSH >= 6.7;
 * sudo >= 1.8.10;
 * sysstat >= 11.0.1;
-* Nginx >= 1.9 + Apache >= 2.4;
+* Nginx >= 1.6 и/или Apache >= 2.4;
 * [htan-runner](https://github.com/adminstock/htan-runner) для ASP.NET FastCGI;
 * См. также файлы README конкретных модулей.
 
@@ -57,7 +57,7 @@
 
 * Linux, Windows, Mac OS/OS X;
 * Apache и/или Nginx, или IIS, или другой веб-сервер с поддержкой PHP;
-* PHP 5 >= 5.5 с модулем php_ssh2.dll;
+* PHP5 >= 5.5 или PHP7 с модулем ssh2;
 
 _**Примечание:** Работа с младшими версиями не проверялась, но в теории возможна._
 
@@ -70,6 +70,8 @@ _**Примечание:** Для Windows требуется PHP v5.5, с бол
 Если **SmallServerAdmin** будет располагаться на управляемом сервере, то для её установки и настройки рекомендуется использовать 
 **[HTAN](https://github.com/adminstock/htan)**:
 
+#### Debian
+
 ```bash
 # требуются права root
 su -l root
@@ -78,40 +80,73 @@ su -l root
 apt-get update && apt-get upgrade
 
 # устанавливаем необходимые компоненты
-apt-get install -y less libpcre3 subversion
+apt-get install -y less libpcre3 git
 
-# получаем htan
-svn export https://github.com/adminstock/htan.git/trunk/ /usr/lib/htan
+# получаем htan в папку /usr/lib/htan
+git clone https://github.com/adminstock/htan.git /usr/lib/htan
 
-# устанавливаем SmallServerAdmin
-chmod u=rx,g=rx /usr/lib/htan/installers/ssa
-/usr/lib/htan/installers/ssa --lang=ru
+# создаем символьные ссылки на htan
+[[ -f /sbin/htan ]] || ln -s /usr/lib/htan/run /sbin/htan
+[[ -f /usr/sbin/htan ]] || ln -s /usr/lib/htan/run /usr/sbin/htan
+
+# устанавливаем необходимые разрешения
+chmod u=rwx /usr/lib/htan/run
+
+# запускаем установку SmallServerAdmin
+htan --yes --install=ssa --lang=ru
 ```
 
-Пользуемся! :)
+#### Ubuntu Server
+
+```bash
+# обновляем сервер
+sudo apt-get update && sudo apt-get upgrade
+
+# устанавливаем необходимые компоненты
+sudo apt-get install -y less libpcre3 git
+
+# получаем htan в папку /usr/lib/htan
+sudo git clone https://github.com/adminstock/htan.git /usr/lib/htan
+
+# создаем символьные ссылки на htan
+[[ -f /sbin/htan ]] || sudo ln -s /usr/lib/htan/run /sbin/htan
+[[ -f /usr/sbin/htan ]] || sudo ln -s /usr/lib/htan/run /usr/sbin/htan
+
+# устанавливаем необходимые разрешения
+sudo chmod u=rwx /usr/lib/htan/run
+
+# запускаем установку SmallServerAdmin
+sudo htan --yes --install=ssa --lang=ru
+```
 
 #### Установка вручную
 
 Если автоматическая установка для вас не подходит или не работает, панель можно установить вручную.
 
-Установите пакеты **openssh-server**, **sudo** и **sysstat**:
+Для серверов **Debian** нужно установить **sudo**:
 
-```Shell
-su -l root -c 'apt-get -y install openssh-server sudo sysstat'
+```Bash
+su -l root -c 'apt-get -y install sudo'
+```
+
+Для **Debian** и **Ubuntu** требуется установить пакеты **openssh-server** и **sysstat**:
+
+```Bash
+sudo apt-get -y install openssh-server sysstat
 ```
 
 Также рекомендуется установить **etckeeper**:
 
-```Shell
-su -l root -c 'apt-get -y install etckeeper'
-su -l root -c '[[ ! -d "/etc/.git" ]] && cd /etc && etckeeper init'
+```Bash
+sudo apt-get -y install etckeeper
+[[ ! -d "/etc/.git" ]] && cd /etc && sudo etckeeper init
 ```
 
 Для безопасности лучшим решением будет создание отдельного пользователя, от имени которого панель будет работать с сервером.
 
 Например, создадим для **SmallServerAdmin** пользователя с именем **ssa**:
 
-```Shell
+```Bash
 sudo adduser ssa --shell /bin/bash --no-create-home --gecos 'SmallServerAdmin'
 ```
 
@@ -121,13 +156,13 @@ _**Предупреждение:** Запишите пароль, он пона�
 
 Затем необходимо добавить пользователя в группу **sudo**:
 
-```Shell
+```Bash
 sudo usermod -a -G sudo ssa
 ```
 
 И перезапустить **sudo**:
 
-```Shell
+```Bash
 sudo service sudo restart
 ```
 
@@ -136,13 +171,13 @@ sudo service sudo restart
 
 Отктройте файл `/etc/ssh/sshd_config`:
 
-```Shell
+```Bash
 sudo nano /etc/ssh/sshd_config
 ```
 
 Найдите параметр `AllowUsers` и добавьте туда созданного пользователя:
 
-```Shell
+```Bash
 AllowUsers ssa
 ```
 
@@ -187,7 +222,7 @@ $config['ssh_required_password'] = TRUE;
 Тогда значение параметра `ssh_required_password` может равняться `FALSE`.
 Помимо этого, необходимо настроить **sudo**, чтобы он не требовал ввод пароля для пользователя:
 
-```Shell
+```Bash
 sudo bash -c 'echo "ssa ALL=(ALL) NOPASSWD:ALL" | (EDITOR="tee -a" visudo)'
 ```
 
@@ -239,3 +274,5 @@ $config['widgets']['sites'] = [
 * [История изменений](CHANGELOG.md)
 * [Участие в проекте SmallServerAdmin](CONTRIBUTING.md)
 * [Инструменты для хостинга (HTAN)](https://github.com/adminstock/htan)
+* [Техническая поддержка](http://vk.com/board120230803)
+* [Виртуальные серверы](https://www.ihor.ru/?from=112887)

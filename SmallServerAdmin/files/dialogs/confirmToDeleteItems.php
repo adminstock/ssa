@@ -6,12 +6,14 @@
         <h3>${Delete}</h3>
       </div>
       <div class="modal-body">
-        Are you sure you want to delete <strong>{{SelectedItems.length}}</strong> items?<br /><br />
-				<span style="color:red">Recover data after deletion will not be possible.</span>
+        ${Are you sure you want to delete} <strong>{{SelectedItems.length}}</strong>
+        {{SelectedItems.length | CountAsString : { word1: "${items1}", word234: "${items234}", wordmore: "${items10}" } }}?
         <br /><br />
-        For confirmation, enter the number of items that will be removed:<br />
+        <span style="color:red">${Recover data after deletion will not be possible.}</span>
+        <br /><br />
+        ${FILES_CONFIRM_ITEMS_DELETETION}<br />
         <div class="form-group">
-          <input type="text" class="form-control" ng-model="ConfirmItemsToRemove" placeholder="Enter: {{SelectedItems.length}}" />
+          <input type="text" class="form-control" ng-model="ConfirmItemsToRemove" placeholder="${Enter}: {{SelectedItems.length}}" />
         </div>
       </div>
       <div class="modal-footer">

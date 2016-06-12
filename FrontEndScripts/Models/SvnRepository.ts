@@ -15,31 +15,31 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents repository info.
-	 */
-	export class SvnRepository {
+  /**
+   * Represents repository info.
+   */
+  export class SvnRepository {
 
-		/**
-		 * The repository name.
-		 */
-		public Name: string;
+    /**
+     * The repository name.
+     */
+    public Name: string;
 
-		/**
-		 * The full path to the repository.
-		 */
-		public AbsolutePath: string;
+    /**
+     * The full path to the repository.
+     */
+    public AbsolutePath: string;
 
-		/**
-		 * The relative path of the root path.
-		 */
-		public RelativePath: string;
+    /**
+     * The relative path of the root path.
+     */
+    public RelativePath: string;
 
-		/**
-		 * Permissions list.
-		 */
-		public Permissions: Array<SvnRepositoryPermission>;
-    	
-	}
+    /**
+     * Permissions list.
+     */
+    public Permissions: Array<SvnRepositoryPermission>;
+      
+  }
 
 }

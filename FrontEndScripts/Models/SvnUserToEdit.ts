@@ -15,21 +15,21 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents svn user for user editor.
-	 */
-	export class SvnUserToEdit {
+  /**
+   * Represents svn user for user editor.
+   */
+  export class SvnUserToEdit {
 
-		/**
-		 * User data.
-		 */
-		public User: SvnUser;
+    /**
+     * User data.
+     */
+    public User: SvnUser;
     
-		/**
-		 * List of all svn groups.
-		 */
-		public Groups: Array<string>;
+    /**
+     * List of all svn groups.
+     */
+    public Groups: Array<string>;
 
-	}
+  }
 
 }

@@ -1,30 +1,25 @@
 <?php
-# WebForms config
+// WebForms config
 require_once 'config.php';
-# WebForms.PHP Application
+// WebForms.PHP Application
 require_once $_SERVER['DOCUMENT_ROOT'].'/Libs/Nemiro/App.php';
-# SmallServerAdmin default config
+// SmallServerAdmin default config
 require_once 'ssa.config.php';
 
-# import and init application class
+// import and init application class
 use Nemiro\App as App;
 
 App::Init();
 
-# set event handlers
-App::AddHandler('Application_BeginRequest');
+// set event handlers
 App::AddHandler('Application_PageCreated');
 
-# include database clients
-# get from https://github.com/alekseynemiro/Nemiro.Data.PHP
-# App::IncludeFile('~/Nemiro/Data');
-
-# config for selected server
+// config for selected server
 if (isset($_COOKIE['currentServer']) && $_COOKIE['currentServer'] != '')
 {
   if (file_exists(\Nemiro\Server::MapPath('~/servers/'.$_COOKIE['currentServer'].'.php')))
   {
-    # config found, include
+    // config found, include
     \Nemiro\Console::Info('Server config: '.$_COOKIE['currentServer'].'.php.');
     require_once \Nemiro\Server::MapPath('~/servers/'.$_COOKIE['currentServer'].'.php');
     # fix client-side config
@@ -33,39 +28,123 @@ if (isset($_COOKIE['currentServer']) && $_COOKIE['currentServer'] != '')
   }
   else
   {
-    # config not found, remove from cookies
+    // config not found, remove from cookies
     \Nemiro\Console::Warning('Server config "'.$_COOKIE['currentServer'].'.php" not found.');
     unset($_COOKIE['currentServer']);
     setcookie('currentServer', null, -1, '/');
   }
 }
+  
+#region localization
 
-# language
-$CurrentLang = (isset($_COOKIE['lang']) ? $_COOKIE['lang'] : PAGE_DEFAULT_CULTURE);
-
-# application event handlers
-function Application_BeginRequest()
+// get current language
+if (isset($_COOKIE['lang']) && $_COOKIE['lang'] != '')
 {
-  global $CurrentLang;
-
-  if (isset($_GET['lang']) && $CurrentLang != $_GET['lang'] || (isset($_GET['lang']) && $_GET['lang'] == 'en'))
+  if (strpos($_COOKIE['lang'], ',') !== FALSE)
   {
-    setcookie('lang', $_GET['lang'], time() + 2592000);
+    $CurrentLang = explode(',', $_COOKIE['lang'])[0];
+    setcookie('lang', $CurrentLang, time() + 2592000, '/');
+  }
+  else
+  {
+    $CurrentLang = $_COOKIE['lang'];
+  }
+}
+else
+{
+  $acceptLangs = explode(';', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+  foreach ($acceptLangs as $al)
+  {
+    if (strpos($al, 'q=') !== FALSE) { continue; }
 
-    unset($_GET['lang']);
-    
-    if (count($_GET) > 0)
+    if (strpos($al, ',') !== FALSE)
     {
-      \Nemiro\Server::$Url['query'] = $_GET;
+      $CurrentLang = explode(',', $al)[0];
     }
     else
     {
-      unset(\Nemiro\Server::$Url['query']);
+      $CurrentLang = $al;
     }
 
-    \Nemiro\Server::Redirect(\Nemiro\Server::$Url['path'].(isset(\Nemiro\Server::$Url['query']) ? '?'.http_build_query(\Nemiro\Server::$Url['query']) : '').(isset(\Nemiro\Server::$Url['fragment']) ? '#'.\Nemiro\Server::$Url['fragment'] : ''), 301);
+    if ($CurrentLang != '')
+    {
+      break;
+    }
   }
 }
+
+if ($CurrentLang == NULL || $CurrentLang == '')
+{
+  $CurrentLang = PAGE_DEFAULT_CULTURE;
+}
+
+// set to client-side
+$config['client']['Lang'] = $CurrentLang;
+
+if (isset($_GET['lang']) && $CurrentLang != $_GET['lang'] || (isset($_GET['lang']) && $_GET['lang'] == 'en'))
+{
+  setcookie('lang', $_GET['lang'], time() + 2592000, '/');
+
+  unset($_GET['lang']);
+
+  if (count($_GET) > 0)
+  {
+    \Nemiro\Server::$Url['query'] = $_GET;
+  }
+  else
+  {
+    unset(\Nemiro\Server::$Url['query']);
+  }
+
+  \Nemiro\Server::Redirect(\Nemiro\Server::$Url['path'].(isset(\Nemiro\Server::$Url['query']) ? '?'.http_build_query(\Nemiro\Server::$Url['query']) : '').(isset(\Nemiro\Server::$Url['fragment']) ? '#'.\Nemiro\Server::$Url['fragment'] : ''), 301);
+  return;
+}
+
+#endregion
+#region ssh2 test
+
+if (($currentScriptName = App::GetScriptName()) != 'error' && $currentScriptName != 'api' && $currentScriptName != 'servers')
+{
+  // check ssh2
+  if (extension_loaded('ssh2') === FALSE)
+  {
+    \Nemiro\Server::Redirect('/error.php?code=SSH2_REQUIRED&returnUrl='.$_SERVER['REQUEST_URI']);
+    return;
+  }
+
+  // check connection
+  if (!($sshConnection = ssh2_connect($config['ssh_host'], (int)$config['ssh_port'])))
+  {
+    if (file_exists(\Nemiro\Server::MapPath('~/settings/servers.php')))
+    {
+      \Nemiro\Server::Redirect('/settings/servers.php#?connection_failed=true&returnUrl='.$_SERVER['REQUEST_URI']);
+    }
+    else
+    {
+      \Nemiro\Server::Redirect('/error.php?code=CONNECTION_FAILED&returnUrl='.$_SERVER['REQUEST_URI']);
+    }
+
+    return;
+  }
+
+  // check password
+  if (!ssh2_auth_password($sshConnection, $config['ssh_user'], $config['ssh_password']))
+  {
+    if (file_exists(\Nemiro\Server::MapPath('~/settings/servers.php')))
+    {
+      \Nemiro\Server::Redirect('/settings/servers.php#?authentication_failed=true&returnUrl='.$_SERVER['REQUEST_URI']);
+    }
+    else
+    {
+      \Nemiro\Server::Redirect('/error.php?code=AUTHENTICATION_FAILED&returnUrl='.$_SERVER['REQUEST_URI']);
+    }
+
+    return;
+  }
+}
+
+#endregion
+#region application event handlers
 
 /**
  * @param \Nemiro\UI\Page $page 
@@ -79,4 +158,5 @@ function Application_PageCreated($page)
     $page->Culture = $CurrentLang;
   }
 }
-?>
+
+#endregion

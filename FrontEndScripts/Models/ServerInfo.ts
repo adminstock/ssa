@@ -15,10 +15,10 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
+  /**
    * Represents server info.
-	 */
-	export class ServerInfo {
+   */
+  export class ServerInfo {
 
     /**
      * The collection percent load on each CPU. First - ALL.
@@ -34,7 +34,7 @@ module SmallServerAdmin.Models {
      * The HDD info.
      */
     public HDD: Array<HDDInfo>;
-    	
-	}
+      
+  }
 
 }

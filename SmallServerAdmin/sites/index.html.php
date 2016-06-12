@@ -1,15 +1,15 @@
-<?#Page Title="Sites" ?>
+<?#Page Title="${Sites}" ?>
 <html xmlns:php="http://aleksey.nemiro.ru/php-webforms">
   <body>
 
     <php:Content ID="MainContent">
       <div ng-controller="SiteListController">
 
-        <h2 class="pull-left">Sites</h2>
+        <h2 class="pull-left">${Sites}</h2>
         <h2 class="pull-right">
           <a href="/sites/edit.php" class="btn btn-success">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            Create site
+            ${Create site}
           </a>
         </h2>
 
@@ -18,15 +18,15 @@
         <div class="panel panel-default">
           <div class="panel-body form-inline">
             <div class="form-group">
-              <input type="text" name="search" placeholder="Path or part of path" class="form-control" ng-disabled="Loading" ng-model="SearchString" />
+              <input type="text" name="search" placeholder="${Path or part of path}" class="form-control" ng-disabled="Loading" ng-model="SearchString" />
             </div>
             <button class="btn btn-default" ng-disabled="Loading" ng-click="Search()">
               <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-              Search
+              ${Search}
             </button>
             <button class="btn btn-default" ng-disabled="Loading" ng-click="ResetSearch()">
               <span class="glyphicon glyphicon-erase" aria-hidden="true"></span>
-              Reset
+              ${Reset}
             </button>
           </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="panel panel-default ng-hide" ng-show="Loading" ng-cloak>
           <div class="panel-body">
             <span class="glyphicon glyphicon-refresh fa-spin"></span>
-            Loading list of sites. Please wait...
+            ${SITES_LOADING_LIST}
           </div>
         </div>
 
@@ -132,18 +132,18 @@
         </div>
 
         <div class="well well-lg" ng-show="!Loading && (Sites == null || Sites.length == 0)" ng-cloak>
-          <p>Sites not found...</p>
+          <p>${SITES_NOT_FOUND}</p>
           <p>
             <a href="/sites/edit.php">
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-              Create a new site
+              ${Create a new site}
             </a>
           </p>
         </div>
 
         <?php
         include_once  \Nemiro\Server::MapPath('~/sites/dialogs/confirmToDeleteSite.php');
-				?>
+        ?>
 
       </div>
 

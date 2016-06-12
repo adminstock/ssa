@@ -1,5 +1,5 @@
 ﻿interface JQueryStatic {
 
-	toJSON(data: any); 
+  toJSON(data: any); 
 
 }

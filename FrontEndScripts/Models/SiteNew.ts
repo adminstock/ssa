@@ -15,62 +15,62 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents a new web site model.
-	 */
-	export class SiteNew implements ISelectPath {
+  /**
+   * Represents a new web site model.
+   */
+  export class SiteNew implements ISelectPath {
 
-		/**
-		 * The main domain.
-		 */
-		public Domain: string;
+    /**
+     * The main domain.
+     */
+    public Domain: string;
 
-		/**
-		 * The root path.
-		 */
-		public SelectedPath: string;
+    /**
+     * The root path.
+     */
+    public SelectedPath: string;
 
-		/**
-		 * PHP mode: Off | MOD | FPM
-		 */
-		public PhpMode: string;
+    /**
+     * PHP mode: Off | MOD | FPM
+     */
+    public PhpMode: string;
 
-		/**
-		 * ASP.NET mode: Off | MOD | FASTCGI
-		 */
-		public AspNetMode: string;
+    /**
+     * ASP.NET mode: Off | MOD | FASTCGI
+     */
+    public AspNetMode: string;
 
-		/**
-		 * ASP.NET Version: 4.5 | 4.0 | 2.0
-		 */
-		public AspNetVersion: string;
+    /**
+     * ASP.NET Version: 4.5 | 4.0 | 2.0
+     */
+    public AspNetVersion: string;
 
-		public AspNetIOMapForAll: boolean;
+    public AspNetIOMapForAll: boolean;
 
-		public AspNetDebug: boolean;
+    public AspNetDebug: boolean;
 
-		/**
-		 * FastCGI process count.
-		 */
-		public AspNetFastCgiProcessCount: number;
+    /**
+     * FastCGI process count.
+     */
+    public AspNetFastCgiProcessCount: number;
 
-		/**
-		 * ASP.NET FastCGI socket type: Unix | TCP
-		 */
-		public AspNetSocket: string;
+    /**
+     * ASP.NET FastCGI socket type: Unix | TCP
+     */
+    public AspNetSocket: string;
 
-		constructor() {
-			this.Domain = '';
-			this.AspNetIOMapForAll = true;
-			this.AspNetDebug = false;
-			this.AspNetMode = 'Off';
-			this.AspNetVersion = '4.5';
-			this.AspNetSocket = 'Unix';
-			this.AspNetFastCgiProcessCount = 1;
-			this.PhpMode = 'Off';
-			this.SelectedPath = '/home';
-		}
+    constructor() {
+      this.Domain = '';
+      this.AspNetIOMapForAll = true;
+      this.AspNetDebug = false;
+      this.AspNetMode = 'Off';
+      this.AspNetVersion = '4.5';
+      this.AspNetSocket = 'Unix';
+      this.AspNetFastCgiProcessCount = 1;
+      this.PhpMode = 'Off';
+      this.SelectedPath = '/home';
+    }
 
-	}
+  }
 
 }

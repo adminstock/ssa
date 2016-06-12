@@ -708,8 +708,8 @@ namespace Api
 
       $shell_result = $this->SshClient->Execute
       ([
-        'sudo bash -c "[[ -d '.$this->ApacheAvailabesPath.' ]] && cd '.$this->ApacheAvailabesPath.' && ls -1 '.$search.'"', // && \'$(ls -1 '.$this->ApacheAvailabesPath.' | wc -l)\' != 0
-        'sudo bash -c "[[ -d '.$this->ApacheEnabledPath.' ]] && cd '.$this->ApacheEnabledPath.'; ls -1 '.$search.'"' // && \'$(ls -1 '.$this->ApacheEnabledPath.' | wc -l)\' != 0
+        'sudo bash -c "[[ -d '.$this->ApacheAvailabesPath.' ]] && find '.$this->ApacheAvailabesPath.' -iname \''.$search.'\' -type f -maxdepth 1"',
+        'sudo bash -c "[[ -d '.$this->ApacheEnabledPath.' ]] && find '.$this->ApacheEnabledPath.' -iname \''.$search.'\' -type f -maxdepth 1"'
       ]);
       
       if ($shell_result[0]->Error != '')
@@ -768,8 +768,8 @@ namespace Api
 
       $shell_result = $this->SshClient->Execute
       ([
-        'sudo bash -c "[[ -d '.$this->NginxAvailabesPath.' ]] && cd '.$this->NginxAvailabesPath.' && ls -1 '.$search.'"', // && \'$(ls -1 '.$this->NginxAvailabesPath.' | wc -l)\' != 0
-        'sudo bash -c "[[ -d '.$this->NginxEnabledPath.' ]] && cd '.$this->NginxEnabledPath.' && ls -1 '.$search.'"' // && \'$(ls -1 '.$this->NginxEnabledPath.' | wc -l)\' != 0
+        'sudo bash -c "[[ -d '.$this->NginxAvailabesPath.' ]] && find '.$this->NginxAvailabesPath.' -iname \''.$search.'\' -type f -maxdepth 1"',
+        'sudo bash -c "[[ -d '.$this->NginxEnabledPath.' ]] && find '.$this->NginxEnabledPath.' -iname \''.$search.'\' -type f -maxdepth 1"'
       ]);
       
       if ($shell_result[0]->Error != '')
@@ -830,8 +830,8 @@ namespace Api
 
       $shell_result = $this->SshClient->Execute
       ([
-        'sudo bash -c "[[ -d '.$this->HtanAvailabesPath.' ]] && cd '.$this->HtanAvailabesPath.' && ls -1 '.$search.'"', //  && \'$(ls -1 '.$this->HtanAvailabesPath.' | wc -l)\' != 0
-        'sudo bash -c "[[ -d '.$this->HtanEnabledPath.' ]] && cd '.$this->HtanEnabledPath.' && ls -1 '.$search.'"' //  && \'$(ls -1 '.$this->HtanEnabledPath.' | wc -l)\' != 0
+        'sudo bash -c "[[ -d '.$this->HtanAvailabesPath.' ]] && find '.$this->HtanAvailabesPath.' -iname \''.$search.'\' -type f -maxdepth 1"',
+        'sudo bash -c "[[ -d '.$this->HtanEnabledPath.' ]] && find '.$this->HtanEnabledPath.' -iname \''.$search.'\' -type f -maxdepth 1"'
       ]);
       
       if ($shell_result[0]->Error != '')

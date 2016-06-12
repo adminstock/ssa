@@ -15,11 +15,11 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents list of users.
-	 */
-	export class UsersList extends PagedList<User> {
+  /**
+   * Represents list of users.
+   */
+  export class UsersList extends PagedList<User> {
 
-	}
+  }
 
 }

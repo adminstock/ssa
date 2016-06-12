@@ -73603,13 +73603,16 @@ var SmallServerAdmin;
                 $this.Context = context;
                 $this.Scope = $this.Context.Scope;
                 if ($('#config').length <= 0 || $('#config').val() == '' || $('#config').val() == '[]') {
-                    Nemiro.UI.Dialog.Alert('Config not found.<br />Please check <code>$config[\'client\']</code> of the <strong>/ssa.config.php</strong>.', 'Error');
+                    Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.ConfigNotFound, SmallServerAdmin.App.Resources.Error);
                 }
                 $this.Scope.Config = JSON.parse($('#config').val());
                 if (Nemiro.Utility.ReadCookies('currentServer') != null) {
                     $this.Scope.Config.CurrentServer = Nemiro.Utility.ReadCookies('currentServer');
                 }
                 console.log('Config', $this.Config);
+                /*if ($this.Config.Lang !== undefined && $this.Config.Lang != null && $this.Config.Lang != '') {
+                    App.Lang = $this.Config.Lang;
+                }*/
                 // progress dialog
                 $this.Progress = Nemiro.UI.Dialog.CreateFromElement($('#progress'));
                 $this.Progress.DisableOverlayClose = true;
@@ -73631,7 +73634,7 @@ var SmallServerAdmin;
                 });
                 $this.Scope.SelectServer = function () {
                     if ($this.PanelServers === undefined || $this.PanelServers == null) {
-                        Nemiro.UI.Dialog.Alert('Servers controller not found.', 'Error;');
+                        Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.ServersControllerNotFound, SmallServerAdmin.App.Resources.Error);
                         return;
                     }
                     $this.PanelServers.SelectServer($this.PanelServers);
@@ -73826,16 +73829,16 @@ var SmallServerAdmin;
                 var _this = this;
                 $this = $this || this;
                 if ($this.ConfirmLoginToRemove != $this.SelectedUserToRemove) {
-                    Nemiro.UI.Dialog.Alert('Incorrect user name!', 'Error');
+                    Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.IncorrectUserName, SmallServerAdmin.App.Resources.Error);
                     return;
                 }
                 $this.ConfirmUserRemove.Close();
-                $this.Scope.$parent.ShowProgress('Is removed the user <strong>' + $this.SelectedUserToRemove + '</strong>. Please wait...', 'Deleting...');
+                $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(SmallServerAdmin.App.Resources.IsRemovedUserWait, [$this.SelectedUserToRemove]), SmallServerAdmin.App.Resources.Deleting);
                 // create request
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Users.DeleteUser', { Login: $this.SelectedUserToRemove, RemoveHome: $this.RemoveHome });
                 // handler successful response to a request to api
                 apiRequest.SuccessCallback = function (response) {
-                    _this.Scope.$parent.ShowProgress('Loading list of users...', 'Loading...');
+                    _this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.LoadingListOfUsers, SmallServerAdmin.App.Resources.Loading);
                     $this.LoadUsers($this);
                 };
                 // execute
@@ -74146,7 +74149,7 @@ var SmallServerAdmin;
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Users.UpdateUserAccount', account);
                 apiRequest.SuccessCallback = function (response) {
                     $this.Success = true;
-                    Nemiro.UI.Dialog.Alert('The account has been successfully updated!', 'Success', 'Ok', function () {
+                    Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.TheAccountHasBeenUpdated, SmallServerAdmin.App.Resources.Success, SmallServerAdmin.App.Resources.Ok, function () {
                         $this.Context.Window.location.hash = '#?login=' + $this.User.Login;
                         $this.SetPassword = $this.SetLogin = false;
                         $this.NewPassword = $this.ConfirmPassword = '';
@@ -74167,7 +74170,7 @@ var SmallServerAdmin;
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Users.UpdateUserGECOS', $this.User);
                 apiRequest.SuccessCallback = function (response) {
                     $this.Success = true;
-                    Nemiro.UI.Dialog.Alert('The user data has been successfully updated!', 'Success', 'Ok', function () {
+                    Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.TheUserHasBeenUpdated, SmallServerAdmin.App.Resources.Success, SmallServerAdmin.App.Resources.Ok, function () {
                         $this.Context.Window.location.hash = '#?login=' + $this.User.Login;
                         $this.GetUser($this);
                     });
@@ -74183,7 +74186,7 @@ var SmallServerAdmin;
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Users.UpdateUserGroups', $this.User);
                 apiRequest.SuccessCallback = function (response) {
                     $this.Success = true;
-                    Nemiro.UI.Dialog.Alert('The user groups list has been successfully updated!', 'Success', 'Ok', function () {
+                    Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.TheUserGroupsHasBeenUpdated, SmallServerAdmin.App.Resources.Success, SmallServerAdmin.App.Resources.Ok, function () {
                         $this.Context.Window.location.hash = '#?login=' + $this.User.Login;
                         $this.GetUser($this);
                     });
@@ -74213,7 +74216,7 @@ var SmallServerAdmin;
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Users.CreateUser', createUser);
                 // handler successful response to a request to api
                 apiRequest.SuccessCallback = function (response) {
-                    Nemiro.UI.Dialog.Alert('The user has been successfully created!', 'Success', 'Ok', function () {
+                    Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.TheUserHasBeenCreated, SmallServerAdmin.App.Resources.Success, SmallServerAdmin.App.Resources.Ok, function () {
                         $this.Context.Window.location.hash = '#?login=' + $this.User.Login;
                         $this.GetUser($this);
                     });
@@ -74413,9 +74416,9 @@ var SmallServerAdmin;
                 if (user === undefined || user == null) {
                     $this.IsNew = true;
                     $this.SourceUser = new SmallServerAdmin.Models.SvnUser();
-                    $this.SourceUser.Login = "New User";
+                    $this.SourceUser.Login = SmallServerAdmin.App.Resources.NewUser;
                     $this.CurrentUser = new SmallServerAdmin.Models.SvnUser();
-                    $this.Scope.$parent.ShowProgress('Preparing form. Please wait...', 'Preparing...');
+                    $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.PreparingFormWait, SmallServerAdmin.App.Resources.Preparing);
                     apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Svn.GetGroupNames');
                     apiRequest.SuccessCallback = function (response) {
                         $this.Groups = response.data;
@@ -74428,7 +74431,7 @@ var SmallServerAdmin;
                     apiRequest.Execute();
                 }
                 else {
-                    $this.Scope.$parent.ShowProgress('Obtaining the user data from the server. Please wait...', 'Loading...');
+                    $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.ObtainingTheUserWait, SmallServerAdmin.App.Resources.Loading);
                     $this.IsNew = false;
                     // load data from server
                     apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Svn.GetUser', { login: user.Login });
@@ -74471,10 +74474,10 @@ var SmallServerAdmin;
                 u.SetPassword = $this.SetPassword;
                 // create request
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Svn.SaveUser', u);
-                $this.Scope.$parent.ShowProgress('Saving the user. Please wait...', 'Saving...');
+                $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.SavingTheUserWait, SmallServerAdmin.App.Resources.Saving);
                 // handler successful response to a request to api
                 apiRequest.SuccessCallback = function (response) {
-                    $this.Scope.$parent.ShowProgress('Saved successfully!<br />Loading list of users. Please wait...', 'Loading...');
+                    $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.SavedSuccessfullyLoadingListOfUsers, SmallServerAdmin.App.Resources.Loading);
                     $this.Editor.Close();
                     $this.LoadUsers($this);
                 };
@@ -74485,16 +74488,16 @@ var SmallServerAdmin;
                 var _this = this;
                 $this = $this || this;
                 if ($this.SelectedUserToRemove == undefined || $this.SelectedUserToRemove == null || $this.SelectedUserToRemove == '') {
-                    Nemiro.UI.Dialog.Alert('Incorrect user name!', 'Error');
+                    Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.IncorrectUserName, SmallServerAdmin.App.Resources.Error);
                     return;
                 }
-                $this.Scope.$parent.ShowProgress('Is removed the user <strong>' + $this.SelectedUserToRemove + '</strong>. Please wait...', 'Deleting...');
+                $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(SmallServerAdmin.App.Resources.IsRemovedUserWait, [$this.SelectedUserToRemove]), SmallServerAdmin.App.Resources.Deleting);
                 $this.ConfirmUserRemove.Close();
                 // create request
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Svn.DeleteUser', { login: $this.SelectedUserToRemove });
                 // handler successful response to a request to api
                 apiRequest.SuccessCallback = function (response) {
-                    _this.Scope.$parent.ShowProgress('Loading list of users...', 'Loading...');
+                    _this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.LoadingListOfUsers, SmallServerAdmin.App.Resources.Loading);
                     $this.SelectedUserToRemove = '';
                     $this.LoadUsers($this);
                 };
@@ -74649,9 +74652,9 @@ var SmallServerAdmin;
                 if (group === undefined || group == null) {
                     $this.IsNew = true;
                     $this.SourceGroup = new SmallServerAdmin.Models.SvnGroup();
-                    $this.SourceGroup.Name = "New Group";
+                    $this.SourceGroup.Name = SmallServerAdmin.App.Resources.NewGroup;
                     $this.CurrentGroup = new SmallServerAdmin.Models.SvnGroup();
-                    $this.Scope.$parent.ShowProgress('Preparing form. Please wait...', 'Preparing...');
+                    $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.PreparingFormWait, SmallServerAdmin.App.Resources.Preparing);
                     apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Svn.GetLogins');
                     apiRequest.SuccessCallback = function (response) {
                         $this.Users = response.data;
@@ -74664,7 +74667,7 @@ var SmallServerAdmin;
                     apiRequest.Execute();
                 }
                 else {
-                    $this.Scope.$parent.ShowProgress('Obtaining the group data from the server. Please wait...', 'Loading...');
+                    $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.ObtainingTheGroupWait, SmallServerAdmin.App.Resources.Loading);
                     $this.IsNew = false;
                     // load data from server
                     apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Svn.GetGroup', { name: group.Name });
@@ -74704,10 +74707,10 @@ var SmallServerAdmin;
                 g.IsNew = $this.IsNew;
                 // create request
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Svn.SaveGroup', g);
-                $this.Scope.$parent.ShowProgress('Saving the group. Please wait...', 'Saving...');
+                $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.SavingTheGroupWait, SmallServerAdmin.App.Resources.Saving);
                 // handler successful response to a request to api
                 apiRequest.SuccessCallback = function (response) {
-                    $this.Scope.$parent.ShowProgress('Saved successfully!<br />Loading list of groups. Please wait...', 'Loading...');
+                    $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.SavedSuccessfullyLoadingListOfGroups, SmallServerAdmin.App.Resources.Loading);
                     $this.Editor.Close();
                     $this.LoadGroups($this);
                 };
@@ -74718,16 +74721,16 @@ var SmallServerAdmin;
                 var _this = this;
                 $this = $this || this;
                 if ($this.SelectedGroupToRemove == undefined || $this.SelectedGroupToRemove == null || $this.SelectedGroupToRemove == '') {
-                    Nemiro.UI.Dialog.Alert('Incorrect group name!', 'Error');
+                    Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.IncorrectGroupName, SmallServerAdmin.App.Resources.Error);
                     return;
                 }
-                $this.Scope.$parent.ShowProgress('Is removed the group <strong>' + $this.SelectedGroupToRemove + '</strong>. Please wait...', 'Deleting...');
+                $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(SmallServerAdmin.App.Resources.IsRemovedTheGroupWait, [$this.SelectedGroupToRemove]), SmallServerAdmin.App.Resources.Deleting);
                 $this.ConfirmRemove.Close();
                 // create request
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Svn.DeleteGroup', { name: $this.SelectedGroupToRemove });
                 // handler successful response to a request to api
                 apiRequest.SuccessCallback = function (response) {
-                    _this.Scope.$parent.ShowProgress('Loading list of groups...', 'Loading...');
+                    _this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.LoadingListOfGroups, SmallServerAdmin.App.Resources.Loading);
                     $this.SelectedGroupToRemove = '';
                     $this.LoadGroups($this);
                 };
@@ -74914,13 +74917,13 @@ var SmallServerAdmin;
                 $this.PermissionsForObject = '';
                 if (repName === undefined || repName == null) {
                     $this.Source = new SmallServerAdmin.Models.SvnRepository();
-                    $this.Source.Name = "New Repository";
+                    $this.Source.Name = SmallServerAdmin.App.Resources.NewRepository;
                     $this.Current = new SmallServerAdmin.Models.SvnRepository();
                     $this.Editor.Show();
                     $this.Scope.$parent.CloseProgress();
                 }
                 else {
-                    $this.Scope.$parent.ShowProgress('Obtaining the repository info from the server. Please wait...', 'Loading...');
+                    $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.ObtainingTheRepositoryWait, SmallServerAdmin.App.Resources.Loading);
                     // load data from server
                     var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Svn.GetRepository', { name: repName });
                     // handler successful response to a request to api
@@ -74943,10 +74946,10 @@ var SmallServerAdmin;
                 }
                 // create request
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Svn.SaveRepository', { Current: $this.Current, Source: $this.Source });
-                $this.Scope.$parent.ShowProgress('Saving the respository. Please wait...', 'Saving...');
+                $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.SavingTheRepositoryWait, SmallServerAdmin.App.Resources.Saving);
                 // handler successful response to a request to api
                 apiRequest.SuccessCallback = function (response) {
-                    $this.Scope.$parent.ShowProgress('Saved successfully!<br />Loading list of repositories. Please wait...', 'Loading...');
+                    $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.SavedSuccessfullyLoadingListOfRepositories, SmallServerAdmin.App.Resources.Loading);
                     $this.Editor.Close();
                     $this.LoadRepositories($this);
                 };
@@ -74957,16 +74960,16 @@ var SmallServerAdmin;
                 var _this = this;
                 $this = $this || this;
                 if ($this.SelectedItemToRemove == undefined || $this.SelectedItemToRemove == null || $this.SelectedItemToRemove == '' || $this.ConfirmNameToRemove != $this.SelectedItemToRemove) {
-                    Nemiro.UI.Dialog.Alert('Incorrect repository name!', 'Error');
+                    Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.IncorrectRepositoryName, SmallServerAdmin.App.Resources.Error);
                     return;
                 }
-                $this.Scope.$parent.ShowProgress('Is removed the repository <strong>' + $this.SelectedItemToRemove + '</strong>. Please wait...', 'Deleting...');
+                $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(SmallServerAdmin.App.Resources.IsRemovedTheRepositoryWait, [$this.SelectedItemToRemove]), SmallServerAdmin.App.Resources.Deleting);
                 $this.ConfirmToRemove.Close();
                 // create request
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Svn.DeleteRespository', { name: $this.SelectedItemToRemove });
                 // handler successful response to a request to api
                 apiRequest.SuccessCallback = function (response) {
-                    _this.Scope.$parent.ShowProgress('Loading list of repositories...', 'Loading...');
+                    _this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.LoadingListOfRepositories, SmallServerAdmin.App.Resources.Loading);
                     $this.SelectedItemToRemove = '';
                     $this.LoadRepositories($this);
                 };
@@ -75185,6 +75188,14 @@ var SmallServerAdmin;
                 };
                 $this.Load($this);
             }
+            Object.defineProperty(SiteListController.prototype, "Config", {
+                /** SSA config. */
+                get: function () {
+                    return this.Scope.$parent.Config;
+                },
+                enumerable: true,
+                configurable: true
+            });
             Object.defineProperty(SiteListController.prototype, "Sites", {
                 /** The list of sites. */
                 get: function () {
@@ -75262,16 +75273,16 @@ var SmallServerAdmin;
                 var _this = this;
                 $this = $this || this;
                 if ($this.ConfirmNameToRemove != $this.SelectedItemToRemove) {
-                    Nemiro.UI.Dialog.Alert('Incorrect site name!', 'Error');
+                    Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.IncorrectSiteName, SmallServerAdmin.App.Resources.Error);
                     return;
                 }
                 $this.ConfirmToDelete.Close();
-                $this.Scope.$parent.ShowProgress('Is removed the site <strong>' + $this.SelectedItemToRemove + '</strong>. Please wait...', 'Deleting...');
+                $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(SmallServerAdmin.App.Resources.IsRemovedSiteWait, [$this.SelectedItemToRemove]), SmallServerAdmin.App.Resources.Deleting);
                 // create request
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Sites.DeleteSite', { Name: $this.SelectedItemToRemove });
                 // handler successful response to a request to api
                 apiRequest.SuccessCallback = function (response) {
-                    _this.Scope.$parent.ShowProgress('Loading list of sites...', 'Loading...');
+                    _this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.LoadingListOfSites, SmallServerAdmin.App.Resources.Loading);
                     $this.Load($this);
                 };
                 // execute
@@ -75330,13 +75341,23 @@ var SmallServerAdmin;
     var Controllers;
     (function (Controllers) {
         var SiteEditorController = (function () {
+            //#endregion
+            //#region ..constructor..
             function SiteEditorController(context) {
+                //#region ..properties.. 
                 this.LevelsList = ['Nginx', 'Apache', 'HTAN'];
                 var $this = this;
                 $this.Context = context;
                 $this.Scope = $this.Context.Scope;
                 $this.SelectedFolder = undefined;
                 $this.Help = { IsOpened: false };
+                $this.LevelsList = ['Nginx'];
+                if ($this.Config.WebServer.indexOf('apache') != -1) {
+                    $this.LevelsList.push('Apache');
+                }
+                if ($this.Config.HtanEnabled) {
+                    $this.LevelsList.push('HTAN');
+                }
                 $this.ConfirmDeleteConfDialog = Nemiro.UI.Dialog.CreateFromElement($('#confirmToDeleteConf'));
                 $this.ConfirmToDeleteFolder = Nemiro.UI.Dialog.CreateFromElement($('#confirmToDeleteFolder'));
                 $this.CreateConfigDialog = Nemiro.UI.Dialog.CreateFromElement($('#createConfig'));
@@ -75738,6 +75759,8 @@ var SmallServerAdmin;
                 enumerable: true,
                 configurable: true
             });
+            //#endregion
+            //#region ..methods..
             /**
              * Loads site data from the server.
              */
@@ -75970,7 +75993,7 @@ var SmallServerAdmin;
             };
             SiteEditorController.prototype.ReloadServices = function ($this) {
                 if ($this.ReloadingItems === undefined || $this.ReloadingItems == null || $this.ReloadingItems.length <= 0) {
-                    Nemiro.UI.Dialog.Alert('No services to reload.', 'Error');
+                    Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.NoServicesToReload, SmallServerAdmin.App.Resources.Error);
                     return;
                 }
                 $this.Reloading = true;
@@ -76004,7 +76027,7 @@ var SmallServerAdmin;
                         else {
                             exceptionMessage = '';
                         }
-                        Nemiro.UI.Dialog.Alert('Cannot reload service "' + reloadingItem.Name + '".' + exceptionMessage, 'Error ' + response.status);
+                        Nemiro.UI.Dialog.Alert(Nemiro.Utility.Format(SmallServerAdmin.App.Resources.CannotReloadService, [reloadingItem.Name]) + exceptionMessage, SmallServerAdmin.App.Resources.Error + ' ' + response.status);
                         reloadingItem.Status = 'Error';
                     }
                 };
@@ -76017,7 +76040,7 @@ var SmallServerAdmin;
             SiteEditorController.prototype.WaitingServerResponse = function ($this, reloadingItem) {
                 SmallServerAdmin.ApiRequest.Echo($this.Context, function (response) {
                     if (response.status != 200) {
-                        Nemiro.UI.Dialog.Alert('Cannot reload service "' + reloadingItem.Name + '".', 'Error ' + response.status);
+                        Nemiro.UI.Dialog.Alert(Nemiro.Utility.Format(SmallServerAdmin.App.Resources.CannotReloadService, [reloadingItem.Name]), SmallServerAdmin.App.Resources.Error + ' ' + response.status);
                         reloadingItem.Status = 'Error';
                     }
                     else {
@@ -77136,8 +77159,8 @@ var SmallServerAdmin;
                             formatter: function () {
                                 var points = eval('this').points;
                                 return '<div class="chart-tooltip">' +
-                                    '<strong>Total:</strong> ' + points[0].y + ' Mb<br />' +
-                                    (points.length > 1 ? '<strong>In Use:</strong> ' + points[1].y + ' Mb' : '') +
+                                    '<strong>' + SmallServerAdmin.App.Resources.Total + ':</strong> ' + points[0].y + ' ' + SmallServerAdmin.App.Resources.Mb + '<br />' +
+                                    (points.length > 1 ? '<strong>' + SmallServerAdmin.App.Resources.InUse + ':</strong> ' + points[1].y + ' ' + SmallServerAdmin.App.Resources.Mb + '' : '') +
                                     '</div>';
                             }
                         },
@@ -77211,8 +77234,8 @@ var SmallServerAdmin;
                             formatter: function () {
                                 var points = eval('this').points;
                                 return '<div class="chart-tooltip">' +
-                                    '<strong>Total:</strong> ' + points[0].y + ' Gb<br />' +
-                                    (points.length > 1 ? '<strong>In Use:</strong> ' + points[1].y + ' Gb' : '') +
+                                    '<strong>' + SmallServerAdmin.App.Resources.Total + ':</strong> ' + points[0].y + ' ' + SmallServerAdmin.App.Resources.Gb + '<br />' +
+                                    (points.length > 1 ? '<strong>' + SmallServerAdmin.App.Resources.InUse + ':</strong> ' + points[1].y + ' ' + SmallServerAdmin.App.Resources.Gb : '') +
                                     '</div>';
                             }
                         },
@@ -78275,7 +78298,8 @@ var SmallServerAdmin;
                     scrollToTop = true;
                 }
                 $this.FileViewMode = mode;
-                $this.Scope.$parent.ShowProgress('Loading the file contents...', 'Loading...');
+                // Loading the file contents...
+                $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.LoadingFileContents, SmallServerAdmin.App.Resources.Loading);
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Files.Get', { path: item.Path, mode: mode });
                 apiRequest.SuccessCallback = function (response) {
                     $this.CurrentFileContent = response.data.Content;
@@ -78371,7 +78395,7 @@ var SmallServerAdmin;
             };
             FileListController.prototype.Properties = function ($this, item) {
                 item.Loading = true;
-                $this.Scope.$parent.ShowProgress('Getting the file info...', 'Loading...');
+                $this.Scope.$parent.ShowProgress(SmallServerAdmin.App.Resources.GettingFileInfo, SmallServerAdmin.App.Resources.Loading);
                 var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Files.Info', { path: item.Path });
                 apiRequest.SuccessCallback = function (response) {
                     $this.FileInfo = response.data;
@@ -78741,6 +78765,18 @@ var SmallServerAdmin;
                     // reload page
                     $this.Context.Window.location.reload();
                 };
+                // delay for ng-init
+                $this.Context.Timeout(function () {
+                    if (($this.Context.Location.search()['connection_failed'] !== undefined && $this.Context.Location.search()['connection_failed'] != null) || ($this.Context.Location.search()['authentication_failed'] !== undefined && $this.Context.Location.search()['authentication_failed'] != null)) {
+                        $this.CurrentServerConnectionError = true;
+                        if (!$this.DisableShowConnectionError) {
+                            Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.UnableToConnectTheServer, SmallServerAdmin.App.Resources.ConnectionError);
+                        }
+                    }
+                    else {
+                        $this.CheckConnection($this);
+                    }
+                }, 250);
             }
             Object.defineProperty(PanelServersController.prototype, "Servers", {
                 /** List of all servers. */
@@ -78759,6 +78795,36 @@ var SmallServerAdmin;
                 },
                 set: function (value) {
                     this.Scope.LoadingServers = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PanelServersController.prototype, "ConnectionTesting", {
+                get: function () {
+                    return this.Scope.ConnectionTesting;
+                },
+                set: function (value) {
+                    this.Scope.ConnectionTesting = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PanelServersController.prototype, "CurrentServerConnectionError", {
+                get: function () {
+                    return this.Scope.CurrentServerConnectionError;
+                },
+                set: function (value) {
+                    this.Scope.CurrentServerConnectionError = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PanelServersController.prototype, "DisableShowConnectionError", {
+                get: function () {
+                    return this.Scope.DisableShowConnectionError;
+                },
+                set: function (value) {
+                    this.Scope.DisableShowConnectionError = value;
                 },
                 enumerable: true,
                 configurable: true
@@ -78788,6 +78854,23 @@ var SmallServerAdmin;
                     $this.LoadingServers = false;
                 };
                 // execute
+                apiRequest.Execute();
+            };
+            PanelServersController.prototype.CheckConnection = function ($this) {
+                if ($this.ConnectionTesting) {
+                    return;
+                }
+                $this.ConnectionTesting = true;
+                var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Settings.CheckConnection');
+                /*apiRequest.SuccessCallback = (response) => {
+    
+                };*/
+                apiRequest.ErrorCallback = function (response) {
+                    $this.CurrentServerConnectionError = true;
+                };
+                apiRequest.CompleteCallback = function () {
+                    $this.ConnectionTesting = false;
+                };
                 apiRequest.Execute();
             };
             return PanelServersController;
@@ -79819,6 +79902,166 @@ var SmallServerAdmin;
 */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
+    var Localization;
+    (function (Localization) {
+        /** Default localization resources. */
+        var Default = (function () {
+            function Default() {
+                //#region ..Common..
+                /**
+                 * Loading...
+                 */
+                this.Loading = 'Loading...';
+                /** Saving... */
+                this.Saving = 'Saving...';
+                /** Deleting... */
+                this.Deleting = 'Deleting...';
+                /** Preparing... */
+                this.Preparing = 'Preparing...';
+                /** Preparing form. Please wait... */
+                this.PreparingFormWait = 'Preparing form. Please wait...';
+                /** Success */
+                this.Success = 'Success';
+                /**
+                 * Error
+                 */
+                this.Error = 'Error';
+                /** Ok */
+                this.Ok = 'Ok';
+                /** Total */
+                this.Total = 'Total';
+                /** Kb */
+                this.Kb = 'Kb';
+                /** Mb */
+                this.Mb = 'Mb';
+                /** Gb */
+                this.Gb = 'Gb';
+                /** In Use */
+                this.InUse = 'In Use';
+                /** New Group */
+                this.NewGroup = 'New Group';
+                /** New User */
+                this.NewUser = 'New User';
+                //#endregion
+                //#region ..MasterController..
+                /**
+                 * Config not found.<br />Please check <code>$config[\'client\']</code> of the <strong>/ssa.config.php</strong>.
+                 */
+                this.ConfigNotFound = 'Config not found.<br />Please check <code>$config[\'client\']</code> of the <strong>/ssa.config.php</strong>.';
+                /**
+                 * Servers controller not found.
+                 */
+                this.ServersControllerNotFound = 'Servers controller not found.';
+                //#endregion
+                //#region ..FileListController..
+                /**
+                 * Loading the file contents...
+                 */
+                this.LoadingFileContents = 'Loading the file contents...';
+                /**
+                 * Getting the file info...
+                 */
+                this.GettingFileInfo = 'Getting the file info...';
+                //#endregion
+                //#region ..PanelServersController..
+                /** Unable to connect to the server.<br />Check the connection settings and try again. */
+                this.UnableToConnectTheServer = 'Unable to connect to the server.<br />Check the connection settings and try again.';
+                /** Connection error */
+                this.ConnectionError = 'Connection error';
+                //#endregion
+                //#region ..ServiceListController..
+                /** No services to reload. */
+                this.NoServicesToReload = 'No services to reload.';
+                /**
+                 * Cannot reload service {0}.
+                 */
+                this.CannotReloadService = 'Cannot reload service {0}.';
+                //#endregion
+                //#region ..ServiceListController..
+                /** Incorrect site name! */
+                this.IncorrectSiteName = 'Incorrect site name!';
+                /**
+                 * Is removed the site <strong>{0}</strong>. Please wait...
+                 */
+                this.IsRemovedSiteWait = 'Is removed the site <strong>{0}</strong>. Please wait...';
+                /** Loading list of sites... */
+                this.LoadingListOfSites = 'Loading list of sites...';
+                //#endregion
+                //#region ..SVN..
+                /** Obtaining the group data from the server. Please wait... */
+                this.ObtainingTheGroupWait = 'Obtaining the group data from the server. Please wait...';
+                /** Saving the group. Please wait... */
+                this.SavingTheGroupWait = 'Saving the group. Please wait...';
+                /** Saved successfully!<br />Loading list of groups. Please wait... */
+                this.SavedSuccessfullyLoadingListOfGroups = 'Saved successfully!<br />Loading list of groups. Please wait...';
+                /** Incorrect group name! */
+                this.IncorrectGroupName = 'Incorrect group name!';
+                /**
+                 * Is removed the group <strong>{0}</strong>. Please wait...
+                 */
+                this.IsRemovedTheGroupWait = 'Is removed the group <strong>{0}</strong>. Please wait...';
+                /** Loading list of groups... */
+                this.LoadingListOfGroups = 'Loading list of groups...';
+                /** Obtaining the repository info from the server. Please wait... */
+                this.ObtainingTheRepositoryWait = 'Obtaining the repository info from the server. Please wait...';
+                /** New Repository */
+                this.NewRepository = 'New Repository';
+                /** Saving the respository. Please wait... */
+                this.SavingTheRepositoryWait = 'Saving the respository. Please wait...';
+                /** Saved successfully!<br />Loading list of repositories. Please wait... */
+                this.SavedSuccessfullyLoadingListOfRepositories = 'Saved successfully!<br />Loading list of repositories. Please wait...';
+                /** Incorrect repository name! */
+                this.IncorrectRepositoryName = 'Incorrect repository name!';
+                /** Is removed the repository <strong>{0}</strong>. Please wait... */
+                this.IsRemovedTheRepositoryWait = 'Is removed the repository <strong>{0}</strong>. Please wait...';
+                /** Loading list of repositories... */
+                this.LoadingListOfRepositories = 'Loading list of repositories...';
+                //#endregion
+                //#region ..Users..
+                /** Obtaining the user data from the server. Please wait... */
+                this.ObtainingTheUserWait = 'Obtaining the user data from the server. Please wait...';
+                /** Saving the user. Please wait... */
+                this.SavingTheUserWait = 'Saving the user. Please wait...';
+                /** Saved successfully!<br />Loading list of users. Please wait... */
+                this.SavedSuccessfullyLoadingListOfUsers = 'Saved successfully!<br />Loading list of users. Please wait...';
+                /** Is removed the user <strong>{0}</strong>. Please wait... */
+                this.IsRemovedUserWait = 'Is removed the user <strong>{0}</strong>. Please wait...';
+                /** Loading list of users... */
+                this.LoadingListOfUsers = 'Loading list of users...';
+                /** The account has been successfully updated! */
+                this.TheAccountHasBeenUpdated = 'The account has been successfully updated!';
+                /** The user data has been successfully updated! */
+                this.TheUserHasBeenUpdated = 'The user data has been successfully updated!';
+                /** The user groups list has been successfully updated! */
+                this.TheUserGroupsHasBeenUpdated = 'The user groups list has been successfully updated!';
+                /** The user has been successfully created! */
+                this.TheUserHasBeenCreated = 'The user has been successfully created!';
+                /** Incorrect user name! */
+                this.IncorrectUserName = 'Incorrect user name!';
+            }
+            return Default;
+        }());
+        Localization.Default = Default;
+    })(Localization = SmallServerAdmin.Localization || (SmallServerAdmin.Localization = {}));
+})(SmallServerAdmin || (SmallServerAdmin = {}));
+//# sourceMappingURL=Default.js.map
+/*
+* Copyright © Aleksey Nemiro, 2016. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+var SmallServerAdmin;
+(function (SmallServerAdmin) {
     /**
      * Represents a request for the API.
      */
@@ -80014,6 +80257,12 @@ var SmallServerAdmin;
                 App.LocalStorageIsSupport = 'localStorage' in window && window['localStorage'] !== null;
             }
             catch (ex) { }
+            /*App.Lang = Nemiro.Utility.ReadCookies("lang") || 'en';
+
+            if (App.Lang == '') {
+                App.Lang = 'en';
+            }*/
+            App.Localize();
             // switch true-false
             $('.bit').bootstrapSwitch({
                 onText: '<span class="glyphicon glyphicon-check" aria-hidden="true"></span>',
@@ -80040,10 +80289,48 @@ var SmallServerAdmin;
                 'pageslide-directive'
             ]);
         };
+        App.Localize = function () {
+            // check resources
+            if (window['SmallServerAdmin']['Localization'] === undefined) {
+                console.error('SmallServerAdmin.Localization not found.');
+            }
+            else {
+                // get all included resources
+                if (window['SmallServerAdmin']['Localization']['Default'] === undefined) {
+                    console.error('Default resources not found.');
+                }
+                else {
+                    // set default resources
+                    this.Resources = new SmallServerAdmin.Localization.Default();
+                    // each resources
+                    var resources = Object.getOwnPropertyNames(window['SmallServerAdmin']['Localization']);
+                    for (var i = 0; i < resources.length; i++) {
+                        if (resources[i] == 'Default') {
+                            continue;
+                        }
+                        var newResources = Object.create(window['SmallServerAdmin']['Localization'][resources[i]].prototype);
+                        newResources.constructor.apply(newResources);
+                        console.log('newResources', newResources);
+                        for (var name in newResources) {
+                            if (newResources[name] === undefined || newResources[name] == null || newResources[name] == '') {
+                                continue;
+                            }
+                            if (this.Resources[name] != undefined) {
+                                this.Resources[name] = newResources[name];
+                            }
+                        }
+                    }
+                }
+            }
+        };
         /** Indicates local storage is available or not. */
         App.LocalStorageIsSupport = false;
         /** Context of the current application. */
         App.Current = null;
+        /** Current language. For example: en (default), ru, de. * /
+        public static Lang: string = 'en';*/
+        /** Current localization resources. */
+        App.Resources = null;
         return App;
     }());
     SmallServerAdmin.App = App;

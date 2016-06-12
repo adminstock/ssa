@@ -15,69 +15,69 @@
  */
 module Nemiro {
 
-	/**
-	 * Represents the event handlers for the specified object.
-	 */
-	export class EventHandlers<T> {
+  /**
+   * Represents the event handlers for the specified object.
+   */
+  export class EventHandlers<T> {
 
-		/** The name of event. */
-		public Name: string;
+    /** The name of event. */
+    public Name: string;
 
-		/** The event handlers list. */
-		private Items: { (sender: any, args?: T): void; }[] = [];
+    /** The event handlers list. */
+    private Items: { (sender: any, args?: T): void; }[] = [];
 
-		/** The event subscriber. */
-		private Subscriber: any = null;
+    /** The event subscriber. */
+    private Subscriber: any = null;
 
-		constructor(eventName: string, subscriber: any) {
-			if (eventName === undefined || eventName == null || eventName == '') {
-				throw new Error('The parameter "eventName" is required and can not be empty!');
-			}
-			if (subscriber === undefined || subscriber == null) {
-				throw new Error('The parameter "subscriber" is requier! Enter a reference to the object that owns the event handlers.');
-			} 
+    constructor(eventName: string, subscriber: any) {
+      if (eventName === undefined || eventName == null || eventName == '') {
+        throw new Error('The parameter "eventName" is required and can not be empty!');
+      }
+      if (subscriber === undefined || subscriber == null) {
+        throw new Error('The parameter "subscriber" is requier! Enter a reference to the object that owns the event handlers.');
+      } 
 
-			this.Name = eventName;
-			this.Subscriber = subscriber;
-		}
+      this.Name = eventName;
+      this.Subscriber = subscriber;
+    }
 
-		/** 
-		 * Adds an event handler.
-		 * 
-		 * @params handler Function - the event handler.
-		 */
-		public Add(handler: { (sender: any, args?: T): void; }) {
-			if (handler === undefined || handler == null) {
-				throw new Error('The handler is required!');
-			}
-			if (typeof handler != 'function') {
-				throw new Error('The "handler" should be a function!');
-			}
+    /** 
+     * Adds an event handler.
+     * 
+     * @params handler Function - the event handler.
+     */
+    public Add(handler: { (sender: any, args?: T): void; }) {
+      if (handler === undefined || handler == null) {
+        throw new Error('The handler is required!');
+      }
+      if (typeof handler != 'function') {
+        throw new Error('The "handler" should be a function!');
+      }
 
-			this.Items.push(handler);
-		}
+      this.Items.push(handler);
+    }
 
-		/** 
-		 * Removes the event handler.
-		 * 
-		 * @params handler Function - the event handler.
-		 */
-		public Remove(handler: { (sender: any, args?: T): void; }) {
-			this.Items = this.Items.filter(h => h !== handler);
-		}
-	
-		/** 
-		 * Invokes the handler.
-		 * 
-		 * @params args Additional arguments that will be passed to the handler.
-		 */
-		public Trigger(args?: T) {
-			console.log('Trigger ', this.Name, args);
+    /** 
+     * Removes the event handler.
+     * 
+     * @params handler Function - the event handler.
+     */
+    public Remove(handler: { (sender: any, args?: T): void; }) {
+      this.Items = this.Items.filter(h => h !== handler);
+    }
+  
+    /** 
+     * Invokes the handler.
+     * 
+     * @params args Additional arguments that will be passed to the handler.
+     */
+    public Trigger(args?: T) {
+      console.log('Trigger ', this.Name, args);
 
-			for (var i = 0; i < this.Items.length; i++) {
-				this.Items[i](this.Subscriber, args);
-			}
-		}
+      for (var i = 0; i < this.Items.length; i++) {
+        this.Items[i](this.Subscriber, args);
+      }
+    }
 
-	}
+  }
 }

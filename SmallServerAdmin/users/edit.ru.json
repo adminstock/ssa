@@ -1,0 +1,9 @@
+[
+	{ "Key": "User Editor", "Value": "Редактор пользователей" },
+	{ "Key": "GECOS Fields", "Value": "Данные GECOS" },
+	{ "Key": "Phone work", "Value": "Телефон рабочий" },
+	{ "Key": "Phone home", "Value": "Телефон домашний" },
+	{ "Key": "Other", "Value": "Прочее" },
+	{ "Key": "System user", "Value": "Системный пользователь" },
+	{ "Key": "No create home", "Value": "Не создавать домашний каталог" }
+]

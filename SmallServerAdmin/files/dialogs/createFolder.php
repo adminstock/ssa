@@ -23,13 +23,13 @@
           <div class="form-group">
             <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">${Owner}:</label>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <input type="text" class="form-control" ng-model="NewFolderOwnerName" autocomplete="off" placeholder="Owner name or empty for root" ng-disabled="CreationFolder" />
+              <input type="text" class="form-control" ng-model="NewFolderOwnerName" autocomplete="off" placeholder="${Owner name or empty for root}" ng-disabled="CreationFolder" />
             </div>
           </div>
           <div class="form-group">
             <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">${Group}:</label>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <input type="text" class="form-control" ng-model="NewFolderGroupName" autocomplete="off" placeholder="Group name or empty for owner group" ng-disabled="CreationFolder" />
+              <input type="text" class="form-control" ng-model="NewFolderGroupName" autocomplete="off" placeholder="${Group name or empty for owner group}" ng-disabled="CreationFolder" />
             </div>
           </div>
         </form>

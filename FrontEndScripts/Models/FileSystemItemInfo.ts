@@ -15,25 +15,25 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents info about file or folder.
-	 */
-	export class FileSystemItemInfo {
+  /**
+   * Represents info about file or folder.
+   */
+  export class FileSystemItemInfo {
 
-		/**
-		 * The object name.
-		 */
-		public Name: string;
+    /**
+     * The object name.
+     */
+    public Name: string;
 
-		/**
-		 * The full path.
-		 */
-		public Path: string;
- 	
-		/**
-		 * The type of object: Folder | File | Link.
-		 */
-		public Type: string;
+    /**
+     * The full path.
+     */
+    public Path: string;
+   
+    /**
+     * The type of object: Folder | File | Link.
+     */
+    public Type: string;
 
     /**
      * The size of the file or folder (bytes).
@@ -44,8 +44,8 @@ module SmallServerAdmin.Models {
      * Date and time of last modification of the file.
      */
     public DateLastModified: number;
-		
-		/**
+    
+    /**
      * Date and time of creation.
      */
     public DateCreated: number;
@@ -78,8 +78,8 @@ module SmallServerAdmin.Models {
 
     public Permissions: number;
 
-		public Saving: boolean;
+    public Saving: boolean;
 
-	}
+  }
 
 }

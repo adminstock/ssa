@@ -15,63 +15,63 @@
  */
 module Nemiro {
 
-	/** 
-	 * The class allows you to perform the specified action and automatically repeated if an error occurs.
-	 */
-	export class TryAction {
+  /** 
+   * The class allows you to perform the specified action and automatically repeated if an error occurs.
+   */
+  export class TryAction {
 
-		/** The action to execution. */
-		public Action: { (): void; } = null;
+    /** The action to execution. */
+    public Action: { (): void; } = null;
 
-		/** The maximum number of attempts. Default: 10. */
-		public MaxAttempts: number = 10;
+    /** The maximum number of attempts. Default: 10. */
+    public MaxAttempts: number = 10;
 
-		/** 
-		 * The duration of pauses between attempts (in seconds).
-		 * Minus one - automatically (by default).
-		 */
-		public Pause: number = -1;
+    /** 
+     * The duration of pauses between attempts (in seconds).
+     * Minus one - automatically (by default).
+     */
+    public Pause: number = -1;
 
-		/** Attempts counter. */
-		private Attempts: number = 0;
+    /** Attempts counter. */
+    private Attempts: number = 0;
 
-		constructor(action: { (): void; }) {
-			if (action == null) {
-				throw Error('Action is required.');
-			}
+    constructor(action: { (): void; }) {
+      if (action == null) {
+        throw Error('Action is required.');
+      }
 
-			this.Action = action;
-		}
+      this.Action = action;
+    }
 
-		/** Executes the task. */
-		public Run(): void {
-			this.Attempts++;
+    /** Executes the task. */
+    public Run(): void {
+      this.Attempts++;
 
-			if (this.Attempts > this.MaxAttempts) {
-				throw new Error('Reached the allowable limit of attempts to perform a task.');
-			}
+      if (this.Attempts > this.MaxAttempts) {
+        throw new Error('Reached the allowable limit of attempts to perform a task.');
+      }
 
-			// если это не первая попытка, делаем паузу
-			if (this.Attempts > 1) {
-				var pause = 0;
+      // если это не первая попытка, делаем паузу
+      if (this.Attempts > 1) {
+        var pause = 0;
 
-				if (this.Pause == -1) {
-					if (this.Attempts <= 5) {
-						pause = ((this.Attempts % 2) == 0 ? 2000 : 4000);
-					} else {
-						pause = ((this.Attempts % 2) == 0 ? 4000 : 8000);
-					}
-				} else {
-					pause = this.Pause * 1000;
-				}
+        if (this.Pause == -1) {
+          if (this.Attempts <= 5) {
+            pause = ((this.Attempts % 2) == 0 ? 2000 : 4000);
+          } else {
+            pause = ((this.Attempts % 2) == 0 ? 4000 : 8000);
+          }
+        } else {
+          pause = this.Pause * 1000;
+        }
 
-				console.log('Pause', pause / 1000)
-				window.setTimeout(this.Action, pause);
-			} else {
-				this.Action();
-			}
-		}
+        console.log('Pause', pause / 1000)
+        window.setTimeout(this.Action, pause);
+      } else {
+        this.Action();
+      }
+    }
 
-	}
+  }
 
 } 

@@ -1,1 +1,1 @@
-<li><a href="/sites"><span class="fa fa-globe"></span> Sites</a></li>
+<li><a href="/sites"><span class="fa fa-globe"></span> ${Menu_Sites}</a></li>

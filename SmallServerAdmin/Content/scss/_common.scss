@@ -38,6 +38,10 @@ a:not([href]) {
 	color: gray;
 }
 
+.red {
+	color: #a94442;
+}
+
 .modal-body {
   max-height: calc(100vh - 200px);
   overflow-y: auto;
@@ -232,6 +236,10 @@ treecontrol ul {
 	}
 
 }*/
+
+#vk_groups { //, #vk_groups iframe
+	width: 100%;
+}
 
 @media (min-width: $screen-tablet) {
 

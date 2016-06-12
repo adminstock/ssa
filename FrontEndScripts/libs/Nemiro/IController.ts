@@ -15,13 +15,13 @@
  */
 module Nemiro {
 
-	/** Interface for Controllers. */
-	export interface IController {
+  /** Interface for Controllers. */
+  export interface IController {
 
-		Scope: any;
+    Scope: any;
 
-		Context: Nemiro.AngularContext;
+    Context: Nemiro.AngularContext;
 
-	}
+  }
 
 }

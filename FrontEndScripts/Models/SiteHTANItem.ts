@@ -15,41 +15,41 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents FastCGI item of the HTAN.Runner.
-	 */
-	export class SiteHTANItem {
+  /**
+   * Represents FastCGI item of the HTAN.Runner.
+   */
+  export class SiteHTANItem {
 
-		/**
-		 * FastCGI socket name.
-		 */
-		public Socket: string;
+    /**
+     * FastCGI socket name.
+     */
+    public Socket: string;
 
-		/**
-		 * ASP.NET Version: 4.5 | 4.0 | 2.0
-		 */
-		public AspNetVersion: string;
+    /**
+     * ASP.NET Version: 4.5 | 4.0 | 2.0
+     */
+    public AspNetVersion: string;
 
-		/**
-		 * Username.
-		 */
-		public User: string;
+    /**
+     * Username.
+     */
+    public User: string;
 
-		/**
-		 * Group name.
-		 */
-		public Group: string;
+    /**
+     * Group name.
+     */
+    public Group: string;
 
-		public Enabled: boolean;
+    public Enabled: boolean;
 
-		constructor(socket: string) {
-			this.Socket = socket;
-			this.User = 'www-data';
-			this.Group = 'www-data';
-			this.AspNetVersion = '4.5';
-			this.Enabled = true;
-		}
+    constructor(socket: string) {
+      this.Socket = socket;
+      this.User = 'www-data';
+      this.Group = 'www-data';
+      this.AspNetVersion = '4.5';
+      this.Enabled = true;
+    }
 
-	}
+  }
 
 }

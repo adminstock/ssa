@@ -15,71 +15,71 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents user.
-	 */
-	export class User {
+  /**
+   * Represents user.
+   */
+  export class User {
 
-		/**
-		 * Login of the user.
-		 */
-		public Login: string;
+    /**
+     * Login of the user.
+     */
+    public Login: string;
     
-		/**
-		 * Password.
-		 */
-		public Password: string;
+    /**
+     * Password.
+     */
+    public Password: string;
 
-		/**
-		 * User ID.
-		 */
-		public Id: number;
+    /**
+     * User ID.
+     */
+    public Id: number;
     
-		/**
-		 * Group ID.
-		 */
-		public GroupId: number;
+    /**
+     * Group ID.
+     */
+    public GroupId: number;
     
-		/**
-		 * Home path.
-		 */
-		public HomePath: string;
-		    
-		/**
-		 * Shell name.
-		 */
-		public Shell: string;
-		    
-		/**
-		 * User full name.
-		 */
-		public FullName: string;
+    /**
+     * Home path.
+     */
+    public HomePath: string;
+        
+    /**
+     * Shell name.
+     */
+    public Shell: string;
+        
+    /**
+     * User full name.
+     */
+    public FullName: string;
 
-		/**
-		 * User email address.
-		 */
-		public Email: string;
+    /**
+     * User email address.
+     */
+    public Email: string;
     
-		/**
-		 * User home or work address.
-		 */
-		public Address: string;
+    /**
+     * User home or work address.
+     */
+    public Address: string;
     
-		/**
-		 * Work phone.
-		 */
-		public PhoneWork: string;
-		
-		/**
-		 * Home phone.
-		 */
-		public PhoneHome: string;
-		
-		/**
-		 * Member of groups.
-		 */
-		public Groups: Array<string>;
+    /**
+     * Work phone.
+     */
+    public PhoneWork: string;
+    
+    /**
+     * Home phone.
+     */
+    public PhoneHome: string;
+    
+    /**
+     * Member of groups.
+     */
+    public Groups: Array<string>;
 
-	}
+  }
 
 }
