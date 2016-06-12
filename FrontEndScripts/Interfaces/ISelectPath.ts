@@ -15,11 +15,11 @@
  */
 module SmallServerAdmin {
 
-	/** Implements path selection. */
-	export interface ISelectPath {
+  /** Implements path selection. */
+  export interface ISelectPath {
 
-		SelectedPath: string;
+    SelectedPath: string;
 
-	}
+  }
 
 }

@@ -15,31 +15,31 @@
  */
 module Nemiro.Collections {
 
-	/** 
-	 * Represents a universal collection.
-	 */
-	export class Collection<T> {
+  /** 
+   * Represents a universal collection.
+   */
+  export class Collection<T> {
 
-		/**
-		 * Gets or sets items.
-		 */
-		public Items: Array<T>;
+    /**
+     * Gets or sets items.
+     */
+    public Items: Array<T>;
 
-		/**
-		 * Gets items count.
-		 */
-		public get Count(): number {
-			return this.Items.length;
+    /**
+     * Gets items count.
+     */
+    public get Count(): number {
+      return this.Items.length;
     }
 
-		constructor() {
-			this.Items = new Array<T>();
-		}
+    constructor() {
+      this.Items = new Array<T>();
+    }
 
-		public Add(item: T): void {
-			this.Items.push(item);
-		}
+    public Add(item: T): void {
+      this.Items.push(item);
+    }
 
-	}
+  }
 
 } 

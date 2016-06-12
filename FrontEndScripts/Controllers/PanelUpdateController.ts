@@ -15,134 +15,134 @@
  */
 module SmallServerAdmin.Controllers {
 
-	/**
-	 * Represents the SmallServerAdmin update controller.
-	 */
-	export class PanelUpdateController implements Nemiro.IController {
+  /**
+   * Represents the SmallServerAdmin update controller.
+   */
+  export class PanelUpdateController implements Nemiro.IController {
 
-		//#region Properties
+    //#region Properties
 
-		public Scope: any;
-		public Context: Nemiro.AngularContext;
+    public Scope: any;
+    public Context: Nemiro.AngularContext;
 
-		/** Checking updates indicator. */
-		public get Checking(): boolean {
-			return this.Scope.Checking;
+    /** Checking updates indicator. */
+    public get Checking(): boolean {
+      return this.Scope.Checking;
     }
-		public set Checking(value: boolean) {
-			this.Scope.Checking = value;
-    }
-
-		/** Indicates the need to update. */
-		public get NeedUpdate(): boolean {
-			return this.Scope.NeedUpdate;
-    }
-		public set NeedUpdate(value: boolean) {
-			this.Scope.NeedUpdate = value;
+    public set Checking(value: boolean) {
+      this.Scope.Checking = value;
     }
 
-		/** New version number. */
-		public get NewVersion(): string {
-			return this.Scope.NewVersion;
+    /** Indicates the need to update. */
+    public get NeedUpdate(): boolean {
+      return this.Scope.NeedUpdate;
     }
-		public set NewVersion(value: string) {
-			this.Scope.NewVersion = value;
-    }
-
-		/** List of changes in the NewVersion. */
-		public get Changes(): string {
-			return this.Scope.Changes;
-    }
-		public set Changes(value: string) {
-			this.Scope.Changes = value;
+    public set NeedUpdate(value: boolean) {
+      this.Scope.NeedUpdate = value;
     }
 
-		/** Updating indicator. */
-		public get Updating(): boolean {
-			return this.Scope.Updating;
+    /** New version number. */
+    public get NewVersion(): string {
+      return this.Scope.NewVersion;
     }
-		public set Updating(value: boolean) {
-			this.Scope.Updating = value;
-    }
-
-		public get Updated(): boolean {
-			return this.Scope.Updated;
-    }
-		public set Updated(value: boolean) {
-			this.Scope.Updated = value;
+    public set NewVersion(value: string) {
+      this.Scope.NewVersion = value;
     }
 
-		//#endregion
-		//#region Constructor
+    /** List of changes in the NewVersion. */
+    public get Changes(): string {
+      return this.Scope.Changes;
+    }
+    public set Changes(value: string) {
+      this.Scope.Changes = value;
+    }
 
-		constructor(context: Nemiro.AngularContext) {
-			var $this = this;
+    /** Updating indicator. */
+    public get Updating(): boolean {
+      return this.Scope.Updating;
+    }
+    public set Updating(value: boolean) {
+      this.Scope.Updating = value;
+    }
 
-			$this.Context = context;
-			$this.Scope = $this.Context.Scope;
+    public get Updated(): boolean {
+      return this.Scope.Updated;
+    }
+    public set Updated(value: boolean) {
+      this.Scope.Updated = value;
+    }
 
-			$this.Scope.UpdateToNewVersion = () => {
-				$this.UpdateToNewVersion($this);
-			}
+    //#endregion
+    //#region Constructor
 
-			$this.CheckUpdates($this);
-		}
+    constructor(context: Nemiro.AngularContext) {
+      var $this = this;
 
-		//#endregion
-		//#region Methods
+      $this.Context = context;
+      $this.Scope = $this.Context.Scope;
 
-		private CheckUpdates($this: PanelUpdateController): void {
-			if ($this.Checking) {
-				return;
-			}
+      $this.Scope.UpdateToNewVersion = () => {
+        $this.UpdateToNewVersion($this);
+      }
 
-			$this.Checking = true;
+      $this.CheckUpdates($this);
+    }
 
-			// create request
-			var apiRequest = new ApiRequest<any>($this.Context, 'Settings.CheckUpdates');
+    //#endregion
+    //#region Methods
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
-				$this.NeedUpdate = response.data.NeedUpdate;
-				$this.NewVersion = response.data.NewVersion;
-				$this.Changes = response.data.Changes;
-			};
+    private CheckUpdates($this: PanelUpdateController): void {
+      if ($this.Checking) {
+        return;
+      }
 
-			// handler request complete
-			apiRequest.CompleteCallback = () => {
-				$this.Checking = false;
-			};
+      $this.Checking = true;
 
-			// execute
-			apiRequest.Execute();
-		}
+      // create request
+      var apiRequest = new ApiRequest<any>($this.Context, 'Settings.CheckUpdates');
 
-		private UpdateToNewVersion($this: PanelUpdateController): void {
-			if ($this.Updating) {
-				return;
-			}
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        $this.NeedUpdate = response.data.NeedUpdate;
+        $this.NewVersion = response.data.NewVersion;
+        $this.Changes = response.data.Changes;
+      };
 
-			$this.Updating = true;
+      // handler request complete
+      apiRequest.CompleteCallback = () => {
+        $this.Checking = false;
+      };
 
-			// create request
-			var apiRequest = new ApiRequest<any>($this.Context, 'Settings.Update');
+      // execute
+      apiRequest.Execute();
+    }
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
-				$this.Updated = true;
-			};
+    private UpdateToNewVersion($this: PanelUpdateController): void {
+      if ($this.Updating) {
+        return;
+      }
 
-			// handler request complete
-			apiRequest.CompleteCallback = () => {
-				$this.Updating = false;
-			};
+      $this.Updating = true;
 
-			// execute
-			apiRequest.Execute();
-		}
+      // create request
+      var apiRequest = new ApiRequest<any>($this.Context, 'Settings.Update');
 
-		//#endregion
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        $this.Updated = true;
+      };
 
-	}
+      // handler request complete
+      apiRequest.CompleteCallback = () => {
+        $this.Updating = false;
+      };
+
+      // execute
+      apiRequest.Execute();
+    }
+
+    //#endregion
+
+  }
 
 }

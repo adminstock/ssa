@@ -15,56 +15,56 @@
  */
 module SmallServerAdmin.Filters {
 
-	/**
-	 * Filter to format numbers.
-	 */
-	export class CurrencyFormat implements Nemiro.IFilter {
+  /**
+   * Filter to format numbers.
+   */
+  export class CurrencyFormat implements Nemiro.IFilter {
 
-		Name: string = 'CurrencyFormat';
+    Name: string = 'CurrencyFormat';
 
-		Filter: ng.IFilterService;
+    Filter: ng.IFilterService;
 
-		constructor(filter: ng.IFilterService) {
-			this.Filter = filter;
-		}
+    constructor(filter: ng.IFilterService) {
+      this.Filter = filter;
+    }
 
-		public Execution(value: number, args: any): any {
-			if (isNaN(parseFloat(<any>value)) || !isFinite(value)) {
-				return value;
-			}
+    public Execution(value: number, args: any): any {
+      if (isNaN(parseFloat(<any>value)) || !isFinite(value)) {
+        return value;
+      }
 
-			// параметры по умолчанию
-			args = args || {};
-			var currencySymbol = args.currencySymbol || '';
-			var decimalSeparator = args.decimalSeparator || '.';
-			var thousandsSeparator = args.thousandsSeparator || ' ';
-			var decimalDigits = args.decimalDigits || 0;
+      // параметры по умолчанию
+      args = args || {};
+      var currencySymbol = args.currencySymbol || '';
+      var decimalSeparator = args.decimalSeparator || '.';
+      var thousandsSeparator = args.thousandsSeparator || ' ';
+      var decimalDigits = args.decimalDigits || 0;
 
-			if (decimalDigits <= 0) {
-				decimalDigits = undefined;
-			}
-					
-			// форматируем
-			var formattedNumber = this.Filter('number')(value, decimalDigits);
-					
-			// копейки
-			var numberParts = formattedNumber.split('.');
+      if (decimalDigits <= 0) {
+        decimalDigits = undefined;
+      }
+          
+      // форматируем
+      var formattedNumber = this.Filter('number')(value, decimalDigits);
+          
+      // копейки
+      var numberParts = formattedNumber.split('.');
 
-			// десятичный разделитель
-			numberParts[0] = numberParts[0].split(',').join(thousandsSeparator);
+      // десятичный разделитель
+      numberParts[0] = numberParts[0].split(',').join(thousandsSeparator);
 
-			// собираем
-			var result = numberParts[0];
+      // собираем
+      var result = numberParts[0];
 
-			if (numberParts.length == 2) {
-				result += decimalSeparator + numberParts[1];
-			}
+      if (numberParts.length == 2) {
+        result += decimalSeparator + numberParts[1];
+      }
 
-			result += ' ' + currencySymbol;
+      result += ' ' + currencySymbol;
 
-			return result;
-		}
+      return result;
+    }
 
-	}
+  }
 
 }

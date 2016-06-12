@@ -15,18 +15,18 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents server info.
-	 */
-	export class ServerToAdmin {
+  /**
+   * Represents server info.
+   */
+  export class ServerToAdmin {
 
-		public Name: string;
-		public Address: string;
-		public Description: string;
-		public Config: string;
-		public IsDefault: boolean;
-		public Disabled: boolean;
+    public Name: string;
+    public Address: string;
+    public Description: string;
+    public Config: string;
+    public IsDefault: boolean;
+    public Disabled: boolean;
 
-	}
+  }
 
 }

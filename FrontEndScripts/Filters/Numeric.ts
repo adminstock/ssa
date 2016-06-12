@@ -15,23 +15,23 @@
  */
 module SmallServerAdmin.Filters {
 
-	/**
-	 * Numeric type.
-	 */
-	export class Numeric implements Nemiro.IFilter {
+  /**
+   * Numeric type.
+   */
+  export class Numeric implements Nemiro.IFilter {
 
-		Name: string = 'Numeric';
+    Name: string = 'Numeric';
 
-		Filter: ng.IFilterService;
+    Filter: ng.IFilterService;
 
-		constructor(filter: ng.IFilterService) {
-			this.Filter = filter;
-		}
+    constructor(filter: ng.IFilterService) {
+      this.Filter = filter;
+    }
 
-		public Execution(value: any, args: any): any {
-			return parseFloat(value);
-		}
+    public Execution(value: any, args: any): any {
+      return parseFloat(value);
+    }
 
-	}
+  }
 
 }

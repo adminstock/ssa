@@ -15,150 +15,150 @@
  */
 module SmallServerAdmin.Controllers {
 
-	/**
-	 * Represents the main controller.
-	 */
-	export class UserListController implements Nemiro.IController {
+  /**
+   * Represents the main controller.
+   */
+  export class UserListController implements Nemiro.IController {
 
-		public Scope: any;
-		public Context: Nemiro.AngularContext;
+    public Scope: any;
+    public Context: Nemiro.AngularContext;
 
-		/** The list of users. */
-		public get Users(): Models.UsersList {
-			return this.Scope.Users;
+    /** The list of users. */
+    public get Users(): Models.UsersList {
+      return this.Scope.Users;
     }
-		public set Users(value: Models.UsersList) {
-			this.Scope.Users = value;
-    }
-
-		/** Search string. */
-		public get Search(): string {
-			return this.Scope.Search;
-    }
-		public set Search(value: string) {
-			this.Scope.Search = value;
+    public set Users(value: Models.UsersList) {
+      this.Scope.Users = value;
     }
 
-		/** Loading indicator. */
-		public get Loading(): boolean {
-			return this.Scope.Loading;
+    /** Search string. */
+    public get Search(): string {
+      return this.Scope.Search;
     }
-		public set Loading(value: boolean) {
-			this.Scope.Loading = value;
-			/*if (value) {
-				this.Scope.$parent.ShowProgress('Loading list of users...', 'Loading...');
-			} else {
-				this.Scope.$parent.CloseProgress();
-			}*/
+    public set Search(value: string) {
+      this.Scope.Search = value;
     }
 
-		/** Selected user login to remove. */
-		public get SelectedUserToRemove(): string {
-			return this.Scope.SelectedUserToRemove;
+    /** Loading indicator. */
+    public get Loading(): boolean {
+      return this.Scope.Loading;
     }
-		public set SelectedUserToRemove(value: string) {
-			this.Scope.SelectedUserToRemove = value;
-    }
-
-		/** Confirm user to remove. */
-		public get ConfirmLoginToRemove(): string {
-			return this.Scope.ConfirmLoginToRemove;
-    }
-		public set ConfirmLoginToRemove(value: string) {
-			this.Scope.ConfirmLoginToRemove = value;
+    public set Loading(value: boolean) {
+      this.Scope.Loading = value;
+      /*if (value) {
+        this.Scope.$parent.ShowProgress('Loading list of users...', 'Loading...');
+      } else {
+        this.Scope.$parent.CloseProgress();
+      }*/
     }
 
-		/** Indicates the need to delete the home directory of the user. */
-		public get RemoveHome(): boolean {
-			return this.Scope.RemoveHome;
+    /** Selected user login to remove. */
+    public get SelectedUserToRemove(): string {
+      return this.Scope.SelectedUserToRemove;
     }
-		public set RemoveHome(value: boolean) {
-			this.Scope.RemoveHome = value;
+    public set SelectedUserToRemove(value: string) {
+      this.Scope.SelectedUserToRemove = value;
     }
 
-		private ConfirmUserRemove: Nemiro.UI.Dialog;
+    /** Confirm user to remove. */
+    public get ConfirmLoginToRemove(): string {
+      return this.Scope.ConfirmLoginToRemove;
+    }
+    public set ConfirmLoginToRemove(value: string) {
+      this.Scope.ConfirmLoginToRemove = value;
+    }
 
-		constructor(context: Nemiro.AngularContext) {
-			var $this = this;
-			
-			$this.Context = context;
-			$this.Scope = $this.Context.Scope;
-			$this.Users = new Models.UsersList();
-			$this.Users.CurrentPage = 1;
-			$this.Users.DataPerPage = 100;
-			$this.Search = $this.Context.Location.search()['search'];
+    /** Indicates the need to delete the home directory of the user. */
+    public get RemoveHome(): boolean {
+      return this.Scope.RemoveHome;
+    }
+    public set RemoveHome(value: boolean) {
+      this.Scope.RemoveHome = value;
+    }
 
-			$this.ConfirmUserRemove = Nemiro.UI.Dialog.CreateFromElement($('#confirmUserRemove'));
+    private ConfirmUserRemove: Nemiro.UI.Dialog;
 
-			$this.Scope.LoadUsers = () => { $this.LoadUsers($this); }
+    constructor(context: Nemiro.AngularContext) {
+      var $this = this;
+      
+      $this.Context = context;
+      $this.Scope = $this.Context.Scope;
+      $this.Users = new Models.UsersList();
+      $this.Users.CurrentPage = 1;
+      $this.Users.DataPerPage = 100;
+      $this.Search = $this.Context.Location.search()['search'];
 
-			$this.Scope.ShowDialogToDeleteUser = (login: string) => {
-				$this.RemoveHome = true;
-				$this.ConfirmLoginToRemove = '';
-				$this.SelectedUserToRemove = login;
-				$this.ConfirmUserRemove.Show();
-			};
+      $this.ConfirmUserRemove = Nemiro.UI.Dialog.CreateFromElement($('#confirmUserRemove'));
 
-			$this.Scope.DeleteUser = () => { $this.DeleteUser($this); }
+      $this.Scope.LoadUsers = () => { $this.LoadUsers($this); }
 
-			$this.Scope.SearchUsers = () => {
-				$this.Users.CurrentPage = 1;
-				$this.Context.Location.search('search', $this.Search);
-				$this.LoadUsers($this);
-			}
+      $this.Scope.ShowDialogToDeleteUser = (login: string) => {
+        $this.RemoveHome = true;
+        $this.ConfirmLoginToRemove = '';
+        $this.SelectedUserToRemove = login;
+        $this.ConfirmUserRemove.Show();
+      };
 
-			$this.Scope.ResetSearch = () => {
-				$this.Users.CurrentPage = 1;
-				$this.Search = '';
-				$this.Context.Location.search('search', null);
-				$this.LoadUsers($this);
-			}
+      $this.Scope.DeleteUser = () => { $this.DeleteUser($this); }
 
-			$this.LoadUsers($this);
-		}
+      $this.Scope.SearchUsers = () => {
+        $this.Users.CurrentPage = 1;
+        $this.Context.Location.search('search', $this.Search);
+        $this.LoadUsers($this);
+      }
 
-		private LoadUsers($this: UserListController): void {
-			$this = $this || this;
-			$this.Loading = true;
+      $this.Scope.ResetSearch = () => {
+        $this.Users.CurrentPage = 1;
+        $this.Search = '';
+        $this.Context.Location.search('search', null);
+        $this.LoadUsers($this);
+      }
 
-			// create request
-			var apiRequest = new ApiRequest<Models.UsersList>($this.Context, 'Users.GetUsers', { page: $this.Users.CurrentPage, limit: $this.Users.DataPerPage, search: $this.Search });
+      $this.LoadUsers($this);
+    }
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
-				$this.Users = response.data;
-				$this.Loading = false;
-				this.Scope.$parent.CloseProgress();
-			};
+    private LoadUsers($this: UserListController): void {
+      $this = $this || this;
+      $this.Loading = true;
 
-			// execute
-			apiRequest.Execute();
-		}
+      // create request
+      var apiRequest = new ApiRequest<Models.UsersList>($this.Context, 'Users.GetUsers', { page: $this.Users.CurrentPage, limit: $this.Users.DataPerPage, search: $this.Search });
 
-		private DeleteUser($this: UserListController): void {
-			$this = $this || this;
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        $this.Users = response.data;
+        $this.Loading = false;
+        this.Scope.$parent.CloseProgress();
+      };
 
-			if ($this.ConfirmLoginToRemove != $this.SelectedUserToRemove) {
+      // execute
+      apiRequest.Execute();
+    }
+
+    private DeleteUser($this: UserListController): void {
+      $this = $this || this;
+
+      if ($this.ConfirmLoginToRemove != $this.SelectedUserToRemove) {
         Nemiro.UI.Dialog.Alert(App.Resources.IncorrectUserName, App.Resources.Error);
-				return;
-			}
+        return;
+      }
 
-			$this.ConfirmUserRemove.Close();
+      $this.ConfirmUserRemove.Close();
       $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(App.Resources.IsRemovedUserWait, [$this.SelectedUserToRemove]), App.Resources.Deleting);
 
-			// create request
-			var apiRequest = new ApiRequest<boolean>($this.Context, 'Users.DeleteUser', { Login: $this.SelectedUserToRemove, RemoveHome: $this.RemoveHome });
+      // create request
+      var apiRequest = new ApiRequest<boolean>($this.Context, 'Users.DeleteUser', { Login: $this.SelectedUserToRemove, RemoveHome: $this.RemoveHome });
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
         this.Scope.$parent.ShowProgress(App.Resources.LoadingListOfUsers, App.Resources.Loading);
-				$this.LoadUsers($this);
-			};
+        $this.LoadUsers($this);
+      };
 
-			// execute
-			apiRequest.Execute();
-		}
+      // execute
+      apiRequest.Execute();
+    }
 
-	}
+  }
 
 } 

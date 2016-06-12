@@ -15,33 +15,33 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents a web site.
-	 */
-	export class Site {
+  /**
+   * Represents a web site.
+   */
+  export class Site {
 
-		/**
-		 * The site name.
-		 */
-		public Name: string;
+    /**
+     * The site name.
+     */
+    public Name: string;
 
-		/**
-		 * Enabled status.
-		 */
-		public IsEnabled: boolean;
+    /**
+     * Enabled status.
+     */
+    public IsEnabled: boolean;
 
-		/**
-		 * Configured for Web servers.
-		 */
-		public Levels: Array<string>;
+    /**
+     * Configured for Web servers.
+     */
+    public Levels: Array<string>;
 
-		/**
-		 * The source of config files.
-		 */
-		public Conf: Array<SiteConf>;
+    /**
+     * The source of config files.
+     */
+    public Conf: Array<SiteConf>;
 
-		public Loading: boolean;
- 	
-	}
+    public Loading: boolean;
+   
+  }
 
 }

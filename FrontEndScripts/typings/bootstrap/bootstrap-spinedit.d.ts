@@ -9,15 +9,15 @@ interface BootstrapSpinedit {
 
 interface JQueryStatic {
 
-	spinedit: BootstrapSpinedit;
+  spinedit: BootstrapSpinedit;
 
 }
 
 interface JQuery {
 
-	/**
-	 * Initializes Bootstrap Spinedit.
-	 */
-	spinedit(options?: any): JQuery;
+  /**
+   * Initializes Bootstrap Spinedit.
+   */
+  spinedit(options?: any): JQuery;
 
 } 

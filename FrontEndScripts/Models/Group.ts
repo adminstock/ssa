@@ -15,31 +15,31 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents a group.
-	 */
-	export class Group {
+  /**
+   * Represents a group.
+   */
+  export class Group {
 
-		/**
-		 * Group name.
-		 */
-		public Name: string;
+    /**
+     * Group name.
+     */
+    public Name: string;
     
-		/**
-		 * Password.
-		 */
-		public Password: string;
+    /**
+     * Password.
+     */
+    public Password: string;
 
-		/**
-		 * Group ID.
-		 */
-		public Id: number;
+    /**
+     * Group ID.
+     */
+    public Id: number;
     
-		/**
-		 * List of group members.
-		 */
-		public Members: Array<string>;
-    	
-	}
+    /**
+     * List of group members.
+     */
+    public Members: Array<string>;
+      
+  }
 
 }

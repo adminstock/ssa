@@ -15,50 +15,50 @@
  */
 module SmallServerAdmin.Filters {
 
-	/**
-	 * Filter to sort the list of groups.
-	 */
-	export class OrderGroups implements Nemiro.IFilter {
+  /**
+   * Filter to sort the list of groups.
+   */
+  export class OrderGroups implements Nemiro.IFilter {
 
-		Name: string = 'OrderGroups';
+    Name: string = 'OrderGroups';
 
-		Filter: ng.IFilterService;
+    Filter: ng.IFilterService;
 
-		constructor(filter: ng.IFilterService) {
-			this.Filter = filter;
-		}
+    constructor(filter: ng.IFilterService) {
+      this.Filter = filter;
+    }
 
-		public Execution(groups: Array<Models.Group>, userGroups: Array<string>): any {
-			if (groups === undefined) {
-				return null;
-			}
+    public Execution(groups: Array<Models.Group>, userGroups: Array<string>): any {
+      if (groups === undefined) {
+        return null;
+      }
 
-			var result = [];
-			var userInGroups = [];
-			
-			if (userGroups !== undefined) {
-				angular.forEach(groups, function (group) {
-					if (userGroups.indexOf(group.Name) != -1) {
-						userInGroups.push(group);
-					} else {
-						result.push(group);
-					}
-				});
-			} else {
-				result = groups;
-			}
+      var result = [];
+      var userInGroups = [];
+      
+      if (userGroups !== undefined) {
+        angular.forEach(groups, function (group) {
+          if (userGroups.indexOf(group.Name) != -1) {
+            userInGroups.push(group);
+          } else {
+            result.push(group);
+          }
+        });
+      } else {
+        result = groups;
+      }
 
-			result.sort((a: Models.Group, b: Models.Group) => {
-				return a.Name.localeCompare(b.Name);
-			});
+      result.sort((a: Models.Group, b: Models.Group) => {
+        return a.Name.localeCompare(b.Name);
+      });
 
-			userInGroups.sort((a: Models.Group, b: Models.Group) => {
-				return a.Name.localeCompare(b.Name);
-			});
-			
-			return userInGroups.concat(result);
-		}
+      userInGroups.sort((a: Models.Group, b: Models.Group) => {
+        return a.Name.localeCompare(b.Name);
+      });
+      
+      return userInGroups.concat(result);
+    }
 
-	}
+  }
 
 }

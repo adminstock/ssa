@@ -15,68 +15,68 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents model of the master of the Apache config.
-	 */
-	export class SiteNewApache implements ISelectPath {
+  /**
+   * Represents model of the master of the Apache config.
+   */
+  export class SiteNewApache implements ISelectPath {
 
-		/**
-		 * The main domain.
-		 */
-		public Domain: string;
+    /**
+     * The main domain.
+     */
+    public Domain: string;
 
-		/**
-		 * The root path.
-		 */
-		public SelectedPath: string;
+    /**
+     * The root path.
+     */
+    public SelectedPath: string;
 
-		/**
-		 * 0 - Off, 1 - Error log, 2 - Access log, 3 - Error and Access
-		 */
-		public EventLogs: number;
+    /**
+     * 0 - Off, 1 - Error log, 2 - Access log, 3 - Error and Access
+     */
+    public EventLogs: number;
 
-		/**
-		 * ASP.NET Version: Off | 4.5 | 4.0 | 2.0
-		 */
-		public AspNetVersion: string;
+    /**
+     * ASP.NET Version: Off | 4.5 | 4.0 | 2.0
+     */
+    public AspNetVersion: string;
 
-		/**
-		 * MONO_IOMAP
-		 */
-		public AspNetIOMapForAll: boolean;
+    /**
+     * MONO_IOMAP
+     */
+    public AspNetIOMapForAll: boolean;
 
-		/**
-		 * Debug mode.
-		 */
-		public AspNetDebug: boolean;
+    /**
+     * Debug mode.
+     */
+    public AspNetDebug: boolean;
 
-		/**
-		 * Mono control panel.
-		 */
-		public MonoCtrl: boolean;
+    /**
+     * Mono control panel.
+     */
+    public MonoCtrl: boolean;
 
-		/**
-		 * WebDAV SVN.
-		 */
-		public WebDavSvn: boolean;
+    /**
+     * WebDAV SVN.
+     */
+    public WebDavSvn: boolean;
 
-		/**
-		 * SSL.
-		 */
-		public SSL: boolean;
+    /**
+     * SSL.
+     */
+    public SSL: boolean;
 
-		constructor() {
-			this.Domain = '';
-			this.AspNetVersion = 'Off';
-			this.MonoCtrl = false;
-			this.AspNetIOMapForAll = true;
-			this.AspNetDebug = false;
-			this.WebDavSvn = false;
-			this.SSL = false;
-			this.SelectedPath = '/home';
-			this.EventLogs = 0;
-		}
+    constructor() {
+      this.Domain = '';
+      this.AspNetVersion = 'Off';
+      this.MonoCtrl = false;
+      this.AspNetIOMapForAll = true;
+      this.AspNetDebug = false;
+      this.WebDavSvn = false;
+      this.SSL = false;
+      this.SelectedPath = '/home';
+      this.EventLogs = 0;
+    }
 
-	}
+  }
 
 }

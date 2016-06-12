@@ -15,26 +15,26 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents reloading info.
-	 */
-	export class ReloadingInfo {
+  /**
+   * Represents reloading info.
+   */
+  export class ReloadingInfo {
 
-		/**
-		 * The operation name.
-		 */
-		public Name: string;
+    /**
+     * The operation name.
+     */
+    public Name: string;
 
-		/**
-		 * The reloading status: Waiting | Processing | Success | Error.
-		 */
-		public Status: string;
+    /**
+     * The reloading status: Waiting | Processing | Success | Error.
+     */
+    public Status: string;
 
-		constructor(name?: string) {
-			this.Name = name;
-			this.Status = 'Waiting';
-		}
+    constructor(name?: string) {
+      this.Name = name;
+      this.Status = 'Waiting';
+    }
 
-	}
+  }
 
 }

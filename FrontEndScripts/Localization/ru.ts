@@ -15,7 +15,7 @@
  */
 module SmallServerAdmin.Localization {
 
-	/** Russian resources. */
+  /** Russian resources. */
   export class RU implements ILocalization {
 
     //#region ..Common..
@@ -40,9 +40,9 @@ module SmallServerAdmin.Localization {
     /** Success */
     public Success: string = 'Успех';
 
-		/**
-		 * Error
-		 */
+    /**
+     * Error
+     */
     public Error: string = 'Ошибка';
 
     /** Ok */
@@ -91,9 +91,9 @@ module SmallServerAdmin.Localization {
      */
     public LoadingFileContents: string = 'Получение содержимого файла...';
 
-		/**
-		 * Getting the file info...
-		 */
+    /**
+     * Getting the file info...
+     */
     public GettingFileInfo: string = 'Запрос информации о файле...';
 
     //#endregion
@@ -209,6 +209,6 @@ module SmallServerAdmin.Localization {
 
     //#endregion
 
-	}
+  }
 
 }

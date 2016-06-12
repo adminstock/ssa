@@ -15,27 +15,27 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents model of the master of the HTAN.Runner config.
-	 */
-	export class SiteNewHTAN implements ISelectPath {
+  /**
+   * Represents model of the master of the HTAN.Runner config.
+   */
+  export class SiteNewHTAN implements ISelectPath {
 
-		/**
-		 * The main domain.
-		 */
-		public Domain: string;
+    /**
+     * The main domain.
+     */
+    public Domain: string;
 
-		/**
-		 * The root path.
-		 */
-		public SelectedPath: string;
+    /**
+     * The root path.
+     */
+    public SelectedPath: string;
 
-		public FastCGI: Array<SiteHTANItem>;
-		
-		constructor() {
-			this.FastCGI = new Array<SiteHTANItem>();
-		}
+    public FastCGI: Array<SiteHTANItem>;
+    
+    constructor() {
+      this.FastCGI = new Array<SiteHTANItem>();
+    }
 
-	}
+  }
 
 }

@@ -15,33 +15,33 @@
 */
 module Nemiro.Collections {
 
-	/**
-	 * Represents a collection of associated String keys and String values.
-	 */
-	export class NameValueCollection extends Nemiro.Collections.Collection<Nemiro.Collections.KeyValueItem> {
+  /**
+   * Represents a collection of associated String keys and String values.
+   */
+  export class NameValueCollection extends Nemiro.Collections.Collection<Nemiro.Collections.KeyValueItem> {
 
-		constructor() {
-			super();
-		}
+    constructor() {
+      super();
+    }
 
-		public AddItem(key: string, value: string): void {
-			this.Items.push(new Nemiro.Collections.KeyValueItem(key, value));
-		}
+    public AddItem(key: string, value: string): void {
+      this.Items.push(new Nemiro.Collections.KeyValueItem(key, value));
+    }
 
-		/**
-		 * Gets the values associated with the specified key.
-		 */
-		public Get(key: string): Nemiro.Collections.KeyValueItem {
-			for (var i = 0; i < this.Count; i++)
-			{
-				if (key == this.Items[i].Key) {
-					return this.Items[i];
-				}
-			}
+    /**
+     * Gets the values associated with the specified key.
+     */
+    public Get(key: string): Nemiro.Collections.KeyValueItem {
+      for (var i = 0; i < this.Count; i++)
+      {
+        if (key == this.Items[i].Key) {
+          return this.Items[i];
+        }
+      }
 
-			return null;
-		}
+      return null;
+    }
 
-	}
+  }
 
 }

@@ -15,7 +15,7 @@
  */
 module SmallServerAdmin.Localization {
 
-	/** Default localization resources. */
+  /** Default localization resources. */
   export class Default implements ILocalization {
 
     //#region ..Common..
@@ -40,9 +40,9 @@ module SmallServerAdmin.Localization {
     /** Success */
     public Success: string = 'Success';
 
-		/**
-		 * Error
-		 */
+    /**
+     * Error
+     */
     public Error: string = 'Error';
 
     /** Ok */
@@ -91,9 +91,9 @@ module SmallServerAdmin.Localization {
      */
     public LoadingFileContents: string = 'Loading the file contents...';
 
-		/**
-		 * Getting the file info...
-		 */
+    /**
+     * Getting the file info...
+     */
     public GettingFileInfo: string = 'Getting the file info...';
     
     //#endregion

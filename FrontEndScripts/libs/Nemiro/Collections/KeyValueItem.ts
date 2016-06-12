@@ -15,26 +15,26 @@
 */
 module Nemiro.Collections {
 
-	/**
-	 * Represents key and value item.
-	 */
-	export class KeyValueItem {
+  /**
+   * Represents key and value item.
+   */
+  export class KeyValueItem {
 
-		/**
-		 * Gets or sets key.
-		 */
-		public Key: string;
+    /**
+     * Gets or sets key.
+     */
+    public Key: string;
 
-		/**
-		 * Gets or sets value.
-		 */
-		public Value: string;
+    /**
+     * Gets or sets value.
+     */
+    public Value: string;
 
-		constructor(key?: string, value?: string) {
-			this.Key = key || null;
-			this.Value = value || null;
-		}
+    constructor(key?: string, value?: string) {
+      this.Key = key || null;
+      this.Value = value || null;
+    }
 
-	}
+  }
 
 }

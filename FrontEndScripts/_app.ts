@@ -22,68 +22,68 @@
  */
 module SmallServerAdmin {
 
-	/** The main class of the Applicton. */
-	export class App {
-		
-		/** Indicates local storage is available or not. */
-		public static LocalStorageIsSupport: boolean = false;
+  /** The main class of the Applicton. */
+  export class App {
+    
+    /** Indicates local storage is available or not. */
+    public static LocalStorageIsSupport: boolean = false;
 
-		/** Context of the current application. */
-		public static Current: Nemiro.AppContext = null;
+    /** Context of the current application. */
+    public static Current: Nemiro.AppContext = null;
 
-		/** Current language. For example: en (default), ru, de. * /
-		public static Lang: string = 'en';*/
+    /** Current language. For example: en (default), ru, de. * /
+    public static Lang: string = 'en';*/
 
     /** Current localization resources. */
     public static Resources: ILocalization = null;
 
-		public static Init(): void {
-			console.log('SmallServerAdmin.App.Init');
+    public static Init(): void {
+      console.log('SmallServerAdmin.App.Init');
 
-			try { 
-				App.LocalStorageIsSupport = 'localStorage' in window && window['localStorage'] !== null;
-			} catch (ex) { }
+      try { 
+        App.LocalStorageIsSupport = 'localStorage' in window && window['localStorage'] !== null;
+      } catch (ex) { }
 
-			/*App.Lang = Nemiro.Utility.ReadCookies("lang") || 'en';
+      /*App.Lang = Nemiro.Utility.ReadCookies("lang") || 'en';
 
-			if (App.Lang == '') {
-				App.Lang = 'en';
-			}*/
+      if (App.Lang == '') {
+        App.Lang = 'en';
+      }*/
 
       App.Localize();
 
-			// switch true-false
-			$('.bit').bootstrapSwitch({
-				onText: '<span class="glyphicon glyphicon-check" aria-hidden="true"></span>',
-				offText: '<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>',
-				offColor: 'default',
-				onColor: 'default'
-			});
+      // switch true-false
+      $('.bit').bootstrapSwitch({
+        onText: '<span class="glyphicon glyphicon-check" aria-hidden="true"></span>',
+        offText: '<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>',
+        offColor: 'default',
+        onColor: 'default'
+      });
 
-			// switch yes-no
-			$('.yesno').bootstrapSwitch({
-				onText: '<span class="glyphicon glyphicon-check" aria-hidden="true"></span> Да',
-				offText: '<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span> Нет',
-				onColor: 'success',
-				offColor: 'danger',
-				handleWidth: '60px',
-			});
+      // switch yes-no
+      $('.yesno').bootstrapSwitch({
+        onText: '<span class="glyphicon glyphicon-check" aria-hidden="true"></span> Да',
+        offText: '<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span> Нет',
+        onColor: 'success',
+        offColor: 'danger',
+        handleWidth: '60px',
+      });
 
-			App.Current = new Nemiro.AppContext
-			(
-				'SmallServerAdmin', 'SmallServerAdmin',
-				[
-					'ngAnimate',
-					'ngSanitize',
-					'ui.bootstrap',
-					'ui.codemirror',
-					'frapontillo.bootstrap-switch',
-					'treeControl',
-					'highcharts-ng',
-					'pageslide-directive'
-				]
-			);
-		}
+      App.Current = new Nemiro.AppContext
+      (
+        'SmallServerAdmin', 'SmallServerAdmin',
+        [
+          'ngAnimate',
+          'ngSanitize',
+          'ui.bootstrap',
+          'ui.codemirror',
+          'frapontillo.bootstrap-switch',
+          'treeControl',
+          'highcharts-ng',
+          'pageslide-directive'
+        ]
+      );
+    }
 
     private static Localize(): void {
       // check resources
@@ -125,7 +125,7 @@ module SmallServerAdmin {
       }
     }
 
-	}
+  }
 
 }
 

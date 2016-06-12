@@ -15,109 +15,109 @@
  */
 module SmallServerAdmin.Controllers {
 
-	/**
-	 * Represents the SSH controller.
-	 */
-	export class SshController implements Nemiro.IController {
+  /**
+   * Represents the SSH controller.
+   */
+  export class SshController implements Nemiro.IController {
 
-		public Scope: any;
-		public Context: Nemiro.AngularContext;
+    public Scope: any;
+    public Context: Nemiro.AngularContext;
 
-		/** Command execution indicator. */
-		public get Execution(): boolean {
-			return this.Scope.Execution;
+    /** Command execution indicator. */
+    public get Execution(): boolean {
+      return this.Scope.Execution;
     }
-		public set Execution(value: boolean) {
-			this.Scope.Execution = value;
+    public set Execution(value: boolean) {
+      this.Scope.Execution = value;
     }
 
-		constructor(context: Nemiro.AngularContext) {
-			var $this = this;
-			
-			$this.Context = context;
-			$this.Scope = $this.Context.Scope;
+    constructor(context: Nemiro.AngularContext) {
+      var $this = this;
+      
+      $this.Context = context;
+      $this.Scope = $this.Context.Scope;
 
-			$this.Scope.CodeMirror_Loaded = (editor) => {
-				editor.focus();
+      $this.Scope.CodeMirror_Loaded = (editor) => {
+        editor.focus();
 
-				editor.on('keyHandled',(editor: CodeMirror.Editor, name: string, event: KeyboardEvent) => {
-					$this.Terminal_KeyHandled($this, editor, name, event);
-				});
-			};
-		}
+        editor.on('keyHandled',(editor: CodeMirror.Editor, name: string, event: KeyboardEvent) => {
+          $this.Terminal_KeyHandled($this, editor, name, event);
+        });
+      };
+    }
 
-		private Terminal_KeyHandled($this: SshController, editor: CodeMirror.Editor, name: string, event: KeyboardEvent): void {
-			//console.log(name, event.keyCode);
-			if (event.keyCode != 13) {
-				return;
-			}
+    private Terminal_KeyHandled($this: SshController, editor: CodeMirror.Editor, name: string, event: KeyboardEvent): void {
+      //console.log(name, event.keyCode);
+      if (event.keyCode != 13) {
+        return;
+      }
 
-			var doc = editor.getDoc();
-			var line = doc.lastLine() - 1
-			var cmd = doc.getLine(line);
+      var doc = editor.getDoc();
+      var line = doc.lastLine() - 1
+      var cmd = doc.getLine(line);
 
-			// add command to history
-			//doc.setHistory(cmd);
+      // add command to history
+      //doc.setHistory(cmd);
 
-			if (cmd == '') {
-				return;
-			}
+      if (cmd == '') {
+        return;
+      }
 
-			// local commands
-			if (cmd == 'clear' || cmd == 'cls') {
-				doc.setValue('');
-				return;
-			}
+      // local commands
+      if (cmd == 'clear' || cmd == 'cls') {
+        doc.setValue('');
+        return;
+      }
 
-			editor.setOption('readOnly', true);
+      editor.setOption('readOnly', true);
 
-			// mark string as read-only
-			doc.markText(CodeMirror.Pos(line, 0), CodeMirror.Pos(line, cmd.length), { readOnly: true });
-			
-			$this.Execution = true;
+      // mark string as read-only
+      doc.markText(CodeMirror.Pos(line, 0), CodeMirror.Pos(line, cmd.length), { readOnly: true });
+      
+      $this.Execution = true;
 
-			// create request
-			var apiRequest = new ApiRequest<Models.SshResult>($this.Context, 'Ssh.Execute', cmd);
+      // create request
+      var apiRequest = new ApiRequest<Models.SshResult>($this.Context, 'Ssh.Execute', cmd);
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
-				var output: string = '';
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        var output: string = '';
 
-				if (response.data.Result != '') {
-					output += response.data.Result;
-				}
+        if (response.data.Result != '') {
+          output += response.data.Result;
+        }
 
-				if (response.data.Error != '') {
-					if (output.length > 0) {
-						output += '\n';
-					}
+        if (response.data.Error != '') {
+          if (output.length > 0) {
+            output += '\n';
+          }
 
-					output += response.data.Error;
-				}
+          output += response.data.Error;
+        }
 
-				output = output.replace(/\r+/gm, '');
+        output = output.replace(/\r+/gm, '');
 
-				// output
-				var lines = output.split('\n');
+        // output
+        var lines = output.split('\n');
 
-				for (var i = 0; i < lines.length; i++) {
-					var startLine = doc.lastLine();
-					doc.replaceRange(lines[i] + '\n', CodeMirror.Pos(startLine, 0), null);
-					// mark line as read-only
-					doc.markText(CodeMirror.Pos(startLine, 0), CodeMirror.Pos(startLine, lines[i].length), { readOnly: true });
-				}
-			};
+        for (var i = 0; i < lines.length; i++) {
+          var startLine = doc.lastLine();
+          doc.replaceRange(lines[i] + '\n', CodeMirror.Pos(startLine, 0), null);
+          // mark line as read-only
+          doc.markText(CodeMirror.Pos(startLine, 0), CodeMirror.Pos(startLine, lines[i].length), { readOnly: true });
+        }
+      };
 
-			apiRequest.CompleteCallback = () => {
-				doc.setCursor(CodeMirror.Pos(doc.lastLine(), 0));
-				editor.setOption('readOnly', false);
-				$this.Execution = false;
-			}
+      apiRequest.CompleteCallback = () => {
+        doc.setCursor(CodeMirror.Pos(doc.lastLine(), 0));
+        editor.setOption('readOnly', false);
+        $this.Execution = false;
+      }
 
-			// execute
-			apiRequest.Execute();
-		}
+      // execute
+      apiRequest.Execute();
+    }
 
-	}
+  }
 
 } 

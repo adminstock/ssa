@@ -15,21 +15,21 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents a group of svn server.
-	 */
-	export class SvnGroup {
+  /**
+   * Represents a group of svn server.
+   */
+  export class SvnGroup {
 
-		/**
-		 * Group name.
-		 */
-		public Name: string;
+    /**
+     * Group name.
+     */
+    public Name: string;
     
-		/**
-		 * List of group members.
-		 */
-		public Members: Array<string>;
-    	
-	}
+    /**
+     * List of group members.
+     */
+    public Members: Array<string>;
+      
+  }
 
 }

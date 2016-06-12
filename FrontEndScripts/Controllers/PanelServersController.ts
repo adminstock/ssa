@@ -15,154 +15,154 @@
  */
 module SmallServerAdmin.Controllers {
 
-	/**
-	 * Represents the servers controller.
-	 */
-	export class PanelServersController implements Nemiro.IController {
+  /**
+   * Represents the servers controller.
+   */
+  export class PanelServersController implements Nemiro.IController {
 
-		public Scope: any;
-		public Context: Nemiro.AngularContext;
+    public Scope: any;
+    public Context: Nemiro.AngularContext;
 
-		/** Server list dialog. */
-		private ServerListDialog: Nemiro.UI.Dialog;
+    /** Server list dialog. */
+    private ServerListDialog: Nemiro.UI.Dialog;
 
-		/** List of all servers. */
-		public get Servers(): Array<Models.ServerToAdmin> {
-			return this.Scope.Servers;
+    /** List of all servers. */
+    public get Servers(): Array<Models.ServerToAdmin> {
+      return this.Scope.Servers;
     }
-		public set Servers(value: Array<Models.ServerToAdmin>) {
-			this.Scope.Servers = value;
-    }
-
-		public get LoadingServers(): boolean {
-			return this.Scope.LoadingServers;
-    }
-		public set LoadingServers(value: boolean) {
-			this.Scope.LoadingServers = value;
+    public set Servers(value: Array<Models.ServerToAdmin>) {
+      this.Scope.Servers = value;
     }
 
-		public get ConnectionTesting(): boolean {
-			return this.Scope.ConnectionTesting;
+    public get LoadingServers(): boolean {
+      return this.Scope.LoadingServers;
     }
-		public set ConnectionTesting(value: boolean) {
-			this.Scope.ConnectionTesting = value;
-    }
-
-		public get CurrentServerConnectionError(): boolean {
-			return this.Scope.CurrentServerConnectionError;
-    }
-		public set CurrentServerConnectionError(value: boolean) {
-			this.Scope.CurrentServerConnectionError = value;
+    public set LoadingServers(value: boolean) {
+      this.Scope.LoadingServers = value;
     }
 
-		public get DisableShowConnectionError(): boolean {
-			return this.Scope.DisableShowConnectionError;
+    public get ConnectionTesting(): boolean {
+      return this.Scope.ConnectionTesting;
     }
-		public set DisableShowConnectionError(value: boolean) {
-			this.Scope.DisableShowConnectionError = value;
+    public set ConnectionTesting(value: boolean) {
+      this.Scope.ConnectionTesting = value;
     }
 
-		constructor(context: Nemiro.AngularContext) {
-			var $this = this;
+    public get CurrentServerConnectionError(): boolean {
+      return this.Scope.CurrentServerConnectionError;
+    }
+    public set CurrentServerConnectionError(value: boolean) {
+      this.Scope.CurrentServerConnectionError = value;
+    }
 
-			$this.Context = context;
-			$this.Scope = $this.Context.Scope;
+    public get DisableShowConnectionError(): boolean {
+      return this.Scope.DisableShowConnectionError;
+    }
+    public set DisableShowConnectionError(value: boolean) {
+      this.Scope.DisableShowConnectionError = value;
+    }
 
-			// select server dialog
-			$this.ServerListDialog = Nemiro.UI.Dialog.CreateFromElement($('#servers'));
+    constructor(context: Nemiro.AngularContext) {
+      var $this = this;
 
-			$this.Scope.SelectServer = () => {
-				$this.SelectServer($this);
-			};
+      $this.Context = context;
+      $this.Scope = $this.Context.Scope;
 
-			$this.Scope.GetServers = () => {
-				$this.GetServers($this);
-			};
+      // select server dialog
+      $this.ServerListDialog = Nemiro.UI.Dialog.CreateFromElement($('#servers'));
 
-			$this.Scope.ConnectToServer = (server: Models.ServerToAdmin) => {
-				if (server.IsDefault) {
-					// is default server, clear cookies
-					Nemiro.Utility.EraseCookies('currentServer');
-				} else {
-					// save server to cookies
-					Nemiro.Utility.CreateCookies('currentServer', server.Config, 3650);
-				}
-				// reload page
-				$this.Context.Window.location.reload();
-			};
+      $this.Scope.SelectServer = () => {
+        $this.SelectServer($this);
+      };
 
-			// delay for ng-init
-			$this.Context.Timeout(() => {
-				if (($this.Context.Location.search()['connection_failed'] !== undefined && $this.Context.Location.search()['connection_failed'] != null) || ($this.Context.Location.search()['authentication_failed'] !== undefined && $this.Context.Location.search()['authentication_failed'] != null)) {
-					$this.CurrentServerConnectionError = true;
-					if (!$this.DisableShowConnectionError) {
+      $this.Scope.GetServers = () => {
+        $this.GetServers($this);
+      };
+
+      $this.Scope.ConnectToServer = (server: Models.ServerToAdmin) => {
+        if (server.IsDefault) {
+          // is default server, clear cookies
+          Nemiro.Utility.EraseCookies('currentServer');
+        } else {
+          // save server to cookies
+          Nemiro.Utility.CreateCookies('currentServer', server.Config, 3650);
+        }
+        // reload page
+        $this.Context.Window.location.reload();
+      };
+
+      // delay for ng-init
+      $this.Context.Timeout(() => {
+        if (($this.Context.Location.search()['connection_failed'] !== undefined && $this.Context.Location.search()['connection_failed'] != null) || ($this.Context.Location.search()['authentication_failed'] !== undefined && $this.Context.Location.search()['authentication_failed'] != null)) {
+          $this.CurrentServerConnectionError = true;
+          if (!$this.DisableShowConnectionError) {
             Nemiro.UI.Dialog.Alert(App.Resources.UnableToConnectTheServer, App.Resources.ConnectionError);
-					}
-				} else {
-					$this.CheckConnection($this);
-				}
-			}, 250);
-		}
+          }
+        } else {
+          $this.CheckConnection($this);
+        }
+      }, 250);
+    }
 
-		public SelectServer($this: PanelServersController): void {
-			//console.log('SelectServer', $this.Servers);
-			if ($this.Servers === undefined || $this.Servers == null) {
-				$this.GetServers($this);
-			}
+    public SelectServer($this: PanelServersController): void {
+      //console.log('SelectServer', $this.Servers);
+      if ($this.Servers === undefined || $this.Servers == null) {
+        $this.GetServers($this);
+      }
 
-			$this.ServerListDialog.Show();
-		}
+      $this.ServerListDialog.Show();
+    }
 
-		public GetServers($this: PanelServersController): void {
-			if ($this.LoadingServers) {
-				return;
-			}
+    public GetServers($this: PanelServersController): void {
+      if ($this.LoadingServers) {
+        return;
+      }
 
-			$this.LoadingServers = true;
+      $this.LoadingServers = true;
 
-			// create request
-			var apiRequest = new ApiRequest<Array<Models.ServerToAdmin>>($this.Context, 'Settings.GetServers');
+      // create request
+      var apiRequest = new ApiRequest<Array<Models.ServerToAdmin>>($this.Context, 'Settings.GetServers');
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
-				$this.Context.Timeout(() => {
-					$this.Servers = response.data;
-				});
-			};
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        $this.Context.Timeout(() => {
+          $this.Servers = response.data;
+        });
+      };
 
-			// handler request complete
-			apiRequest.CompleteCallback = () => {
-				$this.LoadingServers = false;
-			};
+      // handler request complete
+      apiRequest.CompleteCallback = () => {
+        $this.LoadingServers = false;
+      };
 
-			// execute
-			apiRequest.Execute();
-		}
+      // execute
+      apiRequest.Execute();
+    }
 
-		public CheckConnection($this: PanelServersController): void {
-			if ($this.ConnectionTesting) {
-				return;
-			}
+    public CheckConnection($this: PanelServersController): void {
+      if ($this.ConnectionTesting) {
+        return;
+      }
 
-			$this.ConnectionTesting = true;
+      $this.ConnectionTesting = true;
 
-			var apiRequest = new ApiRequest<Array<Models.ServerToAdmin>>($this.Context, 'Settings.CheckConnection');
+      var apiRequest = new ApiRequest<Array<Models.ServerToAdmin>>($this.Context, 'Settings.CheckConnection');
 
-			/*apiRequest.SuccessCallback = (response) => {
+      /*apiRequest.SuccessCallback = (response) => {
 
-			};*/
+      };*/
 
-			apiRequest.ErrorCallback = (response) => {
-				$this.CurrentServerConnectionError = true;
-			};
+      apiRequest.ErrorCallback = (response) => {
+        $this.CurrentServerConnectionError = true;
+      };
 
-			apiRequest.CompleteCallback = () => {
-				$this.ConnectionTesting = false;
-			};
+      apiRequest.CompleteCallback = () => {
+        $this.ConnectionTesting = false;
+      };
 
-			apiRequest.Execute();
-		}
-	
-	}
+      apiRequest.Execute();
+    }
+  
+  }
 
 } 

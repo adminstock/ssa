@@ -15,21 +15,21 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents create user model.
-	 */
-	export class CreateUser extends User {
+  /**
+   * Represents create user model.
+   */
+  export class CreateUser extends User {
 
-		/**
-		 * No need create home directory for user.
-		 */
-		public NoCreateHome: boolean;
+    /**
+     * No need create home directory for user.
+     */
+    public NoCreateHome: boolean;
 
-		/**
-		 * Is system user or not.
-		 */
-		public IsSystem: boolean;
+    /**
+     * Is system user or not.
+     */
+    public IsSystem: boolean;
 
-	}
+  }
 
 }

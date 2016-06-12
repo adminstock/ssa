@@ -15,277 +15,277 @@
  */
 module SmallServerAdmin.Controllers {
 
-	/**
-	 * Represents the controller for the users management of the Subversion server.
-	 */
-	export class SvnUsersController implements Nemiro.IController {
+  /**
+   * Represents the controller for the users management of the Subversion server.
+   */
+  export class SvnUsersController implements Nemiro.IController {
 
-		public Scope: any;
-		public Context: Nemiro.AngularContext;
+    public Scope: any;
+    public Context: Nemiro.AngularContext;
 
-		/** The list of users. */
-		public get Users(): Array<Models.SvnUser> {
-			return this.Scope.Users;
+    /** The list of users. */
+    public get Users(): Array<Models.SvnUser> {
+      return this.Scope.Users;
     }
-		public set Users(value: Array<Models.SvnUser>) {
-			this.Scope.Users = value;
-    }
-
-		/** Current user. */
-		public get CurrentUser(): Models.SvnUser {
-			return this.Scope.CurrentUser;
-    }
-		public set CurrentUser(value: Models.SvnUser) {
-			this.Scope.CurrentUser = value;
+    public set Users(value: Array<Models.SvnUser>) {
+      this.Scope.Users = value;
     }
 
-		/** The source data of current user. */
-		public get SourceUser(): Models.SvnUser {
-			return this.Scope.SourceUser;
+    /** Current user. */
+    public get CurrentUser(): Models.SvnUser {
+      return this.Scope.CurrentUser;
     }
-		public set SourceUser(value: Models.SvnUser) {
-			this.Scope.SourceUser = value;
-    }
-
-		/**
-		 * The list of all subversion groups.
-		 */
-		public get Groups(): Array<string> {
-			return this.Scope.Groups;
-    }
-		public set Groups(value: Array<string>) {
-			this.Scope.Groups = value;
+    public set CurrentUser(value: Models.SvnUser) {
+      this.Scope.CurrentUser = value;
     }
 
-		/** Search string. */
-		public get Search(): string {
-			return this.Scope.Search;
+    /** The source data of current user. */
+    public get SourceUser(): Models.SvnUser {
+      return this.Scope.SourceUser;
     }
-		public set Search(value: string) {
-			this.Scope.Search = value;
-    }
-
-		/** Loading indicator. */
-		public get Loading(): boolean {
-			return this.Scope.Loading;
-    }
-		public set Loading(value: boolean) {
-			this.Scope.Loading = value;
+    public set SourceUser(value: Models.SvnUser) {
+      this.Scope.SourceUser = value;
     }
 
-		public get IsNew(): boolean {
-			return this.Scope.IsNew;
+    /**
+     * The list of all subversion groups.
+     */
+    public get Groups(): Array<string> {
+      return this.Scope.Groups;
     }
-		public set IsNew(value: boolean) {
-			this.Scope.IsNew = value;
-    }
-
-		public get SetLogin(): boolean {
-			return this.Scope.SetLogin;
-    }
-		public set SetLogin(value: boolean) {
-			this.Scope.SetLogin = value;
+    public set Groups(value: Array<string>) {
+      this.Scope.Groups = value;
     }
 
-		public get SetPassword(): boolean {
-			return this.Scope.SetPassword;
+    /** Search string. */
+    public get Search(): string {
+      return this.Scope.Search;
     }
-		public set SetPassword(value: boolean) {
-			this.Scope.SetPassword = value;
-    }
-
-		public get SelectedUserToRemove(): string {
-			return this.Scope.SelectedUserToRemove;
-    }
-		public set SelectedUserToRemove(value: string) {
-			this.Scope.SelectedUserToRemove = value;
+    public set Search(value: string) {
+      this.Scope.Search = value;
     }
 
-		private Editor: Nemiro.UI.Dialog;
-		private ConfirmUserRemove: Nemiro.UI.Dialog;
+    /** Loading indicator. */
+    public get Loading(): boolean {
+      return this.Scope.Loading;
+    }
+    public set Loading(value: boolean) {
+      this.Scope.Loading = value;
+    }
 
-		constructor(context: Nemiro.AngularContext) {
-			var $this = this;
-			
-			$this.Context = context;
-			$this.Scope = $this.Context.Scope;
-			$this.Search = $this.Context.Location.search()['search'];
-			$this.Editor = Nemiro.UI.Dialog.CreateFromElement($('#svnUser'));
-			$this.ConfirmUserRemove = Nemiro.UI.Dialog.CreateFromElement($('#confirmSvnUserRemove'));
+    public get IsNew(): boolean {
+      return this.Scope.IsNew;
+    }
+    public set IsNew(value: boolean) {
+      this.Scope.IsNew = value;
+    }
 
-			$this.Scope.LoadUsers = () => { $this.LoadUsers($this); }
+    public get SetLogin(): boolean {
+      return this.Scope.SetLogin;
+    }
+    public set SetLogin(value: boolean) {
+      this.Scope.SetLogin = value;
+    }
 
-			$this.Scope.SearchUsers = () => {
-				$this.Context.Location.search('search', $this.Search);
-				$this.LoadUsers($this);
-			}
+    public get SetPassword(): boolean {
+      return this.Scope.SetPassword;
+    }
+    public set SetPassword(value: boolean) {
+      this.Scope.SetPassword = value;
+    }
 
-			$this.Scope.ResetSearch = () => {
-				$this.Search = '';
-				$this.Context.Location.search('search', null);
-				$this.LoadUsers($this);
-			}
+    public get SelectedUserToRemove(): string {
+      return this.Scope.SelectedUserToRemove;
+    }
+    public set SelectedUserToRemove(value: string) {
+      this.Scope.SelectedUserToRemove = value;
+    }
 
-			$this.Scope.EditUser = (u?: Models.SvnUser) => { $this.EditUser($this, u); }
-			$this.Scope.SaveUser = () => { $this.SaveUser($this); }
-			$this.Scope.DeleteUser = () => { $this.DeleteUser($this); }
-			$this.Scope.GroupClick = (group: string) => { $this.GroupClick($this, group); }
-			$this.Scope.ShowDialogToDeleteUser = (login: string) => {
-				$this.SelectedUserToRemove = login;
-				$this.ConfirmUserRemove.Show();
-			};
+    private Editor: Nemiro.UI.Dialog;
+    private ConfirmUserRemove: Nemiro.UI.Dialog;
 
-			$this.LoadUsers($this);
-		}
+    constructor(context: Nemiro.AngularContext) {
+      var $this = this;
+      
+      $this.Context = context;
+      $this.Scope = $this.Context.Scope;
+      $this.Search = $this.Context.Location.search()['search'];
+      $this.Editor = Nemiro.UI.Dialog.CreateFromElement($('#svnUser'));
+      $this.ConfirmUserRemove = Nemiro.UI.Dialog.CreateFromElement($('#confirmSvnUserRemove'));
 
-		private LoadUsers($this: SvnUsersController): void {
-			$this = $this || this;
-			$this.Loading = true;
+      $this.Scope.LoadUsers = () => { $this.LoadUsers($this); }
 
-			// create request
-			var apiRequest = new ApiRequest<Array<Models.SvnUser>>($this.Context, 'Svn.GetUsers', { search: $this.Search });
+      $this.Scope.SearchUsers = () => {
+        $this.Context.Location.search('search', $this.Search);
+        $this.LoadUsers($this);
+      }
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
-				$this.Users = response.data;
-			};
+      $this.Scope.ResetSearch = () => {
+        $this.Search = '';
+        $this.Context.Location.search('search', null);
+        $this.LoadUsers($this);
+      }
 
-			apiRequest.CompleteCallback = () => {
-				$this.Loading = false;
-				$this.Scope.$parent.CloseProgress();
-			};
+      $this.Scope.EditUser = (u?: Models.SvnUser) => { $this.EditUser($this, u); }
+      $this.Scope.SaveUser = () => { $this.SaveUser($this); }
+      $this.Scope.DeleteUser = () => { $this.DeleteUser($this); }
+      $this.Scope.GroupClick = (group: string) => { $this.GroupClick($this, group); }
+      $this.Scope.ShowDialogToDeleteUser = (login: string) => {
+        $this.SelectedUserToRemove = login;
+        $this.ConfirmUserRemove.Show();
+      };
 
-			// execute
-			apiRequest.Execute();
-		}
+      $this.LoadUsers($this);
+    }
 
-		private EditUser($this: SvnUsersController, user?: Models.SvnUser): void {
-			$this.SetLogin = false;
-			$this.SetPassword = false;
-			$this.Scope.ConfirmPassword = '';
-			$this.Loading = true;
-			var apiRequest = null;
+    private LoadUsers($this: SvnUsersController): void {
+      $this = $this || this;
+      $this.Loading = true;
 
-			if (user === undefined || user == null) {
+      // create request
+      var apiRequest = new ApiRequest<Array<Models.SvnUser>>($this.Context, 'Svn.GetUsers', { search: $this.Search });
 
-				$this.IsNew = true;
-				$this.SourceUser = new Models.SvnUser();
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        $this.Users = response.data;
+      };
+
+      apiRequest.CompleteCallback = () => {
+        $this.Loading = false;
+        $this.Scope.$parent.CloseProgress();
+      };
+
+      // execute
+      apiRequest.Execute();
+    }
+
+    private EditUser($this: SvnUsersController, user?: Models.SvnUser): void {
+      $this.SetLogin = false;
+      $this.SetPassword = false;
+      $this.Scope.ConfirmPassword = '';
+      $this.Loading = true;
+      var apiRequest = null;
+
+      if (user === undefined || user == null) {
+
+        $this.IsNew = true;
+        $this.SourceUser = new Models.SvnUser();
         $this.SourceUser.Login = App.Resources.NewUser;
-				$this.CurrentUser = new Models.SvnUser();
+        $this.CurrentUser = new Models.SvnUser();
 
         $this.Scope.$parent.ShowProgress(App.Resources.PreparingFormWait, App.Resources.Preparing);
 
-				apiRequest = new ApiRequest<Array<string>>($this.Context, 'Svn.GetGroupNames');
+        apiRequest = new ApiRequest<Array<string>>($this.Context, 'Svn.GetGroupNames');
 
-				apiRequest.SuccessCallback = (response) => {
-					$this.Groups = response.data;
-					$this.Editor.Show();
-				};
+        apiRequest.SuccessCallback = (response) => {
+          $this.Groups = response.data;
+          $this.Editor.Show();
+        };
 
-				apiRequest.CompleteCallback = () => {
-					$this.Loading = false;
-					$this.Scope.$parent.CloseProgress();
-				};
+        apiRequest.CompleteCallback = () => {
+          $this.Loading = false;
+          $this.Scope.$parent.CloseProgress();
+        };
 
-				apiRequest.Execute();
+        apiRequest.Execute();
 
-			} else {
+      } else {
 
         $this.Scope.$parent.ShowProgress(App.Resources.ObtainingTheUserWait, App.Resources.Loading);
 
-				$this.IsNew = false;
+        $this.IsNew = false;
 
-				// load data from server
-				apiRequest = new ApiRequest<Models.SvnUserToEdit>($this.Context, 'Svn.GetUser', { login: user.Login });
+        // load data from server
+        apiRequest = new ApiRequest<Models.SvnUserToEdit>($this.Context, 'Svn.GetUser', { login: user.Login });
 
-				// handler successful response to a request to api
-				apiRequest.SuccessCallback = (response) => {
-					$this.CurrentUser = response.data.User;
-					$this.Groups = response.data.Groups;
-					$this.SourceUser = $.parseJSON($.toJSON(response.data.User));
-					//$this.Scope.$apply();
-					$this.Editor.Show();
-				};
+        // handler successful response to a request to api
+        apiRequest.SuccessCallback = (response) => {
+          $this.CurrentUser = response.data.User;
+          $this.Groups = response.data.Groups;
+          $this.SourceUser = $.parseJSON($.toJSON(response.data.User));
+          //$this.Scope.$apply();
+          $this.Editor.Show();
+        };
 
-				apiRequest.CompleteCallback = () => {
-					$this.Loading = false;
-					$this.Scope.$parent.CloseProgress();
-				};
+        apiRequest.CompleteCallback = () => {
+          $this.Loading = false;
+          $this.Scope.$parent.CloseProgress();
+        };
 
-				// execute request
-				apiRequest.Execute();
+        // execute request
+        apiRequest.Execute();
 
-			}
-		}
+      }
+    }
 
-		private GroupClick($this: SvnUsersController, group: string): void {
-			if ($this.CurrentUser.Groups == undefined || $this.CurrentUser.Groups == null) {
-				$this.CurrentUser.Groups = new Array<string>();
-			}
+    private GroupClick($this: SvnUsersController, group: string): void {
+      if ($this.CurrentUser.Groups == undefined || $this.CurrentUser.Groups == null) {
+        $this.CurrentUser.Groups = new Array<string>();
+      }
 
-			if ($this.CurrentUser.Groups.indexOf(group) == -1) {
-				$this.CurrentUser.Groups.push(group);
-			} else {
-				$this.CurrentUser.Groups.splice($this.CurrentUser.Groups.indexOf(group), 1);
-			}
-		}
+      if ($this.CurrentUser.Groups.indexOf(group) == -1) {
+        $this.CurrentUser.Groups.push(group);
+      } else {
+        $this.CurrentUser.Groups.splice($this.CurrentUser.Groups.indexOf(group), 1);
+      }
+    }
 
-		private SaveUser($this: SvnUsersController): void {
-			if (Nemiro.Utility.NextInvalidField($('#svnUserEditor', $this.Editor.$modal))) {
-				return;
-			}
+    private SaveUser($this: SvnUsersController): void {
+      if (Nemiro.Utility.NextInvalidField($('#svnUserEditor', $this.Editor.$modal))) {
+        return;
+      }
 
-			var u = new Models.SvnUserToSave();
-			u.Source = $this.SourceUser;
-			u.Current = $this.CurrentUser;
-			u.IsNew = $this.IsNew;
-			u.SetLogin = $this.SetLogin;
-			u.SetPassword = $this.SetPassword;
+      var u = new Models.SvnUserToSave();
+      u.Source = $this.SourceUser;
+      u.Current = $this.CurrentUser;
+      u.IsNew = $this.IsNew;
+      u.SetLogin = $this.SetLogin;
+      u.SetPassword = $this.SetPassword;
 
-			// create request
-			var apiRequest = new ApiRequest<boolean>($this.Context, 'Svn.SaveUser', u);
+      // create request
+      var apiRequest = new ApiRequest<boolean>($this.Context, 'Svn.SaveUser', u);
 
       $this.Scope.$parent.ShowProgress(App.Resources.SavingTheUserWait, App.Resources.Saving);
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
         $this.Scope.$parent.ShowProgress(App.Resources.SavedSuccessfullyLoadingListOfUsers, App.Resources.Loading);
-				$this.Editor.Close();
-				$this.LoadUsers($this);
-			};
+        $this.Editor.Close();
+        $this.LoadUsers($this);
+      };
 
-			// execute
-			apiRequest.Execute();
-		}
+      // execute
+      apiRequest.Execute();
+    }
 
-		private DeleteUser($this: SvnUsersController): void {
-			$this = $this || this;
+    private DeleteUser($this: SvnUsersController): void {
+      $this = $this || this;
 
-			if ($this.SelectedUserToRemove == undefined || $this.SelectedUserToRemove == null || $this.SelectedUserToRemove == '') {
-				Nemiro.UI.Dialog.Alert(App.Resources.IncorrectUserName, App.Resources.Error);
-				return;
-			}
+      if ($this.SelectedUserToRemove == undefined || $this.SelectedUserToRemove == null || $this.SelectedUserToRemove == '') {
+        Nemiro.UI.Dialog.Alert(App.Resources.IncorrectUserName, App.Resources.Error);
+        return;
+      }
 
       $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(App.Resources.IsRemovedUserWait, [$this.SelectedUserToRemove]), App.Resources.Deleting);
-			$this.ConfirmUserRemove.Close();
+      $this.ConfirmUserRemove.Close();
 
-			// create request
-			var apiRequest = new ApiRequest<boolean>($this.Context, 'Svn.DeleteUser', { login: $this.SelectedUserToRemove });
+      // create request
+      var apiRequest = new ApiRequest<boolean>($this.Context, 'Svn.DeleteUser', { login: $this.SelectedUserToRemove });
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
         this.Scope.$parent.ShowProgress(App.Resources.LoadingListOfUsers, App.Resources.Loading);
-				$this.SelectedUserToRemove = '';
-				$this.LoadUsers($this);
-			};
+        $this.SelectedUserToRemove = '';
+        $this.LoadUsers($this);
+      };
 
-			apiRequest.CompleteCallback = () => {
-				$this.Scope.$parent.CloseProgress();
-			};
+      apiRequest.CompleteCallback = () => {
+        $this.Scope.$parent.CloseProgress();
+      };
 
-			// execute
-			apiRequest.Execute();
-		}
-	}
+      // execute
+      apiRequest.Execute();
+    }
+  }
 
 } 

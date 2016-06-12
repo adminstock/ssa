@@ -15,65 +15,65 @@
  */
 module Nemiro {
 
-	/** 
-	 * Represents contex of the Angular.
-	 */
-	export class AngularContext {
+  /** 
+   * Represents contex of the Angular.
+   */
+  export class AngularContext {
 
-		/** Работа с веб-запросами через Angular. */
-		public Http: ng.IHttpService;
+    /** Работа с веб-запросами через Angular. */
+    public Http: ng.IHttpService;
 
-		/** Основной объект Angular. */
-		public Scope: ng.IScope;
+    /** Основной объект Angular. */
+    public Scope: ng.IScope;
 
-		/** Предоставляет доступ к фильтрам Angular. */
-		public Filter: ng.IFilterService;
+    /** Предоставляет доступ к фильтрам Angular. */
+    public Filter: ng.IFilterService;
 
-		/** Работа с объектом window через Angular. */
-		public Window: ng.IWindowService;
+    /** Работа с объектом window через Angular. */
+    public Window: ng.IWindowService;
 
-		/** Работа с объектом location через Angular. */
-		public Location: ng.ILocationService;
+    /** Работа с объектом location через Angular. */
+    public Location: ng.ILocationService;
 
-		/** Angular-ная обертка для window.setTimeout(). */
-		public Timeout: ng.ITimeoutService;
+    /** Angular-ная обертка для window.setTimeout(). */
+    public Timeout: ng.ITimeoutService;
 
-		/** Представляет компилятор Angular. */
-		public Compile: ng.ICompileService;
+    /** Представляет компилятор Angular. */
+    public Compile: ng.ICompileService;
 
-		public AnchorScroll: ng.IAnchorScrollService;
+    public AnchorScroll: ng.IAnchorScrollService;
 
-		/** HTML-элемент, к которому относится контроллер. */
-		public Element: Element|HTMLElement|JQuery;
-		
-		private _InitParams: any = null;
+    /** HTML-элемент, к которому относится контроллер. */
+    public Element: Element|HTMLElement|JQuery;
+    
+    private _InitParams: any = null;
 
-		/** Пользовательские параметры инициализации контролера. Задается в атрибуте data-init-params */
-		public get InitParams(): any {
-			if ($(this.Element).attr('data-init-params') === undefined || $(this.Element).attr('data-init-params') == '') {
-				return null;
-			}
+    /** Пользовательские параметры инициализации контролера. Задается в атрибуте data-init-params */
+    public get InitParams(): any {
+      if ($(this.Element).attr('data-init-params') === undefined || $(this.Element).attr('data-init-params') == '') {
+        return null;
+      }
 
-			if (this._InitParams == null) {
-				this._InitParams = $.parseJSON($(this.Element).attr('data-init-params'));
-			}
+      if (this._InitParams == null) {
+        this._InitParams = $.parseJSON($(this.Element).attr('data-init-params'));
+      }
 
-			return this._InitParams;
+      return this._InitParams;
     }
 
-		constructor($scope: ng.IScope, $filter: ng.IFilterService, $http: ng.IHttpService, $window: ng.IWindowService, $location: ng.ILocationService, $timeout: ng.ITimeoutService, $compile: ng.ICompileService, $anchorScroll: ng.IAnchorScrollService, $element?: Element|HTMLElement|JQuery) {
-			this.Filter = $filter;
-			this.Http = $http;
-			this.Element = $element;
-			this.Scope = $scope;
-			this.Window = $window;
-			this.Compile = $compile;
-			this.Timeout = $timeout;
-			this.Location = $location;
-			this.AnchorScroll = $anchorScroll;
-			// console.log(this);
-		}
+    constructor($scope: ng.IScope, $filter: ng.IFilterService, $http: ng.IHttpService, $window: ng.IWindowService, $location: ng.ILocationService, $timeout: ng.ITimeoutService, $compile: ng.ICompileService, $anchorScroll: ng.IAnchorScrollService, $element?: Element|HTMLElement|JQuery) {
+      this.Filter = $filter;
+      this.Http = $http;
+      this.Element = $element;
+      this.Scope = $scope;
+      this.Window = $window;
+      this.Compile = $compile;
+      this.Timeout = $timeout;
+      this.Location = $location;
+      this.AnchorScroll = $anchorScroll;
+      // console.log(this);
+    }
 
-	}
+  }
 
 }

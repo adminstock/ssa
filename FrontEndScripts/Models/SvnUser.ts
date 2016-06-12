@@ -15,26 +15,26 @@
  */
 module SmallServerAdmin.Models {
 
-	/**
-	 * Represents svn user.
-	 */
-	export class SvnUser {
+  /**
+   * Represents svn user.
+   */
+  export class SvnUser {
 
-		/**
-		 * Login of the user.
-		 */
-		public Login: string;
+    /**
+     * Login of the user.
+     */
+    public Login: string;
     
-		/**
-		 * Password.
-		 */
-		public Password: string;
-		
-		/**
-		 * Member of groups.
-		 */
-		public Groups: Array<string>;
+    /**
+     * Password.
+     */
+    public Password: string;
+    
+    /**
+     * Member of groups.
+     */
+    public Groups: Array<string>;
 
-	}
+  }
 
 }

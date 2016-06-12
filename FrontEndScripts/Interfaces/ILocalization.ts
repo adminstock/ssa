@@ -18,24 +18,24 @@ module SmallServerAdmin {
   /** Implements localization resources. */
   export interface ILocalization {
 
-		/**
-		 * Loading...
-		 */
+    /**
+     * Loading...
+     */
     Loading: string;
 
-		/**
-		 * Loading the file contents...
-		 */
+    /**
+     * Loading the file contents...
+     */
     LoadingFileContents: string;
 
-		/**
-		 * Getting the file info...
-		 */
+    /**
+     * Getting the file info...
+     */
     GettingFileInfo: string;
 
-		/**
-		 * Error
-		 */
+    /**
+     * Error
+     */
     Error: string;
 
     /**

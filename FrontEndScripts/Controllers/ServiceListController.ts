@@ -15,130 +15,130 @@
  */
 module SmallServerAdmin.Controllers {
 
-	/**
-	 * Represents service list controller.
-	 */
-	export class ServiceListController implements Nemiro.IController {
+  /**
+   * Represents service list controller.
+   */
+  export class ServiceListController implements Nemiro.IController {
 
-		public Scope: any;
-		public Context: Nemiro.AngularContext;
+    public Scope: any;
+    public Context: Nemiro.AngularContext;
 
-		/** The list of services. */
-		public get Services(): Array<Models.Service> {
-			return this.Scope.Services;
+    /** The list of services. */
+    public get Services(): Array<Models.Service> {
+      return this.Scope.Services;
     }
-		public set Services(value: Array<Models.Service>) {
-			this.Scope.Services = value;
-    }
-
-		/** Search string. */
-		public get SearchString(): string {
-			return this.Scope.SearchString;
-    }
-		public set SearchString(value: string) {
-			this.Scope.SearchString = value;
+    public set Services(value: Array<Models.Service>) {
+      this.Scope.Services = value;
     }
 
-		/** Loading indicator. */
-		public get Loading(): boolean {
-			return this.Scope.Loading;
+    /** Search string. */
+    public get SearchString(): string {
+      return this.Scope.SearchString;
     }
-		public set Loading(value: boolean) {
-			this.Scope.Loading = value;
-    }
-
-		public get SelectedServiceToStop(): Models.Service {
-			return this.Scope.SelectedServiceToStop;
-    }
-		public set SelectedServiceToStop(value: Models.Service) {
-			this.Scope.SelectedServiceToStop = value;
+    public set SearchString(value: string) {
+      this.Scope.SearchString = value;
     }
 
-		private ConfirmToStopService: Nemiro.UI.Dialog;
+    /** Loading indicator. */
+    public get Loading(): boolean {
+      return this.Scope.Loading;
+    }
+    public set Loading(value: boolean) {
+      this.Scope.Loading = value;
+    }
 
-		constructor(context: Nemiro.AngularContext) {
-			var $this = this;
+    public get SelectedServiceToStop(): Models.Service {
+      return this.Scope.SelectedServiceToStop;
+    }
+    public set SelectedServiceToStop(value: Models.Service) {
+      this.Scope.SelectedServiceToStop = value;
+    }
 
-			$this.Context = context;
-			$this.Scope = $this.Context.Scope;
-			$this.SearchString = $this.Context.Location.search()['search'];
+    private ConfirmToStopService: Nemiro.UI.Dialog;
 
-			$this.ConfirmToStopService = Nemiro.UI.Dialog.CreateFromElement($('#confirmToStopService'));
+    constructor(context: Nemiro.AngularContext) {
+      var $this = this;
 
-			$this.Scope.Load = () => { $this.Load($this); }
+      $this.Context = context;
+      $this.Scope = $this.Context.Scope;
+      $this.SearchString = $this.Context.Location.search()['search'];
 
-			$this.Scope.Search = () => {
-				$this.Context.Location.search('search', $this.SearchString);
-				$this.Load($this);
-			}
+      $this.ConfirmToStopService = Nemiro.UI.Dialog.CreateFromElement($('#confirmToStopService'));
 
-			$this.Scope.ResetSearch = () => {
-				$this.SearchString = '';
-				$this.Context.Location.search('search', null);
-				$this.Load($this);
-			}
+      $this.Scope.Load = () => { $this.Load($this); }
 
-			$this.Scope.SetStatus = (service: Models.Service, newStatus: string) => {
-				if (newStatus == 'Stopped') {
-					$this.SelectedServiceToStop = service;
-					$this.ConfirmToStopService.Show();
-					return;
-				}
+      $this.Scope.Search = () => {
+        $this.Context.Location.search('search', $this.SearchString);
+        $this.Load($this);
+      }
 
-				$this.SetStatus($this, service, newStatus);
-			}
+      $this.Scope.ResetSearch = () => {
+        $this.SearchString = '';
+        $this.Context.Location.search('search', null);
+        $this.Load($this);
+      }
 
-			$this.Scope.StopService = () => {
-				$this.SetStatus($this, $this.SelectedServiceToStop, 'Stopped');
-				this.ConfirmToStopService.Close();
-			}
+      $this.Scope.SetStatus = (service: Models.Service, newStatus: string) => {
+        if (newStatus == 'Stopped') {
+          $this.SelectedServiceToStop = service;
+          $this.ConfirmToStopService.Show();
+          return;
+        }
 
-			if ($('[ng-controller="ServiceListController"]').attr('ng-init') === undefined || $('[ng-controller="ServiceListController"]').attr('ng-init') == '') {
-				$this.Load($this);
-			}
-		}
+        $this.SetStatus($this, service, newStatus);
+      }
 
-		private Load($this: ServiceListController): void {
-			$this = $this || this;
-			$this.Loading = true;
+      $this.Scope.StopService = () => {
+        $this.SetStatus($this, $this.SelectedServiceToStop, 'Stopped');
+        this.ConfirmToStopService.Close();
+      }
 
-			// create request
-			var apiRequest = new ApiRequest<Array<Models.Service>>($this.Context, 'Services.GetList', { search: $this.SearchString });
+      if ($('[ng-controller="ServiceListController"]').attr('ng-init') === undefined || $('[ng-controller="ServiceListController"]').attr('ng-init') == '') {
+        $this.Load($this);
+      }
+    }
 
-			// handler successful response to a request to api
-			apiRequest.SuccessCallback = (response) => {
-				$this.Services = response.data;
-				$this.Loading = false;
-				this.Scope.$parent.CloseProgress();
-			};
-			
-			apiRequest.CompleteCallback = () => {
-				$this.Loading = false;
-			};
+    private Load($this: ServiceListController): void {
+      $this = $this || this;
+      $this.Loading = true;
 
-			// execute
-			apiRequest.Execute();
-		}
+      // create request
+      var apiRequest = new ApiRequest<Array<Models.Service>>($this.Context, 'Services.GetList', { search: $this.SearchString });
 
-		private SetStatus($this: ServiceListController, service: Models.Service, newStatus: string): void {
-			service.Loading = true;
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        $this.Services = response.data;
+        $this.Loading = false;
+        this.Scope.$parent.CloseProgress();
+      };
+      
+      apiRequest.CompleteCallback = () => {
+        $this.Loading = false;
+      };
 
-			var apiRequest = new ApiRequest<boolean>($this.Context, 'Services.SetStatus', { Name: service.Name, NewStatus: newStatus });
+      // execute
+      apiRequest.Execute();
+    }
 
-			apiRequest.SuccessCallback = (response) => {
-				if (newStatus.toLowerCase() != 'reload') {
-					service.Status = newStatus;
-				}
-			};
+    private SetStatus($this: ServiceListController, service: Models.Service, newStatus: string): void {
+      service.Loading = true;
 
-			apiRequest.CompleteCallback = () => {
-				service.Loading = false;
-			};
+      var apiRequest = new ApiRequest<boolean>($this.Context, 'Services.SetStatus', { Name: service.Name, NewStatus: newStatus });
 
-			// execute
-			apiRequest.Execute();
-		}
+      apiRequest.SuccessCallback = (response) => {
+        if (newStatus.toLowerCase() != 'reload') {
+          service.Status = newStatus;
+        }
+      };
 
-	}
+      apiRequest.CompleteCallback = () => {
+        service.Loading = false;
+      };
+
+      // execute
+      apiRequest.Execute();
+    }
+
+  }
 
 } 
