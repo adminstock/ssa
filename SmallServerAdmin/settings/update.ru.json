@@ -2,7 +2,7 @@
 	{ "Key": "Update SmallServerAdmin", "Value": "Обновление SmallServerAdmin" },
 	{ "Key": "Checking for updates. Please wait...", "Value": "Проверка наличия обновлений. Пожалуйста, подождите..." },
 	{ "Key": "This is the latest version!", "Value": "У вас самая свежая версия!" },
-	{ "Key": "SSA_UPDATED", "Value": "SmallServerAdmin будет обновлена до v{{NewVersion}}!" },
+	{ "Key": "SSA_UPDATED", "Value": "SmallServerAdmin успешно обновлена до v{{NewVersion}}!" },
 	{ "Key": "Available a new version:", "Value": "Доступна новая версия:" },
 	{ "Key": "Do not turn off the computer and do not close this page!", "Value": "Не не закрывайте эту страницу и не выключайте компьютер!" }
 ]
