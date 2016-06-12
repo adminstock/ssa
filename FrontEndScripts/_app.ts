@@ -30,13 +30,27 @@ module SmallServerAdmin {
 
 		/** Context of the current application. */
 		public static Current: Nemiro.AppContext = null;
-		
+
+		/** Current language. For example: en (default), ru, de. * /
+		public static Lang: string = 'en';*/
+
+    /** Current localization resources. */
+    public static Resources: ILocalization = null;
+
 		public static Init(): void {
 			console.log('SmallServerAdmin.App.Init');
 
 			try { 
 				App.LocalStorageIsSupport = 'localStorage' in window && window['localStorage'] !== null;
 			} catch (ex) { }
+
+			/*App.Lang = Nemiro.Utility.ReadCookies("lang") || 'en';
+
+			if (App.Lang == '') {
+				App.Lang = 'en';
+			}*/
+
+      App.Localize();
 
 			// switch true-false
 			$('.bit').bootstrapSwitch({
@@ -70,6 +84,46 @@ module SmallServerAdmin {
 				]
 			);
 		}
+
+    private static Localize(): void {
+      // check resources
+      if (window['SmallServerAdmin']['Localization'] === undefined) {
+        console.error('SmallServerAdmin.Localization not found.');
+      }
+      else {
+        // get all included resources
+        if (window['SmallServerAdmin']['Localization']['Default'] === undefined) {
+          console.error('Default resources not found.');
+        }
+        else {
+          // set default resources
+          this.Resources = new Localization.Default();
+
+          // each resources
+          var resources = Object.getOwnPropertyNames(window['SmallServerAdmin']['Localization']);
+          for (var i = 0; i < resources.length; i++) {
+            if (resources[i] == 'Default') {
+              continue;
+            }
+
+            var newResources = Object.create(window['SmallServerAdmin']['Localization'][resources[i]].prototype);
+            newResources.constructor.apply(newResources);
+
+            console.log('newResources', newResources);
+
+            for (var name in newResources) {
+              if (newResources[name] === undefined || newResources[name] == null || newResources[name] == '') {
+                continue;
+              }
+
+              if (this.Resources[name] != undefined) {
+                this.Resources[name] = newResources[name];
+              }
+            }
+          }
+        }
+      }
+    }
 
 	}
 

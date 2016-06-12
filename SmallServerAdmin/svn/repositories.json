@@ -1,0 +1,8 @@
+[
+	{ "Key": "Svn Repositories", "Value": "Svn Repositories" },
+	{ "Key": "Create repository", "Value": "Create repository" },
+	{ "Key": "Loading list of repositories. Please wait...", "Value": "Loading list of repositories. Please wait..." },
+	{ "Key": "Repositories not found...", "Value": "Repositories not found..." },
+	{ "Key": "Create a new repository", "Value": "Create a new repository" },
+	{ "Key": "For confirmation, enter repository name, which should be removed:", "Value": "For confirmation, enter repository name, which should be removed:" }
+]

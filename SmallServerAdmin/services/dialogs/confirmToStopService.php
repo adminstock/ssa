@@ -3,15 +3,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3>Confirm</h3>
+        <h3>${Confirm}</h3>
       </div>
       <div class="modal-body">
-        Are you sure you want to stop the service <strong>{{SelectedServiceToStop.Name}}</strong>?
+        ${SERVICES_CONFIRM_STOP}
         <div ng-show="SelectedServiceToStop.Name.toLowerCase() == 'ssh'">
           <br /><br />
           <div class="alert alert-danger">
-            Stop the <strong>SSH</strong> service will result in a loss of control over the server.<br />
-            Control Panel will stop working.
+            ${SERVICES_SSH_WARNING}
           </div>
         </div>
       </div>

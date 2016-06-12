@@ -282,7 +282,7 @@ module SmallServerAdmin.Controllers {
 
 			apiRequest.SuccessCallback = (response) => {
 				$this.Success = true;
-				Nemiro.UI.Dialog.Alert('The account has been successfully updated!', 'Success', 'Ok',() => {
+        Nemiro.UI.Dialog.Alert(App.Resources.TheAccountHasBeenUpdated, App.Resources.Success, App.Resources.Ok,() => {
 					$this.Context.Window.location.hash = '#?login=' + $this.User.Login;
 					$this.SetPassword = $this.SetLogin = false;
 					$this.NewPassword = $this.ConfirmPassword = '';
@@ -310,7 +310,7 @@ module SmallServerAdmin.Controllers {
 			
 			apiRequest.SuccessCallback = (response) => {
 				$this.Success = true;
-				Nemiro.UI.Dialog.Alert('The user data has been successfully updated!', 'Success', 'Ok',() => {
+        Nemiro.UI.Dialog.Alert(App.Resources.TheUserHasBeenUpdated, App.Resources.Success, App.Resources.Ok,() => {
 					$this.Context.Window.location.hash = '#?login=' + $this.User.Login;
 					$this.GetUser($this);
 				});
@@ -331,7 +331,7 @@ module SmallServerAdmin.Controllers {
 			
 			apiRequest.SuccessCallback = (response) => {
 				$this.Success = true;
-				Nemiro.UI.Dialog.Alert('The user groups list has been successfully updated!', 'Success', 'Ok',() => {
+        Nemiro.UI.Dialog.Alert(App.Resources.TheUserGroupsHasBeenUpdated, App.Resources.Success, App.Resources.Ok,() => {
 					$this.Context.Window.location.hash = '#?login=' + $this.User.Login;
 					$this.GetUser($this);
 				});
@@ -369,7 +369,7 @@ module SmallServerAdmin.Controllers {
 			
 			// handler successful response to a request to api
 			apiRequest.SuccessCallback = (response) => {
-				Nemiro.UI.Dialog.Alert('The user has been successfully created!', 'Success', 'Ok',() => {
+        Nemiro.UI.Dialog.Alert(App.Resources.TheUserHasBeenCreated, App.Resources.Success, App.Resources.Ok,() => {
 					$this.Context.Window.location.hash = '#?login=' + $this.User.Login;
 					$this.GetUser($this);
 				});

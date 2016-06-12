@@ -16,16 +16,16 @@
             {{node.Name}}
             <span ng-show="SelectedFolder == node">
               <span class="glyphicon glyphicon-option-horizontal"></span>
-              <a class="btn btn-default btn-xs" title="Rename" ng-click="node.NewName = node.Name; node.RenameMode = true"><span class="glyphicon glyphicon-edit"></span></a>
-              <a class="btn btn-danger btn-xs" title="Delete" ng-click="ShowConfirmToDeleteFolder(node)"><span class="glyphicon glyphicon-trash"></span></a>
+              <a class="btn btn-default btn-xs" title="${Rename}" ng-click="node.NewName = node.Name; node.RenameMode = true"><span class="glyphicon glyphicon-edit"></span></a>
+              <a class="btn btn-danger btn-xs" title="${Delete}" ng-click="ShowConfirmToDeleteFolder(node)"><span class="glyphicon glyphicon-trash"></span></a>
             </span>
           </span>
           <span class="form-inline form-group" ng-show="node.RenameMode">
             <span class="input-group">
               <input type="text" ng-model="node.NewName" class="form-control" ng-disabled="node.Loading" />
               <span class="input-group-btn">
-                <button type="button" class="btn btn-success" title="Save" ng-disabled="node.NewName == '' || node.NewName == node.Name || node.Loading" ng-click="RenameFolder(node)"><span class="glyphicon glyphicon-ok"></span></button>
-                <button type="button" class="btn btn-danger" title="Cancel" ng-click="node.RenameMode = false" ng-disabled="node.Loading"><span class="glyphicon glyphicon-remove"></span></button>
+                <button type="button" class="btn btn-success" title="${Save}" ng-disabled="node.NewName == '' || node.NewName == node.Name || node.Loading" ng-click="RenameFolder(node)"><span class="glyphicon glyphicon-ok"></span></button>
+                <button type="button" class="btn btn-danger" title="${Cancel}" ng-click="node.RenameMode = false" ng-disabled="node.Loading"><span class="glyphicon glyphicon-remove"></span></button>
                 <span class="btn" ng-show="node.Loading"><span class="glyphicon glyphicon-refresh fa-spin"></span></span>
               </span>
             </span>

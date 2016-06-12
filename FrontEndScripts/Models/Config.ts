@@ -50,6 +50,11 @@ module SmallServerAdmin.Models {
 		/** Current server human name. */
 		public ServerName: string;
 
+		/** Current language. For example: en, ru, de. */
+    public Lang: string;
+
+    public HtanEnabled: boolean;
+
 	}
 
 }

@@ -61,7 +61,7 @@ module SmallServerAdmin.Controllers {
 			$this.Scope = $this.Context.Scope;
 			
 			if ($('#config').length <= 0 || $('#config').val() == '' || $('#config').val() == '[]') {
-				Nemiro.UI.Dialog.Alert('Config not found.<br />Please check <code>$config[\'client\']</code> of the <strong>/ssa.config.php</strong>.', 'Error');
+        Nemiro.UI.Dialog.Alert(App.Resources.ConfigNotFound, App.Resources.Error);
 			}
 
 			$this.Scope.Config = JSON.parse($('#config').val());
@@ -71,6 +71,10 @@ module SmallServerAdmin.Controllers {
 			}
 
 			console.log('Config', $this.Config);
+
+			/*if ($this.Config.Lang !== undefined && $this.Config.Lang != null && $this.Config.Lang != '') {
+				App.Lang = $this.Config.Lang;
+			}*/
 
 			// progress dialog
 			$this.Progress = Nemiro.UI.Dialog.CreateFromElement($('#progress'));
@@ -97,7 +101,7 @@ module SmallServerAdmin.Controllers {
 
 			$this.Scope.SelectServer = () => {
 				if ($this.PanelServers === undefined || $this.PanelServers == null) {
-					Nemiro.UI.Dialog.Alert('Servers controller not found.', 'Error;');
+          Nemiro.UI.Dialog.Alert(App.Resources.ServersControllerNotFound, App.Resources.Error);
 					return;
 				}
 

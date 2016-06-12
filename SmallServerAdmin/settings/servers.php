@@ -4,8 +4,19 @@ namespace Settings
 
   require_once '../global.php';
 
-  class Update extends \Nemiro\UI\Page
+  class Servers extends \Nemiro\UI\Page
   {
+
+    public $CurrentServerAddress;
+    public $CurrentServerIsDefault;
+
+    function Load()
+    {
+      global $config;
+
+      $this->CurrentServerAddress = $config['ssh_host'];
+      $this->CurrentServerIsDefault = (!isset($_COOKIE['currentServer']) || $_COOKIE['currentServer'] == '');
+    }
 
   }
 

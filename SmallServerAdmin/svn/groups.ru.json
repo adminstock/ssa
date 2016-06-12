@@ -1,0 +1,4 @@
+[
+	{ "Key": "Svn Groups", "Value": "SVN: Группы пользователей" },
+	{ "Key": "Members and repositories will remain. However, for members of the group may lose access to repositories.", "Value": "Пользователи и хранилища не будут удалены, однако для пользователей может пропасть доступ к хранилищам, связанным с удаляемой группой." }
+]

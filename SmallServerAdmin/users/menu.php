@@ -1,1 +1,1 @@
-<li><a href="/users"><span class="fa fa-user"></span> Users</a></li>
+<li><a href="/users"><span class="fa fa-user"></span> ${Menu_Users}</a></li>

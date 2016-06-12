@@ -1,15 +1,15 @@
-<?#Page Title="Svn Users" ?>
+<?#Page Title="${Svn Users}" ?>
 <html xmlns:php="http://aleksey.nemiro.ru/php-webforms">
   <body>
 
     <php:Content ID="MainContent">
       <div ng-controller="SvnUsersController">
 
-        <h2 class="pull-left">Svn Users</h2>
+        <h2 class="pull-left">${Svn Users}</h2>
         <h2 class="pull-right">
           <a ng-click="EditUser()" class="btn btn-success">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            Add user
+            ${Add user}
           </a>
         </h2>
 
@@ -18,15 +18,15 @@
         <div class="panel panel-default">
           <div class="panel-body form-inline">
             <div class="form-group">
-              <input type="text" name="search" placeholder="User name" class="form-control" ng-disabled="Loading" ng-model="Search" />
+              <input type="text" name="search" placeholder="${User name}" class="form-control" ng-disabled="Loading" ng-model="Search" />
             </div>
             <button class="btn btn-default" ng-disabled="Loading" ng-click="SearchUsers()">
               <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-              Search
+              ${Search}
             </button>
             <button class="btn btn-default" ng-disabled="Loading" ng-click="ResetSearch()">
               <span class="glyphicon glyphicon-erase" aria-hidden="true"></span>
-              Reset
+              ${Reset}
             </button>
           </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="panel panel-default ng-hide" ng-show="Loading" ng-cloak>
           <div class="panel-body">
             <span class="glyphicon glyphicon-refresh fa-spin"></span>
-            Loading list of users. Please wait...
+            ${Loading list of users. Please wait...}
           </div>
         </div>
 
@@ -67,11 +67,11 @@
         </div>
 
         <div class="well well-lg" ng-show="!Loading && (Users == null || Users.length == 0)" ng-cloak>
-          <p>Users not found...</p>
+          <p>${Users not found...}</p>
           <p>
             <a ng-click="EditUser()">
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-              Add a new user
+              ${Add a new user}
             </a>
           </p>
         </div>

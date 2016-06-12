@@ -6416,7 +6416,7 @@ button.close {
 
 .fa {
   display: inline-block;
-  font: normal normal normal 14px / 1 FontAwesome;
+  font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -11290,6 +11290,9 @@ a:not([href]) {
 .gray {
   color: gray; }
 
+.red {
+  color: #a94442; }
+
 .modal-body {
   max-height: calc(100vh - 200px);
   overflow-y: auto; }
@@ -11423,6 +11426,9 @@ treecontrol ul {
 	}
 
 }*/
+#vk_groups {
+  width: 100%; }
+
 @media (min-width: 768px) {
   .navbar-collapse {
     padding: 0; } }

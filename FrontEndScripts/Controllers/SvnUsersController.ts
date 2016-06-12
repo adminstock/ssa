@@ -170,10 +170,10 @@ module SmallServerAdmin.Controllers {
 
 				$this.IsNew = true;
 				$this.SourceUser = new Models.SvnUser();
-				$this.SourceUser.Login = "New User";
+        $this.SourceUser.Login = App.Resources.NewUser;
 				$this.CurrentUser = new Models.SvnUser();
 
-				$this.Scope.$parent.ShowProgress('Preparing form. Please wait...', 'Preparing...');
+        $this.Scope.$parent.ShowProgress(App.Resources.PreparingFormWait, App.Resources.Preparing);
 
 				apiRequest = new ApiRequest<Array<string>>($this.Context, 'Svn.GetGroupNames');
 
@@ -191,7 +191,7 @@ module SmallServerAdmin.Controllers {
 
 			} else {
 
-				$this.Scope.$parent.ShowProgress('Obtaining the user data from the server. Please wait...', 'Loading...');
+        $this.Scope.$parent.ShowProgress(App.Resources.ObtainingTheUserWait, App.Resources.Loading);
 
 				$this.IsNew = false;
 
@@ -245,11 +245,11 @@ module SmallServerAdmin.Controllers {
 			// create request
 			var apiRequest = new ApiRequest<boolean>($this.Context, 'Svn.SaveUser', u);
 
-			$this.Scope.$parent.ShowProgress('Saving the user. Please wait...', 'Saving...');
+      $this.Scope.$parent.ShowProgress(App.Resources.SavingTheUserWait, App.Resources.Saving);
 
 			// handler successful response to a request to api
 			apiRequest.SuccessCallback = (response) => {
-				$this.Scope.$parent.ShowProgress('Saved successfully!<br />Loading list of users. Please wait...', 'Loading...');
+        $this.Scope.$parent.ShowProgress(App.Resources.SavedSuccessfullyLoadingListOfUsers, App.Resources.Loading);
 				$this.Editor.Close();
 				$this.LoadUsers($this);
 			};
@@ -262,11 +262,11 @@ module SmallServerAdmin.Controllers {
 			$this = $this || this;
 
 			if ($this.SelectedUserToRemove == undefined || $this.SelectedUserToRemove == null || $this.SelectedUserToRemove == '') {
-				Nemiro.UI.Dialog.Alert('Incorrect user name!', 'Error');
+				Nemiro.UI.Dialog.Alert(App.Resources.IncorrectUserName, App.Resources.Error);
 				return;
 			}
 
-			$this.Scope.$parent.ShowProgress('Is removed the user <strong>' + $this.SelectedUserToRemove + '</strong>. Please wait...', 'Deleting...');
+      $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(App.Resources.IsRemovedUserWait, [$this.SelectedUserToRemove]), App.Resources.Deleting);
 			$this.ConfirmUserRemove.Close();
 
 			// create request
@@ -274,7 +274,7 @@ module SmallServerAdmin.Controllers {
 
 			// handler successful response to a request to api
 			apiRequest.SuccessCallback = (response) => {
-				this.Scope.$parent.ShowProgress('Loading list of users...', 'Loading...');
+        this.Scope.$parent.ShowProgress(App.Resources.LoadingListOfUsers, App.Resources.Loading);
 				$this.SelectedUserToRemove = '';
 				$this.LoadUsers($this);
 			};

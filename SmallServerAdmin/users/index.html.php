@@ -1,15 +1,15 @@
-<?#Page Title="Users" ?>
+<?#Page Title="${Users}" ?>
 <html xmlns:php="http://aleksey.nemiro.ru/php-webforms">
   <body>
 
     <php:Content ID="MainContent">
       <div ng-controller="UserListController">
 
-        <h2 class="pull-left">Users</h2>
+        <h2 class="pull-left">${Users}</h2>
         <h2 class="pull-right">
           <a href="/users/edit.php" class="btn btn-success">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            Add user
+            ${Add user}
           </a>
         </h2>
 
@@ -18,15 +18,15 @@
         <div class="panel panel-default">
           <div class="panel-body form-inline">
             <div class="form-group">
-              <input type="text" name="search" placeholder="Login, Full name or phone" class="form-control" ng-disabled="Loading" ng-model="Search" />
+              <input type="text" name="search" placeholder="${Login, Full name or phone}" class="form-control" ng-disabled="Loading" ng-model="Search" />
             </div>
             <button class="btn btn-default" ng-disabled="Loading" ng-click="SearchUsers()">
               <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-              Search
+              ${Search}
             </button>
             <button class="btn btn-default" ng-disabled="Loading" ng-click="ResetSearch()">
               <span class="glyphicon glyphicon-erase" aria-hidden="true"></span>
-              Reset
+              ${Reset}
             </button>
           </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="panel panel-default ng-hide" ng-show="Loading" ng-cloak>
           <div class="panel-body">
             <span class="glyphicon glyphicon-refresh fa-spin"></span>
-            Loading list of users. Please wait...
+            ${Loading list of users. Please wait...}
           </div>
         </div>
 
@@ -75,11 +75,11 @@
         </div>
 
         <div class="well well-lg" ng-show="!Loading && (Users == null || Users.Items.length == 0)" ng-cloak>
-          <p>Users not found...</p>
+          <p>${Users not found...}</p>
           <p>
             <a href="/users/edit.php">
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-              Add a new user
+              ${Add a new user}
             </a>
           </p>
         </div>
@@ -89,18 +89,18 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3>Confirm</h3>
+                <h3>${Confirm}</h3>
               </div>
               <div class="modal-body" style="overflow:auto;">
-                You are about to delete user <strong>{{SelectedUserToRemove}}</strong>.<br />
-                Recover data after deletion will not be possible.<br />
-                For confirmation, enter username, which should be removed:<br />
+                ${You are about to delete the} <strong>{{SelectedUserToRemove}}</strong>.<br />
+                ${Recover data after deletion will not be possible.}<br />
+                ${For confirmation, enter username, which should be removed:}<br />
                 <div class="form-group">
                   <input type="text" class="form-control" ng-model="ConfirmLoginToRemove" autocomplete="off" />
                 </div>
                 <div class="form-group checkbox">
                   <label>
-                    <input type="checkbox" ng-model="RemoveHome" /> remove home folder
+                    <input type="checkbox" ng-model="RemoveHome" /> ${remove home folder}
                   </label>
                 </div>
               </div>

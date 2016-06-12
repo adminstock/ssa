@@ -55,18 +55,19 @@ $config["web_sitename_invalid_message"] = 'Site name must begin with the letters
 
 // dbadmin
 $config['dbadmin_list'] = [
-  ['file_name' => 'mysql.php', 'title' => 'MySql'],
-  ['file_name' => 'pgsql.php', 'title' => 'PostgreSql']
+  ['file_name' => 'phpmyadmin', 'title' => 'MySql'],
+  ['file_name' => 'phppgadmin', 'title' => 'PostgreSql']
 ];
 
 // client-side config
 $config['client'] = [
-  'WebServer' => 'nginx+apache',
+  'WebServer' => $config['web_mode'],
   'ApacheHost' => '127.0.0.1',
   'ApachePort' => 8080,
   'LogFolderName' => '.logs',
   'PhpFastCgiPort' => 9001,
   'AspNetFastCgiPort' => 9100,
   'ServerAddress' => $config['ssh_host'],
-  'ServerName' => $config['server_name']
+  'ServerName' => $config['server_name'],
+  'HtanEnabled' => $config['web_htan_enabled']
 ];

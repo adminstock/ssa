@@ -139,19 +139,19 @@ module SmallServerAdmin.Controllers {
 			$this = $this || this;
 
 			if ($this.ConfirmLoginToRemove != $this.SelectedUserToRemove) {
-				Nemiro.UI.Dialog.Alert('Incorrect user name!', 'Error');
+        Nemiro.UI.Dialog.Alert(App.Resources.IncorrectUserName, App.Resources.Error);
 				return;
 			}
 
 			$this.ConfirmUserRemove.Close();
-			$this.Scope.$parent.ShowProgress('Is removed the user <strong>' + $this.SelectedUserToRemove + '</strong>. Please wait...', 'Deleting...');
+      $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(App.Resources.IsRemovedUserWait, [$this.SelectedUserToRemove]), App.Resources.Deleting);
 
 			// create request
 			var apiRequest = new ApiRequest<boolean>($this.Context, 'Users.DeleteUser', { Login: $this.SelectedUserToRemove, RemoveHome: $this.RemoveHome });
 
 			// handler successful response to a request to api
 			apiRequest.SuccessCallback = (response) => {
-				this.Scope.$parent.ShowProgress('Loading list of users...', 'Loading...');
+        this.Scope.$parent.ShowProgress(App.Resources.LoadingListOfUsers, App.Resources.Loading);
 				$this.LoadUsers($this);
 			};
 

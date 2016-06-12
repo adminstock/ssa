@@ -1,0 +1,11 @@
+[
+	{ "Key":  "File Manager", "Value": "Управление файлами" },
+	{ "Key":  "All child files and folders will be deleted.", "Value": "Все вложенные файлы и папки будут удалены." },
+	{ "Key":  "FILES_CONFIRM_FILE_DELETETION", "Value": "Для подтверждения, введите <strong>имя</strong> объекта, который должен быть удален:" },
+	{ "Key":  "FILES_CONFIRM_ITEMS_DELETETION", "Value": "Для подтверждения, введите число удаляемых элементов:" },
+	{ "Key":  "Are you sure you want to execute the", "Value": "Вы действительно хотите выполнить" },
+	{ "Key":  "It may not be safe.", "Value": "Это может быть небезопасно." },
+	{ "Key":  "If you really want to execute this file, you can specify additional parameters.", "Value": "Если вы действительно хотите выполнить этот файл, то вы можете указать дополнительные параметры запуска." },
+	{ "Key":  "List of parameters with which the file will be launched", "Value": "Список параметров запуска" },
+	{ "Key":  "FILES_OVERWRITE_IT", "Value": "Файл <strong>{{SaveAsPath}}</strong> уже существует. Хотите его перезаписать?" }
+]

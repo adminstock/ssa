@@ -17,11 +17,11 @@
             <div class="form-group">
               <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">${Members}:</label>
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="overflow-y:auto; max-height:275px;">
-                <ul class="list-group" ng-show="Users != null && Users.length > 0" ng-cloak>
+                <ul class="list-group" ng-show="Users" ng-cloak>
                   <li ng-repeat="user in Users" class="list-group-item checkbox"><label><input type="checkbox" ng-checked="CurrentGroup.Members != null && CurrentGroup.Members.indexOf(user) > -1" ng-click="UserClick(user)" /> {{user}}</label></li>
                 </ul>
-                <div ng-show="Users == null || Users.length == 0" ng-cloak>
-                  <p>No users...</p>
+                <div ng-show="!Users" ng-cloak>
+                  <p>${No users...}</p>
                 </div>
               </div>
             </div>

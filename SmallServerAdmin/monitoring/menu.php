@@ -1,1 +1,1 @@
-<li><a href="/monitoring"><span class="fa fa-tachometer"></span> Monitoring</a></li>
+<li><a href="/monitoring"><span class="fa fa-tachometer"></span> ${Menu_Monitoring}</a></li>

@@ -132,6 +132,15 @@ namespace Api
     #endregion
     #region Servers
 
+    public function CheckConnection()
+    {
+      // create an instance
+      new SSH();
+
+      // no exceptions
+      return ['Success' => TRUE];
+    }
+
     /**
      * Returs servers list.
      */

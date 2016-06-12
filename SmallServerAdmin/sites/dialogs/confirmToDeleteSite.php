@@ -3,11 +3,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3>Confirm</h3>
+        <h3>${Confirm}</h3>
       </div>
       <div class="modal-body">
-        You are about to delete site <strong>{{SelectedItemToRemove}}</strong>.<br />
-        For confirmation, enter site name, which should be removed:<br />
+        ${You are about to delete the} <strong>{{SelectedItemToRemove}}</strong>.<br />
+        ${SITES_CONFIRM_SITE_DELETE}<br />
         <div class="form-group">
           <input type="text" class="form-control" ng-model="ConfirmNameToRemove" autocomplete="off" />
         </div>

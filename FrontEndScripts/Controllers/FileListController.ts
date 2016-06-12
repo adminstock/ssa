@@ -922,7 +922,8 @@ module SmallServerAdmin.Controllers {
 
 			$this.FileViewMode = mode;
 
-			$this.Scope.$parent.ShowProgress('Loading the file contents...', 'Loading...');
+      // Loading the file contents...
+			$this.Scope.$parent.ShowProgress(App.Resources.LoadingFileContents, App.Resources.Loading);
 
 			var apiRequest = new ApiRequest<any>($this.Context, 'Files.Get', { path: item.Path, mode: mode });
 
@@ -1031,7 +1032,7 @@ module SmallServerAdmin.Controllers {
 		private Properties($this: FileListController, item: Models.FileSystemItem): void {
 			item.Loading = true;
 
-			$this.Scope.$parent.ShowProgress('Getting the file info...', 'Loading...');
+      $this.Scope.$parent.ShowProgress(App.Resources.GettingFileInfo, App.Resources.Loading);
 
 			var apiRequest = new ApiRequest<Models.FileSystemItemInfo>($this.Context, 'Files.Info', { path: item.Path });
 

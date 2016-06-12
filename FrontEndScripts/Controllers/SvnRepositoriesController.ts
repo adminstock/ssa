@@ -166,7 +166,7 @@ module SmallServerAdmin.Controllers {
 			if (repName === undefined || repName == null) {
 
 				$this.Source = new Models.SvnRepository();
-				$this.Source.Name = "New Repository";
+        $this.Source.Name = App.Resources.NewRepository;
 				$this.Current = new Models.SvnRepository();
 
 				$this.Editor.Show();
@@ -174,7 +174,7 @@ module SmallServerAdmin.Controllers {
 
 			} else {
 
-				$this.Scope.$parent.ShowProgress('Obtaining the repository info from the server. Please wait...', 'Loading...');
+        $this.Scope.$parent.ShowProgress(App.Resources.ObtainingTheRepositoryWait, App.Resources.Loading);
 
 				// load data from server
 				var apiRequest = new ApiRequest<Models.SvnRepository>($this.Context, 'Svn.GetRepository', { name: repName });
@@ -205,11 +205,11 @@ module SmallServerAdmin.Controllers {
 			// create request
 			var apiRequest = new ApiRequest<boolean>($this.Context, 'Svn.SaveRepository', { Current: $this.Current, Source: $this.Source });
 
-			$this.Scope.$parent.ShowProgress('Saving the respository. Please wait...', 'Saving...');
+      $this.Scope.$parent.ShowProgress(App.Resources.SavingTheRepositoryWait, App.Resources.Saving);
 
 			// handler successful response to a request to api
 			apiRequest.SuccessCallback = (response) => {
-				$this.Scope.$parent.ShowProgress('Saved successfully!<br />Loading list of repositories. Please wait...', 'Loading...');
+        $this.Scope.$parent.ShowProgress(App.Resources.SavedSuccessfullyLoadingListOfRepositories, App.Resources.Loading);
 				$this.Editor.Close();
 				$this.LoadRepositories($this);
 			};
@@ -222,11 +222,11 @@ module SmallServerAdmin.Controllers {
 			$this = $this || this;
 
 			if ($this.SelectedItemToRemove == undefined || $this.SelectedItemToRemove == null || $this.SelectedItemToRemove == '' || $this.ConfirmNameToRemove != $this.SelectedItemToRemove) {
-				Nemiro.UI.Dialog.Alert('Incorrect repository name!', 'Error');
+        Nemiro.UI.Dialog.Alert(App.Resources.IncorrectRepositoryName, App.Resources.Error);
 				return;
 			}
 
-			$this.Scope.$parent.ShowProgress('Is removed the repository <strong>' + $this.SelectedItemToRemove + '</strong>. Please wait...', 'Deleting...');
+      $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(App.Resources.IsRemovedTheRepositoryWait, [$this.SelectedItemToRemove]), App.Resources.Deleting);
 			$this.ConfirmToRemove.Close();
 
 			// create request
@@ -234,7 +234,7 @@ module SmallServerAdmin.Controllers {
 
 			// handler successful response to a request to api
 			apiRequest.SuccessCallback = (response) => {
-				this.Scope.$parent.ShowProgress('Loading list of repositories...', 'Loading...');
+        this.Scope.$parent.ShowProgress(App.Resources.LoadingListOfRepositories, App.Resources.Loading);
 				$this.SelectedItemToRemove = '';
 				$this.LoadRepositories($this);
 			};

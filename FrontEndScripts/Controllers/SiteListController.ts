@@ -25,6 +25,11 @@ module SmallServerAdmin.Controllers {
 		public Scope: any;
 		public Context: Nemiro.AngularContext;
 
+    /** SSA config. */
+    public get Config(): Models.Config {
+      return this.Scope.$parent.Config;
+    }
+
 		/** The list of sites. */
 		public get Sites(): Array<Models.Site> {
 			return this.Scope.Sites;
@@ -149,19 +154,19 @@ module SmallServerAdmin.Controllers {
 			$this = $this || this;
 
 			if ($this.ConfirmNameToRemove != $this.SelectedItemToRemove) {
-				Nemiro.UI.Dialog.Alert('Incorrect site name!', 'Error');
+        Nemiro.UI.Dialog.Alert(App.Resources.IncorrectSiteName, App.Resources.Error);
 				return;
 			}
 
 			$this.ConfirmToDelete.Close();
-			$this.Scope.$parent.ShowProgress('Is removed the site <strong>' + $this.SelectedItemToRemove + '</strong>. Please wait...', 'Deleting...');
+      $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(App.Resources.IsRemovedSiteWait, [$this.SelectedItemToRemove]), App.Resources.Deleting);
 
 			// create request
 			var apiRequest = new ApiRequest<boolean>($this.Context, 'Sites.DeleteSite', { Name: $this.SelectedItemToRemove });
 
 			// handler successful response to a request to api
 			apiRequest.SuccessCallback = (response) => {
-				this.Scope.$parent.ShowProgress('Loading list of sites...', 'Loading...');
+        this.Scope.$parent.ShowProgress(App.Resources.LoadingListOfSites, App.Resources.Loading);
 				$this.Load($this);
 			};
 

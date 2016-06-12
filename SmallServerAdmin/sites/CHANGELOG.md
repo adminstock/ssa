@@ -2,6 +2,14 @@
 
 All notable changes to this module will be documented in this file.
 
+## [1.0.7] - 2016-06-11
+### Added
+- Localized interface to Russian.
+
+### Fixed
+- Case with disabled Apache and HTAN;
+- Search sites (*api.php*).
+
 ## [1.0.6] - 2016-04-27
 ### Added
 - Public API method `ReloadServices` for reload services (*api.php*);
@@ -10,10 +18,10 @@ All notable changes to this module will be documented in this file.
 - `ApiRequest.Echo` (*ApiRequest.ts*) and handler to root *api.php*.
 
 ### Changed
-- Help to bottom (*edit.html.php*), fixed errors;
+- Help to bottom (*edit.html.php*), fixed errors.
 
 ### Removed
-- `ReloadWebServer` private method from *api.php*.
+- `ReloadWebServer` private method from *api.php*;
 - `NoReload` parameter from `SetSiteStatus` and `DeleteSite` (*api.php*).
 
 ### Fixed

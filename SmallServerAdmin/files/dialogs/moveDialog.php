@@ -35,7 +35,7 @@
 				</table>
         <div ng-show="SelectedItems.length <= 0" class="text-center">
           <br />
-          No selected items...
+          ${No selected items...}
 					<br /><br />
         </div>
       </div>

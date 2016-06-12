@@ -42,7 +42,7 @@
         </div>
       </div>
 
-			<div id="servers" class="modal" role="dialog" data-not-restore="true" ng-controller="PanelServersController">
+			<div id="servers" class="modal" role="dialog" data-not-restore="true" ng-controller="PanelServersController" ng-init="DisableShowConnectionError = true;">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">

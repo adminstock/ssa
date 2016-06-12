@@ -1,15 +1,15 @@
-<?#Page Title="Svn Groups" ?>
+<?#Page Title="${Svn Groups}" ?>
 <html xmlns:php="http://aleksey.nemiro.ru/php-webforms">
   <body>
 
     <php:Content ID="MainContent">
       <div ng-controller="SvnGroupsController">
 
-        <h2 class="pull-left">Svn Groups</h2>
+        <h2 class="pull-left">${Svn Groups}</h2>
         <h2 class="pull-right">
           <a ng-click="EditGroup()" class="btn btn-success">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            Add group
+            ${Add group}
           </a>
         </h2>
 
@@ -18,7 +18,7 @@
         <div class="panel panel-default ng-hide" ng-show="Loading" ng-cloak>
           <div class="panel-body">
             <span class="glyphicon glyphicon-refresh fa-spin"></span>
-            Loading list of groups. Please wait...
+            ${Loading list of groups. Please wait...}
           </div>
         </div>
 
@@ -47,11 +47,11 @@
         </div>
 
         <div class="well well-lg" ng-show="!Loading && (Groups == null || Groups.length == 0)" ng-cloak>
-          <p>Groups not found...</p>
+          <p>${Groups not found...}</p>
           <p>
             <a ng-click="EditGroup()">
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-              Add a new group
+              ${Add a new group}
             </a>
           </p>
         </div>

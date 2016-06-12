@@ -6,7 +6,7 @@
         <h3>${Confirm}</h3>
       </div>
       <div class="modal-body">
-        The file <strong>{{SaveAsPath}}</strong> already exists. Do you want to overwrite the file?
+        ${FILES_OVERWRITE_IT}
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary" ng-click="Save(SaveAsPath, true, SaveAsOwnerName)">${Overwrite}</button>

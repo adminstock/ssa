@@ -380,8 +380,8 @@ module SmallServerAdmin.Controllers {
 						formatter: () => {
 							var points = eval('this').points;
 							return '<div class="chart-tooltip">' +
-								'<strong>Total:</strong> ' + points[0].y + ' Mb<br />' +
-								(points.length > 1 ? '<strong>In Use:</strong> ' + points[1].y + ' Mb' : '') +
+                '<strong>' + App.Resources.Total + ':</strong> ' + points[0].y + ' ' + App.Resources.Mb + '<br />' +
+                (points.length > 1 ? '<strong>' + App.Resources.InUse + ':</strong> ' + points[1].y + ' ' + App.Resources.Mb + '' : '') +
 								'</div>';
 						}
 					},
@@ -460,8 +460,8 @@ module SmallServerAdmin.Controllers {
 						formatter: () => {
 							var points = eval('this').points;
 							return '<div class="chart-tooltip">' +
-								'<strong>Total:</strong> ' + points[0].y + ' Gb<br />' +
-								(points.length > 1 ? '<strong>In Use:</strong> ' + points[1].y + ' Gb' : '') +
+                '<strong>' + App.Resources.Total + ':</strong> ' + points[0].y + ' ' + App.Resources.Gb + '<br />' +
+                (points.length > 1 ? '<strong>' + App.Resources.InUse + ':</strong> ' + points[1].y + ' ' + App.Resources.Gb : '') +
 								'</div>';
 						}
 					},

@@ -1,0 +1,8 @@
+[
+	{ "Key": "Svn Repositories", "Value": "SVN: Хранилища" },
+	{ "Key": "Create repository", "Value": "Создать хранилище" },
+	{ "Key": "Loading list of repositories. Please wait...", "Value": "Загрузка списка хранилищ. Пожалуйста, подождите..." },
+	{ "Key": "Repositories not found...", "Value": "Хранилища не найдены..." },
+	{ "Key": "Create a new repository", "Value": "Создать новое хранилище" },
+	{ "Key": "For confirmation, enter repository name, which should be removed:", "Value": "Для подтверждения удаления, введите имя хранилища:" }
+]

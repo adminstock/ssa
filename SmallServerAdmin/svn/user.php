@@ -39,7 +39,7 @@
                   <li ng-repeat="group in Groups" class="list-group-item checkbox"><label><input type="checkbox" ng-checked="CurrentUser.Groups != null && CurrentUser.Groups.indexOf(group) > -1" ng-click="GroupClick(group)" /> {{group}}</label></li>
                 </ul>
                 <div ng-show="Groups == null || Groups.length == 0" ng-cloak>
-                  <p>No groups...</p>
+                  <p>${No groups...}</p>
                 </div>
               </div>
             </div>

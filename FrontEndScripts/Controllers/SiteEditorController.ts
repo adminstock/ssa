@@ -17,6 +17,8 @@ module SmallServerAdmin.Controllers {
 
 	export class SiteEditorController implements Nemiro.IController {
 
+    //#region ..properties.. 
+
 		private LevelsList = ['Nginx', 'Apache', 'HTAN'];
 
 		public Scope: any;
@@ -229,12 +231,25 @@ module SmallServerAdmin.Controllers {
 		private ConfirmToDeleteFolder: Nemiro.UI.Dialog;
 		private ReloadingDialog: Nemiro.UI.Dialog;
 
+    //#endregion
+    //#region ..constructor..
+
 		constructor(context: Nemiro.AngularContext) {
 			var $this = this;
 			$this.Context = context;
 			$this.Scope = $this.Context.Scope;
 			$this.SelectedFolder = undefined;
 			$this.Help = { IsOpened: false };
+
+      $this.LevelsList = ['Nginx'];
+
+      if ($this.Config.WebServer.indexOf('apache') != -1) {
+        $this.LevelsList.push('Apache');
+      }
+
+      if ($this.Config.HtanEnabled) {
+        $this.LevelsList.push('HTAN');
+      }
 
 			$this.ConfirmDeleteConfDialog = Nemiro.UI.Dialog.CreateFromElement($('#confirmToDeleteConf'));
 			$this.ConfirmToDeleteFolder = Nemiro.UI.Dialog.CreateFromElement($('#confirmToDeleteFolder'));
@@ -386,6 +401,9 @@ module SmallServerAdmin.Controllers {
 			// load site
 			$this.Load($this);
 		}
+
+    //#endregion
+    //#region ..methods..
 
 		/**
 		 * Loads site data from the server.
@@ -674,7 +692,7 @@ module SmallServerAdmin.Controllers {
 
 		private ReloadServices($this: SiteEditorController): void {
 			if ($this.ReloadingItems === undefined || $this.ReloadingItems == null || $this.ReloadingItems.length <= 0) {
-				Nemiro.UI.Dialog.Alert('No services to reload.', 'Error');
+        Nemiro.UI.Dialog.Alert(App.Resources.NoServicesToReload, App.Resources.Error);
 				return;
 			}
 
@@ -716,7 +734,7 @@ module SmallServerAdmin.Controllers {
 						exceptionMessage = '';
 					}
 
-					Nemiro.UI.Dialog.Alert('Cannot reload service "' + reloadingItem.Name + '".' + exceptionMessage, 'Error ' + response.status);
+          Nemiro.UI.Dialog.Alert(Nemiro.Utility.Format(App.Resources.CannotReloadService, [reloadingItem.Name]) + exceptionMessage, App.Resources.Error + ' ' + response.status);
 					reloadingItem.Status = 'Error';
 				}
 			}
@@ -732,7 +750,7 @@ module SmallServerAdmin.Controllers {
 		private WaitingServerResponse($this: SiteEditorController, reloadingItem: Models.ReloadingInfo): any {
 			ApiRequest.Echo($this.Context, (response) => {
 				if (response.status != 200) {
-					Nemiro.UI.Dialog.Alert('Cannot reload service "' + reloadingItem.Name + '".', 'Error ' + response.status);
+          Nemiro.UI.Dialog.Alert(Nemiro.Utility.Format(App.Resources.CannotReloadService, [reloadingItem.Name]), App.Resources.Error + ' ' + response.status);
 					reloadingItem.Status = 'Error';
 				} else {
 					reloadingItem.Status = 'Success';
@@ -1417,6 +1435,8 @@ module SmallServerAdmin.Controllers {
 				$this.PrepareAddConf($this);
 			}
 		}
+
+    //#endregion
 
 	}
 

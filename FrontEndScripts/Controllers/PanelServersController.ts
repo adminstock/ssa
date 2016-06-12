@@ -41,9 +41,30 @@ module SmallServerAdmin.Controllers {
 			this.Scope.LoadingServers = value;
     }
 
+		public get ConnectionTesting(): boolean {
+			return this.Scope.ConnectionTesting;
+    }
+		public set ConnectionTesting(value: boolean) {
+			this.Scope.ConnectionTesting = value;
+    }
+
+		public get CurrentServerConnectionError(): boolean {
+			return this.Scope.CurrentServerConnectionError;
+    }
+		public set CurrentServerConnectionError(value: boolean) {
+			this.Scope.CurrentServerConnectionError = value;
+    }
+
+		public get DisableShowConnectionError(): boolean {
+			return this.Scope.DisableShowConnectionError;
+    }
+		public set DisableShowConnectionError(value: boolean) {
+			this.Scope.DisableShowConnectionError = value;
+    }
+
 		constructor(context: Nemiro.AngularContext) {
 			var $this = this;
-			
+
 			$this.Context = context;
 			$this.Scope = $this.Context.Scope;
 
@@ -69,6 +90,18 @@ module SmallServerAdmin.Controllers {
 				// reload page
 				$this.Context.Window.location.reload();
 			};
+
+			// delay for ng-init
+			$this.Context.Timeout(() => {
+				if (($this.Context.Location.search()['connection_failed'] !== undefined && $this.Context.Location.search()['connection_failed'] != null) || ($this.Context.Location.search()['authentication_failed'] !== undefined && $this.Context.Location.search()['authentication_failed'] != null)) {
+					$this.CurrentServerConnectionError = true;
+					if (!$this.DisableShowConnectionError) {
+            Nemiro.UI.Dialog.Alert(App.Resources.UnableToConnectTheServer, App.Resources.ConnectionError);
+					}
+				} else {
+					$this.CheckConnection($this);
+				}
+			}, 250);
 		}
 
 		public SelectServer($this: PanelServersController): void {
@@ -106,6 +139,30 @@ module SmallServerAdmin.Controllers {
 			apiRequest.Execute();
 		}
 
+		public CheckConnection($this: PanelServersController): void {
+			if ($this.ConnectionTesting) {
+				return;
+			}
+
+			$this.ConnectionTesting = true;
+
+			var apiRequest = new ApiRequest<Array<Models.ServerToAdmin>>($this.Context, 'Settings.CheckConnection');
+
+			/*apiRequest.SuccessCallback = (response) => {
+
+			};*/
+
+			apiRequest.ErrorCallback = (response) => {
+				$this.CurrentServerConnectionError = true;
+			};
+
+			apiRequest.CompleteCallback = () => {
+				$this.ConnectionTesting = false;
+			};
+
+			apiRequest.Execute();
+		}
+	
 	}
 
 } 

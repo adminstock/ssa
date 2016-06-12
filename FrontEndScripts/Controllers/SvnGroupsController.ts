@@ -133,10 +133,10 @@ module SmallServerAdmin.Controllers {
 
 				$this.IsNew = true;
 				$this.SourceGroup = new Models.SvnGroup();
-				$this.SourceGroup.Name = "New Group";
+        $this.SourceGroup.Name = App.Resources.NewGroup;
 				$this.CurrentGroup = new Models.SvnGroup();
 
-				$this.Scope.$parent.ShowProgress('Preparing form. Please wait...', 'Preparing...');
+        $this.Scope.$parent.ShowProgress(App.Resources.PreparingFormWait, App.Resources.Preparing);
 
 				apiRequest = new ApiRequest<Array<string>>($this.Context, 'Svn.GetLogins');
 
@@ -154,7 +154,7 @@ module SmallServerAdmin.Controllers {
 
 			} else {
 
-				$this.Scope.$parent.ShowProgress('Obtaining the group data from the server. Please wait...', 'Loading...');
+        $this.Scope.$parent.ShowProgress(App.Resources.ObtainingTheGroupWait, App.Resources.Loading);
 
 				$this.IsNew = false;
 
@@ -205,11 +205,11 @@ module SmallServerAdmin.Controllers {
 			// create request
 			var apiRequest = new ApiRequest<boolean>($this.Context, 'Svn.SaveGroup', g);
 
-			$this.Scope.$parent.ShowProgress('Saving the group. Please wait...', 'Saving...');
+      $this.Scope.$parent.ShowProgress(App.Resources.SavingTheGroupWait, App.Resources.Saving);
 
 			// handler successful response to a request to api
 			apiRequest.SuccessCallback = (response) => {
-				$this.Scope.$parent.ShowProgress('Saved successfully!<br />Loading list of groups. Please wait...', 'Loading...');
+        $this.Scope.$parent.ShowProgress(App.Resources.SavedSuccessfullyLoadingListOfGroups, App.Resources.Loading);
 				$this.Editor.Close();
 				$this.LoadGroups($this);
 			};
@@ -222,11 +222,11 @@ module SmallServerAdmin.Controllers {
 			$this = $this || this;
 
 			if ($this.SelectedGroupToRemove == undefined || $this.SelectedGroupToRemove == null || $this.SelectedGroupToRemove == '') {
-				Nemiro.UI.Dialog.Alert('Incorrect group name!', 'Error');
+        Nemiro.UI.Dialog.Alert(App.Resources.IncorrectGroupName, App.Resources.Error);
 				return;
 			}
 
-			$this.Scope.$parent.ShowProgress('Is removed the group <strong>' + $this.SelectedGroupToRemove + '</strong>. Please wait...', 'Deleting...');
+      $this.Scope.$parent.ShowProgress(Nemiro.Utility.Format(App.Resources.IsRemovedTheGroupWait, [$this.SelectedGroupToRemove]), App.Resources.Deleting);
 			$this.ConfirmRemove.Close();
 
 			// create request
@@ -234,7 +234,7 @@ module SmallServerAdmin.Controllers {
 
 			// handler successful response to a request to api
 			apiRequest.SuccessCallback = (response) => {
-				this.Scope.$parent.ShowProgress('Loading list of groups...', 'Loading...');
+        this.Scope.$parent.ShowProgress(App.Resources.LoadingListOfGroups, App.Resources.Loading);
 				$this.SelectedGroupToRemove = '';
 				$this.LoadGroups($this);
 			};

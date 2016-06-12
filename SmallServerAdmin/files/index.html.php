@@ -1,4 +1,4 @@
-<?#Page Title="File Manager" ?>
+<?#Page Title="${File Manager}" ?>
 <html xmlns:php="http://aleksey.nemiro.ru/php-webforms">
 <body>
 
@@ -6,7 +6,7 @@
 		<div ng-controller="FileListController">
 
 			<h2 class="pull-left">
-				File Manager
+				${File Manager}
 				<span class="ng-hide" ng-show="Loading" ng-cloak>
 					<span class="glyphicon glyphicon-refresh fa-spin"></span>
 				</span>
@@ -40,7 +40,7 @@
 
 					<button class="btn btn-default" ng-disabled="Loading" ng-click="Search()" ng-hide="true">
 						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-						Search
+						${Search}
 					</button>
 				</div>
 				<div class="form-group">

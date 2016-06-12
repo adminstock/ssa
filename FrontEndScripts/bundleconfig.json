@@ -1,8 +1,8 @@
 [
-  {
-		"includeInProject":  false,
+	{
+		"includeInProject": false,
 		"outputFileName": "../SmallServerAdmin/Content/compiled.js",
-    "inputFiles": [
+		"inputFiles": [
 			// Libraries
 			"libs/jquery-1.11.2.js",
 			"libs/jquery-ui.min.js",
@@ -109,8 +109,15 @@
 			"Models/ServerToAdmin.js",
 
 			// Application
+			"Localization/Default.js",
 			"ApiRequest.js",
 			"_app.js"
-    ]
-  }
+		]
+	},
+	// Localization resources
+	{
+		"includeInProject": false,
+		"outputFileName": "../SmallServerAdmin/Content/local/ru.js",
+		"inputFiles": [ "Localization/ru.js" ]
+	}
 ]

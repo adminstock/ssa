@@ -1,1 +1,1 @@
-<li><a href="/ssh"><span class="fa fa-terminal"></span> SSH</a></li>
+<li><a href="/ssh"><span class="fa fa-terminal"></span> ${Menu_SSH}</a></li>

@@ -6,15 +6,15 @@
         <h3>${Confirm}</h3>
       </div>
       <div class="modal-body">
-        Are you sure you want to delete the <strong>{{SelectedItemToDelete.Path}}</strong>?<br /><br />
+        ${Are you sure you want to delete the} <strong>{{SelectedItemToDelete.Path}}</strong>?<br /><br />
         <div ng-show="SelectedItemToDelete.Type == 'Folder'">
-          All child files and folders will be deleted.
+          ${All child files and folders will be deleted.}
         </div>
-        Recover data after deletion will not be possible.
+        ${Recover data after deletion will not be possible.}
         <br /><br />
-        For confirmation, enter item <strong>name</strong>, which should be removed:<br />
+        ${FILES_CONFIRM_FILE_DELETETION}<br />
         <div class="form-group">
-          <input type="text" class="form-control" ng-model="ConfirmItemNameToRemove" placeholder="Enter: {{SelectedItemToDelete.Name}}" />
+          <input type="text" class="form-control" ng-model="ConfirmItemNameToRemove" placeholder="${Enter}: {{SelectedItemToDelete.Name}}" />
         </div>
       </div>
       <div class="modal-footer">

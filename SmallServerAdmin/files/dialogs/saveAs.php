@@ -16,13 +16,13 @@
           <div class="form-group">
             <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">${Owner}:</label>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <input type="text" class="form-control" ng-model="SaveAsOwnerName" autocomplete="off" placeholder="Owner name or empty for root" />
+              <input type="text" class="form-control" ng-model="SaveAsOwnerName" autocomplete="off" placeholder="${Owner name or empty for root}" />
             </div>
           </div>
           <div class="form-group">
 	          <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">${Group}:</label>
 	          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		          <input type="text" class="form-control" ng-model="SaveAsGroupName" autocomplete="off" placeholder="Group name or empty for owner group" />
+		          <input type="text" class="form-control" ng-model="SaveAsGroupName" autocomplete="off" placeholder="${Group name or empty for owner group}" />
 	          </div>
           </div>
         </form>

@@ -17,19 +17,29 @@
     <ul class="nav navbar-nav navbar-right collapse navbar-collapse panel-nav lang">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <img src="<?=(stripos($this->Parent->Culture, 'ru') !== FALSE ? '/Content/images/ru.png' : '/Content/images/en.png')?>" alt="" title="" width="22" height="22" />
+          <?php
+          if(file_exists(\Nemiro\Server::MapPath('~/Content/images/'.substr($this->Parent->Culture, 0, 2).'.png')))
+          {
+            
+          ?>
+            <img src="/Content/images/<?=substr($this->Parent->Culture, 0, 2)?>.png" alt="<?=$this->Parent->Culture?>" title="" width="22" height="22" />
+          <?php
+          }else {?>
+					  <img src="/Content/images/globe.png" alt="" title="" width="22" height="22" />
+          <?php } ?>
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="?lang=ru"><img src="/Content/images/ru.png" alt="RU" title="" width="22" height="22" /></a></li>
           <li><a href="?lang=en"><img src="/Content/images/en.png" alt="EN" title="" width="22" height="22" /></a></li>
+					<li><a href="?lang=ru"><img src="/Content/images/ru.png" alt="RU" title="" width="22" height="22" /></a></li>
+					<li><a href="?lang=de"><img src="/Content/images/de.png" alt="DE" title="" width="22" height="22" /></a></li>
         </ul>
       </li>
       <?php
       if (isset($_SERVER['PHP_AUTH_USER']))
       {
       ?>
-        <li><a href="/logout.php"><span class="glyphicon glyphicon-log-out"></span> ${Logout}</a></li>
+        <li><a href="/logout.php">${Logout} <span class="glyphicon glyphicon-log-out"></span></a></li>
       <?php
       }
       ?>

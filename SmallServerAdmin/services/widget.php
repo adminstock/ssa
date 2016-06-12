@@ -3,7 +3,7 @@
   <div class="panel panel-default ng-hide" ng-show="Loading" ng-cloak>
     <div class="panel-body">
       <span class="glyphicon glyphicon-refresh fa-spin"></span>
-      Loading list of services. Please wait...
+      ${SERVICES_LOADING}
     </div>
   </div>
 
@@ -56,7 +56,7 @@
   </div>
 
   <div class="well well-lg text-center" ng-show="!Loading && (Services == null || Services.length == 0)" ng-cloak>
-    <p>Services not found...</p>
+    <p>${SERVICES_NOT_FOUND}</p>
   </div>
 
   <?php
