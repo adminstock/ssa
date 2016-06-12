@@ -2,7 +2,7 @@
 
 All notable changes to this module will be documented in this file.
 
-## [1.0.7] - 2016-06-11
+## [1.0.7] - 2016-06-12
 ### Added
 - Localized interface to Russian.
 

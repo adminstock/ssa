@@ -2,7 +2,7 @@
 
 All notable changes to SmallServerAdmin will be documented in this file.
 
-## [1.0.47-alpha] - 2016-06-12
+## [1.0.49-alpha] - 2016-06-12
 ### Added
 - **ssh2** checking;
 - Connection test;
