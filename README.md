@@ -43,7 +43,7 @@ See also [Third-Party License](THIRDPARTYNOTICE.md).
 
 Server requirements to manage (administrable server):
 
-* Debian 7 or 8;
+* Debian 7 or Debian 8, or Ubuntu Server 16;
 * OpenSSH >= 6.7;
 * sudo >= 1.8.10;
 * sysstat >= 11.0.1;

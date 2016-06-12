@@ -43,7 +43,7 @@
 
 Требования к управляемому серверу:
 
-* Debian 7 или 8;
+* Debian 7 или Debian 8, или Ubuntu Server 16;
 * OpenSSH >= 6.7;
 * sudo >= 1.8.10;
 * sysstat >= 11.0.1;
