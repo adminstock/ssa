@@ -20,7 +20,7 @@
             </div>
 
             <div class="ng-hide" ng-show="Updated" ng-cloak>
-              ${SmallServerAdmin has been updated to version v{{NewVersion}}!}
+              ${SSA_UPDATED}
             </div>
 
             <div class="ng-hide alert alert-warning" ng-show="NeedUpdate !== undefined && NeedUpdate && !Updated" ng-cloak>

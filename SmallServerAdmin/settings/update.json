@@ -1,8 +1,8 @@
 [
-	{ "Key":  "Update SmallServerAdmin", "Value":  "Update SmallServerAdmin" },
-	{ "Key":  "Checking for updates. Please wait...", "Value":  "Checking for updates. Please wait..." },
-	{ "Key":  "This is the latest version!", "Value":  "This is the latest version!" },
-	{ "Key":  "SmallServerAdmin has been updated to version v{{NewVersion}}!", "Value":  "SmallServerAdmin has been updated to version v{{NewVersion}}!" },
-	{ "Key":  "Available a new version:", "Value":  "Available a new version:" },
-	{ "Key":  "Do not turn off the computer and do not close this page!", "Value":  "Do not turn off the computer and do not close this page!" }
+	{ "Key": "Update SmallServerAdmin", "Value": "Update SmallServerAdmin" },
+	{ "Key": "Checking for updates. Please wait...", "Value": "Checking for updates. Please wait..." },
+	{ "Key": "This is the latest version!", "Value": "This is the latest version!" },
+	{ "Key": "SSA_UPDATED", "Value": "SmallServerAdmin has been updated to version v{{NewVersion}}!" },
+	{ "Key": "Available a new version:", "Value": "Available a new version:" },
+	{ "Key": "Do not turn off the computer and do not close this page!", "Value": "Do not turn off the computer and do not close this page!" }
 ]
