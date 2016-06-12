@@ -5,7 +5,7 @@
   </a>
   <ul class="dropdown-menu navmenu-nav" role="menu">
     <!--li><a href="/settings/modules.php"><span class="glyphicon glyphicon-th-large"></span> ${Menu_Modules}</a></li-->
-		<li><a href="/settings/servers.php"><span class="fa fa-server"></span> ${Menu_Servers}</a></li>
+    <li><a href="/settings/servers.php"><span class="fa fa-server"></span> ${Menu_Servers}</a></li>
     <li><a href="/settings/update.php"><span class="glyphicon glyphicon-download-alt"></span> ${Menu_Update}</a></li>
   </ul>
 </li>

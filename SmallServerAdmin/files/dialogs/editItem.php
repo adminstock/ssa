@@ -31,15 +31,15 @@
               <li><a ng-click="SetEditorMode('properties')">INI</a></li>
               <li><a ng-click="SetEditorMode('markdown')">Markdown</a></li>
               <li><a ng-click="SetEditorMode('htmlmixed')">HTML</a></li>
-							<li><a ng-click="SetEditorMode('javascript')">JavaScript</a></li>
+              <li><a ng-click="SetEditorMode('javascript')">JavaScript</a></li>
               <li><a ng-click="SetEditorMode('css')">CSS</a></li>
               <li><a ng-click="SetEditorMode('php')">PHP</a></li>
-							<li><a ng-click="SetEditorMode('perl')">Perl</a></li>
-							<li><a ng-click="SetEditorMode('python')">Python</a></li>
-							<li><a ng-click="SetEditorMode('sql')">SQL</a></li>
+              <li><a ng-click="SetEditorMode('perl')">Perl</a></li>
+              <li><a ng-click="SetEditorMode('python')">Python</a></li>
+              <li><a ng-click="SetEditorMode('sql')">SQL</a></li>
               <li><a ng-click="SetEditorMode('http')">HTTP</a></li>
               <li><a ng-click="SetEditorMode('nginx')">Nginx</a></li>
-							<li><a ng-click="SetEditorMode('clike')">C</a></li>
+              <li><a ng-click="SetEditorMode('clike')">C</a></li>
             </ul>
           </span>
           <button type="button" class="btn btn-default btn-xs" ng-click="CurrentFileContent = ''" ng-disabled="EditableFile.Loading" title="${Clear content}">

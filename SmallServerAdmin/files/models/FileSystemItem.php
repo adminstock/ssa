@@ -24,33 +24,33 @@ namespace Models
   class FileSystemItem
   {
     
-		/**
-		 * The object name.
+    /**
+     * The object name.
      * 
      * @var \string
-		 */
-		public $Name;
+     */
+    public $Name;
 
-		/**
-		 * The full path.
+    /**
+     * The full path.
      * 
      * @var \string
-		 */
-		public $Path;
- 	
-		/**
-		 * The type of object: Folder | File.
+     */
+    public $Path;
+   
+    /**
+     * The type of object: Folder | File.
      * 
      * @var \string
-		 */
-		public $Type;
+     */
+    public $Type;
 
-		/**
-		 * The list of child items (subfolders).
+    /**
+     * The list of child items (subfolders).
      * 
      * @var FileSystemItem[]
-		 */
-		public $Children;
+     */
+    public $Children;
 
     /**
      * The size of the file or folder.

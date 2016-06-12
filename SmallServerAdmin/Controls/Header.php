@@ -25,14 +25,14 @@
             <img src="/Content/images/<?=substr($this->Parent->Culture, 0, 2)?>.png" alt="<?=$this->Parent->Culture?>" title="" width="22" height="22" />
           <?php
           }else {?>
-					  <img src="/Content/images/globe.png" alt="" title="" width="22" height="22" />
+            <img src="/Content/images/globe.png" alt="" title="" width="22" height="22" />
           <?php } ?>
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
           <li><a href="?lang=en"><img src="/Content/images/en.png" alt="EN" title="" width="22" height="22" /></a></li>
-					<li><a href="?lang=ru"><img src="/Content/images/ru.png" alt="RU" title="" width="22" height="22" /></a></li>
-					<li><a href="?lang=de"><img src="/Content/images/de.png" alt="DE" title="" width="22" height="22" /></a></li>
+          <li><a href="?lang=ru"><img src="/Content/images/ru.png" alt="RU" title="" width="22" height="22" /></a></li>
+          <li><a href="?lang=de"><img src="/Content/images/de.png" alt="DE" title="" width="22" height="22" /></a></li>
         </ul>
       </li>
       <?php

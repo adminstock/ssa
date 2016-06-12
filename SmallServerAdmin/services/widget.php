@@ -61,5 +61,5 @@
 
   <?php
   include_once  \Nemiro\Server::MapPath('~/services/dialogs/confirmToStopService.php');
-	?>
+  ?>
 </div>

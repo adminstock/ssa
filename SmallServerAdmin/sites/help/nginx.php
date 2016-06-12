@@ -123,7 +123,7 @@ server {
 
 <h3>Caching</h3>
 <p>
-  Syntax:	<code>expires [modified] time;</code> or <code>expires epoch | max | off;</code>
+  Syntax:  <code>expires [modified] time;</code> or <code>expires epoch | max | off;</code>
 </p>
 <pre>
 location ~* .(js|css|png|jpg|jpeg|gif|ico)\$ {

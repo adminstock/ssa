@@ -42,18 +42,18 @@
         </div>
       </div>
 
-			<div id="servers" class="modal" role="dialog" data-not-restore="true" ng-controller="PanelServersController" ng-init="DisableShowConnectionError = true;">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3><span class="fa fa-server"></span> ${Servers}</h3>
-						</div>
-						<div class="modal-body">
-						  <php:ServersList ID="ServersList1" />
-						</div>
-					</div>
-				</div>
-			</div>
+      <div id="servers" class="modal" role="dialog" data-not-restore="true" ng-controller="PanelServersController" ng-init="DisableShowConnectionError = true;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3><span class="fa fa-server"></span> ${Servers}</h3>
+            </div>
+            <div class="modal-body">
+              <php:ServersList ID="ServersList1" />
+            </div>
+          </div>
+        </div>
+      </div>
 
       <php:ClientSideConfig ID="ClientSideConfig1" />
     </div>

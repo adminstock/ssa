@@ -143,7 +143,7 @@
 
         <?php
         include_once  \Nemiro\Server::MapPath('~/sites/dialogs/confirmToDeleteSite.php');
-				?>
+        ?>
 
       </div>
 

@@ -12,9 +12,9 @@
   <body ng-controller="MasterController">
     <php:Header ID="Header1" />
 
-		<iframe src="${frame_src}" name="admin" frameborder="0" style="overflow:hidden;height:100%;width:100%">
-			Your browser does not support frames.
-		</iframe>
+    <iframe src="${frame_src}" name="admin" frameborder="0" style="overflow:hidden;height:100%;width:100%">
+      Your browser does not support frames.
+    </iframe>
 
     <php:Footer ID="Footer1" />
     <php:StaticIncludes ID="StaticIncludes1" />

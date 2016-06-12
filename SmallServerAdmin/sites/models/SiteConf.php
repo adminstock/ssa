@@ -24,26 +24,26 @@ namespace Models
   class SiteConf
   {
     
-		/**
+    /**
      * The WebServer name: Apache | Nginx | HTAN.
      * 
      * @var \string
      */
-		public $Level;
+    public $Level;
 
-		/**
+    /**
      * The source of the config files.
      * 
      * @var \string
      */
-		public $Source;
-		
-		/**
-		 * Status of the config.
+    public $Source;
+    
+    /**
+     * Status of the config.
      * 
      * @var \bool
-		 */
-		public $Enabled;
+     */
+    public $Enabled;
 
     function __construct($level, $source, $enabled)
     {
