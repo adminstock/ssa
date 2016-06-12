@@ -43,7 +43,7 @@ if (isset($_COOKIE['lang']) && $_COOKIE['lang'] != '')
   if (strpos($_COOKIE['lang'], ',') !== FALSE)
   {
     $CurrentLang = explode(',', $_COOKIE['lang'])[0];
-    setcookie('lang', $CurrentLang, time() + 2592000);
+    setcookie('lang', $CurrentLang, time() + 2592000, '/');
   }
   else
   {
@@ -83,7 +83,7 @@ $config['client']['Lang'] = $CurrentLang;
 
 if (isset($_GET['lang']) && $CurrentLang != $_GET['lang'] || (isset($_GET['lang']) && $_GET['lang'] == 'en'))
 {
-  setcookie('lang', $_GET['lang'], time() + 2592000);
+  setcookie('lang', $_GET['lang'], time() + 2592000, '/');
 
   unset($_GET['lang']);
 
