@@ -708,8 +708,8 @@ namespace Api
 
       $shell_result = $this->SshClient->Execute
       ([
-        'sudo bash -c "[[ -d '.$this->ApacheAvailabesPath.' ]] && find '.$this->ApacheAvailabesPath.' -iname \''.$search.'\' -type f -maxdepth 1"',
-        'sudo bash -c "[[ -d '.$this->ApacheEnabledPath.' ]] && find '.$this->ApacheEnabledPath.' -iname \''.$search.'\' -type f -maxdepth 1"'
+        'sudo bash -c "[[ -d '.$this->ApacheAvailabesPath.' ]] && find '.$this->ApacheAvailabesPath.' -iname \''.$search.'\' -maxdepth 1 -not -type d"',
+        'sudo bash -c "[[ -d '.$this->ApacheEnabledPath.' ]] && find '.$this->ApacheEnabledPath.' -iname \''.$search.'\' -maxdepth 1 -not -type d"'
       ]);
       
       if ($shell_result[0]->Error != '')
@@ -768,8 +768,8 @@ namespace Api
 
       $shell_result = $this->SshClient->Execute
       ([
-        'sudo bash -c "[[ -d '.$this->NginxAvailabesPath.' ]] && find '.$this->NginxAvailabesPath.' -iname \''.$search.'\' -type f -maxdepth 1"',
-        'sudo bash -c "[[ -d '.$this->NginxEnabledPath.' ]] && find '.$this->NginxEnabledPath.' -iname \''.$search.'\' -type f -maxdepth 1"'
+        'sudo bash -c "[[ -d '.$this->NginxAvailabesPath.' ]] && find '.$this->NginxAvailabesPath.' -iname \''.$search.'\' -maxdepth 1 -not -type d"',
+        'sudo bash -c "[[ -d '.$this->NginxEnabledPath.' ]] && find '.$this->NginxEnabledPath.' -iname \''.$search.'\' -maxdepth 1 -not -type d"'
       ]);
       
       if ($shell_result[0]->Error != '')
@@ -830,8 +830,8 @@ namespace Api
 
       $shell_result = $this->SshClient->Execute
       ([
-        'sudo bash -c "[[ -d '.$this->HtanAvailabesPath.' ]] && find '.$this->HtanAvailabesPath.' -iname \''.$search.'\' -type f -maxdepth 1"',
-        'sudo bash -c "[[ -d '.$this->HtanEnabledPath.' ]] && find '.$this->HtanEnabledPath.' -iname \''.$search.'\' -type f -maxdepth 1"'
+        'sudo bash -c "[[ -d '.$this->HtanAvailabesPath.' ]] && find '.$this->HtanAvailabesPath.' -iname \''.$search.'\' -maxdepth 1 -not -type d"',
+        'sudo bash -c "[[ -d '.$this->HtanEnabledPath.' ]] && find '.$this->HtanEnabledPath.' -iname \''.$search.'\' -maxdepth 1 -not -type d"'
       ]);
       
       if ($shell_result[0]->Error != '')
