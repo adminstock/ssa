@@ -12,7 +12,7 @@ or enhance existing ones.
 * User Management:
   * viewing, creating, editing and deleting users.
 * Sites Management:
-  * supports Nginx + Apache only;
+  * supports Nginx, Nginx + Apache;
   * list of sites;
   * config files editor;
   * enabling and disabling sites;
