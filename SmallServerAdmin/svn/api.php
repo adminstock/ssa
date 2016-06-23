@@ -721,7 +721,6 @@ namespace Api
     {
       global $config;
 
-      //$authz = $this->GetAuthz();
       $result = [];
 
       $rootPath = $config['svn_repositories'];
@@ -732,26 +731,6 @@ namespace Api
       }
 
       $search = (isset($data) && isset($data['search']) ? '*'.$data['search'].'*' : '*');
-
-      /*foreach($authz as $section => $keys)
-      {
-        if ($section == 'groups' || !\Nemiro\Text::StartsWith($section, '/'))
-        {
-          continue;
-        }
-
-        if ($search != '' && stripos($section, $search) === FALSE)
-        {
-          continue;
-        }
-
-        $r = new \Models\SvnRepository();
-        $r->RelativePath = $section;
-        $r->AbsolutePath = $rootPath.$section;
-        $r->Name = end(explode('/', $section));
-
-        $result[] = $r;
-      }*/
 
       $shell_result = $this->SshClient->Execute('sudo bash -c "cd '.$rootPath.'; find '.$search.' -maxdepth 0 -type d 2> /dev/null"');
       if ($shell_result->Error != '')
@@ -827,9 +806,9 @@ namespace Api
       // get permissions
       $authz = $this->GetAuthz();
 
-      if (isset($authz['/'.$data['name']]))
+      if (isset($authz[$data['name'].':/']))
       {
-        foreach($authz['/'.$data['name']] as $key => $value)
+        foreach($authz[$data['name'].':/'] as $key => $value)
         {
           $p = new \Models\SvnRepositoryPermission();
           $p->ObjectName = $key;
@@ -894,10 +873,10 @@ namespace Api
         }
 
         // rename section with repository rules
-        if (isset($authz['/'.$data['Source']['Name']]))
+        if (isset($authz[$data['Source']['Name'].':/']))
         {
-          $authz['/'.$data['Current']['Name']] = $authz['/'.$data['Source']['Name']];
-          unset($authz['/'.$data['Source']['Name']]);
+          $authz[$data['Current']['Name'].':/'] = $authz[$data['Source']['Name'].':/'];
+          unset($authz[$data['Source']['Name'].':/']);
 
           // save authz
           $this->SetAuthz($authz);
@@ -923,6 +902,12 @@ namespace Api
           {
             throw new \ErrorException('Repository "'.$rootPath.'/'.$data['Current']['Name'].'" already  exists. Please input other name and try again.');
           }
+          // create
+          $shell_result = $this->SshClient->Execute('sudo svnadmin create "'.$rootPath.'/'.$data['Current']['Name'].'"'); // --fs-type fsfs
+          if ($shell_result->Error != '')
+          {
+            throw new \ErrorException('Failed to create the repository: '.$shell_result->Error);
+          }
         }
 
         // save permissions
@@ -931,7 +916,7 @@ namespace Api
           $users = $this->GetUniqueSortedLogins($authz['groups']);
           $groups = array_keys($authz['groups']);
 
-          $authz['/'.$data['Current']['Name']] = [];
+          $authz[$data['Current']['Name'].':/'] = [];
 
           foreach($data['Current']['Permissions'] as $permission)
           {
@@ -955,7 +940,7 @@ namespace Api
             }
 
             // add rule
-            $authz['/'.$data['Current']['Name']][$permission['ObjectName']] = $p;
+            $authz[$data['Current']['Name'].':/'][$permission['ObjectName']] = $p;
           }
 
           // save authz
@@ -1007,9 +992,9 @@ namespace Api
       }
 
       // remove from authz
-      if (isset($authz['/'.$data['name']]))
+      if (isset($authz[$data['name'].':/']))
       {
-        unset($authz['/'.$data['name']]);
+        unset($authz[$data['name'].':/']);
         // save authz
         $this->SetAuthz($authz);
       }
