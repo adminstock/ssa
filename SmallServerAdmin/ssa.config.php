@@ -61,13 +61,13 @@ $config['dbadmin_list'] = [
 
 // client-side config
 $config['client'] = [
-  'WebServer' => $config['web_mode'],
+  'WebServer' => isset($config['web_mode']) ? $config['web_mode'] : NULL,
   'ApacheHost' => '127.0.0.1',
   'ApachePort' => 8080,
   'LogFolderName' => '.logs',
   'PhpFastCgiPort' => 9001,
   'AspNetFastCgiPort' => 9100,
-  'ServerAddress' => $config['ssh_host'],
-  'ServerName' => $config['server_name'],
-  'HtanEnabled' => $config['web_htan_enabled']
+  'ServerAddress' => isset($config['ssh_host']) ? $config['ssh_host'] : NULL,
+  'ServerName' => isset($config['server_name']) ? $config['server_name'] : NULL,
+  'HtanEnabled' => isset($config['web_htan_enabled']) ? $config['web_htan_enabled'] : NULL
 ];
