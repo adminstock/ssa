@@ -76,7 +76,7 @@ $config['settings_update_sources'] =
     'Description' => 'The official main branch of the development a new versions.',
     'VersionUrl' => 'https://raw.githubusercontent.com/adminstock/ssa/dev/SmallServerAdmin/.version',
     'ChangeLogUrl' => 'https://raw.githubusercontent.com/adminstock/ssa/dev/CHANGELOG.md',
-    'SsaUrl' => 'https://github.com/adminstock/ssa.git/trunk/dev/SmallServerAdmin'
+    'SsaUrl' => 'https://github.com/adminstock/ssa.git/branches/dev/SmallServerAdmin'
   ]
 ];
 
