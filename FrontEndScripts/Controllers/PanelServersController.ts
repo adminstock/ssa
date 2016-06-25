@@ -80,14 +80,10 @@ module SmallServerAdmin.Controllers {
       };
 
       $this.Scope.ConnectToServer = (server: Models.ServerToAdmin) => {
-        if (server.IsDefault) {
-          // is default server, clear cookies
-          Nemiro.Utility.EraseCookies('currentServer');
-        } else {
-          // save server to cookies
-          Nemiro.Utility.CreateCookies('currentServer', server.Config, 3650);
-        }
+        // save server to cookies
+        Nemiro.Utility.CreateCookies('currentServer', server.Config, 3650);
         // reload page
+        $this.Context.Location.search({});
         $this.Context.Window.location.reload();
       };
 

@@ -24,7 +24,6 @@ module SmallServerAdmin.Models {
     public Address: string;
     public Description: string;
     public Config: string;
-    public IsDefault: boolean;
     public Disabled: boolean;
 
   }

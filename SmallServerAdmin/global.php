@@ -22,9 +22,6 @@ if (isset($_COOKIE['currentServer']) && $_COOKIE['currentServer'] != '')
     // config found, include
     \Nemiro\Console::Info('Server config: '.$_COOKIE['currentServer'].'.php.');
     require_once \Nemiro\Server::MapPath('~/servers/'.$_COOKIE['currentServer'].'.php');
-    # fix client-side config
-    $config['client']['ServerAddress'] = $config['ssh_host'];
-    $config['client']['ServerName'] = $config['server_name'];
   }
   else
   {
@@ -33,6 +30,34 @@ if (isset($_COOKIE['currentServer']) && $_COOKIE['currentServer'] != '')
     unset($_COOKIE['currentServer']);
     setcookie('currentServer', null, -1, '/');
   }
+}
+
+if (!isset($config['ssh_host']) || $config['ssh_host'] == '')
+{
+  // default config
+  $default_configs = ['default', 'DEFAULT', 'Default'];
+
+  foreach($default_configs as $fileName)
+  {
+    if (file_exists(\Nemiro\Server::MapPath('~/servers/'.$fileName.'.php')))
+    {
+      // config found, include
+      \Nemiro\Console::Info('Server config: '.$fileName.'.php.');
+      require_once \Nemiro\Server::MapPath('~/servers/'.$fileName.'.php');
+      setcookie('currentServer', $fileName, time() + 2592000, '/');
+      break;
+    }
+  }
+
+  unset($default_configs);
+  unset($fileName);
+}
+
+# fix client-side config
+if (isset($config['ssh_host']) && $config['ssh_host'] != '')
+{
+  $config['client']['ServerAddress'] = $config['ssh_host'];
+  $config['client']['ServerName'] = (isset($config['server_name']) ? $config['server_name'] : NULL);
 }
   
 #region localization
@@ -109,6 +134,21 @@ if (($currentScriptName = App::GetScriptName()) != 'error' && $currentScriptName
   if (extension_loaded('ssh2') === FALSE)
   {
     \Nemiro\Server::Redirect('/error.php?code=SSH2_REQUIRED&returnUrl='.$_SERVER['REQUEST_URI']);
+    return;
+  }
+
+  // check server status
+  if (!isset($config['ssh_host']) || $config['ssh_host'] == '' || (isset($config['server_disabled']) && $config['server_disabled'] === TRUE))
+  {
+    if (file_exists(\Nemiro\Server::MapPath('~/settings/servers.php')))
+    {
+      \Nemiro\Server::Redirect('/settings/servers.php#?server_required=true&returnUrl='.$_SERVER['REQUEST_URI']);
+    }
+    else
+    {
+      \Nemiro\Server::Redirect('/error.php?code=SERVER_REQUIRED&returnUrl='.$_SERVER['REQUEST_URI']);
+    }
+
     return;
   }
 

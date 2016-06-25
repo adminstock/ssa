@@ -2,7 +2,7 @@
 
 All notable changes to SmallServerAdmin will be documented in this file.
 
-## [1.0.52-alpha] - unreleased
+## [1.0.53-alpha] - unreleased
 ### Added
 - Support for multiple update sources;
 - Markdown support.
@@ -12,6 +12,10 @@ All notable changes to SmallServerAdmin will be documented in this file.
   - added `$config['settings_default_branch']`;
   - added `$config['settings_update_sources']`;
   - added `DefaultBranch` to `$config['client']`.
+
+### Removed
+- Default server and ssh settings from *ssa.config.php* 
+  (connection settings are expected in a config files in the folder */servers*).
 
 ### Fixed
 - Subversion API (*/svn/api.php*).

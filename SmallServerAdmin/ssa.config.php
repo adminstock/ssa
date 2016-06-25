@@ -10,17 +10,8 @@ $config['widgets']['monitoring'] = ['Enabled' => TRUE];
 $config['widgets']['services'] = ['Enabled' => TRUE, 'Format' => '<div>%s</div>', 'NgInit' => 'SearchString = \'nginx,apache,htan\'; Load()' ];
 $config['widgets']['sites'] = ['Enabled' => TRUE, 'Format' => '<div>%s</div>'];
 
-$config['server_name'] = 'Main Server';
-
 // uncomment to enable logging
 // $config['ssa_log_path'] = '../.logs/ssa.log';
-
-// ssh
-$config['ssh_host'] = '192.168.56.139';
-$config['ssh_port'] = '22';
-$config['ssh_user'] = 'ssh username';
-$config['ssh_password'] = 'ssh password here';
-$config['ssh_required_password'] = TRUE;
 
 // files
 $config['files_auto_reload'] = [
@@ -45,7 +36,7 @@ $config["svn_groupname_pattern"] = '^([A-Za-z]+)([A-Za-z0-9_.-]*)$';
 $config["svn_groupname_invalid_message"] = 'The name can contain letters of the English alphabet, numbers, hyphens and underscores. The name must start with a letter.';
 
 // web server
-$config['web_mode'] = 'nginx+apache'; // nginx+apache | nginx | apache
+$config['web_mode'] = 'nginx'; // nginx+apache | nginx | apache
 $config['web_apache_path'] = '/etc/apache2';
 $config['web_nginx_path'] = '/etc/nginx';
 $config['web_htan_enabled'] = TRUE; // true if htan-runner is installed; otherwise false

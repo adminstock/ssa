@@ -198,15 +198,11 @@ namespace Api
       global $config;
       $servers = [];
 
-      // default server
-      $servers[] = $this->GetServerInfo(\Nemiro\Server::MapPath('~/ssa.config.php'), TRUE);
-
-      // get others servers
+      // get servers
       if (is_dir(\Nemiro\Server::MapPath('~/servers')))
       {
         foreach (scandir(\Nemiro\Server::MapPath('~/servers')) as $file) 
         {
-          // NOTE: ssa.config.php - reserved for default (root) config
           if ($file == '.' || $file == '..' || $file == 'ssa.config.php' || pathinfo($file, PATHINFO_EXTENSION) != 'php') { continue; }
           $servers[] = $this->GetServerInfo(\Nemiro\Server::MapPath('~/servers/'.$file), FALSE);
         }
@@ -217,17 +213,16 @@ namespace Api
       return $servers;
     }
 
-    private function GetServerInfo($path, $default)
+    private function GetServerInfo($path)
     {
       require $path;
 
       return [
         'Address' => $config['ssh_host'], 
-        'Name' => $config['server_name'], 
-        'Description' => $config['server_description'], 
+        'Name' => isset($config['server_name']) ? $config['server_name'] : NULL, 
+        'Description' => isset($config['server_description']) ? $config['server_description'] : NULL, 
         'Config' => basename($path, '.php'),
-        'IsDefault' => $default,
-        'Disabled' => ($default ? FALSE : (bool)$config['server_disabled'])
+        'Disabled' => (isset($config['server_disabled']) ? (bool)$config['server_disabled'] : FALSE)
       ];
     }
 

@@ -238,5 +238,6 @@
 	{ "Key": "Add a new group", "Value": "Add a new group" },
 	{ "Key": "No users...", "Value": "No users..." },
 	{ "Key": "Account", "Value": "Account" },
-	{ "Key": "Address", "Value": "Address" }
+	{ "Key": "Address", "Value": "Address" },
+	{ "Key": "Loading servers list. Please wait...", "Value": "Loading servers list. Please wait..." }
 ]

@@ -238,5 +238,6 @@
 	{ "Key": "Add a new group", "Value": "Добавить новую группу" },
 	{ "Key": "No users...", "Value": "Нет пользователей..." },
 	{ "Key": "Account", "Value": "Учетная запись" },
-	{ "Key": "Address", "Value": "Адрес" }
+	{ "Key": "Address", "Value": "Адрес" },
+	{ "Key": "Loading servers list. Please wait...", "Value": "Загрузка списка серверов. Пожалуйста, подождите..." }
 ]

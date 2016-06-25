@@ -6,6 +6,9 @@ All notable changes to this module will be documented in this file.
 ### Changed
 - Added support for multiple update sources in the `CheckUpdates` and `Update` (*api.php*).
 
+### Removed
+- Default server (`GetServers` in *api.php*).
+
 ## [1.0.2] - 2016-06-07
 ### Added
 - `CheckConnection` (*api.php*).
