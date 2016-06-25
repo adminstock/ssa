@@ -146,12 +146,25 @@ namespace Api
 
     public function Update($data)
     {
+      global $config;
+
       if (is_file(\Nemiro\Server::MapPath('~/settings/update.sh')) === FALSE)
       {
         throw new \ErrorException('File "'.\Nemiro\Server::MapPath('~/settings/update.sh').' not found.');
       }
 
-      if (!isset($data['SsaUrl']) || $data['SsaUrl'] == '')
+      if (!isset($config['settings_update_sources']))
+      {
+        throw new \ErrorException('"settings_update_sources" is required. Please check your "ssa.config.php".');
+      }
+
+      if (!isset($data['Branch']) || $data['Branch'] == '')
+      {
+        // default branch
+        $data['Branch'] = (isset($config['settings_default_branch']) && $config['settings_default_branch'] != '' ? $config['settings_default_branch'] : 'master');
+      }
+
+      if (!isset($config['settings_update_sources'][$data['Branch']]) || !isset($config['settings_update_sources'][$data['Branch']]['SsaUrl']) || $config['settings_update_sources'][$data['Branch']]['SsaUrl'] == '')
       {
         throw new \ErrorException('SsaUrl is required. Value cannot be empty.');
       }
@@ -164,7 +177,7 @@ namespace Api
       $command .= 'updatePath="$(mktemp --dry-run /tmp/XXXXX.update.sh)"; ';
       $command .= 'cp '.$scriptPath.' \$updatePath && ';
       $command .= 'chmod +x \$updatePath && ';
-      $command .= '\$updatePath "'.$path.'" "'.$data['SsaUrl'].'" && ';
+      $command .= '\$updatePath "'.$path.'" "'.$config['settings_update_sources'][$data['Branch']]['SsaUrl'].'" && ';
       $command .= 'rm \$updatePath';
       $command .= '\'';
 
