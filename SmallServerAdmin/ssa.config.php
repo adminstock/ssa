@@ -59,6 +59,27 @@ $config['dbadmin_list'] = [
   ['file_name' => 'phppgadmin', 'title' => 'PostgreSql']
 ];
 
+// settings (module)
+$config['settings_default_branch'] = 'master';
+$config['settings_update_sources'] = 
+[
+  'master' => 
+  [
+    'Title' => 'Stable',
+    'VersionUrl' => 'https://raw.githubusercontent.com/adminstock/ssa/master/SmallServerAdmin/.version',
+    'ChangeLogUrl' => 'https://raw.githubusercontent.com/adminstock/ssa/master/CHANGELOG.md',
+    'SsaUrl' => 'https://github.com/adminstock/ssa.git/trunk/SmallServerAdmin'
+  ],
+  'dev' =>
+  [
+    'Title' => 'Develop',
+    'Description' => 'The official main branch of the development a new versions.',
+    'VersionUrl' => 'https://raw.githubusercontent.com/adminstock/ssa/dev/SmallServerAdmin/.version',
+    'ChangeLogUrl' => 'https://raw.githubusercontent.com/adminstock/ssa/dev/CHANGELOG.md',
+    'SsaUrl' => 'https://github.com/adminstock/ssa.git/trunk/dev/SmallServerAdmin'
+  ]
+];
+
 // client-side config
 $config['client'] = [
   'WebServer' => isset($config['web_mode']) ? $config['web_mode'] : NULL,
@@ -69,5 +90,6 @@ $config['client'] = [
   'AspNetFastCgiPort' => 9100,
   'ServerAddress' => isset($config['ssh_host']) ? $config['ssh_host'] : NULL,
   'ServerName' => isset($config['server_name']) ? $config['server_name'] : NULL,
-  'HtanEnabled' => isset($config['web_htan_enabled']) ? $config['web_htan_enabled'] : NULL
+  'HtanEnabled' => isset($config['web_htan_enabled']) ? $config['web_htan_enabled'] : NULL,
+  'DefaultBranch' => isset($config['settings_default_branch']) ? $config['settings_default_branch'] : NULL
 ];

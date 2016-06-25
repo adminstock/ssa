@@ -47,6 +47,7 @@
 		<file>/libs/highcharts/highstock-all.js</file>
 		<file>/libs/highcharts-ng.js</file>
 		<file>/libs/angular-pageslide-directive.js</file>
+		<file>/libs/showdown.js</file>
 
 		<!--Helper classes by Aleksey Nemiro-->
 		<file>/libs/Nemiro/nemiro.js</file>
@@ -56,6 +57,7 @@
 		<file>/Filters/CurrencyFormat.js</file>
 		<file>/Filters/CountAsString.js</file>
 		<file>/Filters/Numeric.js</file>
+		<file>/Filters/Markdown.js</file>
 
 		<!--Controllers-->
 		<file>/Controllers/MasterController.js</file>
@@ -105,6 +107,7 @@
 		<file>/Models/FileSystemItemInfo.js</file>
 		<file>/Models/ReloadingInfo.js</file>
 		<file>/Models/ServerToAdmin.js</file>
+		<file>/Models/PanelUpdateInfo.js</file>
 
 		<!--Application-->
 		<file>/ApiRequest.js</file>

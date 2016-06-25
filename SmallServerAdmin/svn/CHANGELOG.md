@@ -2,7 +2,7 @@
 
 All notable changes to this module will be documented in this file.
 
-## [1.0.3] - unreleased
+## [1.0.3] - 2016-04-23
 ### Fixed
 - Fixed authz format ([#32](https://github.com/adminstock/ssa/issues/32));
 - Fixed creating new repositories ([#31](https://github.com/adminstock/ssa/issues/31));

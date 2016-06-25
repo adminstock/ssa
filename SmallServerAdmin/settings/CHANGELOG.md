@@ -2,6 +2,10 @@
 
 All notable changes to this module will be documented in this file.
 
+## [1.0.3] - 2016-06-25
+### Changed
+- Added support for multiple update sources in the `CheckUpdates` and `Update` (*api.php*).
+
 ## [1.0.2] - 2016-06-07
 ### Added
 - `CheckConnection` (*api.php*).

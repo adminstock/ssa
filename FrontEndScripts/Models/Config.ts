@@ -55,6 +55,9 @@ module SmallServerAdmin.Models {
 
     public HtanEnabled: boolean;
 
+    /** Default branch. */
+    public DefaultBranch: string;
+
   }
 
 }

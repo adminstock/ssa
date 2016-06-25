@@ -2,7 +2,11 @@
 	{ "Key": "Update SmallServerAdmin", "Value": "Обновление SmallServerAdmin" },
 	{ "Key": "Checking for updates. Please wait...", "Value": "Проверка наличия обновлений. Пожалуйста, подождите..." },
 	{ "Key": "This is the latest version!", "Value": "У вас самая свежая версия!" },
-	{ "Key": "SSA_UPDATED", "Value": "SmallServerAdmin успешно обновлена до v{{NewVersion}}!" },
+	{ "Key": "SSA_UPDATED", "Value": "SmallServerAdmin успешно обновлена до v{{Stable.NewVersion}}!" },
+	{ "Key": "Successfully updated!", "Value": "Обновление успешно выполнено!" },
 	{ "Key": "Available a new version:", "Value": "Доступна новая версия:" },
-	{ "Key": "Do not turn off the computer and do not close this page!", "Value": "Не не закрывайте эту страницу и не выключайте компьютер!" }
+	{ "Key": "Do not turn off the computer and do not close this page!", "Value": "Не не закрывайте эту страницу и не выключайте компьютер!" },
+	{ "Key": "Updates from other sources", "Value": "Версии из других источников" },
+	{ "Key": "UNRELEASED_UPDATION_WARNING", "Value": "ВНИМАНИЕ: Не вышедшие обновления предназначены главным образом для разработчиков. Стабильность работы этих обновлений не гарантируется." },
+	{ "Key": "Branch", "Value": "Ветка" }
 ]

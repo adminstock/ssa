@@ -185,6 +185,7 @@
     <Content Include="libs\highcharts\themes\grid.js" />
     <Content Include="libs\highcharts\themes\sand-signika.js" />
     <Content Include="libs\highcharts\themes\skies.js" />
+    <Content Include="libs\showdown.js" />
     <Content Include="libs\ui-bootstrap-tpls-1.1.2.js" />
     <Content Include="web.config" />
   </ItemGroup>
@@ -202,7 +203,9 @@
     <Content Include="libs\angular\angular.min.js.map" />
     <Content Include="libs\angular\errors.json" />
     <Content Include="libs\angular\version.json" />
-    <Content Include="compiled.js.bundle" />
+    <Content Include="compiled.js.bundle">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="libs\Nemiro\nemiro.js.bundle" />
     <Content Include="libs\Nemiro\LICENSE" />
     <Content Include="bundleconfig.json" />
@@ -228,6 +231,7 @@
     <TypeScriptCompile Include="Controllers\MasterController.ts" />
     <TypeScriptCompile Include="Controllers\SvnUsersController.ts" />
     <TypeScriptCompile Include="Controllers\SiteListController.ts" />
+    <TypeScriptCompile Include="Filters\Markdown.ts" />
     <TypeScriptCompile Include="Filters\Numeric.ts" />
     <TypeScriptCompile Include="Filters\CountAsString.ts" />
     <TypeScriptCompile Include="Filters\CurrencyFormat.ts" />
@@ -241,6 +245,7 @@
     <TypeScriptCompile Include="Models\CreateUser.ts" />
     <TypeScriptCompile Include="Models\FileSystemItemInfo.ts" />
     <TypeScriptCompile Include="Models\FileSystemItem.ts" />
+    <TypeScriptCompile Include="Models\PanelUpdateInfo.ts" />
     <TypeScriptCompile Include="Models\ServerToAdmin.ts" />
     <TypeScriptCompile Include="Models\ServerInfo.ts" />
     <TypeScriptCompile Include="Models\MemoryInfo.ts" />
@@ -294,6 +299,7 @@
     <TypeScriptCompile Include="typings\bootstrap\bootstrap.v3.datetimepicker.d.ts" />
     <TypeScriptCompile Include="typings\CodeMirror.d.ts" />
     <TypeScriptCompile Include="typings\jquery.json.d.ts" />
+    <TypeScriptCompile Include="typings\showdown.d.ts" />
     <TypeScriptCompile Include="typings\jquery.tag-editor.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="libs\Nemiro\UI\Dialog.ts" />

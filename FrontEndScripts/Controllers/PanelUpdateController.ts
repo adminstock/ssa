@@ -25,6 +25,11 @@ module SmallServerAdmin.Controllers {
     public Scope: any;
     public Context: Nemiro.AngularContext;
 
+    /** SSA config. */
+    public get Config(): Models.Config {
+      return this.Scope.$parent.Config;
+    }
+
     /** Checking updates indicator. */
     public get Checking(): boolean {
       return this.Scope.Checking;
@@ -32,29 +37,27 @@ module SmallServerAdmin.Controllers {
     public set Checking(value: boolean) {
       this.Scope.Checking = value;
     }
-
-    /** Indicates the need to update. */
-    public get NeedUpdate(): boolean {
-      return this.Scope.NeedUpdate;
+    
+    /** Checking results. */
+    public get CheckingResults(): Array<Models.PanelUpdateInfo> {
+      return this.Scope.CheckingResults;
     }
-    public set NeedUpdate(value: boolean) {
-      this.Scope.NeedUpdate = value;
-    }
-
-    /** New version number. */
-    public get NewVersion(): string {
-      return this.Scope.NewVersion;
-    }
-    public set NewVersion(value: string) {
-      this.Scope.NewVersion = value;
+    public set CheckingResults(value: Array<Models.PanelUpdateInfo>) {
+      this.Scope.CheckingResults = value;
     }
 
-    /** List of changes in the NewVersion. */
-    public get Changes(): string {
-      return this.Scope.Changes;
+    public get Stable(): Models.PanelUpdateInfo {
+      return this.Scope.Stable;
     }
-    public set Changes(value: string) {
-      this.Scope.Changes = value;
+    public set Stable(value: Models.PanelUpdateInfo) {
+      this.Scope.Stable = value;
+    }
+
+    public get AvailableDeveloperVersion(): boolean {
+      return this.Scope.AvailableDeveloperVersion;
+    }
+    public set AvailableDeveloperVersion(value: boolean) {
+      this.Scope.AvailableDeveloperVersion = value;
     }
 
     /** Updating indicator. */
@@ -63,13 +66,6 @@ module SmallServerAdmin.Controllers {
     }
     public set Updating(value: boolean) {
       this.Scope.Updating = value;
-    }
-
-    public get Updated(): boolean {
-      return this.Scope.Updated;
-    }
-    public set Updated(value: boolean) {
-      this.Scope.Updated = value;
     }
 
     //#endregion
@@ -81,8 +77,8 @@ module SmallServerAdmin.Controllers {
       $this.Context = context;
       $this.Scope = $this.Context.Scope;
 
-      $this.Scope.UpdateToNewVersion = () => {
-        $this.UpdateToNewVersion($this);
+      $this.Scope.UpdateTo = (info: Models.PanelUpdateInfo) => {
+        $this.UpdateTo($this, info);
       }
 
       $this.CheckUpdates($this);
@@ -99,13 +95,21 @@ module SmallServerAdmin.Controllers {
       $this.Checking = true;
 
       // create request
-      var apiRequest = new ApiRequest<any>($this.Context, 'Settings.CheckUpdates');
+      var apiRequest = new ApiRequest<Array<Models.PanelUpdateInfo>>($this.Context, 'Settings.CheckUpdates');
 
       // handler successful response to a request to api
       apiRequest.SuccessCallback = (response) => {
-        $this.NeedUpdate = response.data.NeedUpdate;
-        $this.NewVersion = response.data.NewVersion;
-        $this.Changes = response.data.Changes;
+        $this.CheckingResults = response.data;
+        for (var i = 0; i < $this.CheckingResults.length; i++) {
+          // search default branch
+          if ($this.CheckingResults[i].Branch == $this.Config.DefaultBranch) {
+            $this.Stable = $this.CheckingResults[i];
+          }
+          // check updates for developers
+          if (!$this.AvailableDeveloperVersion && $this.CheckingResults[i].Branch != $this.Config.DefaultBranch && $this.CheckingResults[i].NeedUpdate) {
+            $this.AvailableDeveloperVersion = true;
+          }
+        }
       };
 
       // handler request complete
@@ -117,7 +121,7 @@ module SmallServerAdmin.Controllers {
       apiRequest.Execute();
     }
 
-    private UpdateToNewVersion($this: PanelUpdateController): void {
+    private UpdateTo($this: PanelUpdateController, info: Models.PanelUpdateInfo): void {
       if ($this.Updating) {
         return;
       }
@@ -125,11 +129,11 @@ module SmallServerAdmin.Controllers {
       $this.Updating = true;
 
       // create request
-      var apiRequest = new ApiRequest<any>($this.Context, 'Settings.Update');
+      var apiRequest = new ApiRequest<any>($this.Context, 'Settings.Update', info);
 
       // handler successful response to a request to api
       apiRequest.SuccessCallback = (response) => {
-        $this.Updated = true;
+        info.Updated = true;
       };
 
       // handler request complete

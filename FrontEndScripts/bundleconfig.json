@@ -40,6 +40,7 @@
 			"libs/highcharts/highstock-all.js",
 			"libs/highcharts-ng.js",
 			"libs/angular-pageslide-directive.js",
+			"libs/showdown.js",
 
 			// Helper classes by Aleksey Nemiro
 			"libs/Nemiro/EventHandlers.js",
@@ -58,6 +59,7 @@
 			"Filters/CurrencyFormat.js",
 			"Filters/CountAsString.js",
 			"Filters/Numeric.js",
+			"Filters/Markdown.js",
 
 			// Controllers
 			"Controllers/MasterController.js",
@@ -107,6 +109,7 @@
 			"Models/FileSystemItemInfo.js",
 			"Models/ReloadingInfo.js",
 			"Models/ServerToAdmin.js",
+			"Models/PanelUpdateInfo.js",
 
 			// Application
 			"Localization/Default.js",

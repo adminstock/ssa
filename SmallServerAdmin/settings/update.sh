@@ -1,6 +1,7 @@
 #!/bin/bash
 
 declare path="$1"
+declare url="$2"
 declare top_path="$(dirname "$path")"
 declare defaultConfigPath="$(sudo mktemp --dry-run $top_path/ssa.config.XXXXX.backup)";
 declare serversPath
@@ -19,7 +20,7 @@ if [[ -e "/tmp/ssa" ]]; then
 fi
 
 # export files
-svn export https://github.com/adminstock/ssa.git/trunk/SmallServerAdmin /tmp/ssa || exit 1
+svn export $url /tmp/ssa || exit 1
 
 # full backup
 declare backupPath="/var/backups/ssa-webpanel-v$currentVersion.tar.gz"

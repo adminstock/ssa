@@ -37,29 +37,49 @@ namespace Api
 
     public function CheckUpdates($data)
     {
-      $versionUrl = 'https://raw.githubusercontent.com/adminstock/ssa/master/SmallServerAdmin/.version';
-      $latestVersion = file_get_contents($versionUrl);
+      global $config;
 
-      if ($latestVersion === FALSE)
+      // default (main) branch
+      $stable = (isset($config['settings_default_branch']) && $config['settings_default_branch'] != '' ? $config['settings_default_branch'] : 'master');
+
+      // get versions from remote server
+      $versions = $config['settings_update_sources'];
+      
+      foreach($versions as $k => $v)
       {
-        throw new \ErrorException('Cannot get latest version number from '.$versionUrl);
+        if (!isset($versions[$k]['VersionUrl']) || $versions[$k]['VersionUrl'] == '')
+        {
+          throw new \ErrorException('Cannot find "VersionUrl". Please check "settings_update_sources" in "ssa.config.php".');
+        }
+
+        $versions[$k]['Version'] = file_get_contents($versions[$k]['VersionUrl']);
+
+        if ($versions[$k]['Version'] === FALSE)
+        {
+          throw new \ErrorException('Cannot get latest version number from '.$versions[$k]['VersionUrl']);
+        }
+
+        // parse version
+        if (preg_match('/\d+\.\d+\.\d+/', $versions[$k]['Version'], $matches))
+        {
+          $versions[$k]['Version'] = $matches[0];
+        }
+        else
+        {
+          // exception only for master (because the stable version expected)
+          if ($k == $stable)
+          {
+            throw new \ErrorException('Cannot parse version number from string "'.$versions[$k]['Version'].'"');
+          }
+        }
       }
 
+      // get local version
       $currentVersion = file_get_contents(\Nemiro\Server::MapPath('~/.version'));
 
       if ($currentVersion === FALSE)
       {
         throw new \ErrorException('Cannot get current version from "'.\Nemiro\Server::MapPath('~/.version').'"');
-      }
-
-      // parse version
-      if (preg_match('/\d+\.\d+\.\d+/', $latestVersion, $matches))
-      {
-        $latestVersion = $matches[0];
-      }
-      else
-      {
-        throw new \ErrorException('Cannot parse version number from string "'.$latestVersion.'"');
       }
 
       if (preg_match('/\d+\.\d+\.\d+/', $currentVersion, $matches))
@@ -71,33 +91,57 @@ namespace Api
         throw new \ErrorException('Cannot parse version number from string "'.$currentVersion.'"');
       }
 
-      if (version_compare($latestVersion, $currentVersion) > 0)
-      {
-        // current version is outdated
-        // get changes log
-        if (($changes = file_get_contents('https://raw.githubusercontent.com/adminstock/ssa/master/CHANGELOG.md')) !== FALSE)
-        {
-          // extract new version segment
-          $start = strpos($changes, '## ['.$latestVersion);
-          $end = strpos($changes, '## [', $start + 1);
-          $changes = trim(substr($changes, $start, $end - $start));
-        }
+      $result = [];
 
-        return [
-          'NeedUpdate' => TRUE, 
-          'NewVersion' => $latestVersion, 
-          'Changes' => $changes
-        ];
-      }
-      else
+      // check versions
+      foreach($versions as $k => $v)
       {
-        // current version is actual
-        return [
-          'NeedUpdate' => FALSE, 
-          'LatestVersion' => $latestVersion, 
-          'CurrentVersion' => $currentVersion
-        ];
+        if (version_compare($v['Version'], $currentVersion) > 0)
+        {
+          // current version is outdated
+          // get changes log
+          if (isset($v['ChangeLogUrl']) && $v['ChangeLogUrl'] != '' && ($changes = file_get_contents($v['ChangeLogUrl'])) !== FALSE)
+          {
+            // extract new version segment
+            if (($start = strpos($changes, '## ['.$v['Version'])) === FALSE)
+            {
+              $start = strpos($changes, '## [');
+            }
+            $end = strpos($changes, '## [', $start + 1);
+            $changes = trim(substr($changes, $start, $end - $start));
+          }
+          else 
+          {
+            $changes = NULL;
+          }
+
+          $result[] = 
+          [
+            'Branch' => $k,
+            'BranchTitle' => isset($v['Title']) ? $v['Title'] : NULL,
+            'BranchDescription' => isset($v['Description']) ? $v['Description'] : NULL,
+            'NeedUpdate' => TRUE, 
+            'CurrentVersion' => $currentVersion,
+            'LatestVersion' => $v['Version'], 
+            'Changes' => $changes
+          ];
+        }
+        else
+        {
+          // current version is actual
+          $result[] = 
+          [
+            'Branch' => $k,
+            'BranchTitle' => isset($v['Title']) ? $v['Title'] : NULL,
+            'BranchDescription' => isset($v['Description']) ? $v['Description'] : NULL,
+            'NeedUpdate' => FALSE, 
+            'CurrentVersion' => $currentVersion,
+            'LatestVersion' => $v['Version']
+          ];
+        }
       }
+
+      return $result;
     }
 
     public function Update($data)
@@ -105,6 +149,11 @@ namespace Api
       if (is_file(\Nemiro\Server::MapPath('~/settings/update.sh')) === FALSE)
       {
         throw new \ErrorException('File "'.\Nemiro\Server::MapPath('~/settings/update.sh').' not found.');
+      }
+
+      if (!isset($data['SsaUrl']) || $data['SsaUrl'] == '')
+      {
+        throw new \ErrorException('SsaUrl is required. Value cannot be empty.');
       }
 
       $sshClient = new SSH();
@@ -115,7 +164,7 @@ namespace Api
       $command .= 'updatePath="$(mktemp --dry-run /tmp/XXXXX.update.sh)"; ';
       $command .= 'cp '.$scriptPath.' \$updatePath && ';
       $command .= 'chmod +x \$updatePath && ';
-      $command .= '\$updatePath "'.$path.'" && ';
+      $command .= '\$updatePath "'.$path.'" "'.$data['SsaUrl'].'" && ';
       $command .= 'rm \$updatePath';
       $command .= '\'';
 
