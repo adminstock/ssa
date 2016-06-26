@@ -2,7 +2,10 @@
 
 All notable changes to this module will be documented in this file.
 
-## [1.0.3] - 2016-06-25
+## [1.0.3] - unreleased
+### Added
+- Editing server configurations.
+
 ### Changed
 - Added support for multiple update sources in the `CheckUpdates` and `Update` (*api.php*).
 

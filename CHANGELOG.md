@@ -2,10 +2,11 @@
 
 All notable changes to SmallServerAdmin will be documented in this file.
 
-## [1.0.53-alpha] - unreleased
+## [1.0.54-alpha] - unreleased
 ### Added
 - Support for multiple update sources;
-- Markdown support.
+- Markdown support;
+- Editing server configurations.
 
 ### Changed
 - */ssa.config.php*:

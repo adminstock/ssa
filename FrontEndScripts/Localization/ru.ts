@@ -130,6 +130,11 @@ module SmallServerAdmin.Localization {
     /** Loading list of sites... */
     public LoadingListOfSites: string = 'Загрузка списка сайтов...';
 
+    /**
+     * Server is required.
+     */
+    public ServerIsRequired: string = 'Требуется сервер.';
+
     //#endregion
     //#region ..SVN..
 

@@ -20,10 +20,31 @@ module SmallServerAdmin.Models {
    */
   export class ServerToAdmin {
 
-    public Name: string;
-    public Address: string;
-    public Description: string;
+    /** Config file name. */
     public Config: string;
+
+    /** Server name. */
+    public Name: string;
+
+    /** Server description. */
+    public Description: string;
+
+    /** SSH host or IP address. */
+    public Address: string;
+
+    /** SSH port. Default: 22. */
+    public Port: number;
+
+    /** SSH username. */
+    public Username: string;
+
+    /** SSH password. */
+    public Password: string;
+
+    /** Use password for all commands. */
+    public RequiredPassword: boolean;
+
+    /** Status. */
     public Disabled: boolean;
 
   }

@@ -239,5 +239,11 @@
 	{ "Key": "No users...", "Value": "Нет пользователей..." },
 	{ "Key": "Account", "Value": "Учетная запись" },
 	{ "Key": "Address", "Value": "Адрес" },
-	{ "Key": "Loading servers list. Please wait...", "Value": "Загрузка списка серверов. Пожалуйста, подождите..." }
+	{ "Key": "Loading servers list. Please wait...", "Value": "Загрузка списка серверов. Пожалуйста, подождите..." },
+	{ "Key": "Connection error", "Value": "Ошибка подключения" },
+	{ "Key": "Connected", "Value": "Подключен" },
+	{ "Key": "Port", "Value": "Порт" },
+	{ "Key": "Description", "Value": "Описание" },
+	{ "Key": "Modules", "Value": "Модули" },
+	{ "Key": "Info", "Value": "Информация" }
 ]

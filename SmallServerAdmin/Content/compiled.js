@@ -74728,20 +74728,20 @@ if (typeof module !== 'undefined' && module.exports) {
 //# sourceMappingURL=showdown.js.map
 
 /*
-* Copyright © Aleksey Nemiro, 2015. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2015. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var Nemiro;
 (function (Nemiro) {
     /**
@@ -74801,20 +74801,20 @@ var Nemiro;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=EventHandlers.js.map
 /*
-* Copyright © Aleksey Nemiro, 2015. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2015. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var Nemiro;
 (function (Nemiro) {
     /**
@@ -74831,20 +74831,20 @@ var Nemiro;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=RegisteredController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2015-2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2015-2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var Nemiro;
 (function (Nemiro) {
     /**
@@ -74994,20 +74994,20 @@ var Nemiro;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=AppContext.js.map
 /*
-* Copyright © Aleksey Nemiro, 2015. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2015. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var Nemiro;
 (function (Nemiro) {
     /**
@@ -75047,20 +75047,20 @@ var Nemiro;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=AngularContext.js.map
 /*
-* Copyright © Aleksey Nemiro, 2015. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2015. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var Nemiro;
 (function (Nemiro) {
     var UI;
@@ -75398,20 +75398,20 @@ var Nemiro;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=Dialog.js.map
 /*
-* Copyright © Aleksey Nemiro, 2015. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2015. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var Nemiro;
 (function (Nemiro) {
     /**
@@ -75468,20 +75468,20 @@ var Nemiro;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=TryAction.js.map
 /*
-* Copyright © Aleksey Nemiro, 2015. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2015. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var Nemiro;
 (function (Nemiro) {
     /**
@@ -75773,20 +75773,20 @@ var Nemiro;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=Utility.js.map
 /*
-* Copyright © Aleksey Nemiro, 2015. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2015. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var Nemiro;
 (function (Nemiro) {
     var Collections;
@@ -75903,20 +75903,20 @@ var Nemiro;
 })(Nemiro || (Nemiro = {}));
 //# sourceMappingURL=NameValueCollection.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Filters;
@@ -75963,20 +75963,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=OrderGroups.js.map
 /*
-* Copyright © Aleksey Nemiro, 2015. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2015. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Filters;
@@ -76023,20 +76023,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=CurrencyFormat.js.map
 /*
-* Copyright © Aleksey Nemiro, 2015. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2015. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Filters;
@@ -76080,20 +76080,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=CountAsString.js.map
 /*
-* Copyright © Aleksey Nemiro, 2015. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2015. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Filters;
@@ -76116,20 +76116,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=Numeric.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Filters;
@@ -76156,20 +76156,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=Markdown.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -76267,20 +76267,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=MasterController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -76431,20 +76431,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=UserListController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -76814,20 +76814,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=UserEditorController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -77094,20 +77094,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SvnUsersController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -77327,20 +77327,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SvnGroupsController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -77596,20 +77596,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SvnRepositoriesController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -77701,20 +77701,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SshController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -77902,20 +77902,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SiteListController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -79181,20 +79181,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SiteEditorController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -79318,20 +79318,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=ServiceListController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -79978,20 +79978,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=MonitoringController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -81154,20 +81154,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=FileListController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -81303,20 +81303,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=PanelUpdateController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Controllers;
@@ -81325,17 +81325,41 @@ var SmallServerAdmin;
          * Represents the servers controller.
          */
         var PanelServersController = (function () {
+            // #endregion
+            // #region Constructor
             function PanelServersController(context) {
                 var $this = this;
                 $this.Context = context;
                 $this.Scope = $this.Context.Scope;
                 // select server dialog
                 $this.ServerListDialog = Nemiro.UI.Dialog.CreateFromElement($('#servers'));
+                // server editor dialog
+                $this.ServerDialog = Nemiro.UI.Dialog.CreateFromElement($('#serverDialog'));
+                $this.ServerDialog.DisableOverlayClose = true;
+                // methods
                 $this.Scope.SelectServer = function () {
                     $this.SelectServer($this);
                 };
                 $this.Scope.GetServers = function () {
                     $this.GetServers($this);
+                };
+                $this.Scope.ShowEditor = function (server) {
+                    $this.IsServerLoaded = true;
+                    if (server === undefined || server == null) {
+                        $this.Server = new SmallServerAdmin.Models.ServerToAdmin();
+                        $this.Server.Port = 22;
+                        $this.ServerDialog.Show();
+                    }
+                    else {
+                        $this.GetServer($this, server);
+                    }
+                };
+                $this.Scope.SaveServer = function () {
+                    $this.SaveServer($this);
+                };
+                $this.Scope.ShowDialogToDelete = function (server) {
+                    Nemiro.UI.Dialog.Alert('TODO', 'TODO');
+                    //$this.DeleteServer($this, server);
                 };
                 $this.Scope.ConnectToServer = function (server) {
                     // save server to cookies
@@ -81356,6 +81380,11 @@ var SmallServerAdmin;
                         $this.CheckConnection($this);
                     }
                 }, 250);
+                $this.Scope.$watch('Server.Port', function (val, old) {
+                    if ($this.Server !== undefined) {
+                        $this.Server.Port = parseInt(val);
+                    }
+                });
             }
             Object.defineProperty(PanelServersController.prototype, "Servers", {
                 /** List of all servers. */
@@ -81368,12 +81397,33 @@ var SmallServerAdmin;
                 enumerable: true,
                 configurable: true
             });
+            Object.defineProperty(PanelServersController.prototype, "Server", {
+                /** Selected server to edit. */
+                get: function () {
+                    return this.Scope.Server;
+                },
+                set: function (value) {
+                    this.Scope.Server = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
             Object.defineProperty(PanelServersController.prototype, "LoadingServers", {
                 get: function () {
                     return this.Scope.LoadingServers;
                 },
                 set: function (value) {
                     this.Scope.LoadingServers = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PanelServersController.prototype, "LoadingServer", {
+                get: function () {
+                    return this.Scope.LoadingServer;
+                },
+                set: function (value) {
+                    this.Scope.LoadingServer = value;
                 },
                 enumerable: true,
                 configurable: true
@@ -81408,6 +81458,38 @@ var SmallServerAdmin;
                 enumerable: true,
                 configurable: true
             });
+            Object.defineProperty(PanelServersController.prototype, "SavingServer", {
+                get: function () {
+                    return this.Scope.SavingServer;
+                },
+                set: function (value) {
+                    this.Scope.SavingServer = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PanelServersController.prototype, "DeletingServer", {
+                get: function () {
+                    return this.Scope.DeletingServer;
+                },
+                set: function (value) {
+                    this.Scope.DeletingServer = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(PanelServersController.prototype, "IsServerLoaded", {
+                get: function () {
+                    return this.Scope.IsServerLoaded;
+                },
+                set: function (value) {
+                    this.Scope.IsServerLoaded = value;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            // #endregion
+            // #region Methods
             PanelServersController.prototype.SelectServer = function ($this) {
                 //console.log('SelectServer', $this.Servers);
                 if ($this.Servers === undefined || $this.Servers == null) {
@@ -81452,6 +81534,76 @@ var SmallServerAdmin;
                 };
                 apiRequest.Execute();
             };
+            PanelServersController.prototype.GetServer = function ($this, server) {
+                if ($this.LoadingServer) {
+                    return;
+                }
+                $this.LoadingServer = true;
+                $this.ServerDialog.Show();
+                // create request
+                var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Settings.GetServer', { "Config": server.Config });
+                // handler successful response to a request to api
+                apiRequest.SuccessCallback = function (response) {
+                    $this.Context.Timeout(function () {
+                        $this.Server = response.data;
+                    });
+                };
+                // handler request complete
+                apiRequest.CompleteCallback = function () {
+                    $this.LoadingServer = false;
+                };
+                // execute
+                apiRequest.Execute();
+            };
+            PanelServersController.prototype.SaveServer = function ($this) {
+                if ($this.SavingServer) {
+                    return;
+                }
+                if ($this.Server === undefined || $this.Server == null) {
+                    Nemiro.UI.Dialog.Alert(SmallServerAdmin.App.Resources.ServerIsRequired, SmallServerAdmin.App.Resources.Error);
+                    return;
+                }
+                $this.SavingServer = true;
+                // create request
+                var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Settings.SaveServer', $this.Server);
+                // handler successful response to a request to api
+                apiRequest.SuccessCallback = function (response) {
+                    $this.Context.Timeout(function () {
+                        $this.Server = response.data;
+                    });
+                    // close dialog
+                    $this.ServerDialog.Close();
+                    // reload page
+                    $this.Context.Location.search({});
+                    $this.Context.Window.location.reload();
+                };
+                // handler request complete
+                apiRequest.CompleteCallback = function () {
+                    $this.SavingServer = false;
+                };
+                // execute
+                apiRequest.Execute();
+            };
+            PanelServersController.prototype.DeleteServer = function ($this, server) {
+                if ($this.DeletingServer) {
+                    return;
+                }
+                $this.DeletingServer = true;
+                // create request
+                var apiRequest = new SmallServerAdmin.ApiRequest($this.Context, 'Settings.DeleteServer', { 'Config': server.Config });
+                // handler successful response to a request to api
+                apiRequest.SuccessCallback = function (response) {
+                    // reload page
+                    $this.Context.Location.search({});
+                    $this.Context.Window.location.reload();
+                };
+                // handler request complete
+                apiRequest.CompleteCallback = function () {
+                    $this.DeletingServer = false;
+                };
+                // execute
+                apiRequest.Execute();
+            };
             return PanelServersController;
         }());
         Controllers.PanelServersController = PanelServersController;
@@ -81459,20 +81611,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=PanelServersController.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81490,20 +81642,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=Config.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81521,20 +81673,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=User.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81552,20 +81704,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=Group.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81583,20 +81735,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=AccountUpdate.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81619,20 +81771,20 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81652,20 +81804,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=UsersList.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81683,20 +81835,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SvnUser.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81714,20 +81866,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SshResult.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81745,20 +81897,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SvnUserToEdit.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81776,20 +81928,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SvnUserToSave.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81838,20 +81990,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SvnGroupToEdit.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81869,20 +82021,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SvnGroupToSave.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81900,20 +82052,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SvnRepository.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81931,20 +82083,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SvnRepositoryPermission.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81962,20 +82114,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=Site.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -81996,20 +82148,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SiteConf.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82036,20 +82188,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SiteNew.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82076,20 +82228,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SiteNewNginx.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82116,20 +82268,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SiteNewApache.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82148,20 +82300,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SiteNewHTAN.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82184,20 +82336,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=SiteHTANItem.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82215,20 +82367,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=FileSystemItem.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82246,20 +82398,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=Service.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82277,20 +82429,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=Process.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82308,20 +82460,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=HDDInfo.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82339,20 +82491,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=MemoryInfo.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82370,20 +82522,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=ServerInfo.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82401,20 +82553,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=FileSystemItemInfo.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82434,20 +82586,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=ReloadingInfo.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82465,20 +82617,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=ServerToAdmin.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Models;
@@ -82496,20 +82648,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=PanelUpdateInfo.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     var Localization;
@@ -82586,6 +82738,10 @@ var SmallServerAdmin;
                  * Cannot reload service {0}.
                  */
                 this.CannotReloadService = 'Cannot reload service {0}.';
+                /**
+                 * Server is required.
+                 */
+                this.ServerIsRequired = 'Server is required.';
                 //#endregion
                 //#region ..ServiceListController..
                 /** Incorrect site name! */
@@ -82656,20 +82812,20 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=Default.js.map
 /*
-* Copyright © Aleksey Nemiro, 2016. All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright © Aleksey Nemiro, 2016. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 var SmallServerAdmin;
 (function (SmallServerAdmin) {
     /**
@@ -82835,11 +82991,11 @@ var SmallServerAdmin;
 })(SmallServerAdmin || (SmallServerAdmin = {}));
 //# sourceMappingURL=ApiRequest.js.map
 /*!
-* SmallServerAdmin
-* ------------------------------------------
-* Aleksey Nemiro, 2016
-* http://aleksey.nemiro.ru
-*/
+ * SmallServerAdmin
+ * ------------------------------------------
+ * Aleksey Nemiro, 2016
+ * http://aleksey.nemiro.ru
+ */
 /*
  * Copyright © Aleksey Nemiro, 2016. All rights reserved.
  *

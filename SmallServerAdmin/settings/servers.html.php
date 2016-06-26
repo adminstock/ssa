@@ -9,7 +9,7 @@
 
         <php:ServersList ID="ServersList1" />
 
-        <div ng-show="CurrentServerConnectionError" class="alert alert-danger">
+        <div ng-show="CurrentServerConnectionError" class="alert alert-danger" ng-cloak>
           <h4><span class="glyphicon glyphicon-remove-sign"></span> ${Connection error}</h4>
           <p>${Unable to connect to the} <strong><?=$this->CurrentServerAddress?></strong>.</p>
           <?php
@@ -33,6 +33,10 @@ $config['ssh_user'] = 'USER NAME HERE';
 $config['ssh_password'] = 'PASSWORD HERE';
 $config['ssh_required_password'] = TRUE; // recommended always TRUE</ui-codemirror>
         </div>
+
+				<?php
+        include_once  \Nemiro\Server::MapPath('~/settings/dialogs/server.php');
+				?>
       </div>
     </php:Content>
 

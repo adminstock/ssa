@@ -99,6 +99,7 @@
     <Compile Include="services\models\Service.php" />
     <Compile Include="services\widget.php" />
     <Compile Include="settings\api.php" />
+    <Compile Include="settings\dialogs\server.php" />
     <Compile Include="settings\servers.html.php" />
     <Compile Include="settings\servers.php">
       <SubType>Code</SubType>
@@ -567,6 +568,7 @@
     <Folder Include="services\" />
     <Folder Include="services\models\" />
     <Folder Include="services\dialogs\" />
+    <Folder Include="settings\dialogs\" />
     <Folder Include="sites\" />
     <Folder Include="sites\models\" />
     <Folder Include="sites\dialogs\" />

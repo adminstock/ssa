@@ -239,5 +239,11 @@
 	{ "Key": "No users...", "Value": "No users..." },
 	{ "Key": "Account", "Value": "Account" },
 	{ "Key": "Address", "Value": "Address" },
-	{ "Key": "Loading servers list. Please wait...", "Value": "Loading servers list. Please wait..." }
+	{ "Key": "Loading servers list. Please wait...", "Value": "Loading servers list. Please wait..." },
+	{ "Key": "Connection error", "Value": "Connection error" },
+	{ "Key": "Connected", "Value": "Connected" },
+	{ "Key": "Port", "Value": "Port" },
+	{ "Key": "Description", "Value": "Description" },
+	{ "Key": "Modules", "Value": "Modules" },
+	{ "Key": "Info", "Value": "Info" }
 ]

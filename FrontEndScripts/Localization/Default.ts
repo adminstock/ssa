@@ -116,6 +116,11 @@ module SmallServerAdmin.Localization {
      */
     public CannotReloadService: string = 'Cannot reload service {0}.';
 
+    /**
+     * Server is required.
+     */
+    public ServerIsRequired: string = 'Server is required.';
+
     //#endregion
     //#region ..ServiceListController..
 

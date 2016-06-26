@@ -183,6 +183,11 @@ module SmallServerAdmin {
     /** Incorrect user name! */
     IncorrectUserName: string;
 
+    /**
+     * Server is required.
+     */
+    ServerIsRequired: string;
+
   }
 
 }

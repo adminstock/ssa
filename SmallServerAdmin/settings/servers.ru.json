@@ -1,5 +1,4 @@
 [
-	{ "Key": "Connection error", "Value": "Ошибка подключения" },
 	{ "Key": "Unable to connect to the", "Value": "Не удалось установить связь с" },
 	{ "Key": "Check the server settings in the file", "Value": "Проверьте параметры подключения в файле" }
 ]

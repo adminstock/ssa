@@ -42,6 +42,14 @@ a:not([href]) {
 	color: #a94442;
 }
 
+.green {
+	color: #3c763d;
+}
+
+.brown {
+	color: #8a6d3b;
+}
+
 .modal-body {
   max-height: calc(100vh - 200px);
   overflow-y: auto;
@@ -217,6 +225,10 @@ ul.no-padding {
 			min-width: 0;
 		}
 	}
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
 }
 
 treecontrol ul {

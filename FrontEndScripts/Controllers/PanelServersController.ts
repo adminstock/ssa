@@ -20,11 +20,10 @@ module SmallServerAdmin.Controllers {
    */
   export class PanelServersController implements Nemiro.IController {
 
+    // #region Properties
+
     public Scope: any;
     public Context: Nemiro.AngularContext;
-
-    /** Server list dialog. */
-    private ServerListDialog: Nemiro.UI.Dialog;
 
     /** List of all servers. */
     public get Servers(): Array<Models.ServerToAdmin> {
@@ -34,11 +33,26 @@ module SmallServerAdmin.Controllers {
       this.Scope.Servers = value;
     }
 
+    /** Selected server to edit. */
+    public get Server(): Models.ServerToAdmin {
+      return this.Scope.Server;
+    }
+    public set Server(value: Models.ServerToAdmin) {
+      this.Scope.Server = value;
+    }
+
     public get LoadingServers(): boolean {
       return this.Scope.LoadingServers;
     }
     public set LoadingServers(value: boolean) {
       this.Scope.LoadingServers = value;
+    }
+
+    public get LoadingServer(): boolean {
+      return this.Scope.LoadingServer;
+    }
+    public set LoadingServer(value: boolean) {
+      this.Scope.LoadingServer = value;
     }
 
     public get ConnectionTesting(): boolean {
@@ -62,6 +76,36 @@ module SmallServerAdmin.Controllers {
       this.Scope.DisableShowConnectionError = value;
     }
 
+    public get SavingServer(): boolean {
+      return this.Scope.SavingServer;
+    }
+    public set SavingServer(value: boolean) {
+      this.Scope.SavingServer = value;
+    }
+
+    public get DeletingServer(): boolean {
+      return this.Scope.DeletingServer;
+    }
+    public set DeletingServer(value: boolean) {
+      this.Scope.DeletingServer = value;
+    }
+
+    public get IsServerLoaded(): boolean {
+      return this.Scope.IsServerLoaded;
+    }
+    public set IsServerLoaded(value: boolean) {
+      this.Scope.IsServerLoaded = value;
+    }
+
+    /** Server list dialog. */
+    private ServerListDialog: Nemiro.UI.Dialog;
+
+    /** Server editor. */
+    private ServerDialog: Nemiro.UI.Dialog;
+
+    // #endregion
+    // #region Constructor
+
     constructor(context: Nemiro.AngularContext) {
       var $this = this;
 
@@ -71,12 +115,38 @@ module SmallServerAdmin.Controllers {
       // select server dialog
       $this.ServerListDialog = Nemiro.UI.Dialog.CreateFromElement($('#servers'));
 
+      // server editor dialog
+      $this.ServerDialog = Nemiro.UI.Dialog.CreateFromElement($('#serverDialog'));
+      $this.ServerDialog.DisableOverlayClose = true;
+
+      // methods
       $this.Scope.SelectServer = () => {
         $this.SelectServer($this);
       };
 
       $this.Scope.GetServers = () => {
         $this.GetServers($this);
+      };
+
+      $this.Scope.ShowEditor = (server?: Models.ServerToAdmin) => {
+        $this.IsServerLoaded = true;
+
+        if (server === undefined || server == null) {
+          $this.Server = new Models.ServerToAdmin();
+          $this.Server.Port = 22;
+          $this.ServerDialog.Show();
+        } else {
+          $this.GetServer($this, server);
+        }
+      };
+
+      $this.Scope.SaveServer = () => {
+        $this.SaveServer($this);
+      };
+
+      $this.Scope.ShowDialogToDelete = (server: Models.ServerToAdmin) => {
+        Nemiro.UI.Dialog.Alert('TODO', 'TODO');
+        //$this.DeleteServer($this, server);
       };
 
       $this.Scope.ConnectToServer = (server: Models.ServerToAdmin) => {
@@ -98,7 +168,16 @@ module SmallServerAdmin.Controllers {
           $this.CheckConnection($this);
         }
       }, 250);
+
+      $this.Scope.$watch('Server.Port', (val, old) => {
+        if ($this.Server !== undefined) {
+          $this.Server.Port = parseInt(val);
+        }
+      });
     }
+
+    // #endregion
+    // #region Methods
 
     public SelectServer($this: PanelServersController): void {
       //console.log('SelectServer', $this.Servers);
@@ -158,7 +237,100 @@ module SmallServerAdmin.Controllers {
 
       apiRequest.Execute();
     }
-  
+
+    public GetServer($this: PanelServersController, server: Models.ServerToAdmin): void {
+      if ($this.LoadingServer) {
+        return;
+      }
+
+      $this.LoadingServer = true;
+      $this.ServerDialog.Show();
+
+      // create request
+      var apiRequest = new ApiRequest<Models.ServerToAdmin>($this.Context, 'Settings.GetServer', { "Config": server.Config });
+
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        $this.Context.Timeout(() => {
+          $this.Server = response.data;
+        });
+      };
+
+      // handler request complete
+      apiRequest.CompleteCallback = () => {
+        $this.LoadingServer = false;
+      };
+
+      // execute
+      apiRequest.Execute();
+    }
+
+    public SaveServer($this: PanelServersController): void {
+      if ($this.SavingServer) {
+        return;
+      }
+
+      if ($this.Server === undefined || $this.Server == null) {
+        Nemiro.UI.Dialog.Alert(App.Resources.ServerIsRequired, App.Resources.Error);
+        return;
+      }
+
+      $this.SavingServer = true;
+
+      // create request
+      var apiRequest = new ApiRequest<Models.ServerToAdmin>($this.Context, 'Settings.SaveServer', $this.Server);
+
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        $this.Context.Timeout(() => {
+          $this.Server = response.data;
+        });
+
+        // close dialog
+        $this.ServerDialog.Close();
+
+        // reload page
+        $this.Context.Location.search({});
+        $this.Context.Window.location.reload();
+      };
+
+      // handler request complete
+      apiRequest.CompleteCallback = () => {
+        $this.SavingServer = false;
+      };
+
+      // execute
+      apiRequest.Execute();
+    }
+
+    public DeleteServer($this: PanelServersController, server: Models.ServerToAdmin): void {
+      if ($this.DeletingServer) {
+        return;
+      }
+
+      $this.DeletingServer = true;
+
+      // create request
+      var apiRequest = new ApiRequest<Models.ServerToAdmin>($this.Context, 'Settings.DeleteServer', { 'Config': server.Config });
+
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        // reload page
+        $this.Context.Location.search({});
+        $this.Context.Window.location.reload();
+      };
+
+      // handler request complete
+      apiRequest.CompleteCallback = () => {
+        $this.DeletingServer = false;
+      };
+
+      // execute
+      apiRequest.Execute();
+    }
+
+    // #endregion
+
   }
 
 } 

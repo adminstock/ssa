@@ -49,7 +49,7 @@
               <h3><span class="fa fa-server"></span> ${Servers}</h3>
             </div>
             <div class="modal-body">
-              <php:ServersList ID="ServersList1" />
+              <php:ServersList ID="ServersList0" NoControl="TRUE" />
             </div>
           </div>
         </div>
