@@ -32,11 +32,11 @@
                 <span class="glyphicon glyphicon-refresh fa-spin" ng-show="Updating"></span>
                 ${Update to} v{{Stable.LatestVersion}}
               </button>
-            </div>
 
-            <div class="alert alert-danger" ng-show="Updating">
-              <span class="glyphicon glyphicon-exclamation-sign"></span>
-              ${Do not turn off the computer and do not close this page!}
+							<div class="alert alert-danger" ng-show="Updating">
+								<span class="glyphicon glyphicon-exclamation-sign"></span>
+								${Do not turn off the computer and do not close this page!}
+							</div>
             </div>
           </div>
 
@@ -59,6 +59,11 @@
 								<span class="glyphicon glyphicon-refresh fa-spin" ng-show="Updating"></span>
 								${Update to} v{{info.LatestVersion}}-{{info.Branch}}
 							</button>
+
+							<div class="alert alert-danger" ng-show="Updating">
+								<span class="glyphicon glyphicon-exclamation-sign"></span>
+								${Do not turn off the computer and do not close this page!}
+							</div>
 
               <div ng-show="info.Updated" class="alert alert-success">${Successfully updated!}</div>
 						</div>

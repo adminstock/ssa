@@ -46,8 +46,8 @@ $config["web_sitename_invalid_message"] = 'Site name must begin with the letters
 
 // dbadmin
 $config['dbadmin_list'] = [
-  ['file_name' => 'phpmyadmin', 'title' => 'MySql'],
-  ['file_name' => 'phppgadmin', 'title' => 'PostgreSql']
+  ['url' => '/phpmyadmin', 'title' => 'MySql'],
+  ['url' => '/phppgadmin', 'title' => 'PostgreSql']
 ];
 
 // settings (module)
