@@ -11,14 +11,14 @@ By participating, you are expected to uphold this code.
 
 ## Found an Issue?
 
-If you find a bug in the source code, you can help us by submitting an issue to our 
-[GitHub Repository](https://github.com/adminstock/ssa). 
+If you find a bug in the source code, you can help us by [submitting an issue](https://github.com/adminstock/ssa/issues/new) 
+to our [GitHub Repository](https://github.com/adminstock/ssa). 
 Even better you can submit a **Pull Request** with a fix.
 
 ## Want a new Module or Feature?
 
-You can request a new module or feature by submitting an issue to our 
-[GitHub Repository](https://github.com/adminstock/ssa).
+You can request a new module or feature by [submitting an issue](https://github.com/adminstock/ssa/issues/new) 
+to our [GitHub Repository](https://github.com/adminstock/ssa).
 
 Please note:
 
@@ -33,13 +33,16 @@ The project welcomes new contributors.
 
 To get started, fork the **SmallServerAdmin** on **GitHub** and check out your copy locally.
 
-Make your changes, in accordance with our [rules and recommendations](#coding-rules).
+Make your changes, in accordance with our [rules and recommendations](#Coding-Rules).
 
 Make sure that your changes are working properly.
 
 **Commit** and **Push** your changes.
 
 Send **Pull Request**.
+
+**Please, before writing code, pay attention to [requests queue](https://github.com/adminstock/ssa/pulls)
+and see **SmallServerAdmin** version in the [dev](https://github.com/adminstock/ssa/tree/dev) branch.**
 
 ### Coding Rules
 
@@ -103,6 +106,7 @@ SmallServerAdmin
 -- Controls - user controls of the SSA
 -- Layouts - master pages (templates)
 -- Libs - additional server-side libraries
+-- servers - contains configuration files connected servers
 -- api.php - the main file for API
 -- config.php - config of the WebForms.PHP
 -- global.json and global.*.json - localization resources
@@ -152,8 +156,7 @@ It will be nice if you include your changes to
 **[bundleconfig.json](FrontEndScripts/bundleconfig.json)** and 
 **[compilerconfig.json](SmallServerAdmin/Content/scss/compilerconfig.json)**.
 
-The project is written in **Visual Studio 2013**.
-Also it works in the **Visual Studio 2015**.
+The project is written in **Visual Studio 2015**.
 
 #### Visual Studio 2013 (Professional or Ultimate)
 
