@@ -41,6 +41,7 @@
 			"libs/highcharts-ng.js",
 			"libs/angular-pageslide-directive.js",
 			"libs/showdown.js",
+			"libs/angular-drag-and-drop-lists.js",
 
 			// Helper classes by Aleksey Nemiro
 			"libs/Nemiro/EventHandlers.js",
@@ -110,6 +111,7 @@
 			"Models/ReloadingInfo.js",
 			"Models/ServerToAdmin.js",
 			"Models/PanelUpdateInfo.js",
+			"Models/Module.js",
 
 			// Application
 			"Localization/Default.js",

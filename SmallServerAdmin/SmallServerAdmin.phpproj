@@ -99,6 +99,7 @@
     <Compile Include="services\models\Service.php" />
     <Compile Include="services\widget.php" />
     <Compile Include="settings\api.php" />
+    <Compile Include="settings\dialogs\confirmToDeleteServer.php" />
     <Compile Include="settings\dialogs\server.php" />
     <Compile Include="settings\servers.html.php" />
     <Compile Include="settings\servers.php">

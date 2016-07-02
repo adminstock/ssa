@@ -1,4 +1,8 @@
 [
 	{ "Key": "Unable to connect to the", "Value": "Не удалось установить связь с" },
-	{ "Key": "Check the server settings in the file", "Value": "Проверьте параметры подключения в файле" }
+	{ "Key": "Check the server settings.", "Value": "Проверьте параметры подключения к серверу." },
+	{ "Key": "always requires a password (recommended)", "Value": "пароль требуется всегда (рекомендуется)" },
+	{ "Key": "All Modules", "Value": "Все модули" },
+	{ "Key": "Loading config of the server. Please wait...", "Value": "Загрузка конфигурации сервера. Пожалуйста, подождите..." },
+	{ "Key": "Add server", "Value": "Добавить сервер" }
 ]

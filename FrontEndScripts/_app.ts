@@ -80,7 +80,8 @@ module SmallServerAdmin {
           'frapontillo.bootstrap-switch',
           'treeControl',
           'highcharts-ng',
-          'pageslide-directive'
+          'pageslide-directive',
+          'dndLists'
         ]
       );
     }

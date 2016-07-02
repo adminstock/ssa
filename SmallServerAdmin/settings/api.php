@@ -249,7 +249,49 @@ namespace Api
 
     private function GetServerInfo($path, $withoutPassword)
     {
+      if ($this->AllModules == NULL)
+      {
+        $this->GetModules();
+      }
+
+      global $config;
+
+      $defaultModules = $config['modules'];
+
       require $path;
+
+      $modules = [];
+      $serverModules = NULL;
+      $allModules = $this->AllModules;
+
+      if (isset($config['modules']) && $config['modules'] != '')
+      {
+        $serverModules = explode(',', $config['modules']);
+      }
+      else
+      {
+        // default modules (to save order)
+        $serverModules = $defaultModules;
+      }
+
+      // server modules (to save order)
+      if ($serverModules != NULL)
+      {
+        foreach($serverModules as $module)
+        {
+          $modules[] = ['Name' => $module, 'Enabled' => TRUE];
+          if (($idx = array_search($module, $allModules)) !== FALSE)
+          {
+            array_splice($allModules, $idx, 1);
+          }
+        }
+      }
+
+      // other modules
+      foreach($allModules as $module)
+      {
+        $modules[] = ['Name' => $module, 'Enabled' => $serverModules == NULL];
+      }
 
       return [
         'Address' => isset($config['ssh_host']) ? $config['ssh_host'] : '', 
@@ -260,7 +302,8 @@ namespace Api
         'Description' => isset($config['server_description']) ? $config['server_description'] : NULL, 
         'Config' => basename($path, '.php'),
         'Disabled' => (isset($config['server_disabled']) ? (bool)$config['server_disabled'] : FALSE),
-        'RequiredPassword' => (isset($config['ssh_required_password']) ? (bool)$config['ssh_required_password'] : FALSE)
+        'RequiredPassword' => (isset($config['ssh_required_password']) ? (bool)$config['ssh_required_password'] : FALSE),
+        'Modules' => $modules
       ];
     }
 
@@ -329,6 +372,23 @@ namespace Api
         $lines[] = '$config[\'ssh_user\'] = \''.str_replace('\'', '\\\'', $data['Username']).'\';';
         $lines[] = '$config[\'ssh_password\'] = \''.str_replace('\'', '\\\'', $data['Password']).'\';';
         $lines[] = '$config[\'ssh_required_password\'] = '.(!isset($data['RequiredPassword']) || (bool)$data['RequiredPassword'] ? 'TRUE' : 'FALSE').';';
+        
+        if (isset($data['Modules']) && count($data['Modules']) > 0)
+        {
+          $modules = [];
+
+          foreach($data['Modules'] as $module)
+          {
+            if ($module['Enabled'] === FALSE)
+            {
+              continue;
+            }
+
+            $modules[] = $module['Name'];
+          }
+
+          $lines[] = '$config[\'modules\'] = \''.implode(',', $modules).'\';';
+        }
 
         $data['Config'] = basename($path, '.php');
       }
@@ -382,6 +442,28 @@ namespace Api
               // set value
               switch($key)
               {
+                case 'modules':
+                  if (isset($data['Name']) && $data['Name'] != '')
+                  {
+                    if (isset($data['Modules']) && count($data['Modules']) > 0)
+                    {
+                      $modules = [];
+
+                      foreach($data['Modules'] as $module)
+                      {
+                        if ($module['Enabled'] === FALSE)
+                        {
+                          continue;
+                        }
+
+                        $modules[] = $module['Name'];
+                      }
+
+                      $lines[] = '$config[\'modules\'] = \''.implode(',', $modules).'\';';
+                    }
+                  }
+                  break;
+
                 case 'server_name':
                   if (isset($data['Name']) && $data['Name'] != '')
                   {
@@ -461,8 +543,30 @@ namespace Api
       return ['Success' => TRUE];
     }
 
-    #endregion
+    private $AllModules = NULL;
 
+    public function GetModules()
+    {
+      $result = [];
+      $skipDirs = [ '.', '..', 'Content', 'Controls', 'Layouts', 'Libs', 'servers' ];
+
+      foreach(scandir(\Nemiro\Server::MapPath('~/')) as $item)
+      {
+        if (is_dir(\Nemiro\Server::MapPath('~/'.$item)) === FALSE || array_search($item, $skipDirs) !== FALSE) 
+        {
+          continue;
+        }
+
+        $result[] = $item;
+      }
+
+      $this->AllModules = $result;
+
+      return $result;
+    }
+
+    #endregion
+    
   }
 
 }

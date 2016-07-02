@@ -16,39 +16,20 @@
 module SmallServerAdmin.Models {
 
   /**
-   * Represents server info.
+   * Represents ssa module.
    */
-  export class ServerToAdmin {
+  export class Module {
 
-    /** Config file name. */
-    public Config: string;
-
-    /** Server name. */
+    /** Module name. */
     public Name: string;
-
-    /** Server description. */
-    public Description: string;
-
-    /** SSH host or IP address. */
-    public Address: string;
-
-    /** SSH port. Default: 22. */
-    public Port: number;
-
-    /** SSH username. */
-    public Username: string;
-
-    /** SSH password. */
-    public Password: string;
-
-    /** Use password for all commands. */
-    public RequiredPassword: boolean;
-
+    
     /** Status. */
-    public Disabled: boolean;
+    public Enabled: boolean;
 
-    /** List of modules. */
-    public Modules: Array<Module>;
+    constructor(name?: string, enabled?: boolean) {
+      this.Name = name;
+      this.Enabled = enabled;
+    }
 
   }
 

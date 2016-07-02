@@ -25,6 +25,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="libs\angular-bootstrap-switch.js" />
+    <Content Include="libs\angular-drag-and-drop-lists.js" />
     <Content Include="libs\angular-pageslide-directive.js" />
     <Content Include="libs\angular-tree-control.js" />
     <Content Include="libs\angular\angular-animate.js" />
@@ -246,6 +247,7 @@
     <TypeScriptCompile Include="Models\FileSystemItemInfo.ts" />
     <TypeScriptCompile Include="Models\FileSystemItem.ts" />
     <TypeScriptCompile Include="Models\PanelUpdateInfo.ts" />
+    <TypeScriptCompile Include="Models\Module.ts" />
     <TypeScriptCompile Include="Models\ServerToAdmin.ts" />
     <TypeScriptCompile Include="Models\ServerInfo.ts" />
     <TypeScriptCompile Include="Models\MemoryInfo.ts" />

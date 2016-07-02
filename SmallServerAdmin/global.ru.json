@@ -245,5 +245,6 @@
 	{ "Key": "Port", "Value": "Порт" },
 	{ "Key": "Description", "Value": "Описание" },
 	{ "Key": "Modules", "Value": "Модули" },
-	{ "Key": "Info", "Value": "Информация" }
+	{ "Key": "Info", "Value": "Информация" },
+	{ "Key": "Loading...", "Value": "Загрузка..." }
 ]

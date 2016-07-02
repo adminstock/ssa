@@ -1,4 +1,8 @@
 [
 	{ "Key": "Unable to connect to the", "Value": "Unable to connect to the" },
-	{ "Key": "Check the server settings in the file", "Value": "Check the server settings in the file" }
+	{ "Key": "Check the server settings.", "Value": "Check the server settings." },
+	{ "Key": "always requires a password (recommended)", "Value": "always requires a password (recommended)" },
+	{ "Key": "All Modules", "Value": "All Modules" },
+	{ "Key": "Loading config of the server. Please wait...", "Value": "Loading config of the server. Please wait..." },
+	{ "Key": "Add server", "Value": "Add server" }
 ]

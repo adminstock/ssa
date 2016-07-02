@@ -39,6 +39,15 @@ module SmallServerAdmin.Controllers {
     }
     public set Server(value: Models.ServerToAdmin) {
       this.Scope.Server = value;
+      this.UpdateAllModulesSelectStatus(this);
+    }
+
+    /** Selected server to delete. */
+    public get SelectedServerToDelete(): Models.ServerToAdmin {
+      return this.Scope.SelectedServerToDelete;
+    }
+    public set SelectedServerToDelete(value: Models.ServerToAdmin) {
+      this.Scope.SelectedServerToDelete = value;
     }
 
     public get LoadingServers(): boolean {
@@ -53,6 +62,20 @@ module SmallServerAdmin.Controllers {
     }
     public set LoadingServer(value: boolean) {
       this.Scope.LoadingServer = value;
+    }
+
+    public get LoadingModules(): boolean {
+      return this.Scope.LoadingModules;
+    }
+    public set LoadingModules(value: boolean) {
+      this.Scope.LoadingModules = value;
+    }
+
+    public get PreparingServerForm(): boolean {
+      return this.Scope.PreparingServerForm;
+    }
+    public set PreparingServerForm(value: boolean) {
+      this.Scope.PreparingServerForm = value;
     }
 
     public get ConnectionTesting(): boolean {
@@ -90,11 +113,25 @@ module SmallServerAdmin.Controllers {
       this.Scope.DeletingServer = value;
     }
 
-    public get IsServerLoaded(): boolean {
-      return this.Scope.IsServerLoaded;
+    public get Accordion(): any {
+      return this.Scope.Accordion;
     }
-    public set IsServerLoaded(value: boolean) {
-      this.Scope.IsServerLoaded = value;
+    public set Accordion(value: any) {
+      this.Scope.Accordion = value;
+    }
+
+    public get Modules(): Array<string> {
+      return this.Scope.Modules;
+    }
+    public set Modules(value: Array<string>) {
+      this.Scope.Modules = value;
+    }
+
+    public get AllModulesSelected(): boolean {
+      return this.Scope.AllModulesSelected;
+    }
+    public set AllModulesSelected(value: boolean) {
+      this.Scope.AllModulesSelected = value;
     }
 
     /** Server list dialog. */
@@ -102,6 +139,8 @@ module SmallServerAdmin.Controllers {
 
     /** Server editor. */
     private ServerDialog: Nemiro.UI.Dialog;
+
+    private ConfirmServerDeleteDialog: Nemiro.UI.Dialog;
 
     // #endregion
     // #region Constructor
@@ -112,12 +151,17 @@ module SmallServerAdmin.Controllers {
       $this.Context = context;
       $this.Scope = $this.Context.Scope;
 
+      $this.Accordion = { SshOpened: true, InfoOpened: false, ModulesOpened: false };
+
       // select server dialog
       $this.ServerListDialog = Nemiro.UI.Dialog.CreateFromElement($('#servers'));
 
       // server editor dialog
       $this.ServerDialog = Nemiro.UI.Dialog.CreateFromElement($('#serverDialog'));
       $this.ServerDialog.DisableOverlayClose = true;
+
+      // server delete dialog
+      $this.ConfirmServerDeleteDialog = Nemiro.UI.Dialog.CreateFromElement($('#confirmToDeleteServer'));
 
       // methods
       $this.Scope.SelectServer = () => {
@@ -129,12 +173,10 @@ module SmallServerAdmin.Controllers {
       };
 
       $this.Scope.ShowEditor = (server?: Models.ServerToAdmin) => {
-        $this.IsServerLoaded = true;
+        $this.Accordion.SshOpened = true;
 
         if (server === undefined || server == null) {
-          $this.Server = new Models.ServerToAdmin();
-          $this.Server.Port = 22;
-          $this.ServerDialog.Show();
+          $this.NewServer($this);
         } else {
           $this.GetServer($this, server);
         }
@@ -145,8 +187,12 @@ module SmallServerAdmin.Controllers {
       };
 
       $this.Scope.ShowDialogToDelete = (server: Models.ServerToAdmin) => {
-        Nemiro.UI.Dialog.Alert('TODO', 'TODO');
-        //$this.DeleteServer($this, server);
+        $this.SelectedServerToDelete = server;
+        $this.ConfirmServerDeleteDialog.Show();
+      };
+
+      $this.Scope.DeleteServer = () => {
+        $this.DeleteServer($this, $this.SelectedServerToDelete);
       };
 
       $this.Scope.ConnectToServer = (server: Models.ServerToAdmin) => {
@@ -155,6 +201,25 @@ module SmallServerAdmin.Controllers {
         // reload page
         $this.Context.Location.search({});
         $this.Context.Window.location.reload();
+      };
+
+      $this.Scope.ModuleClick = (module: Models.Module) => {
+        module.Enabled = !module.Enabled;
+
+        $this.UpdateAllModulesSelectStatus($this);
+      };
+
+      $this.Scope.SelectModules = (event) => {
+        for (var i = 0; i < $this.Server.Modules.length; i++) {
+          $this.Server.Modules[i].Enabled = event.target.checked;
+        }
+
+        $this.AllModulesSelected = event.target.checked;
+      };
+
+      $this.Scope.ModuleMoved = (index, module) => {
+        //console.log('ModuleMoved', index, module);
+        $this.Server.Modules.splice(index, 1);
       };
 
       // delay for ng-init
@@ -214,6 +279,34 @@ module SmallServerAdmin.Controllers {
       apiRequest.Execute();
     }
 
+    public GetModules($this: PanelServersController): void {
+      if ($this.LoadingModules) {
+        return;
+      }
+
+      $this.LoadingModules = true;
+
+      // create request
+      var apiRequest = new ApiRequest<Array<string>>($this.Context, 'Settings.GetModules');
+
+      // handler successful response to a request to api
+      apiRequest.SuccessCallback = (response) => {
+        $this.Context.Timeout(() => {
+          $this.Modules = response.data;
+
+          $this.UpdateAllModulesSelectStatus($this);
+        });
+      };
+
+      // handler request complete
+      apiRequest.CompleteCallback = () => {
+        $this.LoadingModules = false;
+      };
+
+      // execute
+      apiRequest.Execute();
+    }
+
     public CheckConnection($this: PanelServersController): void {
       if ($this.ConnectionTesting) {
         return;
@@ -254,6 +347,10 @@ module SmallServerAdmin.Controllers {
         $this.Context.Timeout(() => {
           $this.Server = response.data;
         });
+
+        if ($this.Modules === undefined || $this.Modules == null) {
+          $this.GetModules($this);
+        }
       };
 
       // handler request complete
@@ -263,6 +360,35 @@ module SmallServerAdmin.Controllers {
 
       // execute
       apiRequest.Execute();
+    }
+
+    public NewServer($this: PanelServersController): void {
+      $this.PreparingServerForm = true;
+
+      if ($this.Modules === undefined || $this.Modules == null) {
+        $this.GetModules($this);
+
+        $this.Context.Timeout(() => {
+          $this.NewServer($this);
+        }, 1000);
+
+        return;
+      }
+
+      $this.Server = new Models.ServerToAdmin();
+      $this.Server.Port = 22;
+      $this.Server.RequiredPassword = true;
+      $this.Server.Modules = new Array<Models.Module>();
+
+      for (var i = 0; i < $this.Modules.length; i++) {
+        $this.Server.Modules.push(new Models.Module($this.Modules[i], true));
+      }
+
+      $this.UpdateAllModulesSelectStatus($this);
+
+      $this.ServerDialog.Show();
+
+      $this.PreparingServerForm = false;
     }
 
     public SaveServer($this: PanelServersController): void {
@@ -323,10 +449,25 @@ module SmallServerAdmin.Controllers {
       // handler request complete
       apiRequest.CompleteCallback = () => {
         $this.DeletingServer = false;
+        $this.ConfirmServerDeleteDialog.Close();
       };
 
       // execute
       apiRequest.Execute();
+    }
+
+    public UpdateAllModulesSelectStatus($this: PanelServersController): void {
+      if (this.Modules == undefined || this.Modules == null) {
+        $this.AllModulesSelected = false;
+        return;
+      }
+
+      if ($this.Server === undefined || $this.Server == null || $this.Server.Modules === undefined || $this.Server.Modules == null) {
+        $this.AllModulesSelected = false;
+        return;
+      }
+      
+      $this.AllModulesSelected = ($.grep($this.Server.Modules, (item: Models.Module) => { return item.Enabled; }).length == $this.Modules.length);
     }
 
     // #endregion

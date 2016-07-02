@@ -2,9 +2,9 @@
 
 All notable changes to this module will be documented in this file.
 
-## [1.0.3] - unreleased
+## [1.0.3] - 02.07.2016
 ### Added
-- Editing server configurations.
+- Adding, editing and deleting server configurations.
 
 ### Changed
 - Added support for multiple update sources in the `CheckUpdates` and `Update` (*api.php*).

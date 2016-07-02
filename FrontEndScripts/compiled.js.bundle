@@ -48,6 +48,7 @@
 		<file>/libs/highcharts-ng.js</file>
 		<file>/libs/angular-pageslide-directive.js</file>
 		<file>/libs/showdown.js</file>
+		<file>/libs/angular-drag-and-drop-lists.js</file>
 
 		<!--Helper classes by Aleksey Nemiro-->
 		<file>/libs/Nemiro/nemiro.js</file>
@@ -108,6 +109,7 @@
 		<file>/Models/ReloadingInfo.js</file>
 		<file>/Models/ServerToAdmin.js</file>
 		<file>/Models/PanelUpdateInfo.js</file>
+		<file>/Models/Module.js</file>
 
 		<!--Application-->
 		<file>/ApiRequest.js</file>
