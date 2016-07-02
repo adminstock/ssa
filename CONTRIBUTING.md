@@ -42,7 +42,7 @@ Make sure that your changes are working properly.
 Send **Pull Request**.
 
 **Please, before writing code, pay attention to [requests queue](https://github.com/adminstock/ssa/pulls)
-and see **SmallServerAdmin** version in the [dev](https://github.com/adminstock/ssa/tree/dev) branch.**
+and see SmallServerAdmin version in the [dev](https://github.com/adminstock/ssa/tree/dev) branch.**
 
 ### Coding Rules
 

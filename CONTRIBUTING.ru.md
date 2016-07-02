@@ -53,7 +53,7 @@
 чтобы было проще принять ваши изменения. Пожалуйста, используйте английский язык.
 
 **Пожалуйста, перед написанием кода, обращайте внимание на [нерассмотренные запросы](https://github.com/adminstock/ssa/pulls), 
-а также версию **SmallServerAdmin** в ветке [dev](https://github.com/adminstock/ssa/tree/dev).**
+а также версию SmallServerAdmin в ветке [dev](https://github.com/adminstock/ssa/tree/dev).**
 
 ### Правила написания кода
 
