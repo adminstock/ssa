@@ -1,8 +1,8 @@
 [
-	{ "Key": "Monitoring", "Value":  "Monitoring" },
-	{ "Key": "Process name or ID", "Value":  "Process name or ID" },
-	{ "Key": "Procesess not found...", "Value":  "Procesess not found..." },
-	{ "Key": "MONITORING_CONFIRM_KILL", "Value":  "Are you sure you want to kill the process <strong>{{SelectedProcessToKill.Name}}</strong> (PID: <strong>{{SelectedProcessToKill.PID}}</strong>)?" },
+	{ "Key": "Monitoring", "Value": "Monitoring" },
+	{ "Key": "Process name or ID", "Value": "Process name or ID" },
+	{ "Key": "Procesess not found...", "Value": "Procesess not found..." },
+	{ "Key": "MONITORING_CONFIRM_KILL", "Value": "Are you sure you want to kill the process <strong>{{SelectedProcessToKill.Name}}</strong> (PID: <strong>{{SelectedProcessToKill.PID}}</strong>)?" },
 	{ "Key": "Signal", "Value":  "Signal" },
 	{ "Key": "Yes, kill the process", "Value": "Yes, kill the process" }
 ]

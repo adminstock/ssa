@@ -157,11 +157,15 @@ module SmallServerAdmin.Controllers {
       $this.ServerListDialog = Nemiro.UI.Dialog.CreateFromElement($('#servers'));
 
       // server editor dialog
-      $this.ServerDialog = Nemiro.UI.Dialog.CreateFromElement($('#serverDialog'));
-      $this.ServerDialog.DisableOverlayClose = true;
+      if ($('#serverDialog').length > 0) {
+        $this.ServerDialog = Nemiro.UI.Dialog.CreateFromElement($('#serverDialog'));
+        $this.ServerDialog.DisableOverlayClose = true;
+      }
 
       // server delete dialog
-      $this.ConfirmServerDeleteDialog = Nemiro.UI.Dialog.CreateFromElement($('#confirmToDeleteServer'));
+      if ($('#confirmToDeleteServer').length > 0) {
+        $this.ConfirmServerDeleteDialog = Nemiro.UI.Dialog.CreateFromElement($('#confirmToDeleteServer'));
+      }
 
       // methods
       $this.Scope.SelectServer = () => {

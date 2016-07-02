@@ -1,8 +1,8 @@
 [
 	{ "Key":  "File Manager", "Value": "File Manager" },
 	{ "Key":  "All child files and folders will be deleted.", "Value": "All child files and folders will be deleted." },
-	{ "Key":  "CONFIRM_FILE_DELETETION", "Value": "For confirmation, enter item <strong>name</strong>, which should be removed:" },
-	{ "Key":  "CONFIRM_ITEMS_DELETETION", "Value": "For confirmation, enter the number of items that will be removed:" },
+	{ "Key":  "FILES_CONFIRM_FILE_DELETETION", "Value": "For confirmation, enter item <strong>name</strong>, which should be removed:" },
+	{ "Key":  "FILES_CONFIRM_ITEMS_DELETETION", "Value": "For confirmation, enter the number of items that will be removed:" },
 	{ "Key":  "Are you sure you want to execute the", "Value": "Are you sure you want to execute the" },
 	{ "Key":  "It may not be safe.", "Value": "It may not be safe." },
 	{ "Key":  "If you really want to execute this file, you can specify additional parameters.", "Value": "If you really want to execute this file, you can specify additional parameters." },

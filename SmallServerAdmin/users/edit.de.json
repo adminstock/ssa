@@ -1,0 +1,9 @@
+[
+	{ "Key": "User Editor", "Value": "Benutzer-Editor" },
+	{ "Key": "GECOS Fields", "Value": "GECOS Felder" },
+	{ "Key": "Phone work", "Value": "Arbeitshandy" },
+	{ "Key": "Phone home", "Value": "Haustelefon" },
+	{ "Key": "Other", "Value": "Andere" },
+	{ "Key": "System user", "Value": "Systembenutzer" },
+	{ "Key": "No create home", "Value": "Kein Home-Ordner zu erstellen" }
+]

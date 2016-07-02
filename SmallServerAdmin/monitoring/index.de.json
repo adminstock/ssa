@@ -1,0 +1,8 @@
+[
+	{ "Key": "Monitoring", "Value": "Überwachung" },
+	{ "Key": "Process name or ID", "Value": "Prozessname oder ID" },
+	{ "Key": "Procesess not found...", "Value": "Prozessen nicht gefunden..." },
+	{ "Key": "MONITORING_CONFIRM_KILL", "Value": "Sind Sie sicher, dass Sie töten wollen den Prozess <strong>{{SelectedProcessToKill.Name}}</strong> (PID: <strong>{{SelectedProcessToKill.PID}}</strong>)?" },
+	{ "Key": "Signal", "Value":  "Signal" },
+	{ "Key": "Yes, kill the process", "Value": "Ja, töten den Prozess" }
+]

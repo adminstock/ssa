@@ -220,9 +220,9 @@
 	
 	{ "Key": "SERVICES_SSH_WARNING", "Value": "Stop the <strong>SSH</strong> service will result in a loss of control over the server.<br />Control Panel will stop working." },
 	
-	{ "Key": "SERVICES_LOADING", "Value": "Laden Liste der Dienste. Warten Sie mal..." },
+	{ "Key": "SERVICES_LOADING", "Value": "Lädt Liste der Dienste. Warten Sie mal..." },
 	{ "Key": "SERVICES_NOT_FOUND", "Value": "Dienstleistungen nicht gefunden..." },
-	{ "Key": "SITES_LOADING_LIST", "Value": "Laden Liste von Websites. Warten Sie mal..." },
+	{ "Key": "SITES_LOADING_LIST", "Value": "Lädt Liste von Websites. Warten Sie mal..." },
 	{ "Key": "SITES_NOT_FOUND", "Value": "Seiten nicht gefunden..." },
 	{ "Key": "SITES_CONFIRM_SITE_DELETE", "Value": "Zur Bestätigung, geben Sie Site-Namen, die entfernt werden sollen:" },
 	{ "Key": "Loading data. Please wait...", "Value": "Daten werden geladen. Warten Sie mal..." },
@@ -232,15 +232,23 @@
 	{ "Key": "Processing...", "Value": "Bearbeitend..." },
 	{ "Key": "Add user", "Value": "Benutzer hinzufügen" },
 	{ "Key": "User name", "Value": "Benutzername" },
-	{ "Key": "Loading list of users. Please wait...", "Value": "Laden Liste der Benutzer. Warten Sie mal..." },
+	{ "Key": "Loading list of users. Please wait...", "Value": "Lädt Liste der Benutzer. Warten Sie mal..." },
 	{ "Key": "Users not found...", "Value": "Benutzern nicht gefunden..." },
 	{ "Key": "Add a new user", "Value": "Hinzufügen eines neuen Benutzers" },
 	{ "Key": "No groups...", "Value": "Keine Gruppen..." },
 	{ "Key": "Add group", "Value": "Gruppe hinzufügen" },
-	{ "Key": "Loading list of groups. Please wait...", "Value": "Laden Liste der Gruppen. Warten Sie mal..." },
+	{ "Key": "Loading list of groups. Please wait...", "Value": "Lädt Liste der Gruppen. Warten Sie mal..." },
 	{ "Key": "Groups not found...", "Value": "Gruppen nicht gefunden..." },
 	{ "Key": "Add a new group", "Value": "Fügen Sie eine neue Gruppe" },
 	{ "Key": "No users...", "Value": "Kein Benutzern..." },
 	{ "Key": "Account", "Value": "Konto" },
-	{ "Key": "Address", "Value": "Adresse" }
+	{ "Key": "Address", "Value": "Adresse" },
+	{ "Key": "Loading servers list. Please wait...", "Value": "Lädt Serverliste. Warten Sie mal..." },
+	{ "Key": "Connection error", "Value": "Verbindungsfehler" },
+	{ "Key": "Connected", "Value": "Verbunden" },
+	{ "Key": "Port", "Value": "Port" },
+	{ "Key": "Description", "Value": "Beschreibung" },
+	{ "Key": "Modules", "Value": "Modulen" },
+	{ "Key": "Info", "Value": "Info" },
+	{ "Key": "Loading...", "Value": "Lädt..." }
 ]

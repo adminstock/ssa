@@ -1,8 +1,8 @@
 [
-	{ "Key": "Monitoring", "Value":  "Мониторинг" },
-	{ "Key": "Process name or ID", "Value":  "Идентификатор или имя процесса" },
-	{ "Key": "Procesess not found...", "Value":  "Процессы не найдены..." },
-	{ "Key": "MONITORING_CONFIRM_KILL", "Value":  "Вы действительно хотите ликвидировать процесс <strong>{{SelectedProcessToKill.Name}}</strong> (PID: <strong>{{SelectedProcessToKill.PID}}</strong>)?" },
+	{ "Key": "Monitoring", "Value": "Мониторинг" },
+	{ "Key": "Process name or ID", "Value": "Идентификатор или имя процесса" },
+	{ "Key": "Procesess not found...", "Value": "Процессы не найдены..." },
+	{ "Key": "MONITORING_CONFIRM_KILL", "Value": "Вы действительно хотите ликвидировать процесс <strong>{{SelectedProcessToKill.Name}}</strong> (PID: <strong>{{SelectedProcessToKill.PID}}</strong>)?" },
 	{ "Key": "Signal", "Value":  "Сигнал" },
 	{ "Key": "Yes, kill the process", "Value": "Да, уничтожить этого ублюдка!" }
 ]

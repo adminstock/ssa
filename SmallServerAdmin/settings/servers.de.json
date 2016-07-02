@@ -1,0 +1,8 @@
+[
+	{ "Key": "Unable to connect to the", "Value": "Konnte keine Verbindung zu verbinden zum" },
+	{ "Key": "Check the server settings.", "Value": "Bitte überprüfen Sie die Servereinstellungen." },
+	{ "Key": "always requires a password (recommended)", "Value": "immer ein Passwort benötigt (empfohlen)" },
+	{ "Key": "All Modules", "Value": "Alle Modulen" },
+	{ "Key": "Loading config of the server. Please wait...", "Value": "Lädt Konfiguration des Servers. Warten Sie mal..." },
+	{ "Key": "Add server", "Value": "Server hinzufügen" }
+]

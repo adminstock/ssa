@@ -1,0 +1,11 @@
+[
+	{ "Key":  "File Manager", "Value": "Dateimanager" },
+	{ "Key":  "All child files and folders will be deleted.", "Value": "Alle untergeordneten Dateien und Ordner werden gelöscht." },
+	{ "Key":  "FILES_CONFIRM_FILE_DELETETION", "Value": "Zur Bestätigung, geben Sie Elementnamen , die entfernt werden sollen:" },
+	{ "Key":  "FILES_CONFIRM_ITEMS_DELETETION", "Value": "Zur Bestätigung geben Sie die Anzahl der Elemente, die entfernt werden sollen:" },
+	{ "Key":  "Are you sure you want to execute the", "Value": "Sind Sie sicher, dass Sie Auszuführen die" },
+	{ "Key":  "It may not be safe.", "Value": "Die Ausführung kann unsichere Datei sein." },
+	{ "Key":  "If you really want to execute this file, you can specify additional parameters.", "Value": "Wenn Sie diese Datei wirklich ausführen wollen, können Sie zusätzliche Parameter angeben." },
+	{ "Key":  "List of parameters with which the file will be launched", "Value": "Liste der Parameter, mit denen die Datei gestartet werden" },
+	{ "Key":  "FILES_OVERWRITE_IT", "Value": "Die Datei <strong>{{SaveAsPath}}</strong> ist bereits vorhanden. Wollen Sie die Datei überschreiben?" }
+]

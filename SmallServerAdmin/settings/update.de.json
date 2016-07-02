@@ -1,0 +1,12 @@
+[
+	{ "Key": "Update SmallServerAdmin", "Value": "Aktualisieren SmallServerAdmin" },
+	{ "Key": "Checking for updates. Please wait...", "Value": "Es wird nach Updates gesucht..." },
+	{ "Key": "This is the latest version!", "Value": "Dies ist die neueste Version!" },
+	{ "Key": "SSA_UPDATED", "Value": "SmallServerAdmin wurde aktualisiert auf die Version v{{Stable.NewVersion}}!" },
+	{ "Key": "Successfully updated!", "Value": "Erfolgreich aktualisiert!" },
+	{ "Key": "Available a new version:", "Value": "Verfügbar eine neue Version:" },
+	{ "Key": "Do not turn off the computer and do not close this page!", "Value": "Bitte schalten Sie den Computer nicht und schließen Sie diese Seite nicht!" },
+	{ "Key": "Updates from other sources", "Value": "Updates aus anderen Quellen" },
+	{ "Key": "UNRELEASED_UPDATION_WARNING", "Value": "WARNUNG: Unveröffentlicht Updates in erster Linie für Entwickler konzipiert sind. Die Stabilität ist nicht garantiert." },
+	{ "Key": "Branch", "Value": "Ast" }
+]
