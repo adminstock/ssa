@@ -22,7 +22,7 @@ or enhance existing ones.
   * list of files and folders;
   * creation of new folders and text files;
   * viewing and editing files;
-  * deleting files and folders;
+  * moving, copying and deleting files and folders;
   * permissions management.
 * Subversion Management:
   * users and groups;
@@ -197,17 +197,22 @@ If you have connection problems, try restarting the server.
 
 ### Panel Configuration
 
-The panel settings are in the file **ssa.config.php**.
+General (default) panel settings contained in the **ssh.config.php** file.
 The parameters are stored in the global variable `$config` as an associative array.
 
+In addition, each server can have its own settings, which are located in the **/servers** folder.
+
 The panel has a modular design. Each module has its own set of parameters. 
-For details see the README file of a specific module.
+For details see the **README** file of a specific module.
 
 #### SSH
 
 _**NOTE:** If you use automatic installation with **[HTAN](https://github.com/adminstock/htan)**, then change the settings of **SSH** is not need._
 
 To operate the panel, you must configure the **SSH** connection settings.
+
+By first opening the panel in a browser, you will be redirected to the servers management page where you can add and configure a new server.
+If it does not, open or create the **/servers/default.php** file and specify the connection settings to the server.
 
 ```PHP
 // ssh server address
@@ -250,6 +255,12 @@ separated by commas. These modules will be displayed in the menu in this order.
 ```PHP
 $config['modules'] = 'users,svn,sites,files,monitoring,services,ssh';
 ```
+
+The absence of modules in the list does not restrict access to them.
+
+Modules in the menu will be displayed in the order in which they are specified in the list.
+
+In the file **ssa.config.php** specified the default list of modules that will be used for all servers, who have not their own list of modules.
 
 #### Widgets
 

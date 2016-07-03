@@ -107,6 +107,7 @@ SmallServerAdmin
 -- Layouts - master pages (templates)
 -- Libs - additional server-side libraries
 -- servers - contains configuration files connected servers
+-- .version - current version of the panel
 -- api.php - the main file for API
 -- config.php - config of the WebForms.PHP
 -- global.json and global.*.json - localization resources

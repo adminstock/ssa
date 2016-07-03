@@ -2,7 +2,19 @@
 
 All notable changes to SmallServerAdmin will be documented in this file.
 
-## [1.0.55-alpha] - unreleased
+## [1.0.57-alpha] - 2016-07-03
+
+The new version includes a small structural changes.
+
+Recommended to move **SSH** settings from the **/ssa.config.php** file to the **/servers/default.php** file.
+
+And also recommended to rename keys `file_name` to `url` in the `$config['db admin_list']`.
+
+For proper operation of the new version, it is recommended to add the new settings to the **/ssa.config.php**: 
+`$config['settings_default_branch']` and `$config['settings_update_sources']`.
+
+And also update the `$config['client']` section.
+
 ### Added
 - Support for multiple update sources;
 - Markdown support;
