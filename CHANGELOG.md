@@ -1,6 +1,13 @@
-# Change Log
+﻿# Change Log
 
 All notable changes to SmallServerAdmin will be documented in this file.
+
+## [1.0.59-alpha] - unreleased
+### Added
+- Added config parameter (`$config['logout_redirect']`) to specify the the redirection address when logging out ([#37](https://github.com/adminstock/ssa/issues/37));
+
+### Fixed
+- Saving settings, which did not exist in the configuration file ([#34](https://github.com/adminstock/ssa/issues/34)).
 
 ## [1.0.57-alpha] - 2016-07-03
 

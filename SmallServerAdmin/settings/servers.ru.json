@@ -4,5 +4,6 @@
 	{ "Key": "always requires a password (recommended)", "Value": "пароль требуется всегда (рекомендуется)" },
 	{ "Key": "All Modules", "Value": "Все модули" },
 	{ "Key": "Loading config of the server. Please wait...", "Value": "Загрузка конфигурации сервера. Пожалуйста, подождите..." },
-	{ "Key": "Add server", "Value": "Добавить сервер" }
+	{ "Key": "Add server", "Value": "Добавить сервер" },
+	{ "Key": "Behavior", "Value": "Поведение" }
 ]

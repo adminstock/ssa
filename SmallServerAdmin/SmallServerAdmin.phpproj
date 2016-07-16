@@ -87,7 +87,7 @@
     <Compile Include="monitoring\widget.php" />
     <Compile Include="phpinfo.php" />
     <Compile Include="servers\default.php" />
-    <Compile Include="servers\ReadMe.md" />
+    <Compile Include="servers\README.md" />
     <Compile Include="services\api.php" />
     <Compile Include="services\dialogs\confirmToStopService.php" />
     <Compile Include="services\index.html.php" />

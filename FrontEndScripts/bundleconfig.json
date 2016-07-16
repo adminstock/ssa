@@ -42,6 +42,7 @@
 			"libs/angular-pageslide-directive.js",
 			"libs/showdown.js",
 			"libs/angular-drag-and-drop-lists.js",
+			"libs/bowser.js",
 
 			// Helper classes by Aleksey Nemiro
 			"libs/Nemiro/EventHandlers.js",

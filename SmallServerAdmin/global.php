@@ -128,7 +128,7 @@ if (isset($_GET['lang']) && $CurrentLang != $_GET['lang'] || (isset($_GET['lang'
 #endregion
 #region ssh2 test
 
-if (($currentScriptName = App::GetScriptName()) != 'error' && $currentScriptName != 'api' && $currentScriptName != 'servers')
+if (($currentScriptName = App::GetScriptName()) != 'error' && $currentScriptName != 'api' && $currentScriptName != 'servers' && $currentScriptName != 'logout')
 {
   // check ssh2
   if (extension_loaded('ssh2') === FALSE)

@@ -60,6 +60,7 @@
     <Content Include="libs\angular\i18n\angular-locale_ru.js" />
     <Content Include="libs\bootstrap-switch.js" />
     <Content Include="libs\bootstrap.js" />
+    <Content Include="libs\bowser.js" />
     <Content Include="libs\codemirror\addon\comment\comment.js" />
     <Content Include="libs\codemirror\addon\comment\continuecomment.js" />
     <Content Include="libs\codemirror\addon\dialog\dialog.css" />

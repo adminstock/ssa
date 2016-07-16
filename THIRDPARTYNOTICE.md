@@ -366,6 +366,15 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+## Bowser
+
+Copyright © 2015, Dustin Diaz (the "Original Author")
+All rights reserved.
+
+[https://github.com/ded/bowser](https://github.com/ded/bowser)
+
+[https://github.com/ded/bowser/blob/master/LICENSE](https://github.com/ded/bowser/blob/master/LICENSE)
+
 ## WebForms.PHP
 
 Copyright © Aleksey Nemiro, 2007-2016. All rights reserved.

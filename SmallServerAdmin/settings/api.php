@@ -303,6 +303,7 @@ namespace Api
         'Config' => basename($path, '.php'),
         'Disabled' => (isset($config['server_disabled']) ? (bool)$config['server_disabled'] : FALSE),
         'RequiredPassword' => (isset($config['ssh_required_password']) ? (bool)$config['ssh_required_password'] : FALSE),
+        'LogoutRedirect' => (isset($config['logout_redirect']) ? $config['logout_redirect'] : NULL),
         'Modules' => $modules
       ];
     }
@@ -344,6 +345,20 @@ namespace Api
       $lines = [];
       $keys = [];
 
+      // keys of configuration to the keys of the input data
+      $mapper = 
+      [
+        [ 'ConfigKey' => 'ssh_host', 'DataKey' => 'Address', 'DefaultValue' => '', 'Required' => TRUE ],
+        [ 'ConfigKey' => 'ssh_port', 'DataKey' => 'Port', 'DefaultValue' => '22', 'Required' => TRUE, 'Type' => 'int' ],
+        [ 'ConfigKey' => 'ssh_user', 'DataKey' => 'Username', 'DefaultValue' => '', 'Required' => TRUE ],
+        [ 'ConfigKey' => 'ssh_password', 'DataKey' => 'Password', 'DefaultValue' => '', 'Required' => TRUE ],
+        [ 'ConfigKey' => 'ssh_required_password', 'DataKey' => 'RequiredPassword', 'DefaultValue' => '', 'Required' => TRUE, 'Type' => 'bool' ],
+        [ 'ConfigKey' => 'server_name', 'DataKey' => 'Name', 'DefaultValue' => '', 'Required' => FALSE ],
+        [ 'ConfigKey' => 'server_description', 'DataKey' => 'Description', 'DefaultValue' => '', 'Required' => FALSE ],
+        [ 'ConfigKey' => 'logout_redirect', 'DataKey' => 'LogoutRedirect', 'DefaultValue' => '', 'Required' => FALSE ],
+        [ 'ConfigKey' => 'modules', 'DataKey' => 'Modules', 'DefaultValue' => '', 'Required' => FALSE, 'Handler' => function($h_value) { return $this->GetEnabledModules($h_value); } ]
+      ];
+
       if (!isset($data['Config']) || $data['Config'] == '')
       {
         // is new config
@@ -357,46 +372,19 @@ namespace Api
         }
 
         // add lines
-        if (isset($data['Name']) && $data['Name'] != '')
+        foreach($mapper as $item)
         {
-          $lines[] = '$config[\'server_name\'] = \''.str_replace('\'', '\\\'', $data['Name']).'\';';
+          $this->AddConfigItemToArray($item, $data, $lines);
         }
-
-        if (isset($data['Description']) && $data['Description'] != '')
-        {
-          $lines[] = '$config[\'server_description\'] = \''.str_replace("\n", ' ', str_replace('\'', '\\\'', $data['Description'])).'\';';
-        }
-
-        $lines[] = '$config[\'ssh_host\'] = \''.str_replace('\'', '\\\'', $data['Address']).'\';';
-        $lines[] = '$config[\'ssh_port\'] = '.(isset($data['Port']) && (int)$data['Port'] > 0 ? $data['Port'] : 22).';';
-        $lines[] = '$config[\'ssh_user\'] = \''.str_replace('\'', '\\\'', $data['Username']).'\';';
-        $lines[] = '$config[\'ssh_password\'] = \''.str_replace('\'', '\\\'', $data['Password']).'\';';
-        $lines[] = '$config[\'ssh_required_password\'] = '.(!isset($data['RequiredPassword']) || (bool)$data['RequiredPassword'] ? 'TRUE' : 'FALSE').';';
         
-        if (isset($data['Modules']) && count($data['Modules']) > 0)
-        {
-          $modules = [];
-
-          foreach($data['Modules'] as $module)
-          {
-            if ($module['Enabled'] === FALSE)
-            {
-              continue;
-            }
-
-            $modules[] = $module['Name'];
-          }
-
-          $lines[] = '$config[\'modules\'] = \''.implode(',', $modules).'\';';
-        }
-
         $data['Config'] = basename($path, '.php');
       }
       else
       {
         $path = \Nemiro\Server::MapPath('~/servers/'.$data['Config'].'.php');
 
-        // parse existing file
+        #region parse existing file
+
         $tokens = token_get_all(file_get_contents($path));
         
         $line = ''; $key = '';
@@ -439,68 +427,16 @@ namespace Api
             
             if (array_search($key, $keys) === FALSE)
             {
-              // set value
-              switch($key)
+              // search item in map
+              if (count($options = array_filter($mapper, function ($item) use ($key) { return $item['ConfigKey'] == $key; })) <= 0)
               {
-                case 'modules':
-                  if (isset($data['Name']) && $data['Name'] != '')
-                  {
-                    if (isset($data['Modules']) && count($data['Modules']) > 0)
-                    {
-                      $modules = [];
-
-                      foreach($data['Modules'] as $module)
-                      {
-                        if ($module['Enabled'] === FALSE)
-                        {
-                          continue;
-                        }
-
-                        $modules[] = $module['Name'];
-                      }
-
-                      $lines[] = '$config[\'modules\'] = \''.implode(',', $modules).'\';';
-                    }
-                  }
-                  break;
-
-                case 'server_name':
-                  if (isset($data['Name']) && $data['Name'] != '')
-                  {
-                    $lines[] = '$config[\'server_name\'] = \''.str_replace('\'', '\\\'', $data['Name']).'\';';
-                  }
-                  break;
-
-                case 'server_description':
-                  if (isset($data['Description']) && $data['Description'] != '')
-                  {
-                    $lines[] = '$config[\'server_description\'] = \''.str_replace("\n", ' ', str_replace('\'', '\\\'', $data['Description'])).'\';';
-                  }
-                  break;
-
-                case 'ssh_host':
-                  $lines[] = '$config[\'ssh_host\'] = \''.str_replace('\'', '\\\'', $data['Address']).'\';';
-                  break;
-
-                case 'ssh_port':
-                  $lines[] = '$config[\'ssh_port\'] = '.(isset($data['Port']) && (int)$data['Port'] > 0 ? $data['Port'] : 22).';';
-                  break;
-
-                case 'ssh_user':
-                  $lines[] = '$config[\'ssh_user\'] = \''.str_replace('\'', '\\\'', $data['Username']).'\';';
-                  break;
-
-                case 'ssh_password':
-                  $lines[] = '$config[\'ssh_password\'] = \''.str_replace('\'', '\\\'', $data['Password']).'\';';
-                  break;
-
-                case 'ssh_required_password':
-                  $lines[] = '$config[\'ssh_required_password\'] = '.(!isset($data['RequiredPassword']) || (bool)$data['RequiredPassword'] ? 'TRUE' : 'FALSE').';';
-                  break;
-
-                default:
-                  // don't change
-                  $lines[] = $line;
+                // don't change
+                $lines[] = $line;
+              }
+              else
+              {
+                // set value
+                $this->AddConfigItemToArray(array_shift($options), $data, $lines);
               }
 
               if ($key != '')
@@ -512,6 +448,21 @@ namespace Api
             $line = '';
           }
         }
+
+        #endregion
+        #region parameters that were not found in the current config file
+
+        foreach($mapper as $item)
+        {
+          if (array_search($item['ConfigKey'], $keys) !== FALSE)
+          {
+            continue;
+          }
+
+          $this->AddConfigItemToArray($item, $data, $lines);
+        }
+
+        #endregion
       }
 
       // save file
@@ -521,6 +472,81 @@ namespace Api
       }
 
       return $data;
+    }
+
+    /**
+     * Returns enabled modules from modules array.
+     * 
+     * @param mixed $modules Array: ['Name' => 'Example', 'Enabled' => TRUE|FALSE]
+     * @return string|null
+     */
+    private function GetEnabledModules($modules)
+    {
+      if (!isset($modules) || count($modules) <= 0)
+      {
+        return NULL;
+      }
+
+      $result = [];
+
+      foreach($modules as $module)
+      {
+        if ($module['Enabled'] === FALSE)
+        {
+          continue;
+        }
+
+        $result[] = $module['Name'];
+      }
+
+      if (count($result) > 0)
+      {
+        return implode(',', $result);
+      }
+      else
+      {
+        return NULL;
+      }
+    }
+
+    private function AddConfigItemToArray($item, $data, &$lines)
+    {
+      $value = '';
+
+      if (isset($data[$item['DataKey']]) && $data[$item['DataKey']] != '')
+      {
+        $value = $data[$item['DataKey']];
+      }
+
+      if (isset($item['Handler']))
+      {
+        $value = $item['Handler']($value);
+      }
+
+      if (($value == NULL || $value == '') && isset($item['Required']) && (bool)$item['Required'] === FALSE)
+      {
+        if (isset($item['DefaultValue']) && $item['DefaultValue'] != '')
+        {
+          $value = $item['DefaultValue'];
+        }
+        else
+        {
+          return;
+        }
+      }
+            
+      if (isset($item['Type']) && $item['Type'] == 'int')
+      {
+        $lines[] = '$config[\''.$item['ConfigKey'].'\'] = '.(int)$value.';';
+      }
+      else if (isset($item['Type']) && $item['Type'] == 'bool')
+      {
+        $lines[] = '$config[\''.$item['ConfigKey'].'\'] = '.((bool)$value ? 'TRUE' : 'FALSE').';';
+      }
+      else
+      {
+        $lines[] = '$config[\''.$item['ConfigKey'].'\'] = \''.str_replace('\'', '\\\'', $value).'\';';
+      }
     }
 
     public function DeleteServer($data)

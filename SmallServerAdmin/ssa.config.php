@@ -13,6 +13,9 @@ $config['widgets']['sites'] = ['Enabled' => TRUE, 'Format' => '<div>%s</div>'];
 // uncomment to enable logging
 // $config['ssa_log_path'] = '../.logs/ssa.log';
 
+// url to which the user will be redirected after logout
+// $config['logout_redirect'] = 'http://www.adminstock.net/';
+
 // files
 $config['files_auto_reload'] = [
   // allow sudo systemctl daemon-reload

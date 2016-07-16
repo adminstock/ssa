@@ -50,6 +50,9 @@ module SmallServerAdmin.Models {
     /** List of modules. */
     public Modules: Array<Module>;
 
+    /** Address to which the user will be redirected after logout. */
+    public LogoutRedirect: string;
+
   }
 
 }

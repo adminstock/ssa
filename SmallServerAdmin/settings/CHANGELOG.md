@@ -1,6 +1,10 @@
-# Change Log
+﻿# Change Log
 
 All notable changes to this module will be documented in this file.
+
+## [1.0.4] - 16.07.2016
+### Fixed
+- Saving settings, which did not exist in the configuration file ([#34](https://github.com/adminstock/ssa/issues/34));.
 
 ## [1.0.3] - 02.07.2016
 ### Added
