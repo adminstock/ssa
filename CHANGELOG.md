@@ -2,12 +2,14 @@
 
 All notable changes to SmallServerAdmin will be documented in this file.
 
-## [1.0.59-alpha] - unreleased
+## [1.0.60-alpha] - unreleased
 ### Added
 - Added config parameter (`$config['logout_redirect']`) to specify the the redirection address when logging out ([#37](https://github.com/adminstock/ssa/issues/37));
+- Setting write permissions to the */servers*.
 
 ### Fixed
-- Saving settings, which did not exist in the configuration file ([#34](https://github.com/adminstock/ssa/issues/34)).
+- Saving settings, which did not exist in the configuration file ([#34](https://github.com/adminstock/ssa/issues/34));
+- Fixed problem with incorrect output information in the server list.
 
 ## [1.0.57-alpha] - 2016-07-03
 

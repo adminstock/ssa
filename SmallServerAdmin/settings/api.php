@@ -208,6 +208,10 @@ namespace Api
      */
     public function GetServers()
     {
+      global $config;
+
+      $defaultModules = $config['modules'];
+
       $servers = [];
 
       // get servers
@@ -216,7 +220,7 @@ namespace Api
         foreach (scandir(\Nemiro\Server::MapPath('~/servers')) as $file) 
         {
           if ($file == '.' || $file == '..' || $file == 'ssa.config.php' || pathinfo($file, PATHINFO_EXTENSION) != 'php') { continue; }
-          $servers[] = $this->GetServerInfo(\Nemiro\Server::MapPath('~/servers/'.$file), TRUE);
+          $servers[] = $this->GetServerInfo(\Nemiro\Server::MapPath('~/servers/'.$file), TRUE, $defaultModules);
         }
 
         usort($servers, function($a, $b) { return strcmp($a->Name, $b->Name); });
@@ -244,19 +248,17 @@ namespace Api
         throw new \ErrorException('"'.$path.'" not found.');
       }
 
-      return $this->GetServerInfo($path, FALSE);
+      global $config;
+
+      return $this->GetServerInfo($path, FALSE, $config['modules']);
     }
 
-    private function GetServerInfo($path, $withoutPassword)
+    private function GetServerInfo($path, $withoutPassword, $defaultModules)
     {
       if ($this->AllModules == NULL)
       {
         $this->GetModules();
       }
-
-      global $config;
-
-      $defaultModules = $config['modules'];
 
       require $path;
 
@@ -293,7 +295,8 @@ namespace Api
         $modules[] = ['Name' => $module, 'Enabled' => $serverModules == NULL];
       }
 
-      return [
+      return 
+      [
         'Address' => isset($config['ssh_host']) ? $config['ssh_host'] : '', 
         'Port' => (isset($config['ssh_port']) && (int)$config['ssh_port'] > 0 ? $config['ssh_port'] : 22), 
         'Username' => ($withoutPassword !== TRUE ? (isset($config['ssh_user']) ? $config['ssh_user'] : '') : NULL), 
@@ -336,7 +339,23 @@ namespace Api
 
       if (!is_writable(\Nemiro\Server::MapPath('~/servers')))
       {
-        throw new \ErrorException('Directory "'.\Nemiro\Server::MapPath('~/servers').'" is not writable. Please set the permissions to write to that directory and try again.');
+        try
+        {
+          // set permissions
+          $sshClient = new SSH();
+          // TODO: 777 - bad idea, need to fix
+          $command = 'sudo bash -c "chmod 777 \''.\Nemiro\Server::MapPath('~/servers').'\'"';
+          $shell_result = $sshClient->Execute($command);
+
+          if ($shell_result->Error != '')
+          {
+            throw new \ErrorException($shell_result->Error);
+          }
+        }
+        catch (\Exception $ex)
+        {
+          throw new \ErrorException('Directory "'.\Nemiro\Server::MapPath('~/servers').'" is not writable. Please set the permissions to write to that directory and try again.');
+        }
       }
 
       // TODO: Less code
